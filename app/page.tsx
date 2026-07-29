@@ -1,150 +1,238 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getFeaturedProducts } from "@/data/products";
+import { getNewArrivals, getBestSellers, products } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 
+const CATEGORY_TILES = [
+  {
+    label: "Tees",
+    href: "/shop?category=Tees",
+    image: "/vergemind/category-tees.jpg",
+  },
+  {
+    label: "Outerwear",
+    href: "/shop?category=Outerwear",
+    image: "/vergemind/category-outerwear.jpg",
+  },
+  {
+    label: "Footwear",
+    href: "/shop?category=Footwear",
+    image: "/vergemind/category-footwear.jpg",
+  },
+];
+
+const STATS = [
+  { value: "50+", label: "Styles In Rotation" },
+  { value: "7-DAY", label: "Easy Returns" },
+  { value: "WEEKLY", label: "New Drops" },
+  { value: "ILORIN", label: "Free Local Delivery" },
+];
+
+const TESTIMONIALS = [
+  {
+    quote:
+      "The Crimson Bomber Jacket is heavier and better made than jackets I've paid double for. Genuinely impressed.",
+    name: "Damilare O.",
+  },
+  {
+    quote:
+      "Ordered three graphic tees and they all fit exactly true to size. Fast delivery to Ilorin too.",
+    name: "Tunde A.",
+  },
+  {
+    quote:
+      "The Broxx Street Sneakers have been in daily rotation for two months and still look brand new.",
+    name: "Kelvin I.",
+  },
+];
+
 export default function HomePage() {
-  const featured = getFeaturedProducts();
+  const newArrivals = getNewArrivals();
+  const bestSellers = getBestSellers();
+  const gridStrip = products.slice(20, 26);
 
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-ink/10">
-        <div className="container-page grid grid-cols-1 items-center gap-10 py-14 lg:grid-cols-2 lg:py-24">
-          <div className="order-2 lg:order-1">
-            <h1 className="font-display text-4xl leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
-              Dillon Kennels
-            </h1>
-            <p className="mt-5 max-w-md font-display text-xl italic text-ink/70 sm:text-2xl">
-              Heritage weaves, modern silhouettes, everyday wear.
-            </p>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-ink/70">
-              Clothing, footwear, and accessories designed in Lagos and
-              crafted with West African textile traditions at their core —
-              built to be worn on repeat, not just once.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/shop" className="btn-primary">
-                Shop Now
-              </Link>
-              <Link href="/contact" className="btn-ghost">
-                Get in Touch
-              </Link>
-            </div>
-          </div>
-          <div className="order-1 grid grid-cols-2 gap-4 lg:order-2">
-            <div className="relative aspect-[3/4] translate-y-6 overflow-hidden bg-sand">
-              <Image
-                src="/products/hero-menswear.jpg"
-                alt="Model wearing a Dillon Kennels heritage wrap shirt"
-                fill
-                priority
-                sizes="(min-width: 1024px) 25vw, 45vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="relative aspect-[3/4] overflow-hidden bg-sand">
-              <Image
-                src="/products/hero-womenswear.jpg"
-                alt="Model wearing Dillon Kennels footwear and accessories"
-                fill
-                priority
-                sizes="(min-width: 1024px) 25vw, 45vw"
-                className="object-cover"
-              />
-            </div>
+      <section className="relative flex min-h-[88vh] items-end overflow-hidden bg-graphite">
+        <Image
+          src="/vergemind/hero-main.jpg"
+          alt="Vergemind new drop menswear"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-60"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-noir via-noir/40 to-transparent" />
+        <div className="container-page relative z-10 pb-16 pt-32">
+          <p className="eyebrow">New Drop / 001</p>
+          <h1 className="mt-4 font-display text-6xl leading-[0.95] text-bone sm:text-7xl lg:text-8xl">
+            Vergemind
+          </h1>
+          <p className="mt-5 max-w-md text-sm uppercase tracking-widest2 text-bone/70">
+            Menswear built for the edge of the city
+          </p>
+          <div className="mt-9 flex flex-wrap gap-4">
+            <Link href="/shop" className="btn-primary">
+              Shop The Drop
+            </Link>
+            <Link href="/shop" className="btn-secondary">
+              View All Categories
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Brand intro */}
-      <section className="border-b border-ink/10 bg-paper">
-        <div className="container-page grid grid-cols-1 gap-10 py-16 lg:grid-cols-[1fr_1.4fr] lg:py-20">
-          <div>
-            <p className="eyebrow">Our Story</p>
-            <h2 className="section-heading mt-3">
-              Rooted in craft, built for daily life
-            </h2>
-          </div>
-          <div className="space-y-4 text-base leading-relaxed text-ink/80">
-            <p>
-              Dillon Kennels began on the workshop floors of Lagos, where the
-              rhythm of hand looms and the sharp smell of indigo dye have
-              shaped fashion for generations. We started the label with a
-              simple frustration: the clothing that carried our textile
-              heritage — aso-oke weaves, adire resist-dyeing, batik, Ankara
-              wax prints — rarely showed up in wardrobes built for the
-              everyday. It was reserved for weddings, for owambe, for
-              once-a-year occasions. We wanted to change that. Every piece in
-              our collection starts with a material or technique rooted in
-              West African craft, then gets reworked through a contemporary
-              tailoring lens so it fits naturally into a Tuesday commute, a
-              weekend market run, or a Friday dinner out.
-            </p>
-            <p>
-              We work directly with small ateliers and individual artisans
-              across Lagos and the wider South-West, from the narrow-strip
-              weavers of Iseyin to the raffia weavers who hand-construct our
-              bags. That relationship means slower production runs, genuine
-              price transparency, and pieces that carry real variation from
-              one to the next — because they were made by hands, not
-              machines alone. Every product on this site, from our tailored
-              blazers to our woven belts, is built to be worn hard and worn
-              often, backed by fabric choices and construction details we're
-              proud to stand behind. This is fashion that respects where it
-              came from and where you're actually going to wear it.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured products */}
+      {/* Category tiles */}
       <section className="container-page py-16 lg:py-20">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="eyebrow">The Edit</p>
-            <h2 className="section-heading mt-3">Featured Pieces</h2>
-          </div>
-          <Link href="/shop" className="btn-ghost hidden sm:inline-flex">
-            View Full Shop →
-          </Link>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {CATEGORY_TILES.map((tile) => (
+            <Link
+              key={tile.label}
+              href={tile.href}
+              className="group relative block aspect-[4/5] overflow-hidden bg-graphite"
+            >
+              <Image
+                src={tile.image}
+                alt={tile.label}
+                fill
+                sizes="(min-width: 640px) 33vw, 100vw"
+                className="object-cover opacity-80 transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-noir/30 transition-colors group-hover:bg-noir/10" />
+              <span className="absolute bottom-6 left-6 font-display text-3xl uppercase text-bone">
+                {tile.label}
+              </span>
+            </Link>
+          ))}
         </div>
+      </section>
 
-        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
-          {featured.map((product) => (
+      {/* New arrivals */}
+      <section className="container-page pb-16 lg:pb-20">
+        <div className="flex flex-col items-center text-center">
+          <p className="eyebrow">Fresh In</p>
+          <h2 className="section-heading mt-3">New Arrivals</h2>
+        </div>
+        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-4">
+          {newArrivals.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-
-        <div className="mt-10 flex justify-center sm:hidden">
-          <Link href="/shop" className="btn-secondary w-full">
-            View Full Shop
+        <div className="mt-10 flex justify-center">
+          <Link href="/shop" className="btn-secondary">
+            View All Products
           </Link>
         </div>
       </section>
 
-      {/* Promo strip */}
-      <section className="bg-rust text-cream">
-        <div className="container-page grid grid-cols-1 gap-8 py-14 text-center sm:grid-cols-3 sm:text-left">
-          <div>
-            <p className="font-display text-xl">Handwoven Materials</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Aso-oke, adire, batik, and raffia sourced directly from
-              artisans.
-            </p>
+      {/* Stats strip */}
+      <section className="border-y border-bone/10 bg-graphite">
+        <div className="container-page grid grid-cols-2 gap-8 py-12 text-center lg:grid-cols-4">
+          {STATS.map((stat) => (
+            <div key={stat.label}>
+              <p className="font-display text-3xl text-acid sm:text-4xl">
+                {stat.value}
+              </p>
+              <p className="mt-2 text-xs font-semibold uppercase tracking-widest2 text-bone/60">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Editorial banner */}
+      <section>
+        <div className="container-page grid grid-cols-1 items-center gap-10 py-16 lg:grid-cols-2 lg:py-24">
+          <div className="relative order-2 aspect-[4/5] overflow-hidden lg:order-1">
+            <Image
+              src="/vergemind/editorial-banner.jpg"
+              alt="Vergemind brand editorial"
+              fill
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="object-cover"
+            />
           </div>
-          <div>
-            <p className="font-display text-xl">Lagos Delivery</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Free delivery within Lagos on orders over ₦75,000.
+          <div className="order-1 lg:order-2">
+            <p className="eyebrow">The Vergemind Standard</p>
+            <p className="mt-5 font-display text-3xl leading-snug text-bone sm:text-4xl">
+              "BUILT FOR THE STREET. PRICED FOR EVERY DAY."
             </p>
-          </div>
-          <div>
-            <p className="font-display text-xl">Made to Last</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Constructed for daily wear, not just special occasions.
+            <p className="mt-6 max-w-md text-sm leading-relaxed text-bone/70">
+              Vergemind was built out of Ilorin on a simple idea: menswear
+              should hold up to daily wear without costing a season's
+              budget. Every tee, hoodie, and pair of denim in this
+              collection is chosen for genuine durability first — the
+              graphics and cuts come second. No filler pieces, no
+              throwaway fabrics.
             </p>
+            <Link href="/shop" className="btn-primary mt-8">
+              Explore The Collection
+            </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Bestsellers */}
+      <section className="container-page py-16 lg:py-20">
+        <div className="flex flex-col items-center text-center">
+          <p className="eyebrow">Most Worn</p>
+          <h2 className="section-heading mt-3">Bestsellers</h2>
+        </div>
+        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-4">
+          {bestSellers.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="border-t border-bone/10 bg-graphite py-16 lg:py-20">
+        <div className="container-page">
+          <div className="flex flex-col items-center text-center">
+            <p className="eyebrow">Reviews</p>
+            <h2 className="mt-3 font-display text-3xl text-bone sm:text-4xl">
+              What The City Is Saying
+            </h2>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3">
+            {TESTIMONIALS.map((t) => (
+              <div key={t.name} className="border border-bone/10 p-6">
+                <p className="text-sm leading-relaxed text-bone/85">
+                  "{t.quote}"
+                </p>
+                <p className="mt-4 text-xs font-bold uppercase tracking-widest2 text-acid">
+                  {t.name}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Shop the grid strip */}
+      <section className="py-16 lg:py-20">
+        <div className="container-page flex flex-col items-center text-center">
+          <p className="eyebrow">@vergemind</p>
+          <h2 className="section-heading mt-3">Shop The Fit</h2>
+        </div>
+        <div className="mt-10 grid grid-cols-3 gap-2 sm:grid-cols-6 sm:gap-3">
+          {gridStrip.map((product) => (
+            <Link
+              key={product.id}
+              href={`/shop/${product.slug}`}
+              className="group relative block aspect-square overflow-hidden"
+            >
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                sizes="(min-width: 640px) 16vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+            </Link>
+          ))}
         </div>
       </section>
     </div>

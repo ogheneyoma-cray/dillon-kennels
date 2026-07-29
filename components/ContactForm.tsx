@@ -13,9 +13,9 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="border border-olive/30 bg-olive/10 p-6">
-        <p className="font-display text-xl text-ink">Message sent</p>
-        <p className="mt-2 text-sm text-ink/70">
+      <div className="border border-acid/30 bg-acid/10 p-6">
+        <p className="font-display text-xl uppercase text-bone">Message Sent</p>
+        <p className="mt-2 text-sm text-bone/70">
           Thanks for reaching out — our support team will reply to your email
           within one business day.
         </p>

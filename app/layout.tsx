@@ -1,28 +1,29 @@
 import type { Metadata } from "next";
-import { Fraunces, Work_Sans } from "next/font/google";
+import { Bebas_Neue, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const fraunces = Fraunces({
+const bebas = Bebas_Neue({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  weight: "400",
+  variable: "--font-bebas",
   display: "swap",
-  axes: ["opsz", "SOFT", "WONK"],
 });
 
-const workSans = Work_Sans({
+const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
-  variable: "--font-work-sans",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-plex",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Dillon Kennels | Fashion Rooted in Heritage",
+  title: "Vergemind | Menswear For The Edge",
   description:
-    "Dillon Kennels is a Lagos-based fashion house crafting clothing, footwear, and accessories that blend West African textile heritage with contemporary tailoring.",
+    "Vergemind is a men's streetwear label offering tees, outerwear, denim, knitwear, footwear, and accessories built for the city.",
 };
 
 export default function RootLayout({
@@ -31,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${workSans.variable}`}>
+    <html lang="en" className={`${bebas.variable} ${plexSans.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
         <CurrencyProvider>
           <CartProvider>

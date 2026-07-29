@@ -9,25 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#F6F1E9",
-        paper: "#FBF8F2",
-        ink: "#211C17",
-        charcoal: "#332C24",
-        rust: "#B7522E",
-        "rust-dark": "#8F3D20",
-        olive: "#6B6B47",
-        sand: "#E4D8C3",
-        clay: "#C98B5E",
+        noir: "#0B0B0C",
+        graphite: "#18181B",
+        steelline: "#2A2A2E",
+        bone: "#EDEBE4",
+        muted: "#9A9A9E",
+        acid: "#C6FF3D",
+        "acid-dark": "#9FDB1E",
+        ember: "#FF4433",
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "serif"],
-        body: ["var(--font-work-sans)", "sans-serif"],
+        display: ["var(--font-bebas)", "sans-serif"],
+        body: ["var(--font-plex)", "sans-serif"],
       },
       letterSpacing: {
-        widest2: "0.25em",
+        widest2: "0.2em",
+        widest3: "0.32em",
       },
       maxWidth: {
-        content: "1400px",
+        content: "1440px",
       },
     },
   },

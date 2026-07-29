@@ -5,8 +5,11 @@ import { useRouter } from "next/navigation";
 import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 
+const SIZES = ["S", "M", "L", "XL", "XXL"];
+
 export default function ProductDetailActions({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState("M");
   const [added, setAdded] = useState(false);
   const { addToCart } = useCart();
   const router = useRouter();
@@ -20,28 +23,53 @@ export default function ProductDetailActions({ product }: { product: Product }) 
     setTimeout(() => setAdded(false), 2000);
   };
 
+  const isApparel =
+    product.category !== "Accessories" && product.category !== "Footwear";
+
   return (
     <div>
+      {isApparel && (
+        <div className="mb-6">
+          <span className="label-text">Size</span>
+          <div className="flex flex-wrap gap-2">
+            {SIZES.map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => setSize(s)}
+                className={`flex h-11 min-w-[44px] items-center justify-center border px-3 text-xs font-bold uppercase transition-colors ${
+                  size === s
+                    ? "border-acid bg-acid text-noir"
+                    : "border-bone/25 text-bone hover:border-acid hover:text-acid"
+                }`}
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="flex items-center gap-4">
         <span className="label-text mb-0">Quantity</span>
-        <div className="flex items-center border border-ink/20">
+        <div className="flex items-center border border-bone/25">
           <button
             type="button"
             onClick={decrease}
             aria-label="Decrease quantity"
-            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-sand disabled:opacity-30"
+            className="flex h-11 w-11 items-center justify-center text-lg text-bone transition-colors hover:bg-graphite disabled:opacity-30"
             disabled={quantity <= 1}
           >
             −
           </button>
-          <span className="flex h-11 w-12 items-center justify-center border-x border-ink/20 text-sm font-semibold">
+          <span className="flex h-11 w-12 items-center justify-center border-x border-bone/25 text-sm font-semibold">
             {quantity}
           </span>
           <button
             type="button"
             onClick={increase}
             aria-label="Increase quantity"
-            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-sand"
+            className="flex h-11 w-11 items-center justify-center text-lg text-bone transition-colors hover:bg-graphite"
           >
             +
           </button>
