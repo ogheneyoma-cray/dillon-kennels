@@ -1,28 +1,27 @@
 import type { Metadata } from "next";
-import { Fraunces, Work_Sans } from "next/font/google";
+import { Italiana, Jost } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
-import { CurrencyProvider } from "@/context/CurrencyContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const fraunces = Fraunces({
+const italiana = Italiana({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  weight: "400",
+  variable: "--font-italiana",
   display: "swap",
-  axes: ["opsz", "SOFT", "WONK"],
 });
 
-const workSans = Work_Sans({
+const jost = Jost({
   subsets: ["latin"],
-  variable: "--font-work-sans",
+  variable: "--font-jost",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Dillon Kennels | Fashion Rooted in Heritage",
+  title: "Nudgenic | Modern Womenswear",
   description:
-    "Dillon Kennels is a Lagos-based fashion house crafting clothing, footwear, and accessories that blend West African textile heritage with contemporary tailoring.",
+    "Nudgenic is a women's fashion label offering dresses, tops, denim, outerwear, footwear, and accessories designed for effortless, everyday confidence.",
 };
 
 export default function RootLayout({
@@ -31,15 +30,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${workSans.variable}`}>
+    <html lang="en" className={`${italiana.variable} ${jost.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
-        <CurrencyProvider>
-          <CartProvider>
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </CartProvider>
-        </CurrencyProvider>
+        <CartProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

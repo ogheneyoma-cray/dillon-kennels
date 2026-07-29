@@ -8,13 +8,13 @@
   }
 
   body {
-    @apply bg-cream text-ink font-body;
+    @apply bg-ivory text-ink font-body;
     background-image: radial-gradient(
         circle at 100% 0%,
-        rgba(183, 82, 46, 0.06),
+        rgba(198, 49, 107, 0.05),
         transparent 45%
       ),
-      radial-gradient(circle at 0% 100%, rgba(107, 107, 71, 0.06), transparent 45%);
+      radial-gradient(circle at 0% 100%, rgba(176, 141, 87, 0.06), transparent 45%);
   }
 
   h1,
@@ -25,8 +25,8 @@
   }
 
   ::selection {
-    background-color: #b7522e;
-    color: #f6f1e9;
+    background-color: #c6316b;
+    color: #faf6f3;
   }
 }
 
@@ -36,30 +36,30 @@
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-widest2 text-rust;
+    @apply text-xs font-semibold uppercase tracking-widest3 text-rose;
   }
 
   .btn-primary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 bg-ink px-7 py-3 text-sm font-semibold uppercase tracking-wider text-cream transition-colors duration-200 hover:bg-rust active:bg-rust-dark;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-plum px-8 py-3 text-xs font-semibold uppercase tracking-widest2 text-ivory transition-colors duration-200 hover:bg-rose active:bg-rose-dark;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 border border-ink px-7 py-3 text-sm font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:border-rust hover:text-rust;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-ink px-8 py-3 text-xs font-semibold uppercase tracking-widest2 text-ink transition-colors duration-200 hover:border-rose hover:text-rose;
   }
 
   .btn-ghost {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-ink underline decoration-rust decoration-2 underline-offset-4 transition-colors hover:text-rust;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-1 px-2 text-xs font-semibold uppercase tracking-widest2 text-ink underline decoration-rose decoration-1 underline-offset-8 transition-colors hover:text-rose;
   }
 
   .input-field {
-    @apply w-full min-h-[44px] border border-ink/20 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-rust focus:outline-none focus:ring-1 focus:ring-rust;
+    @apply w-full min-h-[44px] rounded-none border-b border-ink/25 bg-transparent px-1 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-rose focus:outline-none;
   }
 
   .label-text {
-    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink/70;
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-widest2 text-ink/60;
   }
 
   .section-heading {
-    @apply font-display text-3xl leading-tight text-ink sm:text-4xl;
+    @apply font-display text-3xl leading-tight text-ink sm:text-4xl lg:text-5xl;
   }
 }

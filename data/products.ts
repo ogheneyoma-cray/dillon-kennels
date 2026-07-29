@@ -2,233 +2,583 @@ export interface Product {
   id: number;
   name: string;
   slug: string;
-  price: number; // base price in USD
+  price: number; // USD
   description: string;
   image: string;
-  category: "Womenswear" | "Menswear" | "Footwear" | "Accessories";
+  category:
+    | "Dresses"
+    | "Tops"
+    | "Bottoms"
+    | "Outerwear"
+    | "Knitwear"
+    | "Footwear"
+    | "Accessories";
   inStock: boolean;
 }
 
 export const products: Product[] = [
+  // Dresses
   {
     id: 1,
-    name: "Aso-Oke Heritage Wrap Shirt",
-    slug: "aso-oke-heritage-wrap-shirt",
-    price: 38,
-    category: "Menswear",
+    name: "Amara Wrap Midi Dress",
+    slug: "amara-wrap-midi-dress",
+    price: 34,
+    category: "Dresses",
     inStock: true,
-    image: "/products/aso-oke-heritage-wrap-shirt.jpg",
+    image: "/nudgenic/amara-wrap-midi-dress.jpg",
     description:
-      "The Aso-Oke Heritage Wrap Shirt reinterprets a centuries-old West African weaving tradition for the modern wardrobe. Woven in small batches on narrow-strip looms, each panel is hand-joined by artisans in Iseyin before being cut and finished at our Lagos studio, which means no two shirts carry the exact same stripe rhythm. The fabric is a cotton-silk blend that feels substantial without trapping heat, making it equally suited to a humid Lagos afternoon or a cool evening reception. We cut it with a relaxed wrap-front silhouette, dropped shoulders, and a shirttail hem so it can be worn open over a plain tee or buttoned as a statement piece on its own. A single interior tie secures the wrap without a single button in sight, keeping the front clean and uncluttered. Care for it gently: hand wash in cold water, lay flat to dry, and press on the reverse with a warm iron to protect the sheen of the silk threads. This is a piece meant to be inherited, not discarded, and it only grows more characterful with wear. Pair it with tailored trousers for the office or straight denim for the weekend.",
+      "A soft crepe wrap dress that ties at the waist for a fit you can adjust through the day. The V-neckline and midi-length skirt move easily from desk to dinner, and the fabric resists creasing so it travels well. Finished with a self-belt and side pockets.",
   },
   {
     id: 2,
-    name: "Lagos Linen Kaftan",
-    slug: "lagos-linen-kaftan",
-    price: 42,
-    category: "Menswear",
+    name: "Cloud Cotton Sundress",
+    slug: "cloud-cotton-sundress",
+    price: 28,
+    category: "Dresses",
     inStock: true,
-    image: "/products/lagos-linen-kaftan.jpg",
+    image: "/nudgenic/cloud-cotton-sundress.jpg",
     description:
-      "Built for the climate it's named after, the Lagos Linen Kaftan is our warm-weather workhorse. It's cut from a heavyweight European linen that softens with every wash while holding its structure through the day, so the drape you see on the hanger is the drape you get by evening. The silhouette is generously boxy through the body with dropped shoulder seams and side vents at the hem, allowing air to move freely in a way fitted shirting simply can't. A hand-embroidered placket runs down the chest in a tonal thread that catches the light without shouting for attention, a nod to the embroidery traditions found across Yoruba agbada tailoring. We finished the neckline with a narrow band collar rather than a full collar stand, keeping the look relaxed enough for a beach wedding yet composed enough for a dinner reservation. The three-quarter sleeves are wide enough to roll without bunching. Because linen is a living fabric, expect gentle creasing to be part of its character rather than a flaw; a light steam is all it needs between wears. Machine wash cold on a delicate cycle, or hand wash for longevity.",
+      "Lightweight cotton poplin cut into a breezy A-line silhouette with a scooped neckline and thin adjustable straps. Designed for warm days, it pairs a fitted bodice with a skirt that has just enough volume to move in the breeze without feeling costume-y.",
   },
   {
     id: 3,
-    name: "Indigo Wash Denim Jacket",
-    slug: "indigo-wash-denim-jacket",
-    price: 47,
-    category: "Menswear",
+    name: "Bloom Field Floral Dress",
+    slug: "bloom-field-floral-dress",
+    price: 36,
+    category: "Dresses",
     inStock: true,
-    image: "/products/indigo-wash-denim-jacket.jpg",
+    image: "/nudgenic/bloom-field-floral-dress.jpg",
     description:
-      "The Indigo Wash Denim Jacket is a rework of the classic trucker silhouette, built from a mid-weight 12oz cotton denim that's been stone-washed for a broken-in feel straight out of the box. We kept the details period-correct: a chest-pocket flap on each side, a button-through front, and a two-piece back yoke that gives the shoulders room to move without the jacket riding up. Where we diverged from the archive is the fit — slightly cropped at the waist and cut trim through the arm, so it layers cleanly over a hoodie without adding bulk. The hardware is solid brass, chosen because it ages honestly rather than flaking like plated alternatives, and the inner pocket is lined with a striped cotton twill for a hit of color when you reach for your phone. Every wash will lift the indigo a shade lighter and soften the hand-feel further, so this is a jacket that genuinely improves with use rather than simply wearing out. It's the kind of piece that works over a plain tee on a Tuesday and over a collared shirt on a Friday night out. Wash inside-out, cold, and sparingly to protect the wash.",
+      "An all-over floral print on a fluid viscose blend, cut with a fitted waist seam and a skirt that falls just below the knee. The long sleeves are finished with a button cuff, making this the dress that carries you from a spring lunch into evening.",
   },
   {
     id: 4,
-    name: "Ankara Print Wide-Leg Trousers",
-    slug: "ankara-print-wide-leg-trousers",
-    price: 33,
-    category: "Womenswear",
+    name: "Studio Bias-Cut Slip Dress",
+    slug: "studio-bias-cut-slip-dress",
+    price: 38,
+    category: "Dresses",
     inStock: true,
-    image: "/products/ankara-print-wide-leg-trousers.jpg",
+    image: "/nudgenic/studio-bias-cut-slip-dress.jpg",
     description:
-      "Our Ankara Print Wide-Leg Trousers turn a fabric usually reserved for special-occasion dressing into an everyday staple. The wax-print cotton is sourced from a family-run printworks and rendered here in a bold geometric pattern in warm terracotta, ochre, and ink tones. We cut the leg full and fluid from hip to hem, with a flat-front waistband finished in an elasticated back panel so the fit stays comfortable through a full day of movement, whether that's a market run or a desk job. Two deep side pockets are cut on the bias so they sit flat against the body instead of gaping open, and the trousers land at a clean ankle-skimming length that pairs equally well with heels or flat sandals. The wax-resist dyeing process means the color is worked into the fibre itself rather than sitting on the surface, so it resists fading far better than a standard print. Because the pattern is large-scale, we recommend styling it with a solid top to let the trousers do the talking — a fitted white shirt or a simple rib tank both work beautifully. Machine washable on a cold, gentle cycle; hang dry to preserve the crispness of the cotton.",
+      "Cut on the bias so it skims rather than clings, this satin-finish slip dress has a cowl neckline and adjustable straps. Wear it alone for evening or layered under a blazer for daytime — the fluid drape makes it one of the most versatile pieces in the edit.",
   },
   {
     id: 5,
-    name: "Ivory Silk Slip Dress",
-    slug: "ivory-silk-slip-dress",
-    price: 45,
-    category: "Womenswear",
+    name: "Noir Evening Slip Dress",
+    slug: "noir-evening-slip-dress",
+    price: 40,
+    category: "Dresses",
     inStock: true,
-    image: "/products/ivory-silk-slip-dress.jpg",
+    image: "/nudgenic/noir-evening-slip-dress.jpg",
     description:
-      "There's a reason the slip dress has never really left rotation, and the Ivory Silk Slip Dress is our answer to why. Cut on the true bias from a weighty mulberry silk charmeuse, it skims the body rather than clinging to it, falling in soft vertical folds from a narrow cowl neckline down to a mid-calf hem. Adjustable spaghetti straps let you fine-tune the fit across the shoulders, and a hidden side zip keeps the silhouette smooth without visible seaming at the hip. The ivory tone was chosen specifically because it photographs warm rather than clinical under most lighting, and it layers beautifully — worn alone for an evening event, under a blazer for a daytime meeting, or beneath the Indigo Wash Denim Jacket for contrast. Bias-cut silk requires a gentler hand than most fabrics in your wardrobe: dry cleaning is recommended to preserve the drape, though a careful cold hand wash with a silk-safe detergent will also work in a pinch. Store it on a padded hanger rather than folded to avoid crease lines settling into the fabric. This is the kind of dress you reach for when the occasion actually matters.",
+      "A deep black slip dress in a weighted satin that holds its shape without needing a slip underneath. The straight neckline and column silhouette keep it minimal, letting a great pair of heels and a bold lip do the rest of the work.",
   },
   {
     id: 6,
-    name: "Terracotta Ribbed Knit Sweater",
-    slug: "terracotta-ribbed-knit-sweater",
-    price: 29,
-    category: "Womenswear",
+    name: "Ivy Garden Party Dress",
+    slug: "ivy-garden-party-dress",
+    price: 35,
+    category: "Dresses",
     inStock: true,
-    image: "/products/terracotta-ribbed-knit-sweater.jpg",
+    image: "/nudgenic/ivy-garden-party-dress.jpg",
     description:
-      "The Terracotta Ribbed Knit Sweater is proof that a fitted knit doesn't need to sacrifice comfort for shape. Knitted in a fine rib from a cotton-modal yarn blend, it holds its structure across the shoulders while stretching easily through the torso, so it moves with you rather than against you. We chose a rounded crew neckline and set-in sleeves finished with a narrow ribbed cuff, keeping the silhouette clean enough to tuck into trousers or a skirt without excess bulk at the waistband. The terracotta shade was developed to sit between rust and clay — warm enough to read as a statement color, muted enough to work as a neutral against denim, leather, or the Ankara Print Wide-Leg Trousers. A double-ribbed hem prevents the classic knitwear problem of stretching out and losing shape after a few wears, and the yarn has been treated to resist pilling under normal use. It's lightweight enough for indoor air conditioning yet substantial enough to wear alone on a mild evening. Hand wash cold and lay flat to dry; tumble drying will shorten the life of any knit, however well made. A wardrobe staple built to be worn on repeat.",
+      "A fit-and-flare dress with a fitted bodice, a full skirt with soft pleats, and a hidden back zip. Made from a lightweight woven with a subtle sheen, it's built for outdoor celebrations, garden parties, and any occasion that calls for a little movement.",
   },
   {
     id: 7,
-    name: "Charcoal Tailored Blazer",
-    slug: "charcoal-tailored-blazer",
-    price: 50,
-    category: "Womenswear",
+    name: "Sunray Halter Sundress",
+    slug: "sunray-halter-sundress",
+    price: 27,
+    category: "Dresses",
     inStock: true,
-    image: "/products/charcoal-tailored-blazer.jpg",
+    image: "/nudgenic/sunray-halter-sundress.jpg",
     description:
-      "The Charcoal Tailored Blazer is cut from a wool-blend suiting fabric with just enough stretch to move through a full workday without losing its shape by 5pm. We built it with structured shoulders, a nipped waist, and a single-button closure that creates a clean vertical line, while notched lapels and double besom pockets keep the detailing traditional rather than trend-driven. The lining is a smooth bemberg-style viscose that lets you slide the jacket on over any fabric without static or drag, and the sleeves are finished with a working three-button cuff for a genuinely tailored touch rarely found at this price point. Charcoal was chosen deliberately over true black because it reads as softer and more versatile in daylight while still photographing crisp under office lighting. Wear it buttoned over the Ivory Silk Slip Dress for an evening look, or open over a simple tee and the Ankara Print Wide-Leg Trousers for something more relaxed. The shoulder is lightly padded rather than heavily structured, so it suits a range of body types without looking stiff. Dry clean recommended; steam between wears to keep the wool fibres relaxed and the silhouette sharp.",
+      "A halter-neck sundress with a fitted, shirred bodice that stretches comfortably and a flowing knee-length skirt below. The open back and adjustable neck tie make it easy to dress up with sandals or down with sneakers on a hot afternoon.",
   },
   {
     id: 8,
-    name: "Sunset Batik Maxi Dress",
-    slug: "sunset-batik-maxi-dress",
-    price: 40,
-    category: "Womenswear",
+    name: "Onyx Column Dress",
+    slug: "onyx-column-dress",
+    price: 39,
+    category: "Dresses",
     inStock: true,
-    image: "/products/sunset-batik-maxi-dress.jpg",
+    image: "/nudgenic/onyx-column-dress.jpg",
     description:
-      "The Sunset Batik Maxi Dress is built around a hand-dyed cotton voile in a gradient of amber, rust, and burnt orange, each length dyed individually so the exact placement of the ombre effect varies slightly from piece to piece. The bodice is fitted through a shirred elastic panel at the back for stretch without a zipper, while the skirt falls in a full circle cut that catches air and movement beautifully, whether you're walking through a market or dancing at a wedding. Thin adjustable straps and a scooped neckline keep the shoulders open and cool, and side seam pockets — genuinely large enough for a phone — are hidden seamlessly within the skirt's fullness. The voile is lightweight and semi-sheer by design, so we recommend a simple slip underneath for full coverage, sold separately or paired with our Ivory Silk Slip Dress in a coordinating tone. Batik dyeing is a wax-resist process, meaning slight variation in the pattern is a feature of the technique rather than an inconsistency. Hand wash cold in the first few washes to set the dye fully, then machine wash gentle thereafter. Hang to dry out of direct sun to preserve the vibrancy of the gradient.",
+      "A sleeveless column dress in matte black ponte knit that skims the body without clinging. The round neckline and knee-skimming hem make it the kind of dress that works for a client meeting in the day and a dinner reservation at night.",
   },
   {
     id: 9,
-    name: "Classic White Oxford Shirt",
-    slug: "classic-white-oxford-shirt",
-    price: 27,
-    category: "Menswear",
+    name: "Azure Puff-Sleeve Dress",
+    slug: "azure-puff-sleeve-dress",
+    price: 32,
+    category: "Dresses",
     inStock: true,
-    image: "/products/classic-white-oxford-shirt.jpg",
+    image: "/nudgenic/azure-puff-sleeve-dress.jpg",
     description:
-      "Every wardrobe needs one shirt that works with everything, and the Classic White Oxford Shirt is ours. Woven from a combed cotton oxford cloth with a slight basketweave texture, it has enough body to hold a crisp collar roll without feeling stiff against the skin. We cut it with a gently tapered fit through the body, a button-down collar for a more casual read, and a single chest pocket finished with a hidden button so the front stays uninterrupted. The tail is curved and long enough to stay tucked through a full day of movement, and the sleeve placket is reinforced at the stress points where cheaper shirts tend to fail first. This is the shirt that goes under the Charcoal Tailored Blazer for a boardroom meeting, gets rolled to the elbow with the Ankara Print Wide-Leg Trousers on the weekend, or layers under the Terracotta Ribbed Knit Sweater when the evening cools down. Mother-of-pearl-effect buttons add a small but genuine upgrade over the plastic buttons found on most shirts at this price. Machine washable, though we recommend a warm iron while slightly damp for the sharpest possible finish. A genuine everyday essential, built to outlast trends.",
+      "A cornflower-blue dress with dramatic puff sleeves gathered at a fitted cuff, contrasted against a tapered, tucked-in bodice. The fabric has a light structure that holds the sleeve shape through a full day of wear without feeling stiff against the skin.",
   },
   {
     id: 10,
-    name: "Olive Cargo Utility Pants",
-    slug: "olive-cargo-utility-pants",
-    price: 35,
-    category: "Menswear",
+    name: "Market Day Linen Dress",
+    slug: "market-day-linen-dress",
+    price: 30,
+    category: "Dresses",
     inStock: true,
-    image: "/products/olive-cargo-utility-pants.jpg",
+    image: "/nudgenic/market-day-linen-dress.jpg",
     description:
-      "The Olive Cargo Utility Pants take the workwear cargo silhouette and refine it for everyday city wear rather than the job site it originated from. Cut from a brushed cotton twill with a soft hand-feel, they sit at the natural waist with a tapered leg that narrows gently toward the ankle, avoiding the baggy, shapeless cut cargo pants are sometimes associated with. Six functional pockets — including two bellowed side-leg pockets with flap closures — are positioned to lie flat when empty rather than pulling at the fabric, and an internal drawcord at the waistband allows for a customized fit beyond the standard sizing. The olive shade was selected for its versatility: warmer than a true khaki, cooler than a true brown, so it sits comfortably alongside both warm terracottas and cool charcoals already in your wardrobe. A double row of stitching at the knee and seat reinforces the highest-wear areas without adding visible bulk. Wear them with the Classic White Oxford Shirt tucked in for a smart-casual look, or with a plain tee and the Onyx Leather Ankle Boots for something more rugged. Machine wash cold, tumble dry low, and expect the twill to soften noticeably after the first few washes.",
+      "A relaxed linen-blend shirt dress with a button-through front, a tie waist, and patch pockets deep enough to actually use. Built for warm weather and long days on your feet, it softens with every wash and never looks fussy.",
   },
   {
     id: 11,
-    name: "Coral Puff-Sleeve Blouse",
-    slug: "coral-puff-sleeve-blouse",
-    price: 24,
-    category: "Womenswear",
+    name: "Carnival Print Maxi Dress",
+    slug: "carnival-print-maxi-dress",
+    price: 37,
+    category: "Dresses",
     inStock: true,
-    image: "/products/coral-puff-sleeve-blouse.jpg",
+    image: "/nudgenic/carnival-print-maxi-dress.jpg",
     description:
-      "The Coral Puff-Sleeve Blouse brings a touch of drama to an otherwise simple silhouette. Made from a lightweight cotton-poplin in a saturated coral tone, the blouse features dramatic balloon sleeves gathered into a fitted cuff, contrasting a fitted, tapered body that tucks neatly into high-waisted trousers or skirts. A round neckline with a delicate ruffle trim frames the collarbone without ever feeling fussy, and a row of self-covered buttons runs the full length of the front for a clean, considered finish. The poplin has just enough structure to hold the volume in the sleeves through a full day of wear without collapsing, while remaining soft enough against the skin for all-day comfort. Coral was chosen as a warm counterpoint to the more muted earth tones across the rest of the collection, making it easy to use as a single statement piece against neutral bottoms like the Olive Cargo Utility Pants or a plain black skirt. The fabric is finished with a soil-release treatment, making everyday spills easier to manage. Machine wash cold on a gentle cycle and hang to dry; a cool iron on the reverse will keep the ruffle detailing crisp without flattening the poplin's texture.",
+      "A vibrant printed maxi dress with a fitted waist and a floor-grazing skirt that catches movement beautifully. The bold colorway is designed to be the statement piece of an outfit — pair it with simple sandals and let the dress lead.",
   },
   {
     id: 12,
-    name: "Onyx Leather Ankle Boots",
-    slug: "onyx-leather-ankle-boots",
-    price: 49,
-    category: "Footwear",
+    name: "Straw & Silk Occasion Dress",
+    slug: "straw-and-silk-occasion-dress",
+    price: 40,
+    category: "Dresses",
     inStock: true,
-    image: "/products/onyx-leather-ankle-boots.jpg",
+    image: "/nudgenic/straw-and-silk-occasion-dress.jpg",
     description:
-      "The Onyx Leather Ankle Boots are built on a full-grain leather upper that's been vegetable-tanned for a rich, matte-black finish that deepens with polish over time rather than cracking or peeling like bonded leather alternatives. We used a Chelsea-inspired silhouette with elasticated side gussets for an easy on-off fit, no laces or buckles required, and a stacked block heel that adds just over an inch of height while keeping the profile stable enough for a full day on your feet. The insole is cushioned with a layer of memory foam beneath the leather lining, and the outsole is a durable rubber compound with a subtle tread pattern for grip on both wet pavement and dry tile. A pull tab at the back makes them easy to step into, and the toe is rounded rather than pointed, giving the boot a shape that works equally well under wide-leg trousers or a midi skirt. These boots are designed to be a genuine workhorse in a capsule wardrobe: pair them with the Ankara Print Wide-Leg Trousers, the Ivory Silk Slip Dress, or simple denim, and they'll look intentional in every case. Condition the leather every few months with a natural leather balm to keep it supple and crack-free.",
+      "An elegant black dress in a silky, fluid weave with a fitted silhouette and a subtle side slit. Understated enough for daytime, sharp enough for evening — this is the dress we reach for when we can't decide what the occasion calls for.",
   },
+
+  // Tops & Blouses
   {
     id: 13,
-    name: "Sand Suede Loafers",
-    slug: "sand-suede-loafers",
-    price: 39,
-    category: "Footwear",
+    name: "Meadow Floral Blouse",
+    slug: "meadow-floral-blouse",
+    price: 24,
+    category: "Tops",
     inStock: true,
-    image: "/products/sand-suede-loafers.jpg",
+    image: "/nudgenic/meadow-floral-blouse.jpg",
     description:
-      "The Sand Suede Loafers are cut from a soft, brushed suede in a warm sand tone that reads as neutral against nearly everything else in the collection, from the Indigo Wash Denim Jacket to the Charcoal Tailored Blazer. The penny-strap detail across the vamp is a nod to the classic loafer archetype, though we've kept the toe box slightly more rounded and the overall profile lower for a more contemporary, streamlined look. Inside, a leather-lined footbed molds to the shape of your foot over the first few wears, and a lightly cushioned midsole absorbs impact well enough for genuine all-day wear, not just short errands. The outsole is a natural crepe-effect rubber that adds noticeable grip without disrupting the clean lines of the shoe from above. Suede is a genuinely delicate material, so we recommend treating these with a suede protector spray before the first wear and keeping a suede brush on hand to lift any surface marks. Avoid wearing them in heavy rain, where possible — a small trade-off for a texture that elevates even the simplest outfit. Slip them on with rolled denim and bare ankles for warm-weather days, or with wool trousers for a dressier, no-socks look.",
+      "A lightweight floral-print blouse with a relaxed fit, long sleeves, and a single chest pocket. Soft enough to tuck into denim or wear loose over trousers, it's the easy, no-thought top that still photographs like it took effort.",
   },
   {
     id: 14,
-    name: "Woven Raffia Tote Bag",
-    slug: "woven-raffia-tote-bag",
-    price: 22,
-    category: "Accessories",
+    name: "Cobalt Tie-Neck Blouse",
+    slug: "cobalt-tie-neck-blouse",
+    price: 26,
+    category: "Tops",
     inStock: true,
-    image: "/products/woven-raffia-tote-bag.jpg",
+    image: "/nudgenic/cobalt-tie-neck-blouse.jpg",
     description:
-      "The Woven Raffia Tote Bag is hand-woven from natural raffia palm fibre by artisans working in small cooperative groups, using a technique passed down across generations rather than a machine process. Each bag takes several hours to complete, and the natural variation in the fibre's tone — from pale straw to deeper amber — means every tote is genuinely one of a kind. We lined the interior with a durable cotton canvas in a warm rust tone, which also holds an inner zip pocket for keys, cards, or a phone, since raffia alone can't offer that kind of secure storage. Two structured top handles are reinforced with an internal leather wrap where they meet the body of the bag, the point that takes the most stress over years of daily use, and a magnetic snap closure keeps the top secure without needing a zip that can snag the fibres. The bag holds its rectangular shape well even when lightly loaded, making it a genuinely practical everyday carry rather than a decorative piece that collapses the moment you put anything in it. Spot clean only with a barely damp cloth, and keep it away from prolonged direct moisture, as natural raffia is not fully waterproof.",
+      "A rich cobalt-blue blouse with a self-tie neck bow and gently gathered sleeves. The fabric has enough weight to drape well without being sheer, making it a reliable layer under blazers or a standalone top for the office.",
   },
   {
     id: 15,
-    name: "Beaded Coral Statement Necklace",
-    slug: "beaded-coral-statement-necklace",
-    price: 18,
-    category: "Accessories",
+    name: "Cloudline White Blouse",
+    slug: "cloudline-white-blouse",
+    price: 22,
+    category: "Tops",
     inStock: true,
-    image: "/products/beaded-coral-statement-necklace.jpg",
+    image: "/nudgenic/cloudline-white-blouse.jpg",
     description:
-      "The Beaded Coral Statement Necklace is hand-strung using a mix of recycled glass beads and coral-toned resin beads, layered across five graduated strands that sit close to the collarbone rather than hanging low, so it reads as a finishing detail rather than an overpowering centerpiece. Each strand is threaded onto a durable nylon-coated wire rather than plain string, which resists stretching and snapping far better over repeated wear. The clasp is a secure lobster-style closure in an antiqued gold-tone finish that complements the warm palette of the beads without looking overly shiny or costume-like. Because the beads are individually strung and knotted at intervals, if one bead were ever to loosen, the rest of the strand stays intact rather than scattering entirely — a small construction detail that matters a great deal in daily wear. This piece was designed as the finishing touch for simpler silhouettes: worn against the round neckline of the Coral Puff-Sleeve Blouse it becomes a tonal layering piece, or against the plain scoop neck of a white tee it becomes the whole outfit's focal point. Store it flat or hanging rather than balled up in a drawer, and avoid contact with perfume or lotion directly on the beads to preserve their finish.",
+      "A crisp white blouse cut with a slightly relaxed fit through the body and a clean point collar. This is the wardrobe workhorse — it goes under blazers, tucks into skirts, and layers beneath knitwear without ever looking out of place.",
   },
   {
     id: 16,
-    name: "Adire Print Bomber Jacket",
-    slug: "adire-print-bomber-jacket",
-    price: 44,
-    category: "Menswear",
+    name: "Poppy Red Blouse",
+    slug: "poppy-red-blouse",
+    price: 25,
+    category: "Tops",
     inStock: true,
-    image: "/products/adire-print-bomber-jacket.jpg",
+    image: "/nudgenic/poppy-red-blouse.jpg",
     description:
-      "The Adire Print Bomber Jacket takes adire, the resist-dye technique historically practiced by Yoruba women using cassava starch paste and indigo, and applies it to a modern bomber silhouette. The indigo pattern is hand-applied in a traditional geometric motif before dyeing, then cut and constructed as a lightweight cotton-poplin bomber with a ribbed collar, cuffs, and hem that keep the fit close to the body without restricting movement. A two-way front zip allows the jacket to be worn fully closed for a streamlined look or cracked open at the bottom when seated, a small but genuinely useful detail borrowed from technical outerwear. Two zippered hand pockets sit at hip height, deep enough to secure a phone and keys securely while walking. Because the dye process is entirely manual, expect natural variation in pattern placement and indigo saturation between pieces, which is very much the point rather than a flaw — no factory print can replicate it. The jacket is unlined, making it best suited to transitional weather rather than genuine cold, and pairs naturally with the Classic White Oxford Shirt underneath or worn alone over a plain tee. Hand wash cold separately for the first several washes, as indigo dye will continue to release minor color for some time.",
+      "A poppy-red blouse with a fluid drape and a relaxed, slightly boxy fit through the shoulders. One confident color-block top that instantly lifts a pair of white trousers or plain denim without needing any other accessories.",
   },
   {
     id: 17,
-    name: "Camel Wool-Blend Overcoat",
-    slug: "camel-wool-blend-overcoat",
-    price: 50,
-    category: "Womenswear",
+    name: "Atelier Linen Blouse",
+    slug: "atelier-linen-blouse",
+    price: 27,
+    category: "Tops",
     inStock: true,
-    image: "/products/camel-wool-blend-overcoat.jpg",
+    image: "/nudgenic/atelier-linen-blouse.jpg",
     description:
-      "The Camel Wool-Blend Overcoat is the collection's outerwear anchor: a full-length, double-breasted coat cut from a wool-viscose blend with enough structure to hold its shape through a season of wear without ever feeling stiff. We used a notch lapel, a self-belt with matching belt loops for a cinched or relaxed fit depending on the day, and set-in sleeves finished with a functional button cuff. The camel tone was chosen carefully to skew slightly warmer than a classic camel, closer to the terracotta and clay tones found elsewhere in the range, so it reads as intentional rather than accidental when styled with the rest of the collection. Twin front pockets are positioned at a genuinely useful hand-warming height, and the interior is fully lined in a smooth, static-resistant fabric that makes it easy to slide over blazers, sweaters, or bulkier layers without bunching. At just below knee length, it strikes a balance between formal enough for the office and relaxed enough for a Saturday errand run. Given the weight and structure of the wool blend, dry cleaning is strongly recommended over home washing, and we suggest storing it on a wide, curved hanger during the off-season to preserve the shoulder line.",
+      "A warm caramel linen-blend blouse with a relaxed, boxy cut and dropped shoulder seams. The breathable weave makes it a natural choice for warmer months, and the earthy tone pairs easily with denim, tailored trousers, or a simple skirt.",
   },
   {
     id: 18,
-    name: "Emerald Satin Camisole",
-    slug: "emerald-satin-camisole",
-    price: 19,
-    category: "Womenswear",
+    name: "Fernwood Green Blouse",
+    slug: "fernwood-green-blouse",
+    price: 23,
+    category: "Tops",
     inStock: true,
-    image: "/products/emerald-satin-camisole.jpg",
+    image: "/nudgenic/fernwood-green-blouse.jpg",
     description:
-      "The Emerald Satin Camisole is a wardrobe multiplier disguised as a simple piece. Cut from a smooth, weighty satin with a subtle sheen rather than a high-gloss finish, it holds a deep emerald tone that reads as rich rather than costume-bright under most lighting. A scooped neckline and adjustable straps sit comfortably under a blazer or on their own for evening wear, and a straight, gently curved hem sits just at the hip, long enough to tuck cleanly into high-waisted trousers or skirts without riding up. The satin is woven with a small percentage of elastane, which most pure silk camisoles lack, giving it a closer, more consistent fit across different body shapes while retaining that fluid, light-catching drape satin is known for. French seams throughout mean there's no rough interior stitching against the skin, a detail usually reserved for far more expensive pieces. Worn alone, it's a striking evening top; worn under the Charcoal Tailored Blazer, it becomes the single pop of color in an otherwise neutral outfit. Hand wash cold with a gentle detergent, or use a mesh laundry bag on a cold, delicate machine cycle, and always hang or lay flat to dry rather than wringing the fabric.",
+      "A deep forest-green blouse with a fitted waist and softly gathered sleeves. The saturated color reads as a neutral against black, camel, or denim, making it easy to build a full outfit around without much extra thought.",
   },
   {
     id: 19,
-    name: "Canvas High-Top Sneakers",
-    slug: "canvas-high-top-sneakers",
-    price: 32,
-    category: "Footwear",
+    name: "Folded Hands Silk Blouse",
+    slug: "folded-hands-silk-blouse",
+    price: 28,
+    category: "Tops",
     inStock: true,
-    image: "/products/canvas-high-top-sneakers.jpg",
+    image: "/nudgenic/folded-hands-silk-blouse.jpg",
     description:
-      "The Canvas High-Top Sneakers are built from a heavyweight, tightly woven cotton canvas that resists stretching and sagging far longer than the lighter canvas typically used in budget sneakers. The high-top silhouette wraps and supports the ankle without restricting its movement, secured by a genuine metal-eyelet lace-up front and finished with a padded canvas collar around the top edge for comfort against the ankle bone. Inside, a removable cushioned insole allows for a custom orthotic swap if needed, and the midsole is a lightweight EVA foam that provides genuine shock absorption rather than the flat, unpadded feel common to cheaper canvas shoes. The rubber outsole extends slightly up the toe cap for reinforcement, protecting the canvas at the point that wears through fastest on any sneaker. We kept the colorway to a warm off-white canvas with rust-toned laces and a matching heel tab, so the shoes read as a coordinated part of the collection rather than a generic add-on. They're the natural pairing for the Olive Cargo Utility Pants or straight denim, and casual enough to wear with the Lagos Linen Kaftan on relaxed days. Spot clean the canvas with a damp cloth and mild soap, and air dry fully before wearing again to prevent the canvas from stiffening.",
+      "A silky, fluid blouse with a soft cowl neckline and long sleeves that taper to a narrow cuff. Elegant enough for client meetings and soft enough for a Sunday brunch, this is a top built to be reached for often.",
   },
   {
     id: 20,
-    name: "Leather Woven Belt",
-    slug: "leather-woven-belt",
-    price: 15,
+    name: "Birchline Long-Sleeve Shirt",
+    slug: "birchline-long-sleeve-shirt",
+    price: 21,
+    category: "Tops",
+    inStock: true,
+    image: "/nudgenic/birchline-long-sleeve-shirt.jpg",
+    description:
+      "A simple, well-cut long-sleeve shirt in a soft cotton-blend jersey. Not trying to be anything more than a great basic — layer it under a blazer, tie it at the waist over denim, or wear it exactly as is.",
+  },
+  {
+    id: 21,
+    name: "Market Row Summer Blouse",
+    slug: "market-row-summer-blouse",
+    price: 24,
+    category: "Tops",
+    inStock: true,
+    image: "/nudgenic/market-row-summer-blouse.jpg",
+    description:
+      "A lightweight woven blouse in a soft, sun-faded colorway with short sleeves and a relaxed, easy fit. Built for warm-weather errands and market mornings, it's breathable enough for all-day wear without a second thought.",
+  },
+  {
+    id: 22,
+    name: "Crimson Reading Room Top",
+    slug: "crimson-reading-room-top",
+    price: 20,
+    category: "Tops",
+    inStock: true,
+    image: "/nudgenic/crimson-reading-room-top.jpg",
+    description:
+      "A soft, brushed long-sleeve top in a deep crimson red, cut with a relaxed fit that's equally at home under a coat or worn alone on a lazy weekend. Simple, comfortable, and one of the easiest colors to build around.",
+  },
+
+  // Bottoms
+  {
+    id: 23,
+    name: "Onyx Mini Skirt",
+    slug: "onyx-mini-skirt",
+    price: 26,
+    category: "Bottoms",
+    inStock: true,
+    image: "/nudgenic/onyx-mini-skirt.jpg",
+    description:
+      "A fitted black mini skirt with a high waist and a hidden back zip. The structured fabric holds its shape through the day, making it a reliable base for tucked-in blouses, knits, or an oversized blazer thrown on top.",
+  },
+  {
+    id: 24,
+    name: "Mustard Field Midi Skirt",
+    slug: "mustard-field-midi-skirt",
+    price: 29,
+    category: "Bottoms",
+    inStock: true,
+    image: "/nudgenic/mustard-field-midi-skirt.jpg",
+    description:
+      "A mustard-yellow A-line midi skirt with a fitted waistband and soft box pleats that add movement without bulk. The saturated color is designed to be a statement piece, worn with a simple black or white top to let the skirt lead.",
+  },
+  {
+    id: 25,
+    name: "Plaid Prep Skirt",
+    slug: "plaid-prep-skirt",
+    price: 27,
+    category: "Bottoms",
+    inStock: true,
+    image: "/nudgenic/plaid-prep-skirt.jpg",
+    description:
+      "A classic plaid mini skirt with pleating throughout and a fitted waistband. Equal parts preppy and rebellious, it pairs naturally with a plain white blouse for the office or with a simple tee for off-duty days.",
+  },
+  {
+    id: 26,
+    name: "Distressed Blue Denim",
+    slug: "distressed-blue-denim",
+    price: 32,
+    category: "Bottoms",
+    inStock: true,
+    image: "/nudgenic/distressed-blue-denim.jpg",
+    description:
+      "Mid-rise straight jeans in a classic mid-wash denim with subtle distressing at the knee. Cut from a cotton-elastane blend for a bit of stretch, they hold their shape through a full day without feeling restrictive.",
+  },
+  {
+    id: 27,
+    name: "Everyday Straight Jeans",
+    slug: "everyday-straight-jeans",
+    price: 30,
+    category: "Bottoms",
+    inStock: true,
+    image: "/nudgenic/everyday-straight-jeans.jpg",
+    description:
+      "A no-fuss straight-leg jean in a clean mid-blue wash, cut with a mid-rise waist and a leg that skims rather than clings. The denim we reach for on repeat because it goes with absolutely everything else in the closet.",
+  },
+  {
+    id: 28,
+    name: "High-Rise Ankle Jeans",
+    slug: "high-rise-ankle-jeans",
+    price: 34,
+    category: "Bottoms",
+    inStock: true,
+    image: "/nudgenic/high-rise-ankle-jeans.jpg",
+    description:
+      "A high-rise, cropped ankle-length jean with a slim leg that pairs perfectly with heels or flats without pooling at the hem. The higher rise smooths through the waist for a cleaner line under tucked-in tops.",
+  },
+  {
+    id: 29,
+    name: "Classic Blue Denim",
+    slug: "classic-blue-denim",
+    price: 31,
+    category: "Bottoms",
+    inStock: true,
+    image: "/nudgenic/classic-blue-denim.jpg",
+    description:
+      "A timeless straight-leg jean in a medium-blue wash with a comfortable mid-rise fit. Made from a durable cotton denim with just enough give to move through a full day, this is a foundational piece for any wardrobe.",
+  },
+  {
+    id: 30,
+    name: "Indigo Wide-Leg Denim",
+    slug: "indigo-wide-leg-denim",
+    price: 33,
+    category: "Bottoms",
+    inStock: true,
+    image: "/nudgenic/indigo-wide-leg-denim.jpg",
+    description:
+      "A deep-indigo wide-leg jean with a high waist and a relaxed, flowing leg that balances a fitted top beautifully. The wide silhouette moves easily and layers well over boots in cooler months.",
+  },
+
+  // Outerwear
+  {
+    id: 31,
+    name: "Violet Tailored Blazer",
+    slug: "violet-tailored-blazer",
+    price: 38,
+    category: "Outerwear",
+    inStock: true,
+    image: "/nudgenic/violet-tailored-blazer.jpg",
+    description:
+      "A structured single-button blazer in a bold violet hue, cut with a nipped waist and notched lapels. Fully lined for a clean drape, this is a blazer built to stand out on its own over a simple black slip or tee.",
+  },
+  {
+    id: 32,
+    name: "Blush Pink Blazer",
+    slug: "blush-pink-blazer",
+    price: 36,
+    category: "Outerwear",
+    inStock: true,
+    image: "/nudgenic/blush-pink-blazer.jpg",
+    description:
+      "A soft blush-pink blazer with structured shoulders and a fitted waist, finished with a double-button front and welt pockets. Wear it over denim for daytime polish or over a slip dress for an evening out.",
+  },
+  {
+    id: 33,
+    name: "Petal Suit Jacket",
+    slug: "petal-suit-jacket",
+    price: 37,
+    category: "Outerwear",
+    inStock: true,
+    image: "/nudgenic/petal-suit-jacket.jpg",
+    description:
+      "A soft pink tailored suit jacket with clean lines and a single-button closure, designed to be worn as a matching set or mixed with contrasting trousers. The structured shoulder gives it presence without feeling stiff.",
+  },
+  {
+    id: 34,
+    name: "Sunflower Tailored Jacket",
+    slug: "sunflower-tailored-jacket",
+    price: 35,
+    category: "Outerwear",
+    inStock: true,
+    image: "/nudgenic/sunflower-tailored-jacket.jpg",
+    description:
+      "A bright sunflower-yellow jacket with a fitted silhouette and structured lapels, built to be the focal point of any outfit. Wear it over all-black for maximum contrast or let it stand entirely on its own.",
+  },
+  {
+    id: 35,
+    name: "Scarlet Statement Jacket",
+    slug: "scarlet-statement-jacket",
+    price: 39,
+    category: "Outerwear",
+    inStock: true,
+    image: "/nudgenic/scarlet-statement-jacket.jpg",
+    description:
+      "A bold scarlet-red jacket with a tailored fit and clean, structured lines. Not a jacket for blending in — this is the piece that turns a plain outfit into one people remember, worn open over a simple top.",
+  },
+  {
+    id: 36,
+    name: "Rosé Boutique Blazer",
+    slug: "rose-boutique-blazer",
+    price: 34,
+    category: "Outerwear",
+    inStock: true,
+    image: "/nudgenic/rose-boutique-blazer.jpg",
+    description:
+      "A soft rosé-pink blazer with a relaxed tailored fit and notch lapels, finished in a smooth woven fabric with a subtle sheen. A gentler alternative to a classic black blazer that still reads as polished and considered.",
+  },
+  {
+    id: 37,
+    name: "Classic Charcoal Blazer",
+    slug: "classic-charcoal-blazer",
+    price: 40,
+    category: "Outerwear",
+    inStock: true,
+    image: "/nudgenic/classic-charcoal-blazer.jpg",
+    description:
+      "A charcoal-grey tailored blazer with structured shoulders, a nipped waist, and a fully lined interior. The most versatile piece in the outerwear edit — it works over everything from jeans to tailored trousers to a simple dress.",
+  },
+  {
+    id: 38,
+    name: "Emerald Tailored Jacket",
+    slug: "emerald-tailored-jacket",
+    price: 36,
+    category: "Outerwear",
+    inStock: true,
+    image: "/nudgenic/emerald-tailored-jacket.jpg",
+    description:
+      "A rich emerald-green jacket with a fitted, tailored silhouette and clean notch lapels. The jewel tone works as a bold layer over neutrals or as the anchor piece in an all-green outfit for those who want to commit.",
+  },
+
+  // Knitwear
+  {
+    id: 39,
+    name: "Golden Hour Knit Sweater",
+    slug: "golden-hour-knit-sweater",
+    price: 28,
+    category: "Knitwear",
+    inStock: true,
+    image: "/nudgenic/golden-hour-knit-sweater.jpg",
+    description:
+      "A soft mustard-yellow knit sweater with a relaxed fit and ribbed cuffs and hem. Warm without being bulky, it layers easily under a coat or stands alone with jeans on cooler days.",
+  },
+  {
+    id: 40,
+    name: "Cinnamon Cable Knit",
+    slug: "cinnamon-cable-knit",
+    price: 30,
+    category: "Knitwear",
+    inStock: true,
+    image: "/nudgenic/cinnamon-cable-knit.jpg",
+    description:
+      "A warm cinnamon-brown cable-knit sweater with a relaxed crew neckline and dropped shoulders. The chunky cable texture adds visual interest to an otherwise simple silhouette, making it an easy layering piece for the colder months.",
+  },
+  {
+    id: 41,
+    name: "Cloud Knit Pullover",
+    slug: "cloud-knit-pullover",
+    price: 26,
+    category: "Knitwear",
+    inStock: true,
+    image: "/nudgenic/cloud-knit-pullover.jpg",
+    description:
+      "A soft, cloud-white knit pullover with a fine-gauge weave and a fitted crew neckline. Light enough to layer under a blazer, warm enough to wear alone — a genuinely versatile knit built to be worn on repeat.",
+  },
+  {
+    id: 42,
+    name: "Blush Ribbed Knit",
+    slug: "blush-ribbed-knit",
+    price: 29,
+    category: "Knitwear",
+    inStock: true,
+    image: "/nudgenic/blush-ribbed-knit.jpg",
+    description:
+      "A fitted blush-pink ribbed knit top with a rounded neckline and long sleeves. The fine rib holds its shape through wear, making it a flattering base layer under blazers or a simple standalone top with denim.",
+  },
+
+  // Footwear
+  {
+    id: 43,
+    name: "Sable Suede Heels",
+    slug: "sable-suede-heels",
+    price: 32,
+    category: "Footwear",
+    inStock: true,
+    image: "/nudgenic/sable-suede-heels.jpg",
+    description:
+      "A classic pointed-toe heel in soft beige suede with a mid-height stiletto heel built for genuine wearability. The neutral tone elongates the leg and pairs with nearly everything from denim to eveningwear.",
+  },
+  {
+    id: 44,
+    name: "Noir Stiletto Pumps",
+    slug: "noir-stiletto-pumps",
+    price: 34,
+    category: "Footwear",
+    inStock: true,
+    image: "/nudgenic/noir-stiletto-pumps.jpg",
+    description:
+      "A sleek black pointed-toe pump with a slim stiletto heel and a cushioned insole for genuine all-day comfort. The wardrobe staple heel that works for the office, for dinner, and for everything in between.",
+  },
+  {
+    id: 45,
+    name: "Umber Leather Heels",
+    slug: "umber-leather-heels",
+    price: 30,
+    category: "Footwear",
+    inStock: true,
+    image: "/nudgenic/umber-leather-heels.jpg",
+    description:
+      "A rich umber-brown leather heel with a rounded toe and a stable block heel for easy all-day wear. The warm tone works beautifully with autumn colors, denim, and tailored trousers alike.",
+  },
+  {
+    id: 46,
+    name: "Ivory Pointed Heels",
+    slug: "ivory-pointed-heels",
+    price: 36,
+    category: "Footwear",
+    inStock: true,
+    image: "/nudgenic/ivory-pointed-heels.jpg",
+    description:
+      "A crisp ivory pointed-toe heel with a slim silhouette and a comfortable mid-height heel. Clean enough for special occasions, versatile enough to become a regular in the everyday rotation.",
+  },
+  {
+    id: 47,
+    name: "Classic Nude Pumps",
+    slug: "classic-nude-pumps",
+    price: 28,
+    category: "Footwear",
+    inStock: true,
+    image: "/nudgenic/classic-nude-pumps.jpg",
+    description:
+      "A timeless nude pump with a rounded toe and a comfortable mid-height heel, designed to blend seamlessly with nearly any skin tone and outfit. The kind of shoe you buy once and wear for years.",
+  },
+
+  // Accessories
+  {
+    id: 48,
+    name: "Duo Leather Handbag Set",
+    slug: "duo-leather-handbag-set",
+    price: 36,
     category: "Accessories",
     inStock: true,
-    image: "/products/leather-woven-belt.jpg",
+    image: "/nudgenic/duo-leather-handbag-set.jpg",
     description:
-      "The Leather Woven Belt is constructed from interlaced strips of genuine full-grain leather, hand-woven into a basketweave pattern that gives it far more flexibility than a single-piece belt while remaining sturdy enough to support a full day of wear. Because it's woven rather than cut as one solid strip, it moves naturally with the body and avoids the stiff, uncomfortable break-in period typical of rigid leather belts. A brushed antique-brass buckle finishes the front with a simple, understated pin closure that pairs well with both formal and casual buckle-adjacent hardware already in your wardrobe. The weave pattern also means the belt works through a wider range of waist adjustment without needing extra holes punched, since the flexible construction allows it to cinch smoothly at nearly any point along its length. We chose a rich cognac-brown leather that darkens gradually and attractively with wear and sun exposure, developing a natural patina that's part of the appeal rather than a flaw to avoid. It sits well with the Olive Cargo Utility Pants, the Classic White Oxford Shirt tucked into trousers, or as a subtle accent cinching the Sunset Batik Maxi Dress at the waist. Wipe clean with a dry cloth and apply leather conditioner every few months to keep it supple.",
+      "A set of two structured leather handbags in complementary neutral tones — one compact crossbody, one roomier tote. Both feature a secure zip closure and an interior slip pocket, giving you a bag for every occasion.",
+  },
+  {
+    id: 49,
+    name: "Sterling Statement Jewelry Set",
+    slug: "sterling-statement-jewelry-set",
+    price: 24,
+    category: "Accessories",
+    inStock: true,
+    image: "/nudgenic/sterling-statement-jewelry-set.jpg",
+    description:
+      "A curated set of silver-tone jewelry pieces with delicate stone detailing, designed to be layered or worn individually. Hypoallergenic and tarnish-resistant, this set is built for daily wear, not just special occasions.",
+  },
+  {
+    id: 50,
+    name: "Gold Chain Necklace",
+    slug: "gold-chain-necklace",
+    price: 22,
+    category: "Accessories",
+    inStock: true,
+    image: "/nudgenic/gold-chain-necklace.jpg",
+    description:
+      "A fine gold-tone chain necklace with a secure lobster clasp, simple enough to wear every day and dainty enough to layer with other pieces. A quiet finishing touch for almost any neckline.",
   },
 ];
 
@@ -236,6 +586,20 @@ export function getProductBySlug(slug: string): Product | undefined {
   return products.find((product) => product.slug === slug);
 }
 
-export function getFeaturedProducts(): Product[] {
-  return products.slice(0, 6);
+export function getNewArrivals(): Product[] {
+  return products.slice(0, 8);
 }
+
+export function getBestSellers(): Product[] {
+  return products.slice(8, 16);
+}
+
+export const CATEGORIES: Product["category"][] = [
+  "Dresses",
+  "Tops",
+  "Bottoms",
+  "Outerwear",
+  "Knitwear",
+  "Footwear",
+  "Accessories",
+];

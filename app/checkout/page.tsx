@@ -4,17 +4,15 @@ import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
-import { useCurrency } from "@/context/CurrencyContext";
-import { formatMoney } from "@/lib/currency";
+import { formatPrice } from "@/lib/format";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `DK-${random}`;
+  return `NG-${random}`;
 }
 
 export default function CheckoutPage() {
   const { items, cartTotal, clearCart } = useCart();
-  const { currency } = useCurrency();
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
 
@@ -23,10 +21,10 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "dillon-kennels-last-order",
+      "nudgenic-last-order",
       JSON.stringify({
         orderNumber,
-        total: formatMoney(cartTotal, currency),
+        total: formatPrice(cartTotal),
         itemCount: items.reduce((sum, item) => sum + item.quantity, 0),
       })
     );
@@ -207,14 +205,14 @@ export default function CheckoutPage() {
                   {item.name} × {item.quantity}
                 </span>
                 <span className="font-medium text-ink">
-                  {formatMoney(item.price * item.quantity, currency)}
+                  {formatPrice(item.price * item.quantity)}
                 </span>
               </li>
             ))}
           </ul>
           <div className="mt-5 flex justify-between font-display text-lg text-ink">
             <span>Total</span>
-            <span>{formatMoney(cartTotal, currency)}</span>
+            <span>{formatPrice(cartTotal)}</span>
           </div>
           <button
             type="submit"

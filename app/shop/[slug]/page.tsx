@@ -4,8 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProductBySlug, products } from "@/data/products";
 import ProductDetailActions from "@/components/ProductDetailActions";
-import ProductPrice from "@/components/ProductPrice";
 import ProductCard from "@/components/ProductCard";
+import { formatPrice } from "@/lib/format";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
@@ -18,10 +18,10 @@ export function generateMetadata({
 }): Metadata {
   const product = getProductBySlug(params.slug);
   if (!product) {
-    return { title: "Product Not Found | Dillon Kennels" };
+    return { title: "Product Not Found | Nudgenic" };
   }
   return {
-    title: `${product.name} | Dillon Kennels`,
+    title: `${product.name} | Nudgenic`,
     description: product.description.slice(0, 155),
   };
 }
@@ -38,16 +38,16 @@ export default function ProductPage({
 
   const related = products
     .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, 3);
+    .slice(0, 4);
 
   return (
     <div className="container-page py-10 lg:py-16">
-      <nav className="mb-8 text-xs uppercase tracking-wider text-ink/50">
-        <Link href="/" className="hover:text-rust">
+      <nav className="mb-8 text-xs uppercase tracking-widest2 text-ink/50">
+        <Link href="/" className="hover:text-rose">
           Home
         </Link>
         <span className="mx-2">/</span>
-        <Link href="/shop" className="hover:text-rust">
+        <Link href="/shop" className="hover:text-rose">
           Shop
         </Link>
         <span className="mx-2">/</span>
@@ -55,7 +55,7 @@ export default function ProductPage({
       </nav>
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="relative aspect-[4/5] overflow-hidden bg-sand">
+        <div className="relative aspect-[3/4] overflow-hidden bg-blush">
           <Image
             src={product.image}
             alt={product.name}
@@ -71,10 +71,9 @@ export default function ProductPage({
           <h1 className="mt-3 font-display text-3xl leading-tight text-ink sm:text-4xl">
             {product.name}
           </h1>
-          <ProductPrice
-            priceUsd={product.price}
-            className="mt-3 block text-xl font-semibold text-rust"
-          />
+          <p className="mt-3 text-xl font-semibold text-rose">
+            {formatPrice(product.price)}
+          </p>
 
           <p className="mt-6 text-base leading-relaxed text-ink/80">
             {product.description}
@@ -87,7 +86,7 @@ export default function ProductPage({
           <dl className="mt-8 space-y-2 border-t border-ink/10 pt-6 text-sm text-ink/70">
             <div className="flex justify-between">
               <dt>Availability</dt>
-              <dd className={product.inStock ? "text-olive" : "text-rust"}>
+              <dd className={product.inStock ? "text-rose" : "text-ink/40"}>
                 {product.inStock ? "In Stock" : "Sold Out"}
               </dd>
             </div>
@@ -105,8 +104,8 @@ export default function ProductPage({
 
       {related.length > 0 && (
         <section className="mt-20 border-t border-ink/10 pt-14">
-          <h2 className="section-heading">You May Also Like</h2>
-          <div className="mt-8 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
+          <h2 className="section-heading text-center">You May Also Like</h2>
+          <div className="mt-8 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-4">
             {related.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}

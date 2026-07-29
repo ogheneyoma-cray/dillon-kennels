@@ -4,52 +4,48 @@ import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
-import { useCurrency } from "@/context/CurrencyContext";
-import { formatMoney } from "@/lib/currency";
+import { formatPrice } from "@/lib/format";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();
-  const { currency } = useCurrency();
 
   return (
     <div className="group relative flex flex-col">
       <Link
         href={`/shop/${product.slug}`}
-        className="relative block aspect-[4/5] overflow-hidden bg-sand"
+        className="relative block aspect-[3/4] overflow-hidden bg-blush"
       >
         <Image
           src={product.image}
           alt={product.name}
           fill
-          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          sizes="(min-width: 1024px) 23vw, (min-width: 640px) 45vw, 90vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
         {!product.inStock && (
-          <span className="absolute left-3 top-3 bg-ink px-3 py-1 text-[10px] font-semibold uppercase tracking-widest2 text-cream">
+          <span className="absolute left-0 top-4 bg-plum px-3 py-1 text-[10px] font-semibold uppercase tracking-widest2 text-ivory">
             Sold Out
           </span>
         )}
-        <span className="absolute right-3 top-3 border border-ink/20 bg-cream/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink/70">
-          {product.category}
-        </span>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            addToCart(product, 1);
+          }}
+          disabled={!product.inStock}
+          className="absolute inset-x-3 bottom-3 min-h-[40px] translate-y-2 rounded-full bg-ivory/95 text-[11px] font-semibold uppercase tracking-widest2 text-ink opacity-0 shadow-sm transition-all duration-300 hover:bg-plum hover:text-ivory group-hover:translate-y-0 group-hover:opacity-100 disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          {product.inStock ? "Quick Add" : "Unavailable"}
+        </button>
       </Link>
-      <div className="mt-4 flex flex-1 flex-col">
+      <div className="mt-4 flex flex-1 flex-col items-center text-center">
         <Link href={`/shop/${product.slug}`}>
-          <h3 className="font-display text-lg leading-snug text-ink transition-colors group-hover:text-rust">
+          <h3 className="font-body text-sm uppercase tracking-wide text-ink transition-colors group-hover:text-rose">
             {product.name}
           </h3>
         </Link>
-        <p className="mt-1 text-sm font-semibold text-ink/70">
-          {formatMoney(product.price, currency)}
-        </p>
-        <button
-          type="button"
-          onClick={() => addToCart(product, 1)}
-          disabled={!product.inStock}
-          className="btn-secondary mt-4 w-full disabled:cursor-not-allowed disabled:opacity-40"
-        >
-          {product.inStock ? "Add to Cart" : "Unavailable"}
-        </button>
+        <p className="mt-1.5 text-sm text-ink/60">{formatPrice(product.price)}</p>
       </div>
     </div>
   );

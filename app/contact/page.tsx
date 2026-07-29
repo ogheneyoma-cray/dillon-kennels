@@ -2,48 +2,50 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Dillon Kennels",
+  title: "Contact Us | Nudgenic",
   description:
-    "Get in touch with the Dillon Kennels team — store address, phone, email, and business hours.",
+    "Get in touch with the Nudgenic team — store address, phone, email, and business hours.",
 };
 
 const FAQS = [
   {
-    question: "How long does delivery take within Nigeria?",
+    question: "What sizes does Nudgenic carry?",
     answer:
-      "Orders within Lagos typically arrive within 1–3 business days. Deliveries to other states across Nigeria take 3–7 business days depending on location. You'll receive a tracking update by email and SMS once your order has shipped from our Lagos workshop.",
+      "Most of our apparel is available from XS to XL, with the specific size range noted on each product page. If you're between sizes, message our support team with your usual size in similar brands and we'll help you find the closest match before you order.",
   },
   {
-    question: "Do you ship outside Nigeria?",
+    question: "How long does delivery take?",
     answer:
-      "At this time, Dillon Kennels ships exclusively within Nigeria. We're working on international shipping options and recommend joining our mailing list or checking back on this page for updates on when international delivery becomes available.",
+      "Orders within Oyo State typically arrive within 1–3 business days. Deliveries to other states across Nigeria take 3–7 business days depending on location. You'll receive a tracking update by email and SMS once your order ships from our Oyo Town workshop.",
   },
   {
-    question: "What is your returns and exchange policy?",
+    question: "Can I return or exchange an item?",
     answer:
-      "We accept returns and exchanges within 7 days of delivery, provided the item is unworn, unwashed, and has its original tags attached. Please visit our Refunds Policy page for the full process, including how to initiate a return and expected timelines for refunds.",
+      "Yes — we accept returns and exchanges within 7 days of delivery, provided the item is unworn, unwashed, and has its original tags attached. Visit our Refunds Policy page for the full process and expected timelines.",
   },
   {
-    question: "Can I change or cancel my order after placing it?",
+    question: "Do you restock sold-out items?",
     answer:
-      "Because many of our pieces are made or finished to order in small batches, we can only accommodate changes or cancellations within 2 hours of the order being placed. Contact our support team immediately by phone or email if you need to make a change.",
+      "It depends on the piece. Some items are limited runs that won't return once sold out, while wardrobe staples like denim and knitwear are restocked regularly. Follow us or join the mailing list to be notified the moment a restock lands.",
   },
   {
-    question: "How do I know what size to order?",
+    question: "Can I change my order after placing it?",
     answer:
-      "Each product page lists standard sizing based on Nigerian and international measurements. If you're between sizes or unsure what will fit best, message our support team with your usual size in similar brands and we'll recommend the closest match before you order.",
+      "We begin preparing orders quickly, so we can only accommodate changes or cancellations within 2 hours of the order being placed. Contact our support team immediately by phone or email if you need to make a change.",
   },
 ];
 
 export default function ContactPage() {
   return (
     <div className="container-page py-10 lg:py-16">
-      <p className="eyebrow">Get in Touch</p>
-      <h1 className="section-heading mt-3">Contact Us</h1>
-      <p className="mt-4 max-w-xl text-ink/70">
-        Have a question about an order, a product, or just want to say hello?
-        Send us a message or reach out directly using the details below.
-      </p>
+      <div className="flex flex-col items-center text-center">
+        <p className="eyebrow">Get in Touch</p>
+        <h1 className="section-heading mt-3">Contact Us</h1>
+        <p className="mt-4 max-w-xl text-sm leading-relaxed text-ink/70">
+          Have a question about an order, sizing, or a product? Send us a
+          message or reach out directly using the details below.
+        </p>
+      </div>
 
       <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_1fr]">
         <ContactForm />
@@ -55,26 +57,26 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Address</dt>
                 <dd className="mt-1">
-                  8 Olotu House, Opposite Baale House, Abule Tirninmiljeun
-                  Odeda, Ajeromi-Ifelodun, Lagos State
+                  Ile Alaso, Imale Falatori Area, Oyo Town, Oyo West Local
+                  Government Area, Oyo State
                 </dd>
               </div>
               <div>
                 <dt className="font-semibold text-ink">Email</dt>
                 <dd className="mt-1">
                   <a
-                    href="mailto:supportteam@dillonkennels.com"
-                    className="hover:text-rust"
+                    href="mailto:csteam@nudgeinc.com"
+                    className="hover:text-rose"
                   >
-                    supportteam@dillonkennels.com
+                    csteam@nudgeinc.com
                   </a>
                 </dd>
               </div>
               <div>
                 <dt className="font-semibold text-ink">Phone</dt>
                 <dd className="mt-1">
-                  <a href="tel:+2347011246613" className="hover:text-rust">
-                    +234 701 124 6613
+                  <a href="tel:+2347089761129" className="hover:text-rose">
+                    +234 708 976 1129
                   </a>
                 </dd>
               </div>
@@ -102,13 +104,15 @@ export default function ContactPage() {
       </div>
 
       <section className="mt-20 border-t border-ink/10 pt-14">
-        <h2 className="section-heading">Frequently Asked Questions</h2>
-        <div className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
+        <h2 className="section-heading text-center">
+          Frequently Asked Questions
+        </h2>
+        <div className="mx-auto mt-8 max-w-3xl divide-y divide-ink/10 border-y border-ink/10">
           {FAQS.map((faq) => (
             <details key={faq.question} className="group py-5">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg text-ink marker:content-none">
                 {faq.question}
-                <span className="shrink-0 text-xl text-rust transition-transform group-open:rotate-45">
+                <span className="shrink-0 text-xl text-rose transition-transform group-open:rotate-45">
                   +
                 </span>
               </summary>

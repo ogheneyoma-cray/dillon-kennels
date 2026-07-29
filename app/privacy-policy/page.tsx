@@ -1,81 +1,89 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Dillon Kennels",
-  description: "How Dillon Kennels collects, uses, and protects your personal data.",
+  title: "Privacy Policy | Nudgenic",
+  description: "How Nudgenic collects, uses, and protects your personal data.",
 };
 
 export default function PrivacyPolicyPage() {
   return (
     <div className="container-page py-10 lg:py-16">
-      <p className="eyebrow">Legal</p>
-      <h1 className="section-heading mt-3">Privacy Policy</h1>
-      <p className="mt-2 text-sm text-ink/50">Last updated: July 2026</p>
+      <p className="eyebrow text-center">Legal</p>
+      <h1 className="section-heading mt-3 text-center">Privacy Policy</h1>
+      <p className="mt-2 text-center text-sm text-ink/50">
+        Last updated: July 2026
+      </p>
 
-      <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
+      <div className="mx-auto mt-10 max-w-3xl space-y-8 text-ink/80">
         <section>
-          <h2 className="font-display text-xl text-ink">Information We Collect</h2>
+          <h2 className="font-display text-xl text-ink">
+            Information We Collect
+          </h2>
           <p className="mt-3 leading-relaxed">
-            When you place an order, contact us, or browse our site, we may
-            collect information including your name, email address, phone
-            number, delivery address, and order history. Payment card
+            When you place an order, contact us, or subscribe to our list,
+            we may collect your name, email address, phone number, delivery
+            address, size preferences, and order history. Payment card
             details entered at checkout are used solely to process your
-            transaction and are not stored on our servers. We also collect
-            limited technical information, such as browser type and general
-            usage patterns, to help us improve the site.
+            transaction and are never stored on our servers.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">How We Use Your Information</h2>
+          <h2 className="font-display text-xl text-ink">
+            How We Use Your Information
+          </h2>
           <p className="mt-3 leading-relaxed">
-            We use the information you provide to process and deliver your
-            orders, respond to customer service inquiries, send order
-            confirmations and shipping updates, and, where you've opted in,
-            share updates about new collections. We do not sell your
-            personal information to third parties under any circumstances.
+            We use the information you provide to process and deliver
+            orders, respond to customer service inquiries, send order and
+            shipping updates, and — where you've opted in — share news about
+            new arrivals and restocks. We do not sell your personal
+            information to third parties.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">Cookies & Local Storage</h2>
+          <h2 className="font-display text-xl text-ink">
+            Cookies & Local Storage
+          </h2>
           <p className="mt-3 leading-relaxed">
             Our site uses browser local storage to remember the contents of
-            your shopping cart and your preferred currency between visits.
-            This data is stored on your device and is not transmitted to our
-            servers. You can clear this data at any time by clearing your
-            browser's site data for dillonkennels.com.
+            your shopping bag between visits. This data stays on your
+            device and is never transmitted to our servers. You can clear
+            it at any time by clearing your browser's site data for this
+            domain.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">Sharing With Third Parties</h2>
+          <h2 className="font-display text-xl text-ink">
+            Sharing With Third Parties
+          </h2>
           <p className="mt-3 leading-relaxed">
-            We share limited order information — such as your name, address,
-            and phone number — with logistics partners solely for the
-            purpose of delivering your order. Payment information is
-            processed through secure third-party payment processors and is
-            never stored on our systems in full.
+            We share limited order details — such as name, address, and
+            phone number — with logistics partners solely to deliver your
+            order. Payment information is processed through secure
+            third-party payment processors and is never stored on our
+            systems in full.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl text-ink">Your Rights</h2>
           <p className="mt-3 leading-relaxed">
-            You have the right to request access to, correction of, or
-            deletion of your personal information held by us. To make such a
-            request, please contact us at supportteam@dillonkennels.com and
-            we will respond within a reasonable timeframe.
+            You may request access to, correction of, or deletion of your
+            personal information at any time. To make a request, email
+            csteam@nudgeinc.com and we'll respond within a reasonable
+            timeframe.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl text-ink">Contact Us</h2>
           <p className="mt-3 leading-relaxed">
-            If you have any questions about this Privacy Policy, please
-            reach out to us at supportteam@dillonkennels.com or +234 701 124
-            6613, or write to us at 8 Olotu House, Opposite Baale House,
-            Abule Tirninmiljeun Odeda, Ajeromi-Ifelodun, Lagos State.
+            Questions about this Privacy Policy can be sent to
+            csteam@nudgeinc.com or +234 708 976 1129, or by post to Ile
+            Alaso, Imale Falatori Area, Oyo Town, Oyo West Local Government
+            Area, Oyo State.
           </p>
         </section>
       </div>
