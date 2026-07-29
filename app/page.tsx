@@ -58,7 +58,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/90 via-plum-dark/20 to-transparent" />
         <div className="relative z-10 flex flex-col items-center px-6 text-center text-ivory">
-          <p className="eyebrow text-gold">New Season Edit</p>
+          <p className="eyebrow text-gold">New Season Arrivals</p>
           <h1 className="mt-5 font-display text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">
             Nudgenic
           </h1>
@@ -66,7 +66,7 @@ export default function HomePage() {
             Womenswear for everyday confidence
           </p>
           <Link href="/shop" className="btn-primary mt-9 bg-ivory text-ink hover:bg-rose hover:text-ivory">
-            Shop The Edit
+            Shop Now
           </Link>
         </div>
       </section>
@@ -127,7 +127,7 @@ export default function HomePage() {
             />
           </div>
           <div className="order-1 lg:order-2">
-            <p className="eyebrow">The Nudgenic Edit</p>
+            <p className="eyebrow">Our Story</p>
             <p className="mt-5 font-display text-3xl italic leading-snug text-ink sm:text-4xl">
               "Clothing should give you a quiet nudge of confidence, not
               another thing to think about."

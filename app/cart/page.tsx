@@ -3,10 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
+import { useCurrency } from "@/context/CurrencyContext";
 import { formatPrice } from "@/lib/format";
 
 export default function CartPage() {
   const { items, updateQuantity, removeFromCart, cartTotal } = useCart();
+  const { currency } = useCurrency();
 
   if (items.length === 0) {
     return (
@@ -56,11 +58,11 @@ export default function CartPage() {
                       {item.name}
                     </Link>
                     <p className="mt-1 text-sm text-ink/60">
-                      {formatPrice(item.price)} each
+                      {formatPrice(item.price, currency)} each
                     </p>
                   </div>
                   <p className="whitespace-nowrap font-semibold text-ink">
-                    {formatPrice(item.price * item.quantity)}
+                    {formatPrice(item.price * item.quantity, currency)}
                   </p>
                 </div>
 
@@ -104,7 +106,7 @@ export default function CartPage() {
           <div className="mt-5 space-y-3 text-sm">
             <div className="flex justify-between text-ink/70">
               <span>Subtotal</span>
-              <span>{formatPrice(cartTotal)}</span>
+              <span>{formatPrice(cartTotal, currency)}</span>
             </div>
             <div className="flex justify-between text-ink/70">
               <span>Shipping</span>
@@ -113,7 +115,7 @@ export default function CartPage() {
           </div>
           <div className="mt-5 flex justify-between border-t border-ink/10 pt-5 font-display text-lg text-ink">
             <span>Total</span>
-            <span>{formatPrice(cartTotal)}</span>
+            <span>{formatPrice(cartTotal, currency)}</span>
           </div>
           <Link href="/checkout" className="btn-primary mt-6 w-full">
             Proceed to Checkout

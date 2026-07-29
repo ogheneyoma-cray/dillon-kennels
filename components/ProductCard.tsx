@@ -4,10 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
+import { useCurrency } from "@/context/CurrencyContext";
 import { formatPrice } from "@/lib/format";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();
+  const { currency } = useCurrency();
 
   return (
     <div className="group relative flex flex-col">
@@ -45,7 +47,7 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.name}
           </h3>
         </Link>
-        <p className="mt-1.5 text-sm text-ink/60">{formatPrice(product.price)}</p>
+        <p className="mt-1.5 text-sm text-ink/60">{formatPrice(product.price, currency)}</p>
       </div>
     </div>
   );

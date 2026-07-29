@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { getProductBySlug, products } from "@/data/products";
 import ProductDetailActions from "@/components/ProductDetailActions";
 import ProductCard from "@/components/ProductCard";
-import { formatPrice } from "@/lib/format";
+import ProductPrice from "@/components/ProductPrice";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
@@ -71,9 +71,10 @@ export default function ProductPage({
           <h1 className="mt-3 font-display text-3xl leading-tight text-ink sm:text-4xl">
             {product.name}
           </h1>
-          <p className="mt-3 text-xl font-semibold text-rose">
-            {formatPrice(product.price)}
-          </p>
+          <ProductPrice
+            priceUsd={product.price}
+            className="mt-3 block text-xl font-semibold text-rose"
+          />
 
           <p className="mt-6 text-base leading-relaxed text-ink/80">
             {product.description}

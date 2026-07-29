@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import { useCurrency } from "@/context/CurrencyContext";
 import { formatPrice } from "@/lib/format";
 
 function generateOrderNumber(): string {
@@ -13,6 +14,7 @@ function generateOrderNumber(): string {
 
 export default function CheckoutPage() {
   const { items, cartTotal, clearCart } = useCart();
+  const { currency } = useCurrency();
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
 
@@ -24,7 +26,7 @@ export default function CheckoutPage() {
       "nudgenic-last-order",
       JSON.stringify({
         orderNumber,
-        total: formatPrice(cartTotal),
+        total: formatPrice(cartTotal, currency),
         itemCount: items.reduce((sum, item) => sum + item.quantity, 0),
       })
     );
@@ -205,14 +207,14 @@ export default function CheckoutPage() {
                   {item.name} × {item.quantity}
                 </span>
                 <span className="font-medium text-ink">
-                  {formatPrice(item.price * item.quantity)}
+                  {formatPrice(item.price * item.quantity, currency)}
                 </span>
               </li>
             ))}
           </ul>
           <div className="mt-5 flex justify-between font-display text-lg text-ink">
             <span>Total</span>
-            <span>{formatPrice(cartTotal)}</span>
+            <span>{formatPrice(cartTotal, currency)}</span>
           </div>
           <button
             type="submit"

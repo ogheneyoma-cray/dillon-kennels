@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Italiana, Jost } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
+import { CurrencyProvider } from "@/context/CurrencyContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -32,11 +33,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${italiana.variable} ${jost.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
-        <CartProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </CartProvider>
+        <CurrencyProvider>
+          <CartProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </CartProvider>
+        </CurrencyProvider>
       </body>
     </html>
   );

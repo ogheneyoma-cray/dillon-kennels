@@ -5,6 +5,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import Logo from "@/components/Logo";
+import CurrencyToggle from "@/components/CurrencyToggle";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -75,37 +76,40 @@ export default function Header() {
             <Logo />
           </Link>
 
-          <Link
-            href="/cart"
-            aria-label="View cart"
-            className="relative flex min-h-[44px] min-w-[44px] items-center justify-center"
-          >
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              className="text-ink"
+          <div className="flex items-center gap-3 sm:gap-4">
+            <CurrencyToggle className="hidden sm:inline-flex" />
+            <Link
+              href="/cart"
+              aria-label="View cart"
+              className="relative flex min-h-[44px] min-w-[44px] items-center justify-center"
             >
-              <path
-                d="M6 8h12l-1 12H7L6 8Z"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M9 8V6a3 3 0 0 1 6 0v2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            {cartCount > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-rose text-[10px] font-bold text-ivory">
-                {cartCount > 9 ? "9+" : cartCount}
-              </span>
-            )}
-          </Link>
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                className="text-ink"
+              >
+                <path
+                  d="M6 8h12l-1 12H7L6 8Z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M9 8V6a3 3 0 0 1 6 0v2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {cartCount > 0 && (
+                <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-rose text-[10px] font-bold text-ivory">
+                  {cartCount > 9 ? "9+" : cartCount}
+                </span>
+              )}
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -122,6 +126,9 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            <div className="py-3">
+              <CurrencyToggle />
+            </div>
           </div>
         </nav>
       )}

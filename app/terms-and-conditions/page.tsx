@@ -34,7 +34,9 @@ export default function TermsPage() {
             2. Products & Pricing
           </h2>
           <p className="mt-3 leading-relaxed">
-            All prices are listed in US Dollars ($). We reserve the right
+            All prices are listed in US Dollars ($) and also shown in
+            Nigerian Naira (₦) using a fixed conversion rate, which may
+            differ slightly from real-time exchange rates. We reserve the right
             to update pricing at any time without prior notice, though
             changes never affect orders already confirmed. Product colors
             may appear slightly different depending on your screen, and
