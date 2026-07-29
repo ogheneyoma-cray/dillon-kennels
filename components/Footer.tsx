@@ -8,13 +8,9 @@ const SHOP_LINKS = [
   { href: "/checkout", label: "Checkout" },
 ];
 
-const HELP_LINKS = [
-  { href: "/contact", label: "Contact Us" },
+const LEGAL_LINKS = [
   { href: "/shipping-policy", label: "Shipping Policy" },
   { href: "/refunds-policy", label: "Refunds Policy" },
-];
-
-const LEGAL_LINKS = [
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
 ];
@@ -62,20 +58,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="eyebrow">Help</p>
-          <ul className="mt-4 space-y-2">
-            {HELP_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm text-bone/80 transition-colors hover:text-acid"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <p className="eyebrow mt-6">Legal</p>
+          <p className="eyebrow">Legal</p>
           <ul className="mt-4 space-y-2">
             {LEGAL_LINKS.map((link) => (
               <li key={link.href}>
