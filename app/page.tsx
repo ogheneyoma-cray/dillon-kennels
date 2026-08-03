@@ -1,152 +1,193 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getFeaturedProducts } from "@/data/products";
+import Hero from "@/components/Hero";
+import SectionHeading from "@/components/SectionHeading";
 import ProductCard from "@/components/ProductCard";
+import DealOfDay from "@/components/DealOfDay";
+import ProductMiniList from "@/components/ProductMiniList";
+import {
+  bestSellers,
+  dealProducts,
+  featured,
+  products,
+  topRated,
+} from "@/data/products";
+
+const PROMOS = [
+  {
+    src: "/adomattic/promo-best-selling.jpg",
+    title: "Best\nSelling",
+    copy: "The pieces that keep going out of stock",
+    href: "/shop",
+  },
+  {
+    src: "/adomattic/promo-new-season.jpg",
+    title: "New\nSeason",
+    copy: "Available now",
+    href: "/shop?category=Outerwear",
+  },
+];
+
+const TILES = [
+  { src: "/adomattic/tile-trend.jpg", name: "Trend", href: "/shop?category=Tops" },
+  { src: "/adomattic/tile-new.jpg", name: "New", href: "/shop?category=Bottoms" },
+  { src: "/adomattic/tile-sale.jpg", name: "Sale", href: "/shop?filter=sale" },
+];
+
+const LOOKBOOK = ["look-01", "look-02", "look-03", "look-04", "look-05"];
+
+const SERVICES = [
+  {
+    title: "Free delivery over $45",
+    copy: "On every order, dispatched within 48 hours.",
+  },
+  {
+    title: "Secure checkout",
+    copy: "No card details are ever stored on this site.",
+  },
+  {
+    title: "30-day returns",
+    copy: "Unworn, tags on, and the first size swap is free.",
+  },
+  {
+    title: "Real people",
+    copy: "Mon–Sat. A person reads every message you send.",
+  },
+];
 
 export default function HomePage() {
-  const featured = getFeaturedProducts();
-
   return (
-    <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-ink/10">
-        <div className="container-page grid grid-cols-1 items-center gap-10 py-14 lg:grid-cols-2 lg:py-24">
-          <div className="order-2 lg:order-1">
-            <h1 className="font-display text-4xl leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
-              Dillon Kennels
-            </h1>
-            <p className="mt-5 max-w-md font-display text-xl italic text-ink/70 sm:text-2xl">
-              Heritage weaves, modern silhouettes, everyday wear.
-            </p>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-ink/70">
-              Clothing, footwear, and accessories designed in Lagos and
-              crafted with West African textile traditions at their core —
-              built to be worn on repeat, not just once.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/shop" className="btn-primary">
-                Shop Now
-              </Link>
-              <Link href="/contact" className="btn-ghost">
-                Get in Touch
+    <>
+      <Hero />
+
+      {/* Two promo panels */}
+      <section className="frame grid gap-6 py-16 md:grid-cols-2">
+        {PROMOS.map((promo) => (
+          <div
+            key={promo.title}
+            className="relative flex min-h-[300px] items-center overflow-hidden bg-haze"
+          >
+            <div className="relative z-10 max-w-[52%] p-8 lg:p-10">
+              <h2 className="whitespace-pre-line text-3xl font-semibold leading-tight text-onyx lg:text-4xl">
+                {promo.title}
+              </h2>
+              <p className="mt-3 text-sm text-ash">{promo.copy}</p>
+              <Link href={promo.href} className="btn-camel mt-6">
+                Shop now
               </Link>
             </div>
-          </div>
-          <div className="order-1 grid grid-cols-2 gap-4 lg:order-2">
-            <div className="relative aspect-[3/4] translate-y-6 overflow-hidden bg-sand">
+            <div className="absolute inset-y-0 right-0 w-[55%]">
               <Image
-                src="/products/hero-menswear.jpg"
-                alt="Model wearing a Dillon Kennels heritage wrap shirt"
+                src={promo.src}
+                alt=""
                 fill
-                priority
-                sizes="(min-width: 1024px) 25vw, 45vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="relative aspect-[3/4] overflow-hidden bg-sand">
-              <Image
-                src="/products/hero-womenswear.jpg"
-                alt="Model wearing Dillon Kennels footwear and accessories"
-                fill
-                priority
-                sizes="(min-width: 1024px) 25vw, 45vw"
-                className="object-cover"
+                sizes="(min-width: 768px) 30vw, 55vw"
+                className="object-cover object-top"
               />
             </div>
           </div>
-        </div>
+        ))}
       </section>
 
-      {/* Brand intro */}
-      <section className="border-b border-ink/10 bg-paper">
-        <div className="container-page grid grid-cols-1 gap-10 py-16 lg:grid-cols-[1fr_1.4fr] lg:py-20">
-          <div>
-            <p className="eyebrow">Our Story</p>
-            <h2 className="section-heading mt-3">
-              Rooted in craft, built for daily life
-            </h2>
-          </div>
-          <div className="space-y-4 text-base leading-relaxed text-ink/80">
-            <p>
-              Dillon Kennels began on the workshop floors of Lagos, where the
-              rhythm of hand looms and the sharp smell of indigo dye have
-              shaped fashion for generations. We started the label with a
-              simple frustration: the clothing that carried our textile
-              heritage — aso-oke weaves, adire resist-dyeing, batik, Ankara
-              wax prints — rarely showed up in wardrobes built for the
-              everyday. It was reserved for weddings, for owambe, for
-              once-a-year occasions. We wanted to change that. Every piece in
-              our collection starts with a material or technique rooted in
-              West African craft, then gets reworked through a contemporary
-              tailoring lens so it fits naturally into a Tuesday commute, a
-              weekend market run, or a Friday dinner out.
-            </p>
-            <p>
-              We work directly with small ateliers and individual artisans
-              across Lagos and the wider South-West, from the narrow-strip
-              weavers of Iseyin to the raffia weavers who hand-construct our
-              bags. That relationship means slower production runs, genuine
-              price transparency, and pieces that carry real variation from
-              one to the next — because they were made by hands, not
-              machines alone. Every product on this site, from our tailored
-              blazers to our woven belts, is built to be worn hard and worn
-              often, backed by fabric choices and construction details we're
-              proud to stand behind. This is fashion that respects where it
-              came from and where you're actually going to wear it.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured products */}
-      <section className="container-page py-16 lg:py-20">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="eyebrow">The Edit</p>
-            <h2 className="section-heading mt-3">Featured Pieces</h2>
-          </div>
-          <Link href="/shop" className="btn-ghost hidden sm:inline-flex">
-            View Full Shop →
-          </Link>
-        </div>
-
-        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
-          {featured.map((product) => (
+      {/* New arrivals grid */}
+      <section className="frame pb-16">
+        <SectionHeading
+          title="New Arrival"
+          subtitle="Twenty pieces, nothing over $40, restocked rather than replaced."
+        />
+        <div className="mt-14 grid grid-cols-2 gap-x-5 gap-y-12 lg:grid-cols-4 lg:gap-x-6">
+          {products.slice(0, 8).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-
-        <div className="mt-10 flex justify-center sm:hidden">
-          <Link href="/shop" className="btn-secondary w-full">
-            View Full Shop
+        <div className="mt-14 flex justify-center">
+          <Link href="/shop" className="btn-outline">
+            View all products
           </Link>
         </div>
       </section>
 
-      {/* Promo strip */}
-      <section className="bg-rust text-cream">
-        <div className="container-page grid grid-cols-1 gap-8 py-14 text-center sm:grid-cols-3 sm:text-left">
-          <div>
-            <p className="font-display text-xl">Handwoven Materials</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Aso-oke, adire, batik, and raffia sourced directly from
-              artisans.
-            </p>
-          </div>
-          <div>
-            <p className="font-display text-xl">Lagos Delivery</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Free delivery within Lagos on orders over ₦75,000.
-            </p>
-          </div>
-          <div>
-            <p className="font-display text-xl">Made to Last</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Constructed for daily wear, not just special occasions.
-            </p>
-          </div>
-        </div>
+      {/* Two cards only — the band is a two-up grid, so a third would orphan. */}
+      <DealOfDay products={dealProducts.slice(0, 2)} />
+
+      {/* Three category tiles */}
+      <section className="frame grid gap-6 py-16 md:grid-cols-3">
+        {TILES.map((tile) => (
+          <Link
+            key={tile.name}
+            href={tile.href}
+            className="group relative flex min-h-[240px] items-center overflow-hidden bg-haze"
+          >
+            <div className="relative z-10 p-7">
+              <span className="link-underline">Shop now</span>
+              <p className="mt-4 text-3xl font-semibold text-onyx">{tile.name}</p>
+            </div>
+            <div className="absolute inset-y-0 right-0 w-[58%]">
+              <Image
+                src={tile.src}
+                alt=""
+                fill
+                sizes="(min-width: 768px) 22vw, 58vw"
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          </Link>
+        ))}
       </section>
-    </div>
+
+      {/* Three mini-list columns */}
+      <section className="frame grid gap-10 pb-16 lg:grid-cols-3 lg:gap-8">
+        <ProductMiniList
+          title="Best Selling"
+          products={bestSellers.slice(0, 3)}
+          href="/shop"
+        />
+        <ProductMiniList
+          title="Top Rated"
+          products={topRated.slice(0, 3)}
+          href="/shop"
+        />
+        <ProductMiniList
+          title="Featured"
+          products={featured.slice(0, 3)}
+          href="/shop"
+        />
+      </section>
+
+      {/* Service strip */}
+      <section className="border-y border-line">
+        <ul className="frame grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
+          {SERVICES.map((service) => (
+            <li key={service.title} className="text-center">
+              <span
+                aria-hidden="true"
+                className="mx-auto block h-[9px] w-[9px] rotate-45 bg-camel"
+              />
+              <h3 className="mt-4 text-[13px] font-bold uppercase tracking-wide2 text-onyx">
+                {service.title}
+              </h3>
+              <p className="mx-auto mt-2 max-w-[16rem] text-[13px] leading-relaxed text-ash">
+                {service.copy}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Lookbook strip */}
+      <section aria-label="Lookbook" className="grid grid-cols-2 md:grid-cols-5">
+        {LOOKBOOK.map((slug) => (
+          <div key={slug} className="relative aspect-square bg-haze">
+            <Image
+              src={`/adomattic/${slug}.jpg`}
+              alt=""
+              fill
+              sizes="(min-width: 768px) 20vw, 50vw"
+              className="object-cover"
+            />
+          </div>
+        ))}
+      </section>
+    </>
   );
 }

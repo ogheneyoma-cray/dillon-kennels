@@ -1,124 +1,95 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import PageHeader from "@/components/PageHeader";
+import { addressLines, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Dillon Kennels",
+  title: "Contact",
   description:
-    "Get in touch with the Dillon Kennels team — store address, phone, email, and business hours.",
+    "Reach the Adom Attic support team — email, phone, studio address and opening hours.",
 };
 
-const FAQS = [
-  {
-    question: "How long does delivery take within Nigeria?",
-    answer:
-      "Orders within Lagos typically arrive within 1–3 business days. Deliveries to other states across Nigeria take 3–7 business days depending on location. You'll receive a tracking update by email and SMS once your order has shipped from our Lagos workshop.",
-  },
-  {
-    question: "Do you ship outside Nigeria?",
-    answer:
-      "At this time, Dillon Kennels ships exclusively within Nigeria. We're working on international shipping options and recommend joining our mailing list or checking back on this page for updates on when international delivery becomes available.",
-  },
-  {
-    question: "What is your returns and exchange policy?",
-    answer:
-      "We accept returns and exchanges within 7 days of delivery, provided the item is unworn, unwashed, and has its original tags attached. Please visit our Refunds Policy page for the full process, including how to initiate a return and expected timelines for refunds.",
-  },
-  {
-    question: "Can I change or cancel my order after placing it?",
-    answer:
-      "Because many of our pieces are made or finished to order in small batches, we can only accommodate changes or cancellations within 2 hours of the order being placed. Contact our support team immediately by phone or email if you need to make a change.",
-  },
-  {
-    question: "How do I know what size to order?",
-    answer:
-      "Each product page lists standard sizing based on Nigerian and international measurements. If you're between sizes or unsure what will fit best, message our support team with your usual size in similar brands and we'll recommend the closest match before you order.",
-  },
+const HOURS = [
+  { day: "Monday – Friday", time: "9:00 – 18:00 WAT" },
+  { day: "Saturday", time: "10:00 – 16:00 WAT" },
+  { day: "Sunday", time: "Closed" },
 ];
 
 export default function ContactPage() {
   return (
-    <div className="container-page py-10 lg:py-16">
-      <p className="eyebrow">Get in Touch</p>
-      <h1 className="section-heading mt-3">Contact Us</h1>
-      <p className="mt-4 max-w-xl text-ink/70">
-        Have a question about an order, a product, or just want to say hello?
-        Send us a message or reach out directly using the details below.
-      </p>
+    <>
+      <PageHeader
+        title="Contact"
+        intro="Questions about sizing, an order in transit, or a fabric you want to know more about — everything reaches the same small team."
+      />
 
-      <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_1fr]">
-        <ContactForm />
+      <div className="frame grid gap-12 py-14 lg:grid-cols-[1fr_320px]">
+        <div>
+          <h2 className="display-2">Send a message</h2>
+          <p className="mt-3 text-[15px] leading-relaxed text-ash">
+            We answer within one working day. If your message is about an order
+            already placed, include the order number and it will move faster.
+          </p>
+          <div className="mt-8">
+            <ContactForm />
+          </div>
+        </div>
 
-        <aside className="space-y-8">
-          <div className="border border-ink/10 bg-paper p-6">
-            <h2 className="font-display text-xl text-ink">Store Details</h2>
-            <dl className="mt-5 space-y-4 text-sm text-ink/80">
-              <div>
-                <dt className="font-semibold text-ink">Address</dt>
-                <dd className="mt-1">
-                  8 Olotu House, Opposite Baale House, Abule Tirninmiljeun
-                  Odeda, Ajeromi-Ifelodun, Lagos State
-                </dd>
-              </div>
-              <div>
-                <dt className="font-semibold text-ink">Email</dt>
-                <dd className="mt-1">
-                  <a
-                    href="mailto:supportteam@dillonkennels.com"
-                    className="hover:text-rust"
-                  >
-                    supportteam@dillonkennels.com
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className="font-semibold text-ink">Phone</dt>
-                <dd className="mt-1">
-                  <a href="tel:+2347011246613" className="hover:text-rust">
-                    +234 701 124 6613
-                  </a>
-                </dd>
-              </div>
-            </dl>
+        <aside className="space-y-6">
+          <div className="border border-line p-7">
+            <h2 className="text-[12px] font-bold uppercase tracking-wide2 text-onyx">
+              The studio
+            </h2>
+            <address className="mt-4 space-y-1 text-[15px] not-italic leading-relaxed text-ash">
+              {addressLines.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
+            </address>
+            <p className="mt-4 text-[13px] leading-relaxed text-ash">
+              Visits are by appointment — message us first so someone is there
+              to meet you.
+            </p>
           </div>
 
-          <div className="border border-ink/10 bg-paper p-6">
-            <h2 className="font-display text-xl text-ink">Business Hours</h2>
-            <dl className="mt-5 space-y-2 text-sm text-ink/80">
-              <div className="flex justify-between">
-                <dt>Monday – Friday</dt>
-                <dd>9:00 AM – 6:00 PM</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt>Saturday</dt>
-                <dd>10:00 AM – 4:00 PM</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt>Sunday</dt>
-                <dd>Closed</dd>
-              </div>
+          <div className="border border-line p-7">
+            <h2 className="text-[12px] font-bold uppercase tracking-wide2 text-onyx">
+              Direct
+            </h2>
+            <ul className="mt-4 space-y-2.5 text-[15px]">
+              <li>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="text-onyx transition-colors hover:text-camel"
+                >
+                  {site.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.phoneHref}
+                  className="text-onyx transition-colors hover:text-camel"
+                >
+                  {site.phone}
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="border border-line p-7">
+            <h2 className="text-[12px] font-bold uppercase tracking-wide2 text-onyx">
+              Opening hours
+            </h2>
+            <dl className="mt-4 space-y-2.5 text-[15px]">
+              {HOURS.map((entry) => (
+                <div key={entry.day} className="flex justify-between gap-4">
+                  <dt className="text-onyx">{entry.day}</dt>
+                  <dd className="text-ash">{entry.time}</dd>
+                </div>
+              ))}
             </dl>
           </div>
         </aside>
       </div>
-
-      <section className="mt-20 border-t border-ink/10 pt-14">
-        <h2 className="section-heading">Frequently Asked Questions</h2>
-        <div className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
-          {FAQS.map((faq) => (
-            <details key={faq.question} className="group py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg text-ink marker:content-none">
-                {faq.question}
-                <span className="shrink-0 text-xl text-rust transition-transform group-open:rotate-45">
-                  +
-                </span>
-              </summary>
-              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink/70">
-                {faq.answer}
-              </p>
-            </details>
-          ))}
-        </div>
-      </section>
-    </div>
+    </>
   );
 }

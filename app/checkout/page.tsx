@@ -1,230 +1,195 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState, type FormEvent } from "react";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { formatMoney } from "@/lib/currency";
 
-function generateOrderNumber(): string {
-  const random = Math.floor(100000 + Math.random() * 900000);
-  return `DK-${random}`;
-}
+const FREE_SHIPPING_THRESHOLD_USD = 45;
+const DELIVERY_FEE_USD = 4;
+
+type Errors = Record<string, string>;
+
+const FIELDS = [
+  { name: "fullName", label: "Full name", type: "text", autoComplete: "name" },
+  { name: "email", label: "Email", type: "email", autoComplete: "email" },
+  { name: "phone", label: "Phone", type: "tel", autoComplete: "tel" },
+  {
+    name: "address",
+    label: "Street address",
+    type: "text",
+    autoComplete: "street-address",
+    full: true,
+  },
+  { name: "city", label: "City", type: "text", autoComplete: "address-level2" },
+  { name: "state", label: "State", type: "text", autoComplete: "address-level1" },
+];
 
 export default function CheckoutPage() {
   const { items, cartTotal, clearCart } = useCart();
   const { currency } = useCurrency();
   const router = useRouter();
-  const [submitting, setSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Errors>({});
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitting(true);
-    const orderNumber = generateOrderNumber();
-    window.sessionStorage.setItem(
-      "dillon-kennels-last-order",
-      JSON.stringify({
-        orderNumber,
-        total: formatMoney(cartTotal, currency),
-        itemCount: items.reduce((sum, item) => sum + item.quantity, 0),
-      })
-    );
-    clearCart();
-    router.push(`/order-confirmation?order=${orderNumber}`);
-  };
+  const delivery =
+    cartTotal >= FREE_SHIPPING_THRESHOLD_USD ? 0 : DELIVERY_FEE_USD;
+  const total = cartTotal + delivery;
 
   if (items.length === 0) {
     return (
-      <div className="container-page flex flex-col items-center justify-center py-24 text-center">
-        <p className="eyebrow">Checkout</p>
-        <h1 className="section-heading mt-3">Your cart is empty</h1>
-        <p className="mt-4 max-w-sm text-ink/70">
-          Add something to your cart before heading to checkout.
+      <div className="frame flex flex-col items-center py-28 text-center">
+        <h1 className="display-1">Your bag is empty</h1>
+        <p className="mt-4 max-w-md text-[15px] text-ash">
+          Add something to it and the checkout will open up.
         </p>
-        <Link href="/shop" className="btn-primary mt-8">
-          Shop Now
+        <Link href="/shop" className="btn-camel mt-8">
+          Browse the shop
         </Link>
       </div>
     );
   }
 
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const next: Errors = {};
+
+    const required = [
+      ["fullName", "Enter the name for the delivery"],
+      ["email", "Enter an email so we can send the confirmation"],
+      ["phone", "Enter a phone number for the courier"],
+      ["address", "Enter a street address"],
+      ["city", "Enter a city"],
+      ["state", "Enter a state"],
+    ] as const;
+
+    for (const [field, message] of required) {
+      if (!String(data.get(field) ?? "").trim()) next[field] = message;
+    }
+
+    const email = String(data.get("email") ?? "");
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      next.email = "That email address does not look right";
+    }
+
+    setErrors(next);
+    if (Object.keys(next).length > 0) return;
+
+    // No payment processor is wired up on this build — the order is recorded
+    // client-side and the bag is cleared.
+    clearCart();
+    router.push("/order-confirmation");
+  };
+
   return (
-    <div className="container-page py-10 lg:py-16">
-      <p className="eyebrow">Checkout</p>
-      <h1 className="section-heading mt-3">Complete Your Order</h1>
+    <div className="frame py-14">
+      <h1 className="display-2">Checkout</h1>
 
-      <form
-        onSubmit={handleSubmit}
-        className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_360px]"
-      >
-        <div className="space-y-10">
-          <fieldset>
-            <legend className="font-display text-xl text-ink">
-              Contact & Delivery
-            </legend>
-            <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <div>
-                <label htmlFor="fullName" className="label-text">
-                  Full Name
+      <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_340px]">
+        <form onSubmit={handleSubmit} noValidate>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {FIELDS.map((field) => (
+              <div key={field.name} className={field.full ? "sm:col-span-2" : ""}>
+                <label htmlFor={field.name} className="field-label">
+                  {field.label}
                 </label>
                 <input
-                  id="fullName"
-                  name="fullName"
-                  type="text"
-                  required
-                  autoComplete="name"
-                  className="input-field"
-                  placeholder="Adaeze Okonkwo"
+                  id={field.name}
+                  name={field.name}
+                  type={field.type}
+                  autoComplete={field.autoComplete}
+                  aria-invalid={Boolean(errors[field.name])}
+                  aria-describedby={
+                    errors[field.name] ? `${field.name}-error` : undefined
+                  }
+                  className="field"
                 />
+                {errors[field.name] && (
+                  <p
+                    id={`${field.name}-error`}
+                    className="mt-1.5 text-[12px] font-semibold text-camel-dark"
+                  >
+                    {errors[field.name]}
+                  </p>
+                )}
               </div>
-              <div>
-                <label htmlFor="email" className="label-text">
-                  Email Address
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  className="input-field"
-                  placeholder="you@example.com"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="address" className="label-text">
-                  Delivery Address
-                </label>
-                <input
-                  id="address"
-                  name="address"
-                  type="text"
-                  required
-                  autoComplete="street-address"
-                  className="input-field"
-                  placeholder="Street address, city, state"
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="label-text">
-                  Phone Number
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  autoComplete="tel"
-                  className="input-field"
-                  placeholder="+234 701 234 5678"
-                />
-              </div>
+            ))}
+
+            <div className="sm:col-span-2">
+              <label htmlFor="notes" className="field-label">
+                Delivery notes <span className="font-normal">(optional)</span>
+              </label>
+              <textarea
+                id="notes"
+                name="notes"
+                rows={3}
+                placeholder="Landmarks, gate colours, or a preferred delivery window."
+                className="field resize-y py-3"
+              />
             </div>
-          </fieldset>
+          </div>
 
-          <fieldset>
-            <legend className="font-display text-xl text-ink">
-              Payment Details
-            </legend>
-            <p className="mt-2 text-xs text-ink/50">
-              Demo checkout — card details are not transmitted or stored.
-            </p>
-            <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <div className="sm:col-span-2">
-                <label htmlFor="cardName" className="label-text">
-                  Name on Card
-                </label>
-                <input
-                  id="cardName"
-                  name="cardName"
-                  type="text"
-                  required
-                  autoComplete="cc-name"
-                  className="input-field"
-                  placeholder="Adaeze Okonkwo"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="cardNumber" className="label-text">
-                  Card Number
-                </label>
-                <input
-                  id="cardNumber"
-                  name="cardNumber"
-                  type="text"
-                  inputMode="numeric"
-                  required
-                  autoComplete="cc-number"
-                  pattern="[0-9\s]{13,19}"
-                  maxLength={19}
-                  className="input-field"
-                  placeholder="1234 5678 9012 3456"
-                />
-              </div>
-              <div>
-                <label htmlFor="expiry" className="label-text">
-                  Expiry Date
-                </label>
-                <input
-                  id="expiry"
-                  name="expiry"
-                  type="text"
-                  required
-                  autoComplete="cc-exp"
-                  placeholder="MM/YY"
-                  pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
-                  className="input-field"
-                />
-              </div>
-              <div>
-                <label htmlFor="cvv" className="label-text">
-                  CVV
-                </label>
-                <input
-                  id="cvv"
-                  name="cvv"
-                  type="text"
-                  inputMode="numeric"
-                  required
-                  autoComplete="cc-csc"
-                  maxLength={4}
-                  pattern="[0-9]{3,4}"
-                  className="input-field"
-                  placeholder="123"
-                />
-              </div>
-            </div>
-          </fieldset>
-        </div>
+          <p className="mt-6 border-l-2 border-camel bg-blush px-4 py-3.5 text-[13px] leading-relaxed text-onyx">
+            This is a demonstration storefront. No payment is taken and no card
+            details are collected at any point.
+          </p>
 
-        <aside className="h-fit border border-ink/10 bg-paper p-6">
-          <h2 className="font-display text-xl text-ink">Order Summary</h2>
-          <ul className="mt-5 space-y-3 border-b border-ink/10 pb-5">
+          <button type="submit" className="btn-dark mt-7 w-full sm:w-auto">
+            Place order
+          </button>
+        </form>
+
+        <aside className="h-fit border border-line p-7 lg:sticky lg:top-32">
+          <h2 className="text-[13px] font-bold uppercase tracking-wide2 text-onyx">
+            Your order
+          </h2>
+
+          <ul className="mt-6 space-y-4">
             {items.map((item) => (
-              <li key={item.id} className="flex justify-between text-sm">
-                <span className="text-ink/70">
-                  {item.name} × {item.quantity}
+              <li key={item.id} className="flex items-center gap-3">
+                <span className="relative h-16 w-12 shrink-0 overflow-hidden bg-haze">
+                  <Image
+                    src={item.image}
+                    alt=""
+                    fill
+                    sizes="48px"
+                    className="object-cover"
+                  />
                 </span>
-                <span className="font-medium text-ink">
+                <span className="flex-1 text-[13px] leading-snug text-onyx">
+                  {item.name}
+                  <span className="mt-0.5 block text-ash">
+                    Qty {item.quantity}
+                  </span>
+                </span>
+                <span className="text-[13px] font-semibold">
                   {formatMoney(item.price * item.quantity, currency)}
                 </span>
               </li>
             ))}
           </ul>
-          <div className="mt-5 flex justify-between font-display text-lg text-ink">
-            <span>Total</span>
-            <span>{formatMoney(cartTotal, currency)}</span>
-          </div>
-          <button
-            type="submit"
-            disabled={submitting}
-            className="btn-primary mt-6 w-full disabled:opacity-60"
-          >
-            {submitting ? "Placing Order…" : "Place Order"}
-          </button>
+
+          <dl className="mt-6 space-y-3 border-t border-line pt-5 text-sm">
+            <div className="flex justify-between">
+              <dt className="text-ash">Subtotal</dt>
+              <dd>{formatMoney(cartTotal, currency)}</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="text-ash">Delivery</dt>
+              <dd>
+                {delivery === 0 ? "Free" : formatMoney(delivery, currency)}
+              </dd>
+            </div>
+            <div className="flex justify-between border-t border-line pt-3 text-base font-semibold">
+              <dt>Total</dt>
+              <dd className="text-camel">{formatMoney(total, currency)}</dd>
+            </div>
+          </dl>
         </aside>
-      </form>
+      </div>
     </div>
   );
 }

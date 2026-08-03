@@ -1,5 +1,9 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * Palette sampled directly from the Lynessa reference: a camel accent on a
+ * white base with a near-black display colour and a ladder of neutral greys.
+ */
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
@@ -9,25 +13,36 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#F6F1E9",
-        paper: "#FBF8F2",
-        ink: "#211C17",
-        charcoal: "#332C24",
-        rust: "#B7522E",
-        "rust-dark": "#8F3D20",
-        olive: "#6B6B47",
-        sand: "#E4D8C3",
-        clay: "#C98B5E",
+        camel: "#CF9163",
+        "camel-dark": "#B4744A",
+        blush: "#F6EAE2",
+        onyx: "#0E0E0E",
+        graphite: "#222222",
+        ash: "#666666",
+        mist: "#999999",
+        haze: "#F5F5F5",
+        line: "#E6E6E6",
+        paper: "#FFFFFF",
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "serif"],
-        body: ["var(--font-work-sans)", "sans-serif"],
+        script: ["var(--font-kaushan)", "cursive"],
+        body: ["var(--font-manrope)", "sans-serif"],
       },
       letterSpacing: {
-        widest2: "0.25em",
+        wide2: "0.14em",
+        wide3: "0.24em",
       },
       maxWidth: {
-        content: "1400px",
+        frame: "1140px",
+      },
+      keyframes: {
+        rise: {
+          "0%": { opacity: "0", transform: "translateY(12px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        rise: "rise 600ms ease-out both",
       },
     },
   },

@@ -1,31 +1,26 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import PageHeader from "@/components/PageHeader";
+import ShopBrowser from "@/components/ShopBrowser";
 import { products } from "@/data/products";
-import ProductCard from "@/components/ProductCard";
 
 export const metadata: Metadata = {
-  title: "Shop | Dillon Kennels",
+  title: "Shop everything",
   description:
-    "Browse the full Dillon Kennels collection of clothing, footwear, and accessories.",
+    "The full Adom Attic collection — tees, denim, skirts, hoodies, jackets and trainers for teenagers, priced in USD or NGN.",
 };
 
 export default function ShopPage() {
   return (
-    <div className="container-page py-12 lg:py-16">
-      <div className="max-w-xl">
-        <p className="eyebrow">Full Collection</p>
-        <h1 className="section-heading mt-3">Shop All</h1>
-        <p className="mt-4 text-base leading-relaxed text-ink/70">
-          Twenty pieces, each rooted in West African textile heritage and cut
-          for everyday wear. Prices shown convert automatically between Naira
-          and US Dollars using the toggle in the header.
-        </p>
-      </div>
-
-      <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    </div>
+    <>
+      <PageHeader
+        title="Shop"
+        intro={`${products.length} pieces, none of them over $40. Switch currency in the header to see everything in naira.`}
+      />
+      {/* useSearchParams needs a Suspense boundary during static prerender. */}
+      <Suspense fallback={<div className="frame py-24" />}>
+        <ShopBrowser />
+      </Suspense>
+    </>
   );
 }

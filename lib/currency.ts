@@ -1,7 +1,16 @@
-export type CurrencyCode = "NGN" | "USD";
+export type CurrencyCode = "USD" | "NGN";
 
-// Fixed demo exchange rate. In a production store this would be sourced
-// from a live FX feed rather than hard-coded.
+export const CURRENCIES: {
+  code: CurrencyCode;
+  label: string;
+  symbol: string;
+}[] = [
+  { code: "USD", label: "US Dollar", symbol: "$" },
+  { code: "NGN", label: "Naira", symbol: "₦" },
+];
+
+// Fixed demo exchange rate. A production store would read this from a live
+// FX feed rather than pinning it at build time.
 export const USD_TO_NGN_RATE = 1550;
 
 export function convertFromUsd(amountUsd: number, currency: CurrencyCode): number {
