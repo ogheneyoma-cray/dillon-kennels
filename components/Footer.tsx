@@ -54,7 +54,6 @@ export default function Footer() {
           className="justify-center"
           markClassName="h-10 w-10"
           wordClassName="text-3xl"
-          subClassName="text-[10px]"
           tone="light"
         />
         <div className="mt-5 flex items-center justify-center gap-3" aria-hidden="true">

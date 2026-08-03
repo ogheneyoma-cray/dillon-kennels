@@ -32,33 +32,22 @@ export default function Logo({
   className = "",
   markClassName = "h-9 w-9",
   wordClassName = "text-2xl",
-  subClassName = "text-[9px]",
   tone = "dark",
 }: {
   className?: string;
   markClassName?: string;
   wordClassName?: string;
-  subClassName?: string;
   tone?: "dark" | "light";
 }) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <LogoMark className={markClassName} />
-      <span className="flex flex-col leading-none">
-        <span
-          className={`font-display font-extrabold lowercase tracking-tight ${wordClassName} ${
-            tone === "light" ? "text-canvas" : "text-pine"
-          }`}
-        >
-          {site.wordmark}
-        </span>
-        <span
-          className={`mt-0.5 font-body font-bold uppercase tracking-mega ${subClassName} ${
-            tone === "light" ? "text-canvas/55" : "text-mudd/70"
-          }`}
-        >
-          {site.subMark}
-        </span>
+      <span
+        className={`font-display font-extrabold lowercase leading-none tracking-tight ${wordClassName} ${
+          tone === "light" ? "text-canvas" : "text-pine"
+        }`}
+      >
+        {site.wordmark}
       </span>
     </span>
   );

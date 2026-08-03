@@ -6,7 +6,6 @@
 export const site = {
   name: "Anikoda",
   wordmark: "anikoda",
-  subMark: "kids · ilorin",
   tagline: "Clothes built for the way children actually play",
   description:
     "Anikoda makes everyday clothing and shoes for children — tees, dresses, shorts, outerwear and footwear, cut in Ilorin to survive real play.",
