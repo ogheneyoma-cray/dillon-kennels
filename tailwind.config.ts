@@ -9,25 +9,41 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#F6F1E9",
-        paper: "#FBF8F2",
-        ink: "#211C17",
-        charcoal: "#332C24",
-        rust: "#B7522E",
-        "rust-dark": "#8F3D20",
-        olive: "#6B6B47",
-        sand: "#E4D8C3",
-        clay: "#C98B5E",
+        midnight: "#0E1030",
+        dusk: "#191C4A",
+        twilight: "#2B2F6B",
+        slate: "#5B5F8F",
+        pearl: "#F6F4EF",
+        linen: "#FFFDF9",
+        mist: "#E7E3D9",
+        orchid: "#9C6FC4",
+        "orchid-dark": "#7B4FA6",
+        moon: "#E3C77E",
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "serif"],
-        body: ["var(--font-work-sans)", "sans-serif"],
+        display: ["var(--font-cormorant)", "serif"],
+        body: ["var(--font-outfit)", "sans-serif"],
       },
       letterSpacing: {
-        widest2: "0.25em",
+        wide3: "0.18em",
+        wide4: "0.3em",
       },
       maxWidth: {
-        content: "1400px",
+        shell: "1480px",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        fadeUp: {
+          "0%": { opacity: "0", transform: "translateY(14px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 26s linear infinite",
+        fadeUp: "fadeUp 600ms ease-out both",
       },
     },
   },

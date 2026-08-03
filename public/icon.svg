@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <rect width="40" height="40" rx="9" fill="#0E1030" />
+  <mask id="moon">
+    <rect width="40" height="40" fill="#fff" />
+    <circle cx="26.5" cy="14" r="11" fill="#000" />
+  </mask>
+  <circle cx="18.5" cy="20" r="11.5" fill="#9C6FC4" mask="url(#moon)" />
+  <path
+    d="M29.5 24c.55 2.95 1.13 3.53 4.08 4.08-2.95.55-3.53 1.13-4.08 4.07-.55-2.94-1.13-3.52-4.07-4.07 2.94-.55 3.52-1.13 4.07-4.08z"
+    fill="#E3C77E"
+  />
+</svg>

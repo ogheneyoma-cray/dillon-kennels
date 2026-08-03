@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProductBySlug, products } from "@/data/products";
+import { getProduct, products } from "@/data/products";
 import ProductDetailActions from "@/components/ProductDetailActions";
 import ProductPrice from "@/components/ProductPrice";
 import ProductCard from "@/components/ProductCard";
@@ -16,103 +16,107 @@ export function generateMetadata({
 }: {
   params: { slug: string };
 }): Metadata {
-  const product = getProductBySlug(params.slug);
-  if (!product) {
-    return { title: "Product Not Found | Dillon Kennels" };
-  }
+  const product = getProduct(params.slug);
+  if (!product) return { title: "Piece not found" };
+
   return {
-    title: `${product.name} | Dillon Kennels`,
-    description: product.description.slice(0, 155),
+    title: product.name,
+    // The full description is a long-form paragraph; trim it for the meta tag.
+    description: `${product.description.slice(0, 155).trimEnd()}…`,
   };
 }
 
-export default function ProductPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const product = getProductBySlug(params.slug);
-  if (!product) {
-    notFound();
-  }
+export default function ProductPage({ params }: { params: { slug: string } }) {
+  const product = getProduct(params.slug);
+  if (!product) notFound();
 
   const related = products
-    .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, 3);
+    .filter(
+      (item) => item.category === product.category && item.id !== product.id
+    )
+    .slice(0, 4);
+
+  const details = [
+    { label: "Fabric", value: product.fabric },
+    { label: "Category", value: product.category },
+    { label: "Sizes", value: product.sizes.join(" · ") },
+    {
+      label: "Availability",
+      value: product.inStock ? "In stock, ships in 48 hours" : "Between dye lots",
+    },
+  ];
 
   return (
-    <div className="container-page py-10 lg:py-16">
-      <nav className="mb-8 text-xs uppercase tracking-wider text-ink/50">
-        <Link href="/" className="hover:text-rust">
-          Home
-        </Link>
-        <span className="mx-2">/</span>
-        <Link href="/shop" className="hover:text-rust">
-          Shop
-        </Link>
-        <span className="mx-2">/</span>
-        <span className="text-ink/80">{product.name}</span>
-      </nav>
+    <>
+      <div className="shell pt-8">
+        <nav aria-label="Breadcrumb" className="text-[12px] text-slate">
+          <Link href="/" className="transition-colors hover:text-orchid">
+            Home
+          </Link>
+          <span className="px-2 text-midnight/25">/</span>
+          <Link href="/shop" className="transition-colors hover:text-orchid">
+            Shop
+          </Link>
+          <span className="px-2 text-midnight/25">/</span>
+          <span className="text-midnight/70">{product.name}</span>
+        </nav>
+      </div>
 
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="relative aspect-[4/5] overflow-hidden bg-sand">
+      <article className="shell grid gap-10 py-10 lg:grid-cols-2 lg:gap-16 lg:py-14">
+        <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-mist">
           <Image
             src={product.image}
             alt={product.name}
             fill
             priority
-            sizes="(min-width: 1024px) 45vw, 100vw"
+            sizes="(min-width: 1024px) 46vw, 92vw"
             className="object-cover"
           />
+          {product.compareAt && (
+            <span className="absolute left-4 top-4 rounded-full bg-orchid px-3 py-1.5 text-[11px] font-semibold text-linen">
+              Reduced
+            </span>
+          )}
         </div>
 
-        <div>
-          <p className="eyebrow">{product.category}</p>
-          <h1 className="mt-3 font-display text-3xl leading-tight text-ink sm:text-4xl">
-            {product.name}
-          </h1>
+        <div className="lg:pt-4">
+          <p className="kicker">{product.category}</p>
+          <h1 className="display-lg mt-3">{product.name}</h1>
+
           <ProductPrice
             priceUsd={product.price}
-            className="mt-3 block text-xl font-semibold text-rust"
+            compareAtUsd={product.compareAt}
+            className="mt-5 inline-block text-2xl font-semibold text-midnight"
+            compareClassName="text-lg"
           />
 
-          <p className="mt-6 text-base leading-relaxed text-ink/80">
+          <p className="mt-6 text-[15px] leading-[1.85] text-midnight/75">
             {product.description}
           </p>
 
-          <div className="mt-8 border-t border-ink/10 pt-8">
-            <ProductDetailActions product={product} />
-          </div>
+          <ProductDetailActions product={product} />
 
-          <dl className="mt-8 space-y-2 border-t border-ink/10 pt-6 text-sm text-ink/70">
-            <div className="flex justify-between">
-              <dt>Availability</dt>
-              <dd className={product.inStock ? "text-olive" : "text-rust"}>
-                {product.inStock ? "In Stock" : "Sold Out"}
-              </dd>
-            </div>
-            <div className="flex justify-between">
-              <dt>Category</dt>
-              <dd>{product.category}</dd>
-            </div>
-            <div className="flex justify-between">
-              <dt>Delivery</dt>
-              <dd>3–7 business days across Nigeria</dd>
-            </div>
+          <dl className="mt-10 divide-y divide-midnight/10 border-t border-midnight/10">
+            {details.map((detail) => (
+              <div key={detail.label} className="flex gap-6 py-3.5 text-sm">
+                <dt className="w-32 shrink-0 text-slate">{detail.label}</dt>
+                <dd className="text-midnight/85">{detail.value}</dd>
+              </div>
+            ))}
           </dl>
         </div>
-      </div>
+      </article>
 
       {related.length > 0 && (
-        <section className="mt-20 border-t border-ink/10 pt-14">
-          <h2 className="section-heading">You May Also Like</h2>
-          <div className="mt-8 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
+        <section className="shell pt-16 lg:pt-20">
+          <h2 className="display-lg">More in {product.category}</h2>
+          <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-7">
             {related.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}
           </div>
         </section>
       )}
-    </div>
+    </>
   );
 }

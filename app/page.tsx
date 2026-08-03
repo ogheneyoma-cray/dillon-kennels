@@ -1,152 +1,162 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getFeaturedProducts } from "@/data/products";
-import ProductCard from "@/components/ProductCard";
+import Hero from "@/components/Hero";
+import CategoryRail from "@/components/CategoryRail";
+import ProductTabs from "@/components/ProductTabs";
+import CountdownBanner from "@/components/CountdownBanner";
+import Testimonials from "@/components/Testimonials";
+import FeatureStrip from "@/components/FeatureStrip";
+import { bestSellers, byCategory, newArrivals, onSale } from "@/data/products";
+
+const JOURNAL = [
+  {
+    date: "12 July",
+    title: "Satin, sateen and silk: what the labels actually mean",
+    excerpt:
+      "Three words used interchangeably on most product pages, describing three genuinely different things. Here is how to tell them apart by touch.",
+  },
+  {
+    date: "28 June",
+    title: "How to sleep cool through a Lagos August",
+    excerpt:
+      "Fibre matters more than weight. A short guide to which fabrics move heat away from the skin and which quietly hold it against you.",
+  },
+];
+
+const MARQUEE = [
+  "Free Lagos delivery over ₦75,000",
+  "14-day returns",
+  "Prices in USD and NGN",
+  "Dispatched within 48 hours",
+  "Made in Lagos",
+];
+
+// The tabbed grid shows a fixed number of tiles per collection so the rows
+// stay even at every breakpoint.
+const TABS = [
+  { id: "new", label: "New Arrivals", products: newArrivals.slice(0, 8) },
+  { id: "best", label: "Best Sellers", products: bestSellers.slice(0, 8) },
+  { id: "sale", label: "On Sale", products: onSale.slice(0, 8) },
+];
 
 export default function HomePage() {
-  const featured = getFeaturedProducts();
+  const womensCount = byCategory("Women's Sleepwear").length;
 
   return (
-    <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-ink/10">
-        <div className="container-page grid grid-cols-1 items-center gap-10 py-14 lg:grid-cols-2 lg:py-24">
-          <div className="order-2 lg:order-1">
-            <h1 className="font-display text-4xl leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
-              Dillon Kennels
-            </h1>
-            <p className="mt-5 max-w-md font-display text-xl italic text-ink/70 sm:text-2xl">
-              Heritage weaves, modern silhouettes, everyday wear.
-            </p>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-ink/70">
-              Clothing, footwear, and accessories designed in Lagos and
-              crafted with West African textile traditions at their core —
-              built to be worn on repeat, not just once.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/shop" className="btn-primary">
-                Shop Now
-              </Link>
-              <Link href="/contact" className="btn-ghost">
-                Get in Touch
-              </Link>
-            </div>
-          </div>
-          <div className="order-1 grid grid-cols-2 gap-4 lg:order-2">
-            <div className="relative aspect-[3/4] translate-y-6 overflow-hidden bg-sand">
-              <Image
-                src="/products/hero-menswear.jpg"
-                alt="Model wearing a Dillon Kennels heritage wrap shirt"
-                fill
-                priority
-                sizes="(min-width: 1024px) 25vw, 45vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="relative aspect-[3/4] overflow-hidden bg-sand">
-              <Image
-                src="/products/hero-womenswear.jpg"
-                alt="Model wearing Dillon Kennels footwear and accessories"
-                fill
-                priority
-                sizes="(min-width: 1024px) 25vw, 45vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+    <>
+      <Hero />
 
-      {/* Brand intro */}
-      <section className="border-b border-ink/10 bg-paper">
-        <div className="container-page grid grid-cols-1 gap-10 py-16 lg:grid-cols-[1fr_1.4fr] lg:py-20">
-          <div>
-            <p className="eyebrow">Our Story</p>
-            <h2 className="section-heading mt-3">
-              Rooted in craft, built for daily life
-            </h2>
-          </div>
-          <div className="space-y-4 text-base leading-relaxed text-ink/80">
-            <p>
-              Dillon Kennels began on the workshop floors of Lagos, where the
-              rhythm of hand looms and the sharp smell of indigo dye have
-              shaped fashion for generations. We started the label with a
-              simple frustration: the clothing that carried our textile
-              heritage — aso-oke weaves, adire resist-dyeing, batik, Ankara
-              wax prints — rarely showed up in wardrobes built for the
-              everyday. It was reserved for weddings, for owambe, for
-              once-a-year occasions. We wanted to change that. Every piece in
-              our collection starts with a material or technique rooted in
-              West African craft, then gets reworked through a contemporary
-              tailoring lens so it fits naturally into a Tuesday commute, a
-              weekend market run, or a Friday dinner out.
-            </p>
-            <p>
-              We work directly with small ateliers and individual artisans
-              across Lagos and the wider South-West, from the narrow-strip
-              weavers of Iseyin to the raffia weavers who hand-construct our
-              bags. That relationship means slower production runs, genuine
-              price transparency, and pieces that carry real variation from
-              one to the next — because they were made by hands, not
-              machines alone. Every product on this site, from our tailored
-              blazers to our woven belts, is built to be worn hard and worn
-              often, backed by fabric choices and construction details we're
-              proud to stand behind. This is fashion that respects where it
-              came from and where you're actually going to wear it.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured products */}
-      <section className="container-page py-16 lg:py-20">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="eyebrow">The Edit</p>
-            <h2 className="section-heading mt-3">Featured Pieces</h2>
-          </div>
-          <Link href="/shop" className="btn-ghost hidden sm:inline-flex">
-            View Full Shop →
-          </Link>
-        </div>
-
-        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
-          {featured.map((product) => (
-            <ProductCard key={product.id} product={product} />
+      {/* Scrolling assurance rail. The second copy is duplicated purely to make
+          the loop seamless, so it is hidden from assistive tech. */}
+      <div className="overflow-hidden border-b border-midnight/10 bg-linen py-3.5">
+        <div className="flex w-max animate-marquee">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex gap-12 pr-12" aria-hidden={copy === 1}>
+              {MARQUEE.map((item) => (
+                <span
+                  key={item}
+                  className="whitespace-nowrap text-[11px] uppercase tracking-wide3 text-slate"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
           ))}
         </div>
+      </div>
 
-        <div className="mt-10 flex justify-center sm:hidden">
-          <Link href="/shop" className="btn-secondary w-full">
-            View Full Shop
+      <CategoryRail />
+      <ProductTabs tabs={TABS} />
+
+      {/* Two-up promotional panels */}
+      <section className="shell grid gap-6 pt-24 lg:grid-cols-2 lg:pt-28">
+        {[
+          {
+            src: "/xiradix/pinstripe-satin-robe.jpg",
+            title: "The robe edit",
+            copy: "Waffle, terry, satin and cotton lace — ten ways to answer the door.",
+            href: "/shop?category=Robes+%26+Kimonos",
+          },
+          {
+            src: "/xiradix/colonnade-draped-nightgown.jpg",
+            title: "Women's sleepwear",
+            copy: `${womensCount} pieces, from a $22 modal camisole to a floor-length bias-cut gown.`,
+            href: "/shop?category=Women%27s+Sleepwear",
+          },
+        ].map((panel) => (
+          <Link
+            key={panel.title}
+            href={panel.href}
+            className="group relative flex aspect-[4/3] items-end overflow-hidden rounded-3xl bg-mist"
+          >
+            <Image
+              src={panel.src}
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 45vw, 92vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-midnight/80 via-midnight/15 to-transparent" />
+            <div className="relative p-8 lg:p-10">
+              <h3 className="font-display text-3xl font-light text-linen lg:text-4xl">
+                {panel.title}
+              </h3>
+              <p className="mt-2 max-w-sm text-sm leading-relaxed text-linen/75">
+                {panel.copy}
+              </p>
+              <span className="mt-5 inline-flex items-center gap-2 border-b border-linen pb-1 text-sm text-linen">
+                Shop now
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3.5 12.5 12.5 3.5M6 3.5h6.5V10"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
           </Link>
+        ))}
+      </section>
+
+      <CountdownBanner />
+      <Testimonials />
+
+      <section className="shell pt-24 lg:pt-28">
+        <div>
+          <p className="kicker">Journal</p>
+          <h2 className="display-lg mt-3">Notes on cloth and rest</h2>
+        </div>
+
+        <div className="mt-12 grid gap-8 md:grid-cols-2">
+          {JOURNAL.map((entry) => (
+            <article
+              key={entry.title}
+              className="rounded-2xl border border-midnight/10 bg-linen p-8"
+            >
+              <p className="text-[11px] uppercase tracking-wide3 text-orchid">
+                {entry.date}
+              </p>
+              <h3 className="mt-3 font-display text-2xl font-light leading-snug text-midnight">
+                {entry.title}
+              </h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-midnight/70">
+                {entry.excerpt}
+              </p>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* Promo strip */}
-      <section className="bg-rust text-cream">
-        <div className="container-page grid grid-cols-1 gap-8 py-14 text-center sm:grid-cols-3 sm:text-left">
-          <div>
-            <p className="font-display text-xl">Handwoven Materials</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Aso-oke, adire, batik, and raffia sourced directly from
-              artisans.
-            </p>
-          </div>
-          <div>
-            <p className="font-display text-xl">Lagos Delivery</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Free delivery within Lagos on orders over ₦75,000.
-            </p>
-          </div>
-          <div>
-            <p className="font-display text-xl">Made to Last</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Constructed for daily wear, not just special occasions.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
+      <FeatureStrip />
+    </>
   );
 }

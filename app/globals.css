@@ -8,58 +8,91 @@
   }
 
   body {
-    @apply bg-cream text-ink font-body;
-    background-image: radial-gradient(
-        circle at 100% 0%,
-        rgba(183, 82, 46, 0.06),
-        transparent 45%
-      ),
-      radial-gradient(circle at 0% 100%, rgba(107, 107, 71, 0.06), transparent 45%);
+    @apply bg-pearl font-body text-midnight;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display;
+    @apply font-display font-light;
   }
 
   ::selection {
-    background-color: #b7522e;
-    color: #f6f1e9;
+    background-color: #9c6fc4;
+    color: #fffdf9;
   }
 }
 
 @layer components {
-  .container-page {
-    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-12;
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-14;
   }
 
-  .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-widest2 text-rust;
+  /* Small uppercase kicker used above section headings. */
+  .kicker {
+    @apply text-[11px] font-medium uppercase tracking-wide4 text-orchid;
   }
 
-  .btn-primary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 bg-ink px-7 py-3 text-sm font-semibold uppercase tracking-wider text-cream transition-colors duration-200 hover:bg-rust active:bg-rust-dark;
+  /* Modave-style display heading: large, light-weight serif. */
+  .display-xl {
+    @apply font-display text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl;
   }
 
-  .btn-secondary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 border border-ink px-7 py-3 text-sm font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:border-rust hover:text-rust;
+  .display-lg {
+    @apply font-display text-3xl font-light leading-[1.1] tracking-tight sm:text-4xl lg:text-[2.75rem];
   }
 
-  .btn-ghost {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-ink underline decoration-rust decoration-2 underline-offset-4 transition-colors hover:text-rust;
+  .pill {
+    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full px-7 text-[13px] font-medium tracking-wide;
   }
 
-  .input-field {
-    @apply w-full min-h-[44px] border border-ink/20 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-rust focus:outline-none focus:ring-1 focus:ring-rust;
+  .pill-dark {
+    @apply pill bg-midnight text-linen transition-colors duration-200 hover:bg-orchid-dark;
   }
 
-  .label-text {
-    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink/70;
+  .pill-light {
+    @apply pill bg-linen text-midnight transition-colors duration-200 hover:bg-orchid hover:text-linen;
   }
 
-  .section-heading {
-    @apply font-display text-3xl leading-tight text-ink sm:text-4xl;
+  .pill-outline {
+    @apply pill border border-midnight/25 text-midnight transition-colors duration-200 hover:border-orchid hover:text-orchid;
+  }
+
+  /* Underlined text link that mirrors Modave's "View All Collection". */
+  .link-rule {
+    @apply inline-flex items-center gap-2 border-b border-midnight pb-1 text-sm font-medium text-midnight transition-colors hover:border-orchid hover:text-orchid;
+  }
+
+  .field {
+    @apply min-h-[48px] w-full rounded-full border border-midnight/15 bg-linen px-5 text-sm text-midnight placeholder:text-slate/60 focus:border-orchid focus:outline-none focus:ring-1 focus:ring-orchid;
+  }
+
+  .field-box {
+    @apply min-h-[48px] w-full rounded-2xl border border-midnight/15 bg-linen px-5 py-3 text-sm text-midnight placeholder:text-slate/60 focus:border-orchid focus:outline-none focus:ring-1 focus:ring-orchid;
+  }
+
+  .field-label {
+    @apply mb-2 block text-[11px] font-medium uppercase tracking-wide3 text-slate;
+  }
+
+  .prose-legal {
+    @apply text-[15px] leading-[1.85] text-midnight/75;
+  }
+
+  .prose-legal h2 {
+    @apply mb-3 mt-12 font-display text-2xl font-normal text-midnight sm:text-[1.75rem];
+  }
+
+  .prose-legal h3 {
+    @apply mb-2 mt-8 font-body text-base font-semibold tracking-tight text-midnight;
+  }
+
+  .prose-legal p {
+    @apply mb-4;
+  }
+
+  .prose-legal ul {
+    @apply mb-4 list-disc space-y-2 pl-5 marker:text-orchid;
   }
 }

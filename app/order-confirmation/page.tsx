@@ -1,58 +1,74 @@
-"use client";
-
-import { Suspense } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { LogoMark } from "@/components/Logo";
+import { site } from "@/lib/site";
 
-function ConfirmationContent() {
-  const searchParams = useSearchParams();
-  const orderNumber = searchParams.get("order") ?? "DK-000000";
+export const metadata: Metadata = {
+  title: "Order confirmed",
+  description: "Your Xira Dix order has been received.",
+};
 
-  return (
-    <div className="container-page flex flex-col items-center py-20 text-center lg:py-28">
-      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-olive/15 text-olive">
-        <svg
-          width="30"
-          height="30"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </div>
-
-      <p className="eyebrow mt-6">Order Confirmed</p>
-      <h1 className="section-heading mt-3">Thank you for your order</h1>
-      <p className="mt-4 max-w-md text-ink/70">
-        We've received your order and we're getting it ready. A confirmation
-        email with your order details has been sent to your inbox.
-      </p>
-
-      <div className="mt-8 border border-ink/10 bg-paper px-8 py-5">
-        <p className="text-xs uppercase tracking-wider text-ink/50">
-          Order Number
-        </p>
-        <p className="mt-1 font-display text-2xl text-rust">{orderNumber}</p>
-      </div>
-
-      <div className="mt-10 flex flex-wrap justify-center gap-4">
-        <Link href="/shop" className="btn-primary">
-          Continue Shopping
-        </Link>
-        <Link href="/contact" className="btn-secondary">
-          Contact Support
-        </Link>
-      </div>
-    </div>
-  );
-}
+const STEPS = [
+  {
+    title: "Confirmation email",
+    copy: "A receipt is on its way to the address you gave us. Check spam if it has not landed within ten minutes.",
+  },
+  {
+    title: "Packed within 48 hours",
+    copy: "Everything is folded in tissue and boxed by hand at the Ajah studio before it leaves us.",
+  },
+  {
+    title: "Courier handover",
+    copy: "You will get a tracking number by email the moment the courier scans the parcel.",
+  },
+];
 
 export default function OrderConfirmationPage() {
   return (
-    <Suspense fallback={null}>
-      <ConfirmationContent />
-    </Suspense>
+    <div className="shell py-20 lg:py-28">
+      <div className="mx-auto max-w-2xl text-center">
+        <LogoMark className="mx-auto h-12 w-12 text-orchid" />
+        <p className="kicker mt-8">Order received</p>
+        <h1 className="display-lg mt-3">Thank you — that is all done</h1>
+        <p className="mt-5 text-[15px] leading-relaxed text-midnight/70">
+          Your order is in the queue at the studio. This is a demonstration
+          storefront, so no payment was taken and nothing will actually ship.
+        </p>
+      </div>
+
+      <ol className="mx-auto mt-14 grid max-w-4xl gap-6 md:grid-cols-3">
+        {STEPS.map((step, index) => (
+          <li
+            key={step.title}
+            className="rounded-2xl border border-midnight/10 bg-linen p-7"
+          >
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-midnight font-display text-lg text-linen">
+              {index + 1}
+            </span>
+            <h2 className="mt-5 font-body text-[15px] font-semibold text-midnight">
+              {step.title}
+            </h2>
+            <p className="mt-2 text-[13px] leading-relaxed text-slate">
+              {step.copy}
+            </p>
+          </li>
+        ))}
+      </ol>
+
+      <div className="mt-14 flex flex-col items-center gap-4">
+        <Link href="/shop" className="pill-dark">
+          Keep shopping
+        </Link>
+        <p className="text-[13px] text-slate">
+          Something wrong with the order? Email{" "}
+          <a
+            href={`mailto:${site.email}`}
+            className="text-orchid underline underline-offset-4"
+          >
+            {site.email}
+          </a>
+        </p>
+      </div>
+    </div>
   );
 }
