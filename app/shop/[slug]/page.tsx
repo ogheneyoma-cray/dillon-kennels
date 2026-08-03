@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProductBySlug, products } from "@/data/products";
+import { getProduct, products } from "@/data/products";
 import ProductDetailActions from "@/components/ProductDetailActions";
 import ProductPrice from "@/components/ProductPrice";
 import ProductCard from "@/components/ProductCard";
+import SectionHeading from "@/components/SectionHeading";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
@@ -16,103 +17,125 @@ export function generateMetadata({
 }: {
   params: { slug: string };
 }): Metadata {
-  const product = getProductBySlug(params.slug);
-  if (!product) {
-    return { title: "Product Not Found | Dillon Kennels" };
-  }
+  const product = getProduct(params.slug);
+  if (!product) return { title: "Piece not found" };
+
   return {
-    title: `${product.name} | Dillon Kennels`,
-    description: product.description.slice(0, 155),
+    title: product.name,
+    // The stored description is long-form; trim it for the meta tag.
+    description: `${product.description.slice(0, 155).trimEnd()}…`,
   };
 }
 
-export default function ProductPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const product = getProductBySlug(params.slug);
-  if (!product) {
-    notFound();
-  }
+export default function ProductPage({ params }: { params: { slug: string } }) {
+  const product = getProduct(params.slug);
+  if (!product) notFound();
 
   const related = products
-    .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, 3);
+    .filter(
+      (item) => item.category === product.category && item.id !== product.id
+    )
+    .slice(0, 4);
+
+  const details = [
+    { label: "Fabric", value: product.fabric },
+    { label: "Category", value: product.category },
+    { label: "Sizes", value: product.sizes.join(" · ") },
+    {
+      label: "Availability",
+      value: product.inStock ? "In stock, ships in 48 hours" : "Between runs",
+    },
+  ];
 
   return (
-    <div className="container-page py-10 lg:py-16">
-      <nav className="mb-8 text-xs uppercase tracking-wider text-ink/50">
-        <Link href="/" className="hover:text-rust">
-          Home
-        </Link>
-        <span className="mx-2">/</span>
-        <Link href="/shop" className="hover:text-rust">
-          Shop
-        </Link>
-        <span className="mx-2">/</span>
-        <span className="text-ink/80">{product.name}</span>
-      </nav>
+    <>
+      <div className="boxed pt-8">
+        <nav
+          aria-label="Breadcrumb"
+          className="text-[11px] font-bold uppercase tracking-bold3 text-mudd"
+        >
+          <Link href="/" className="transition-colors hover:text-tangerine">
+            Home
+          </Link>
+          <span className="px-2 text-pine/25">/</span>
+          <Link href="/shop" className="transition-colors hover:text-tangerine">
+            Shop
+          </Link>
+          <span className="px-2 text-pine/25">/</span>
+          <span className="text-pine">{product.name}</span>
+        </nav>
+      </div>
 
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="relative aspect-[4/5] overflow-hidden bg-sand">
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            priority
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            className="object-cover"
-          />
+      <article className="boxed grid gap-10 py-10 lg:grid-cols-2 lg:gap-14">
+        <div className="relative border border-pine/10 p-3">
+          <div className="relative aspect-[3/4] overflow-hidden bg-shell">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              priority
+              sizes="(min-width: 1024px) 46vw, 92vw"
+              className="object-cover"
+            />
+            {(product.compareAt || !product.inStock) && (
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute right-0 top-0 h-[90px] w-[90px] overflow-hidden"
+              >
+                <span
+                  className={`absolute -right-[38px] top-[20px] w-[140px] rotate-45 py-1.5 text-center text-[11px] font-bold uppercase tracking-bold3 text-canvas ${
+                    product.inStock ? "bg-tangerine" : "bg-mudd"
+                  }`}
+                >
+                  {product.inStock ? "Sale" : "Sold"}
+                </span>
+              </span>
+            )}
+          </div>
         </div>
 
         <div>
-          <p className="eyebrow">{product.category}</p>
-          <h1 className="mt-3 font-display text-3xl leading-tight text-ink sm:text-4xl">
-            {product.name}
-          </h1>
+          <p className="text-[11px] font-bold uppercase tracking-bold3 text-lagoon">
+            {product.category}
+          </p>
+          <h1 className="head-xl mt-3 text-pine">{product.name}</h1>
+
           <ProductPrice
             priceUsd={product.price}
-            className="mt-3 block text-xl font-semibold text-rust"
+            compareAtUsd={product.compareAt}
+            className="mt-5 inline-block text-3xl font-extrabold text-pine"
+            compareClassName="text-xl"
           />
 
-          <p className="mt-6 text-base leading-relaxed text-ink/80">
+          <p className="mt-6 text-[15px] leading-[1.85] text-mudd">
             {product.description}
           </p>
 
-          <div className="mt-8 border-t border-ink/10 pt-8">
-            <ProductDetailActions product={product} />
-          </div>
+          <ProductDetailActions product={product} />
 
-          <dl className="mt-8 space-y-2 border-t border-ink/10 pt-6 text-sm text-ink/70">
-            <div className="flex justify-between">
-              <dt>Availability</dt>
-              <dd className={product.inStock ? "text-olive" : "text-rust"}>
-                {product.inStock ? "In Stock" : "Sold Out"}
-              </dd>
-            </div>
-            <div className="flex justify-between">
-              <dt>Category</dt>
-              <dd>{product.category}</dd>
-            </div>
-            <div className="flex justify-between">
-              <dt>Delivery</dt>
-              <dd>3–7 business days across Nigeria</dd>
-            </div>
+          <dl className="mt-10 divide-y divide-pine/10 border-y border-pine/10">
+            {details.map((detail) => (
+              <div key={detail.label} className="flex gap-6 py-3.5 text-sm">
+                <dt className="w-32 shrink-0 text-[11px] font-bold uppercase tracking-bold3 text-mudd">
+                  {detail.label}
+                </dt>
+                <dd className="text-pine">{detail.value}</dd>
+              </div>
+            ))}
           </dl>
         </div>
-      </div>
+      </article>
 
       {related.length > 0 && (
-        <section className="mt-20 border-t border-ink/10 pt-14">
-          <h2 className="section-heading">You May Also Like</h2>
-          <div className="mt-8 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
+        <section className="boxed pb-20">
+          <SectionHeading title={`More ${product.category}`} />
+          <div className="mt-14 grid grid-cols-2 gap-x-5 gap-y-14 lg:grid-cols-4 lg:gap-x-6">
             {related.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}
           </div>
         </section>
       )}
-    </div>
+    </>
   );
 }

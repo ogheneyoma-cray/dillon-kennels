@@ -7,14 +7,9 @@
     scroll-behavior: smooth;
   }
 
+  /* The reference layout is a boxed one: a tinted page behind white panels. */
   body {
-    @apply bg-cream text-ink font-body;
-    background-image: radial-gradient(
-        circle at 100% 0%,
-        rgba(183, 82, 46, 0.06),
-        transparent 45%
-      ),
-      radial-gradient(circle at 0% 100%, rgba(107, 107, 71, 0.06), transparent 45%);
+    @apply bg-shell font-body text-pine;
   }
 
   h1,
@@ -25,41 +20,80 @@
   }
 
   ::selection {
-    background-color: #b7522e;
-    color: #f6f1e9;
+    background-color: #f2703a;
+    color: #fff8f0;
   }
 }
 
 @layer components {
-  .container-page {
-    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-12;
+  /* Boxed page shell — content never touches the viewport edge on desktop. */
+  .boxed {
+    @apply mx-auto w-full max-w-box px-4 sm:px-6;
   }
 
-  .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-widest2 text-rust;
+  /* White content panel sitting on the tinted page. */
+  .panel {
+    @apply bg-canvas shadow-panel;
   }
 
-  .btn-primary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 bg-ink px-7 py-3 text-sm font-semibold uppercase tracking-wider text-cream transition-colors duration-200 hover:bg-rust active:bg-rust-dark;
+  /* Uppercase condensed heading, as used throughout the reference. */
+  .head-xl {
+    @apply font-display text-3xl font-extrabold uppercase leading-tight tracking-bold3 sm:text-4xl;
   }
 
-  .btn-secondary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 border border-ink px-7 py-3 text-sm font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:border-rust hover:text-rust;
+  .head-lg {
+    @apply font-display text-2xl font-bold uppercase leading-tight tracking-bold3 sm:text-3xl;
   }
 
-  .btn-ghost {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-ink underline decoration-rust decoration-2 underline-offset-4 transition-colors hover:text-rust;
+  .head-sm {
+    @apply font-display text-lg font-bold uppercase tracking-bold3;
   }
 
-  .input-field {
-    @apply w-full min-h-[44px] border border-ink/20 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-rust focus:outline-none focus:ring-1 focus:ring-rust;
+  .btn {
+    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full px-7 text-[12px] font-bold uppercase tracking-bold3 transition-colors duration-200;
   }
 
-  .label-text {
-    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink/70;
+  .btn-solid {
+    @apply btn bg-tangerine text-canvas hover:bg-tangerine-dark;
   }
 
-  .section-heading {
-    @apply font-display text-3xl leading-tight text-ink sm:text-4xl;
+  .btn-dark {
+    @apply btn bg-pine text-canvas hover:bg-forest;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-pine text-pine hover:bg-pine hover:text-canvas;
+  }
+
+  .btn-ghost-light {
+    @apply btn border-2 border-canvas text-canvas hover:bg-canvas hover:text-pine;
+  }
+
+  .field {
+    @apply min-h-[48px] w-full rounded-lg border-2 border-pine/15 bg-white px-4 text-sm text-pine placeholder:text-mudd/50 focus:border-tangerine focus:outline-none;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-[11px] font-bold uppercase tracking-bold3 text-mudd;
+  }
+
+  .prose-legal {
+    @apply text-[15px] leading-[1.85] text-mudd;
+  }
+
+  .prose-legal h2 {
+    @apply mb-3 mt-11 font-display text-xl font-bold uppercase tracking-bold3 text-pine;
+  }
+
+  .prose-legal h3 {
+    @apply mb-2 mt-7 font-body text-base font-bold text-pine;
+  }
+
+  .prose-legal p {
+    @apply mb-4;
+  }
+
+  .prose-legal ul {
+    @apply mb-4 list-disc space-y-2 pl-5 marker:text-tangerine;
   }
 }

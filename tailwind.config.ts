@@ -9,25 +9,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#F6F1E9",
-        paper: "#FBF8F2",
-        ink: "#211C17",
-        charcoal: "#332C24",
-        rust: "#B7522E",
-        "rust-dark": "#8F3D20",
-        olive: "#6B6B47",
-        sand: "#E4D8C3",
-        clay: "#C98B5E",
+        pine: "#143B32",
+        forest: "#1E5347",
+        tangerine: "#F2703A",
+        "tangerine-dark": "#D2551F",
+        lagoon: "#2AA198",
+        sunshine: "#FFC94A",
+        bubble: "#FF8FA3",
+        canvas: "#FFF8F0",
+        shell: "#F3E9DC",
+        mudd: "#4A5B56",
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "serif"],
-        body: ["var(--font-work-sans)", "sans-serif"],
+        display: ["var(--font-baloo)", "cursive"],
+        body: ["var(--font-nunito)", "sans-serif"],
       },
       letterSpacing: {
-        widest2: "0.25em",
+        mega: "0.35em",
+        bold3: "0.2em",
       },
       maxWidth: {
-        content: "1400px",
+        box: "1200px",
+      },
+      boxShadow: {
+        panel: "0 2px 24px rgba(20, 59, 50, 0.07)",
+      },
+      keyframes: {
+        floaty: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+      },
+      animation: {
+        floaty: "floaty 4s ease-in-out infinite",
       },
     },
   },

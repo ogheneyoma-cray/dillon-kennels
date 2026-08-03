@@ -1,58 +1,70 @@
-"use client";
-
-import { Suspense } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { LogoMark } from "@/components/Logo";
+import SectionHeading from "@/components/SectionHeading";
+import { site } from "@/lib/site";
 
-function ConfirmationContent() {
-  const searchParams = useSearchParams();
-  const orderNumber = searchParams.get("order") ?? "DK-000000";
+export const metadata: Metadata = {
+  title: "Order confirmed",
+  description: "Your Anikoda order has been received.",
+};
 
-  return (
-    <div className="container-page flex flex-col items-center py-20 text-center lg:py-28">
-      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-olive/15 text-olive">
-        <svg
-          width="30"
-          height="30"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </div>
-
-      <p className="eyebrow mt-6">Order Confirmed</p>
-      <h1 className="section-heading mt-3">Thank you for your order</h1>
-      <p className="mt-4 max-w-md text-ink/70">
-        We've received your order and we're getting it ready. A confirmation
-        email with your order details has been sent to your inbox.
-      </p>
-
-      <div className="mt-8 border border-ink/10 bg-paper px-8 py-5">
-        <p className="text-xs uppercase tracking-wider text-ink/50">
-          Order Number
-        </p>
-        <p className="mt-1 font-display text-2xl text-rust">{orderNumber}</p>
-      </div>
-
-      <div className="mt-10 flex flex-wrap justify-center gap-4">
-        <Link href="/shop" className="btn-primary">
-          Continue Shopping
-        </Link>
-        <Link href="/contact" className="btn-secondary">
-          Contact Support
-        </Link>
-      </div>
-    </div>
-  );
-}
+const STEPS = [
+  {
+    title: "Confirmation email",
+    copy: "A receipt is on its way to the address you gave us. Check spam if it has not landed within ten minutes.",
+  },
+  {
+    title: "Packed in 48 hours",
+    copy: "Everything is folded and boxed by hand at the Gaa-Saka workroom before it leaves us.",
+  },
+  {
+    title: "Courier handover",
+    copy: "You will get a tracking number by email the moment the courier scans the parcel.",
+  },
+];
 
 export default function OrderConfirmationPage() {
   return (
-    <Suspense fallback={null}>
-      <ConfirmationContent />
-    </Suspense>
+    <div className="boxed py-20">
+      <div className="mx-auto max-w-2xl text-center">
+        <LogoMark className="mx-auto h-14 w-14 animate-floaty" />
+      </div>
+
+      <SectionHeading
+        className="mt-8"
+        title="Thank you — that's all done"
+        subtitle="Your order is in the queue at the workroom. This is a demonstration storefront, so no payment was taken and nothing will actually ship."
+      />
+
+      <ol className="mx-auto mt-14 grid max-w-4xl gap-6 md:grid-cols-3">
+        {STEPS.map((step, index) => (
+          <li key={step.title} className="border border-pine/10 bg-white p-7">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-tangerine font-display text-lg font-extrabold text-canvas">
+              {index + 1}
+            </span>
+            <h2 className="head-sm mt-5 text-pine">{step.title}</h2>
+            <p className="mt-2 text-[13px] leading-relaxed text-mudd">
+              {step.copy}
+            </p>
+          </li>
+        ))}
+      </ol>
+
+      <div className="mt-14 flex flex-col items-center gap-4">
+        <Link href="/shop" className="btn-solid">
+          Keep shopping
+        </Link>
+        <p className="text-[13px] text-mudd">
+          Something wrong with the order? Email{" "}
+          <a
+            href={`mailto:${site.email}`}
+            className="font-bold text-tangerine underline underline-offset-4"
+          >
+            {site.email}
+          </a>
+        </p>
+      </div>
+    </div>
   );
 }

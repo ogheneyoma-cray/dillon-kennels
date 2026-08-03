@@ -2,79 +2,147 @@
 
 import { useState, type FormEvent } from "react";
 
+type Errors = Record<string, string>;
+
+const SUBJECTS = [
+  "An order I've placed",
+  "Sizing and fit",
+  "Returns or exchanges",
+  "Wholesale and stockists",
+  "Something else",
+];
+
+/**
+ * Demo contact form. Nothing is transmitted — submissions are validated in the
+ * browser and acknowledged in place.
+ */
 export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Errors>({});
+  const [sent, setSent] = useState(false);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitted(true);
-    event.currentTarget.reset();
-  };
-
-  if (submitted) {
+  if (sent) {
     return (
-      <div className="border border-olive/30 bg-olive/10 p-6">
-        <p className="font-display text-xl text-ink">Message sent</p>
-        <p className="mt-2 text-sm text-ink/70">
-          Thanks for reaching out — our support team will reply to your email
-          within one business day.
+      <div
+        role="status"
+        aria-live="polite"
+        className="border-l-4 border-lagoon bg-lagoon/10 p-8"
+      >
+        <h2 className="head-sm text-pine">Message noted</h2>
+        <p className="mt-3 text-[15px] leading-relaxed text-mudd">
+          On the live store this would reach the care team, who reply within one
+          working day. On this demonstration build nothing is actually sent.
         </p>
         <button
           type="button"
-          onClick={() => setSubmitted(false)}
-          className="btn-ghost mt-4"
+          onClick={() => setSent(false)}
+          className="mt-6 text-[12px] font-bold uppercase tracking-bold3 text-tangerine underline underline-offset-4"
         >
-          Send another message
+          Write another message
         </button>
       </div>
     );
   }
 
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const next: Errors = {};
+
+    if (!String(data.get("name") ?? "").trim()) {
+      next.name = "Let us know who we're replying to";
+    }
+
+    const email = String(data.get("email") ?? "").trim();
+    if (!email) {
+      next.email = "We need an email address to reply to";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      next.email = "That email address does not look right";
+    }
+
+    if (String(data.get("message") ?? "").trim().length < 10) {
+      next.message = "A little more detail will help us answer properly";
+    }
+
+    setErrors(next);
+    if (Object.keys(next).length === 0) setSent(true);
+  };
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div>
-        <label htmlFor="contact-name" className="label-text">
-          Full Name
-        </label>
-        <input
-          id="contact-name"
-          name="name"
-          type="text"
-          required
-          autoComplete="name"
-          className="input-field"
-          placeholder="Your name"
-        />
+    <form onSubmit={handleSubmit} noValidate className="grid gap-5">
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="name" className="field-label">
+            Your name
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            className="field"
+          />
+          {errors.name && (
+            <p id="name-error" className="mt-1.5 text-[12px] font-bold text-tangerine-dark">
+              {errors.name}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <label htmlFor="email" className="field-label">
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? "email-error" : undefined}
+            className="field"
+          />
+          {errors.email && (
+            <p id="email-error" className="mt-1.5 text-[12px] font-bold text-tangerine-dark">
+              {errors.email}
+            </p>
+          )}
+        </div>
       </div>
+
       <div>
-        <label htmlFor="contact-email" className="label-text">
-          Email Address
+        <label htmlFor="subject" className="field-label">
+          What is it about?
         </label>
-        <input
-          id="contact-email"
-          name="email"
-          type="email"
-          required
-          autoComplete="email"
-          className="input-field"
-          placeholder="you@example.com"
-        />
+        <select id="subject" name="subject" className="field">
+          {SUBJECTS.map((subject) => (
+            <option key={subject}>{subject}</option>
+          ))}
+        </select>
       </div>
+
       <div>
-        <label htmlFor="contact-message" className="label-text">
+        <label htmlFor="message" className="field-label">
           Message
         </label>
         <textarea
-          id="contact-message"
+          id="message"
           name="message"
-          required
-          rows={5}
-          className="input-field resize-none"
-          placeholder="How can we help?"
+          rows={6}
+          aria-invalid={Boolean(errors.message)}
+          aria-describedby={errors.message ? "message-error" : undefined}
+          className="field resize-y py-3"
         />
+        {errors.message && (
+          <p id="message-error" className="mt-1.5 text-[12px] font-bold text-tangerine-dark">
+            {errors.message}
+          </p>
+        )}
       </div>
-      <button type="submit" className="btn-primary w-full sm:w-auto">
-        Send Message
+
+      <button type="submit" className="btn-solid w-full sm:w-auto sm:justify-self-start">
+        Send message
       </button>
     </form>
   );
