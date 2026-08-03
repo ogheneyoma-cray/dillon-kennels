@@ -18,30 +18,7 @@ const CUSTOMER_CARE = [
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
 ];
 
-const SOCIALS = [
-  {
-    label: "Instagram",
-    href: "https://instagram.com",
-    d: "M8.4 3h7.2A5.4 5.4 0 0 1 21 8.4v7.2a5.4 5.4 0 0 1-5.4 5.4H8.4A5.4 5.4 0 0 1 3 15.6V8.4A5.4 5.4 0 0 1 8.4 3Zm0 1.8A3.6 3.6 0 0 0 4.8 8.4v7.2a3.6 3.6 0 0 0 3.6 3.6h7.2a3.6 3.6 0 0 0 3.6-3.6V8.4a3.6 3.6 0 0 0-3.6-3.6H8.4ZM12 7.6a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8Zm0 1.55a2.85 2.85 0 1 0 0 5.7 2.85 2.85 0 0 0 0-5.7Zm4.57-2.06a1.03 1.03 0 1 1 0 2.06 1.03 1.03 0 0 1 0-2.06Z",
-  },
-  {
-    label: "Facebook",
-    href: "https://facebook.com",
-    d: "M13.2 20v-7.2h2.4l.36-2.8H13.2V8.22c0-.81.22-1.36 1.39-1.36h1.48V4.36A19.9 19.9 0 0 0 13.9 4.25c-2.14 0-3.6 1.3-3.6 3.7V10H7.9v2.8h2.4V20h2.9Z",
-  },
-  {
-    label: "TikTok",
-    href: "https://tiktok.com",
-    d: "M14.2 4h2.15c.14 1.5 1.02 2.75 2.65 3v2.2a5.6 5.6 0 0 1-2.65-.78v4.9a4.55 4.55 0 1 1-4.55-4.55c.2 0 .4.01.6.04v2.24a2.36 2.36 0 1 0 1.8 2.29V4Z",
-  },
-  {
-    label: "Pinterest",
-    href: "https://pinterest.com",
-    d: "M12 4a8 8 0 0 0-2.92 15.45c-.07-.62-.13-1.58.03-2.26l.9-3.83s-.23-.46-.23-1.14c0-1.07.62-1.87 1.39-1.87.65 0 .97.49.97 1.08 0 .66-.42 1.64-.64 2.55-.18.77.38 1.39 1.14 1.39 1.37 0 2.42-1.44 2.42-3.52 0-1.84-1.32-3.13-3.21-3.13-2.19 0-3.47 1.64-3.47 3.33 0 .66.25 1.37.57 1.75a.23.23 0 0 1 .05.22l-.22.88c-.03.14-.11.17-.26.1-.98-.45-1.59-1.87-1.59-3.01 0-2.45 1.78-4.7 5.13-4.7 2.69 0 4.79 1.92 4.79 4.49 0 2.68-1.69 4.83-4.03 4.83-.79 0-1.53-.41-1.78-.9l-.48 1.85c-.18.68-.65 1.53-.97 2.05A8 8 0 1 0 12 4Z",
-  },
-];
-
-const PAYMENTS = ["Visa", "Mastercard", "Verve", "Paystack", "Flutterwave"];
+const PAYMENTS = ["Visa", "Mastercard", "Verve"];
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -76,27 +53,6 @@ export default function Footer() {
                 {site.phone}
               </a>
             </p>
-          </div>
-          <div className="mt-6 flex gap-2.5">
-            {SOCIALS.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-linen/20 text-linen/80 transition-colors hover:border-moon hover:text-moon"
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d={social.d} fill="currentColor" />
-                </svg>
-              </a>
-            ))}
           </div>
         </div>
 
