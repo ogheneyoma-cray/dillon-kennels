@@ -25,7 +25,7 @@ const LEGAL_LINKS = [
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
 ];
 
-const PAYMENTS = ["Visa", "Mastercard", "Verve", "Bank transfer"];
+const PAYMENTS = ["Visa", "Mastercard"];
 
 function ColumnHeading({ children }: { children: React.ReactNode }) {
   return (
