@@ -1,175 +1,116 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import BookCover from "@/components/BookCover";
+import { getProduct } from "@/data/products";
 
-const SLIDES = [
-  {
-    image: "/crewsita/hero-01.jpg",
-    script: "New season",
-    title: "Up to 25% off\nleather formals",
-    copy: "Oxfords, brogues and monkstraps in the whole size run — every pair under forty dollars.",
-    href: "/shop?category=Men%27s+Formal",
-    cta: "Shop men's",
-  },
-  {
-    image: "/crewsita/hero-02.jpg",
-    script: "For her",
-    title: "Heels you can\nactually stand in",
-    copy: "Block heels, pointed pumps and flats built on a last that leaves the toes room to sit.",
-    href: "/shop?category=Women%27s+Heels",
-    cta: "Shop women's",
-  },
-  {
-    image: "/crewsita/hero-03.jpg",
-    script: "Everyday",
-    title: "Twenty pairs,\none price band",
-    copy: "Nothing in the shop costs more than $40, and nothing is held back for a higher tier.",
-    href: "/shop",
-    cta: "See everything",
-  },
+const STATS = [
+  { figure: "20", label: "Titles in print" },
+  { figure: "6", label: "House authors" },
+  { figure: "3", label: "Formats per book" },
 ];
 
 /**
- * Full-bleed image slider with the copy block sitting over the left third —
- * the arrangement the reference uses for its nivo slider, including the thin
- * progress rule that runs along the bottom edge.
+ * Hero: copy at the left, a standing jacket at the right, and the loose
+ * decorative shapes the reference scatters behind its composition — a ringed
+ * circle, a soft blob and a dotted grid.
  */
 export default function Hero() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      if (!document.hidden) setIndex((current) => (current + 1) % SLIDES.length);
-    }, 6500);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const go = (next: number) =>
-    setIndex((next + SLIDES.length) % SLIDES.length);
-
-  const slide = SLIDES[index];
+  const lead = getProduct("nine-doors-of-ulm");
 
   return (
-    <section className="relative isolate min-h-[460px] overflow-hidden bg-ink sm:min-h-[560px] lg:min-h-[620px]">
-      {SLIDES.map((item, slideIndex) => (
-        <div
-          key={item.image}
-          aria-hidden={slideIndex !== index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            slideIndex === index ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <Image
-            src={item.image}
-            alt=""
-            fill
-            priority={slideIndex === 0}
-            sizes="100vw"
-            className="object-cover object-[50%_72%]"
-          />
-        </div>
-      ))}
-
-      {/* Wash so the copy stays legible over any of the three photographs */}
-      <div
+    <section className="relative isolate overflow-hidden bg-sand">
+      {/* Decorative shapes */}
+      <span
         aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(to_right,#fff_0%,rgba(255,255,255,0.94)_26%,rgba(255,255,255,0.6)_44%,rgba(255,255,255,0)_64%)]"
+        className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-clay/10"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute right-[42%] top-16 hidden h-32 w-32 animate-spinslow rounded-full border-[14px] border-dashed border-rose/25 lg:block"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute -bottom-32 right-[-6rem] h-96 w-96 rounded-full bg-rose/10"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute bottom-10 left-[46%] hidden h-24 w-24 rounded-[38%_62%_55%_45%] bg-clay/15 lg:block"
       />
 
-      <div className="wrap relative flex min-h-[460px] items-center py-16 sm:min-h-[560px] lg:min-h-[620px]">
-        <div className="max-w-2xl">
-          <p key={`s-${index}`} className="script-line animate-slidein">
-            {slide.script}
-          </p>
-          <h1
-            key={`t-${index}`}
-            className="display-1 mt-3 animate-slidein whitespace-pre-line"
-          >
-            {slide.title}
+      <div className="wrap relative grid items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
+        <div>
+          <p className="eyebrow">Independent fiction, delivered instantly</p>
+          <h1 className="display-1 mt-4">
+            The whole shelf,
+            <br />
+            <span className="text-clay">none of the shipping</span>
           </h1>
-          <p
-            key={`c-${index}`}
-            className="mt-5 max-w-md animate-slidein text-[15px] leading-relaxed text-body"
-          >
-            {slide.copy}
+          <p className="mt-6 max-w-lg text-[16px] leading-[1.9]">
+            Twenty novels and collections from six writers we publish
+            ourselves. Buy one and it lands in your reader before the page has
+            finished reloading — EPUB, MOBI and PDF, no subscription, no
+            device lock.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link href={slide.href} className="btn-rose">
-              {slide.cta}
+          <div className="mt-9 flex flex-wrap items-center gap-4">
+            <Link href="/shop" className="btn-clay">
+              Browse the catalogue
             </Link>
             <Link href="/about" className="btn-line">
-              Our story
+              About the press
             </Link>
+          </div>
+
+          <dl className="mt-12 flex flex-wrap gap-x-12 gap-y-6">
+            {STATS.map((stat) => (
+              <div key={stat.label}>
+                <dt className="sr-only">{stat.label}</dt>
+                <dd>
+                  <span className="block font-display text-4xl font-bold text-slate">
+                    {stat.figure}
+                  </span>
+                  <span className="mt-1 block font-display text-[12px] font-semibold uppercase tracking-wide2 text-muted">
+                    {stat.label}
+                  </span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        {/* Standing jacket */}
+        <div className="relative flex justify-center lg:justify-end">
+          <div className="relative w-[260px] sm:w-[320px] lg:w-[360px]">
+            <span
+              aria-hidden="true"
+              className="absolute -inset-x-10 -bottom-8 top-14 rounded-[3rem] bg-paper/60"
+            />
+            {lead && (
+              <Link
+                href={`/shop/${lead.slug}`}
+                className="relative block animate-float"
+                aria-label={`${lead.name} by ${lead.author}`}
+              >
+                <BookCover
+                  src={lead.image}
+                  alt={`${lead.name} by ${lead.author}`}
+                  priority
+                  className="w-full rounded-r-lg shadow-lift"
+                />
+              </Link>
+            )}
+
+            {/* Floating price tag, as the reference pins to its hero image */}
+            <span className="absolute -left-4 bottom-10 rounded-2xl bg-paper px-5 py-3 text-center shadow-card sm:-left-8">
+              <span className="block font-display text-[11px] font-semibold uppercase tracking-wide2 text-muted">
+                New this month
+              </span>
+              <span className="mt-0.5 block font-display text-xl font-bold text-clay">
+                ${lead?.price ?? 38}.00
+              </span>
+            </span>
           </div>
         </div>
       </div>
-
-      {/* Arrows */}
-      <div className="absolute inset-y-0 right-0 hidden flex-col justify-center gap-2 pr-5 sm:flex">
-        {[
-          { label: "Previous slide", delta: -1, path: "M15 5 8 12l7 7" },
-          { label: "Next slide", delta: 1, path: "m9 5 7 7-7 7" },
-        ].map((arrow) => (
-          <button
-            key={arrow.label}
-            type="button"
-            onClick={() => go(index + arrow.delta)}
-            aria-label={arrow.label}
-            className="flex h-11 w-11 items-center justify-center border border-ink/15 bg-paper/80 text-ink transition-colors hover:bg-rose hover:text-paper"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d={arrow.path}
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-        ))}
-      </div>
-
-      {/* Bullets */}
-      <div className="absolute inset-x-0 bottom-6 flex justify-center gap-2.5">
-        {SLIDES.map((item, slideIndex) => (
-          <button
-            key={item.title}
-            type="button"
-            onClick={() => setIndex(slideIndex)}
-            aria-label={`Show slide ${slideIndex + 1}`}
-            aria-current={slideIndex === index}
-            className={`h-2.5 rotate-45 transition-all duration-300 ${
-              slideIndex === index
-                ? "w-2.5 bg-rose"
-                : "w-2.5 bg-ink/25 hover:bg-ink/50"
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* Progress rule */}
-      <div className="absolute inset-x-0 bottom-0 h-1 bg-ink/10">
-        <div
-          key={index}
-          className="h-full bg-rose"
-          style={{ animation: "grow 6500ms linear forwards" }}
-        />
-      </div>
-
-      <style jsx>{`
-        @keyframes grow {
-          from {
-            width: 0%;
-          }
-          to {
-            width: 100%;
-          }
-        }
-      `}</style>
     </section>
   );
 }

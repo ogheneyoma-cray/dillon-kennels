@@ -6,25 +6,21 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Returns & Refunds",
   description:
-    "Crewsita's returns policy — the fourteen-day window, what counts as unworn, how exchanges work and how refunds are paid back.",
+    "Coquinate's refunds policy for digital books — the fourteen-day window, faulty files, accidental purchases and how refunds are paid back.",
 };
 
 const STEPS = [
   {
     title: "Write to us",
-    copy: "Email the order number and say whether you want an exchange or a refund. You do not need to give a reason, though it helps us fix the size guide if you do.",
+    copy: "Email the order number and say what went wrong. You do not have to justify a change of mind, though it helps us if you do.",
   },
   {
-    title: "We send the label",
-    copy: "You get return instructions within one working day, and a drop-off point if you are in Lagos.",
-  },
-  {
-    title: "We check the pair",
-    copy: "Returns are inspected within two working days of arriving. Exchanges are dispatched the same day the check clears.",
+    title: "We look at it",
+    copy: "Faults are checked against the master file the same working day. If the book is broken, we fix it for everyone, not just you.",
   },
   {
     title: "Money goes back",
-    copy: "Refunds are issued to the original payment method within five working days of the check clearing.",
+    copy: "Refunds are issued to the original payment method within five working days of the request being approved.",
   },
 ];
 
@@ -33,46 +29,60 @@ export default function RefundsPolicyPage() {
     <>
       <PageHeader
         title="Returns & Refunds"
-        crumb="Returns"
-        intro="Fourteen days to change your mind, and a straightforward route back if the size is wrong. Last updated 1 August 2026."
+        crumb="Refunds"
+        intro="A book you cannot read is a book you should not have paid for. Last updated 1 August 2026."
       />
 
       <div className="wrap py-14 lg:py-16">
         <div className="prose-legal">
-          <h2>The window</h2>
+          <h2>Why this policy looks different</h2>
           <p>
-            You have fourteen days from the day a parcel is delivered to tell us
-            you want to return it, and a further fourteen days to get it back to
-            us. Both counts run from the delivery date on the courier record.
+            Digital goods cannot be sent back. Once a file has been downloaded
+            there is no way to un-supply it, so most sellers use that as grounds
+            to refuse every refund outright. We do not. What follows is what we
+            will actually do, and the small number of cases where we will say
+            no.
           </p>
 
-          <h2>What counts as unworn</h2>
+          <h2>Faulty files — always refunded</h2>
           <p>
-            Shoes are returnable if they have only been tried on indoors, on a
-            clean floor, the way you would try them on in a shop. That means:
+            If a book is missing chapters, has a broken table of contents,
+            renders as garbled characters, or simply will not open in a reader
+            that should support it, you get a full refund on request. There is
+            no time limit on this. Report it years later and the answer is the
+            same.
           </p>
-          <ul>
-            <li>No scuffing or dirt on the sole beyond light indoor marks.</li>
-            <li>No creasing across the vamp from walking any distance.</li>
-            <li>
-              Original box intact — it is part of the product, so please do not
-              tape a courier label directly onto it.
-            </li>
-            <li>All spare laces, dust bags and inserts included.</li>
-          </ul>
           <p>
-            A pair worn outside cannot be resold and cannot be returned. This is
-            the one part of this policy we cannot be flexible about.
+            We would also rather fix it than refund it, so tell us what you saw
+            even if you take the money — a production fault affects everyone who
+            bought that title, and we reissue corrected files to all of them.
+          </p>
+
+          <h2>Change of mind — fourteen days</h2>
+          <p>
+            You have fourteen days from purchase to ask for a refund on a book
+            you have decided against, provided you have not downloaded more than
+            one format. If you have read it and did not enjoy it, that is a
+            legitimate reason and we will not argue the point — but see the
+            limits below.
+          </p>
+
+          <h2>Accidental purchases</h2>
+          <p>
+            Bought the same title twice, or bought one you already owned? Email
+            us and we will refund the duplicate immediately, whatever the date.
+            Our catalogue is small enough that we can see the duplicate in your
+            record without your having to prove it.
           </p>
 
           <h2>How it works</h2>
-          <ol className="not-prose my-6 grid gap-5 sm:grid-cols-2">
+          <ol className="not-prose my-6 grid gap-5 sm:grid-cols-3">
             {STEPS.map((step, index) => (
-              <li key={step.title} className="border border-line p-6">
-                <span className="font-display text-[12px] font-bold tracking-wide2 text-rose">
+              <li key={step.title} className="card p-6 shadow-card">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-sand font-display text-[15px] font-bold text-clay">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-3 font-display text-[13px] font-bold uppercase tracking-wide2 text-ink">
+                <h3 className="mt-4 font-display text-[16px] font-bold text-slate">
                   {step.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">
@@ -82,67 +92,50 @@ export default function RefundsPolicyPage() {
             ))}
           </ol>
 
-          <h2>Who pays the return postage</h2>
+          <h2>Where we will say no</h2>
           <ul>
             <li>
-              <strong>We do</strong> if the pair is faulty, damaged in transit,
-              or not what you ordered.
+              Repeated change-of-mind refunds on a pattern that reads as reading
+              the catalogue for free. We will refund the current request and
+              then ask you to buy elsewhere.
             </li>
             <li>
-              <strong>We do</strong> on your first size exchange for any order —
-              getting the size right is our job as much as yours.
+              Requests where the download link has been shared widely. The logs
+              show link use, and a book distributed to a hundred people is not a
+              refund case.
             </li>
             <li>
-              <strong>You do</strong> on a change-of-mind return, and on any
-              second or subsequent exchange of the same order.
+              Dissatisfaction with a book&rsquo;s content that is described
+              accurately on its product page — a novel being sad, slow or
+              ambiguous is not a fault when the page says so.
             </li>
           </ul>
 
-          <h2>Exchanges</h2>
+          <h2>Refund method and timing</h2>
           <p>
-            Exchanges are for a different size of the same pair. If the size you
-            want is out of stock we will tell you before you send anything back,
-            and you can wait for the next run or take a refund instead. To swap
-            for a different style entirely, return the first pair for a refund
-            and place a fresh order — it is faster than processing it as an
-            exchange.
+            Refunds go to the method you paid with, within five working days of
+            approval. Your bank may take a further few days to show it. We
+            cannot refund to a different card or account than the one used.
           </p>
 
-          <h2>Refunds</h2>
+          <h2>What happens to your copy</h2>
           <p>
-            Refunds cover the price of the pair and, where the return is our
-            fault, the original delivery charge. They are paid to the method you
-            paid with, within five working days of the returned pair passing
-            inspection. Your bank may take a further few days to show it.
+            When a refund is issued the title is removed from your library and
+            the download link is retired. We ask that you delete the files you
+            have already downloaded; we have no technical means of enforcing
+            that and are relying on you.
           </p>
 
-          <h2>Faults after wearing</h2>
+          <h2>Before you buy</h2>
           <p>
-            A sole that separates, a strap that tears at the anchor or stitching
-            that comes away within six months of delivery is a manufacturing
-            fault, not wear, and we will replace or refund the pair. Send
-            photographs to <a href={`mailto:${site.email}`}>{site.email}</a>.
-            Ordinary wear — worn-down heel tips, creasing across the vamp,
-            scuffed toes, faded suede — is not a fault.
-          </p>
-
-          <h2>What cannot be returned</h2>
-          <ul>
-            <li>Pairs worn outdoors.</li>
-            <li>Pairs returned without the original box.</li>
-            <li>
-              Pairs damaged by being cleaned in a way the product page warns
-              against — machine-washing a vulcanised sneaker, for instance.
-            </li>
-          </ul>
-
-          <h2>Getting it right first time</h2>
-          <p>
-            Most returns we see are half a size out. The{" "}
-            <Link href="/size-guide">size guide</Link> converts EU, UK and US and
-            says which way each last runs, and we will happily check a foot
-            measurement against a specific pair if you{" "}
-            <Link href="/contact">write to us</Link> before ordering.
+            Every product page carries a full description, the page count, the
+            formats included and the publication date. If you want to know
+            something that is not there — content warnings, whether a book is
+            part of a series, how it ends — ask us at{" "}
+            <a href={`mailto:${site.email}`}>{site.email}</a> and we will tell
+            you honestly, including when the honest answer costs us the sale.
+            The <Link href="/reading-guide">reading guide</Link> covers format
+            and device questions.
           </p>
 
           <h2>Your statutory rights</h2>

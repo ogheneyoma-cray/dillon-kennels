@@ -3,9 +3,10 @@
 import { useState, type FormEvent } from "react";
 
 const SUBJECTS = [
-  "Order status",
-  "Sizing and fit",
-  "Returns or exchange",
+  "A download that will not open",
+  "Order or receipt question",
+  "Rights and permissions",
+  "Submitting a manuscript",
   "Something else",
 ];
 
@@ -35,12 +36,13 @@ export default function ContactForm() {
 
   if (sent) {
     return (
-      <div className="border border-line bg-mist p-8 text-center">
-        <p className="script-line">Thank you</p>
-        <h3 className="display-3 mt-2">Message received</h3>
+      <div className="card p-8 text-center shadow-card">
+        <p className="eyebrow">Thank you</p>
+        <h3 className="display-3 mt-3">Message received</h3>
         <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-body">
-          Someone from the shop will reply within one working day. If it is
-          about an order already placed, please keep the order number to hand.
+          Someone from the press will reply within one working day. If it is
+          about a download already bought, please keep the order number to
+          hand.
         </p>
         <button
           type="button"
@@ -54,7 +56,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={submit} noValidate className="border border-line p-6 sm:p-8">
+    <form onSubmit={submit} noValidate className="card p-6 shadow-card sm:p-8">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="field-label">
@@ -90,17 +92,17 @@ export default function ContactForm() {
           name="message"
           rows={6}
           required
-          className="field py-3"
+          className="field-area"
         />
       </div>
 
       {error && (
-        <p role="alert" className="mt-4 text-sm text-rose">
+        <p role="alert" className="mt-4 text-sm text-clay">
           {error}
         </p>
       )}
 
-      <button type="submit" className="btn-rose mt-6 w-full sm:w-auto">
+      <button type="submit" className="btn-clay mt-6 w-full sm:w-auto">
         Send message
       </button>
     </form>

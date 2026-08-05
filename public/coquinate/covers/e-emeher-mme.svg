@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" role="img" aria-label="E Emeher Mme by Chidi Nwosu">
+    
+    <rect width="600" height="900" fill="#F3ECDC"/>
+    <circle cx="300" cy="660" r="130" fill="#D16655"/>
+    <path d="M0 700 L150 630 L285 720 L425 640 L600 740 L600 900 L0 900 Z" fill="#2E4A5B" opacity="0.88"/>
+    <text x="300" y="170" text-anchor="middle" font-family="Josefin Sans, Futura, Helvetica, sans-serif" font-size="59" font-weight="700" letter-spacing="1.5" fill="#2E4A5B">E EMEHER MME</text>
+    <line x1="258" y1="210" x2="342" y2="210" stroke="#A8483A" stroke-width="3"/>
+    <text x="300" y="252" text-anchor="middle" font-family="Poppins, Helvetica, sans-serif" font-size="24" letter-spacing="3.5" fill="#A8483A">CHIDI NWOSU</text>
+    <rect x="0" y="0" width="14" height="900" fill="#000" opacity="0.16"/>
+  </svg>

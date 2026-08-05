@@ -1,44 +1,34 @@
 /**
- * Section header: a script line, then a bold uppercase title, then a short
- * rose rule with a diamond set into its middle — the stack the reference
- * repeats above every band.
+ * Section header: a clay eyebrow with its leading dot, then a heavy title.
+ * The reference sets these centred on full-width bands and left-aligned where
+ * a row of controls sits opposite, so both are supported.
  */
 export default function SectionHeading({
-  script,
+  eyebrow,
   title,
   subtitle,
   align = "center",
   className = "",
-  tone = "ink",
+  tone = "slate",
 }: {
-  script?: string;
+  eyebrow?: string;
   title: string;
   subtitle?: string;
   align?: "center" | "left";
   className?: string;
-  /** "paper" when the heading sits on the dark deal band. */
-  tone?: "ink" | "paper";
+  /** "paper" when the heading sits on a dark band. */
+  tone?: "slate" | "paper";
 }) {
   const centred = align === "center";
 
   return (
     <div className={`${centred ? "text-center" : ""} ${className}`}>
-      {script && <p className="script-line">{script}</p>}
+      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
       <h2
-        className={`display-2 mt-2 ${tone === "paper" ? "text-paper" : ""}`}
+        className={`display-2 mt-3 ${tone === "paper" ? "text-paper" : ""}`}
       >
         {title}
       </h2>
-
-      <span
-        aria-hidden="true"
-        className={`mt-4 flex items-center gap-2 ${centred ? "justify-center" : ""}`}
-      >
-        <span className="h-px w-10 bg-line-firm" />
-        <span className="h-1.5 w-1.5 rotate-45 bg-rose" />
-        <span className="h-px w-10 bg-line-firm" />
-      </span>
-
       {subtitle && (
         <p
           className={`mt-4 max-w-xl text-[15px] leading-relaxed ${

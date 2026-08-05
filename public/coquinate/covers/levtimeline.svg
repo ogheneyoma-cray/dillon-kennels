@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" role="img" aria-label="Levtimeline by Vecuro Hale">
+    
+    <rect width="600" height="900" fill="#2E4A5B"/>
+    <circle cx="300" cy="690" r="215" fill="none" stroke="#D16655" stroke-width="20" opacity="1"/>
+    <circle cx="300" cy="690" r="165" fill="none" stroke="#F3ECDC" stroke-width="3" opacity="0.5"/>
+    <circle cx="300" cy="690" r="115" fill="none" stroke="#D16655" stroke-width="20" opacity="1"/>
+    <circle cx="300" cy="690" r="65" fill="none" stroke="#F3ECDC" stroke-width="3" opacity="0.5"/>
+    <text x="300" y="170" text-anchor="middle" font-family="Josefin Sans, Futura, Helvetica, sans-serif" font-size="65" font-weight="700" letter-spacing="1.5" fill="#F3ECDC">LEVTIMELINE</text>
+    <line x1="258" y1="210" x2="342" y2="210" stroke="#BD7579" stroke-width="3"/>
+    <text x="300" y="252" text-anchor="middle" font-family="Poppins, Helvetica, sans-serif" font-size="24" letter-spacing="3.5" fill="#BD7579">VECURO HALE</text>
+    <rect x="0" y="0" width="14" height="900" fill="#000" opacity="0.16"/>
+  </svg>

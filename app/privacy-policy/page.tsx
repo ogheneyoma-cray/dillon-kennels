@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Crewsita collects, uses, stores and protects your personal information.",
+    "How Coquinate collects, uses, stores and protects your personal information.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -20,39 +20,39 @@ export default function PrivacyPolicyPage() {
       <div className="wrap py-14 lg:py-16">
         <div className="prose-legal">
           <p>
-            {site.name} is a footwear shop operating from {site.addressOneLine}.
-            This policy explains how we handle personal information when you
-            browse this site, place an order, or write to us. We are the data
-            controller for everything described below, and you can reach us at{" "}
-            <a href={`mailto:${site.email}`}>{site.email}</a>.
+            {site.name} is an independent publisher operating from{" "}
+            {site.addressOneLine}. This policy explains how we handle personal
+            information when you browse this site, buy a title, or write to us.
+            We are the data controller for everything described below, and you
+            can reach us at <a href={`mailto:${site.email}`}>{site.email}</a>.
           </p>
 
           <h2>What we collect</h2>
           <ul>
             <li>
-              <strong>What you give us.</strong> Your name, email address, phone
-              number and delivery address at checkout, plus anything you write
-              in a contact form or an email.
+              <strong>What you give us.</strong> Your name, email address and
+              billing city and country at checkout, plus anything you write in
+              a contact form or an email. Because every title is a download,
+              we never ask for a delivery address.
             </li>
             <li>
-              <strong>What the order records.</strong> The pairs bought, the
-              size and quantity, the currency you were shown at the time, and
-              any delivery notes attached to the parcel.
+              <strong>What the order records.</strong> The titles bought, the
+              price paid, the currency you were shown at the time, and the date
+              the download link was issued.
             </li>
             <li>
-              <strong>Foot measurements you choose to send us.</strong> If you
-              email a foot length for sizing advice, we hold it only for as long
-              as that conversation is open, unless you ask us to keep it on file
-              so future orders can be checked against it.
+              <strong>Download activity.</strong> We log when a download link is
+              used and from roughly where, purely to spot a link being shared
+              at a scale that indicates it has leaked.
             </li>
             <li>
-              <strong>What your browser sends.</strong> Standard request data —
-              IP address, browser and device type, the pages you opened and the
-              times you opened them.
+              <strong>Manuscripts you send us.</strong> If you submit work, we
+              hold the manuscript and your covering note for the length of the
+              reading period and delete both afterwards unless we make an offer.
             </li>
             <li>
-              <strong>What stays on your device.</strong> Your bag contents and
-              your currency choice are written to your browser&rsquo;s local
+              <strong>What stays on your device.</strong> Your basket contents
+              and your currency choice are written to your browser&rsquo;s local
               storage. They never reach our servers, and clearing your browser
               data removes them.
             </li>
@@ -61,17 +61,18 @@ export default function PrivacyPolicyPage() {
           <h2>Why we hold it</h2>
           <h3>To complete an order</h3>
           <p>
-            We cannot pack a box or hand it to a courier without a name, an
-            address and a way to reach you if the driver cannot find the gate.
-            This is processing necessary to perform our contract with you.
+            We cannot issue a download link without an email address, and we
+            cannot produce a lawful receipt without a name and a billing
+            country. This is processing necessary to perform our contract with
+            you.
           </p>
 
-          <h3>To answer you</h3>
+          <h3>To keep your library available</h3>
           <p>
-            If you write to us about sizing, a delayed parcel or a return, we
-            keep the thread so the next person who picks it up is not starting
-            from nothing. This rests on our legitimate interest in running a
-            shop people can actually get hold of.
+            Order records are what let you re-download a book years later
+            without paying again. Keeping them is in your interest as much as
+            ours, and rests on our legitimate interest in running a shop whose
+            promises hold.
           </p>
 
           <h3>To meet our obligations</h3>
@@ -83,17 +84,18 @@ export default function PrivacyPolicyPage() {
 
           <h2>Who else sees it</h2>
           <p>
-            Only the parties who need it to get a box to you: the courier
-            handling your delivery, the payment processor when live payments are
-            enabled, and the hosting and email providers that run this site.
-            Each is bound to use the data only for the service they provide us.
-            We do not sell personal information, we do not rent mailing lists,
-            and we do not share your details with advertisers.
+            Only the parties who need it to get a file to you: the payment
+            processor when live payments are enabled, and the hosting, storage
+            and email providers that run this site. Each is bound to use the
+            data only for the service they provide us. We do not sell personal
+            information, we do not rent mailing lists, and we do not share your
+            reading history with anyone — including the authors, who see sales
+            totals and never buyer identities.
           </p>
 
           <h2>How long we keep it</h2>
           <ul>
-            <li>Order records: seven years, for tax and accounting.</li>
+            <li>Order and download records: seven years, for tax and re-download.</li>
             <li>
               Contact correspondence: two years from the last message in the
               thread.
@@ -103,7 +105,8 @@ export default function PrivacyPolicyPage() {
               carries a link for.
             </li>
             <li>
-              Sizing notes held at your request: until you tell us to drop them.
+              Unsuccessful manuscript submissions: deleted within ninety days of
+              the reading period closing.
             </li>
           </ul>
 

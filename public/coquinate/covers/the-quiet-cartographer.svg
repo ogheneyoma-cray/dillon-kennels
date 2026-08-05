@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" role="img" aria-label="The Quiet Cartographer by Marta Rein">
+    
+    <rect width="600" height="900" fill="#2E4A5B"/>
+    <path d="M150 850 L150 700 A150 150 0 0 1 450 700 L450 850 Z" fill="#BD7579"/>
+    <path d="M205 850 L205 706 A95 95 0 0 1 395 706 L395 850 Z" fill="#2E4A5B" opacity="0.32"/>
+    <circle cx="300" cy="706" r="40" fill="#F3ECDC" opacity="0.7"/>
+    <text x="300" y="170" text-anchor="middle" font-family="Josefin Sans, Futura, Helvetica, sans-serif" font-size="59" font-weight="700" letter-spacing="1.5" fill="#F3ECDC">THE QUIET</text>
+    <text x="300" y="237.26" text-anchor="middle" font-family="Josefin Sans, Futura, Helvetica, sans-serif" font-size="59" font-weight="700" letter-spacing="1.5" fill="#F3ECDC">CARTOGRAPHER</text>
+    <line x1="258" y1="277.26" x2="342" y2="277.26" stroke="#F3ECDC" stroke-width="3"/>
+    <text x="300" y="319.26" text-anchor="middle" font-family="Poppins, Helvetica, sans-serif" font-size="24" letter-spacing="3.5" fill="#F3ECDC">MARTA REIN</text>
+    <rect x="0" y="0" width="14" height="900" fill="#000" opacity="0.16"/>
+  </svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" role="img" aria-label="Robot and Human by Teni Adeoye">
+    
+    <rect width="600" height="900" fill="#20303A"/>
+    <circle cx="300" cy="690" r="215" fill="none" stroke="#C9A227" stroke-width="20" opacity="1"/>
+    <circle cx="300" cy="690" r="165" fill="none" stroke="#F3ECDC" stroke-width="3" opacity="0.5"/>
+    <circle cx="300" cy="690" r="115" fill="none" stroke="#C9A227" stroke-width="20" opacity="1"/>
+    <circle cx="300" cy="690" r="65" fill="none" stroke="#F3ECDC" stroke-width="3" opacity="0.5"/>
+    <text x="300" y="170" text-anchor="middle" font-family="Josefin Sans, Futura, Helvetica, sans-serif" font-size="70" font-weight="700" letter-spacing="1.5" fill="#F3ECDC">ROBOT AND</text>
+    <text x="300" y="249.8" text-anchor="middle" font-family="Josefin Sans, Futura, Helvetica, sans-serif" font-size="70" font-weight="700" letter-spacing="1.5" fill="#F3ECDC">HUMAN</text>
+    <line x1="258" y1="289.8" x2="342" y2="289.8" stroke="#BD7579" stroke-width="3"/>
+    <text x="300" y="331.8" text-anchor="middle" font-family="Poppins, Helvetica, sans-serif" font-size="24" letter-spacing="3.5" fill="#BD7579">TENI ADEOYE</text>
+    <rect x="0" y="0" width="14" height="900" fill="#000" opacity="0.16"/>
+  </svg>

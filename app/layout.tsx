@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Open_Sans, Norican } from "next/font/google";
+import { Josefin_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
@@ -8,27 +8,19 @@ import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { site } from "@/lib/site";
 
-// Three families, exactly as the reference sets them: Montserrat for headings
-// and every uppercase control, Open Sans for running copy, and Norican for the
-// script line that sits above each section title.
-const montserrat = Montserrat({
+// The two families the reference loads: Josefin Sans carries every heading and
+// uppercase control, Poppins carries running copy.
+const josefin = Josefin_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-montserrat",
+  variable: "--font-josefin",
   display: "swap",
 });
 
-const openSans = Open_Sans({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "600"],
-  variable: "--font-open-sans",
-  display: "swap",
-});
-
-const norican = Norican({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-norican",
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -47,11 +39,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${montserrat.variable} ${openSans.variable} ${norican.variable}`}
-    >
-      <body className="flex min-h-screen flex-col bg-paper antialiased">
+    <html lang="en" className={`${josefin.variable} ${poppins.variable}`}>
+      <body className="flex min-h-screen flex-col bg-blush antialiased">
         <CurrencyProvider>
           <CartProvider>
             <Header />

@@ -3,8 +3,8 @@
 import { useState, type FormEvent } from "react";
 
 /**
- * Newsletter strip that sits directly above the footer — the reference runs a
- * full-width rose band with the copy at the left and the form at the right.
+ * Newsletter strip above the footer — a clay band with the copy at the left
+ * and a pill-shaped form at the right, as the reference draws it.
  */
 export default function NewsletterBand() {
   const [email, setEmail] = useState("");
@@ -18,18 +18,24 @@ export default function NewsletterBand() {
   };
 
   return (
-    <section className="bg-rose">
-      <div className="wrap grid items-center gap-6 py-12 lg:grid-cols-2 lg:py-14">
+    <section className="relative isolate overflow-hidden bg-clay">
+      <span
+        aria-hidden="true"
+        className="absolute -left-16 -top-16 h-56 w-56 rounded-full bg-paper/10"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute -bottom-24 right-8 h-64 w-64 rounded-full bg-paper/10"
+      />
+
+      <div className="wrap relative grid items-center gap-8 py-14 lg:grid-cols-2">
         <div>
-          <p className="font-script text-[1.6rem] leading-none text-paper/80">
-            Stay in step
-          </p>
-          <h2 className="mt-2 font-display text-[1.5rem] font-bold uppercase leading-tight tracking-wide2 text-paper sm:text-[1.9rem]">
-            New pairs, early access
+          <h2 className="font-display text-[1.7rem] font-bold leading-tight text-paper sm:text-[2.1rem]">
+            One email a month. One new book.
           </h2>
-          <p className="mt-3 max-w-md text-[14px] leading-relaxed text-paper/80">
-            One note a fortnight — restocks, new lasts and the reduced pairs
-            before they reach the shop page. No more than that.
+          <p className="mt-3 max-w-md text-[15px] leading-relaxed text-paper/80">
+            What we published, what we are reading, and the first look at next
+            month&rsquo;s title — usually with a code attached. Nothing else.
           </p>
         </div>
 
@@ -44,11 +50,11 @@ export default function NewsletterBand() {
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Your email address"
-            className="min-h-[52px] w-full bg-paper px-5 text-sm text-ink placeholder:text-faint focus:outline-none focus:ring-2 focus:ring-ink/30"
+            className="min-h-[56px] w-full rounded-pill bg-paper px-6 text-sm text-slate placeholder:text-muted focus:outline-none focus:ring-4 focus:ring-slate/20"
           />
           <button
             type="submit"
-            className="min-h-[52px] shrink-0 bg-ink px-8 font-display text-[11px] font-bold uppercase tracking-wide2 text-paper transition-colors hover:bg-paper hover:text-rose"
+            className="min-h-[56px] shrink-0 rounded-pill bg-slate px-8 font-display text-[14px] font-bold uppercase tracking-wide2 text-paper transition-colors hover:bg-paper hover:text-clay"
           >
             Subscribe
           </button>
@@ -57,7 +63,7 @@ export default function NewsletterBand() {
         {done && (
           <p
             role="status"
-            className="font-display text-[11px] font-semibold uppercase tracking-wide2 text-paper lg:col-start-2"
+            className="font-display text-[13px] font-semibold uppercase tracking-wide2 text-paper lg:col-start-2"
           >
             Thank you — you are on the list.
           </p>

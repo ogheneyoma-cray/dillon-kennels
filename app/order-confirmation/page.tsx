@@ -5,21 +5,21 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Order confirmed",
-  description: "Your Crewsita order has been received.",
+  description: "Your Coquinate order has been received.",
 };
 
 const STEPS = [
   {
-    title: "Confirmation email",
+    title: "Receipt by email",
     copy: "A receipt is on its way to the address you gave us. Check spam if nothing lands within ten minutes.",
   },
   {
-    title: "Checked and boxed",
-    copy: "Every pair is checked over, stuffed at the toe and boxed with the spare laces before it leaves the shop.",
+    title: "Download links",
+    copy: "The same email carries a link to all three formats. The link does not expire and can be used from any device.",
   },
   {
-    title: "Courier handover",
-    copy: "A tracking number reaches you by email the moment the courier scans the parcel.",
+    title: "Kept on file",
+    copy: "Every title you buy stays in your account. Lose a device and you can download the files again at no cost.",
   },
 ];
 
@@ -27,18 +27,18 @@ export default function OrderConfirmationPage() {
   return (
     <div className="wrap py-20 lg:py-24">
       <SectionHeading
-        script="Received"
+        eyebrow="Received"
         title="Thank you"
-        subtitle="Your order is in the queue. This is a demonstration storefront, so no payment was taken and nothing will actually ship."
+        subtitle="Your order is in the queue. This is a demonstration storefront, so no payment was taken and no download link will actually arrive."
       />
 
       <ol className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-3">
         {STEPS.map((step, index) => (
-          <li key={step.title} className="border border-line p-7">
-            <span className="font-display text-[12px] font-bold tracking-wide2 text-rose">
+          <li key={step.title} className="card p-7 shadow-card">
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-sand font-display text-[15px] font-bold text-clay">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <h2 className="mt-4 font-display text-[13px] font-bold uppercase tracking-wide2 text-ink">
+            <h2 className="mt-5 font-display text-[17px] font-bold text-slate">
               {step.title}
             </h2>
             <p className="mt-3 text-[13px] leading-relaxed text-body">
@@ -49,14 +49,14 @@ export default function OrderConfirmationPage() {
       </ol>
 
       <div className="mt-12 flex flex-col items-center gap-5">
-        <Link href="/shop" className="btn-rose">
-          Back to the shop
+        <Link href="/shop" className="btn-clay">
+          Back to the catalogue
         </Link>
         <p className="text-[13px] text-muted">
           Something wrong with the order? Email{" "}
           <a
             href={`mailto:${site.email}`}
-            className="text-rose underline underline-offset-4"
+            className="text-clay underline underline-offset-4"
           >
             {site.email}
           </a>

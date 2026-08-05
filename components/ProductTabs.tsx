@@ -9,11 +9,10 @@ type Tab = "All" | Category;
 const TABS: Tab[] = ["All", ...categories];
 
 /**
- * Tabbed product grid. The reference heads its main product area with a row of
- * category tabs that swap the grid beneath without moving the page — this does
- * the same, filtering the catalogue client-side.
+ * Genre-tabbed grid. The reference heads its "Book of the Month" band with a
+ * row of pill filters that swap the grid beneath without moving the page.
  */
-export default function ProductTabs({ limit = 8 }: { limit?: number }) {
+export default function ProductTabs({ limit = 10 }: { limit?: number }) {
   const [tab, setTab] = useState<Tab>("All");
 
   const shown = (
@@ -22,29 +21,25 @@ export default function ProductTabs({ limit = 8 }: { limit?: number }) {
 
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-x-7 gap-y-3">
+      <div className="flex flex-wrap justify-center gap-2.5">
         {TABS.map((option) => (
           <button
             key={option}
             type="button"
             onClick={() => setTab(option)}
             aria-pressed={tab === option}
-            className={`relative pb-1.5 font-display text-[12px] font-semibold uppercase tracking-wide2 transition-colors ${
-              tab === option ? "text-rose" : "text-body hover:text-ink"
+            className={`rounded-pill border px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-wide2 transition-colors ${
+              tab === option
+                ? "border-clay bg-clay text-paper"
+                : "border-line bg-paper text-slate hover:border-clay hover:text-clay"
             }`}
           >
             {option}
-            {tab === option && (
-              <span
-                aria-hidden="true"
-                className="absolute inset-x-0 bottom-0 h-0.5 bg-rose"
-              />
-            )}
           </button>
         ))}
       </div>
 
-      <div className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-4">
+      <div className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-5">
         {shown.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

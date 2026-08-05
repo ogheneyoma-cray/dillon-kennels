@@ -5,18 +5,18 @@ import ShopBrowser from "@/components/ShopBrowser";
 import { categories, products } from "@/data/products";
 
 export const metadata: Metadata = {
-  title: "Shop all footwear",
+  title: "All titles",
   description:
-    "The full Crewsita range — formal shoes, loafers, heels, flats and sneakers for men and women, priced in USD or NGN.",
+    "The full Coquinate catalogue — science fiction, fantasy, romance, mystery and literary fiction in EPUB, MOBI and PDF, priced in USD or NGN.",
 };
 
 export default function ShopPage() {
   return (
     <>
       <PageHeader
-        title="Shop all footwear"
+        title="All titles"
         crumb="Shop"
-        intro={`${products.length} pairs across ${categories.length} categories, none of them over $40. Switch the currency in the header to read every price in naira.`}
+        intro={`${products.length} books across ${categories.length} genres, none of them over $40. Switch the currency in the top bar to read every price in naira.`}
       />
       {/* useSearchParams needs a Suspense boundary during static prerender. */}
       <Suspense fallback={<div className="wrap py-24" />}>

@@ -5,7 +5,7 @@ import { formatMoney } from "@/lib/currency";
 
 /**
  * Price in the shopper's chosen currency, with the struck-through original
- * beside it when the pair is reduced.
+ * beside it when the title is reduced.
  */
 export default function ProductPrice({
   priceUsd,
@@ -22,7 +22,7 @@ export default function ProductPrice({
 
   return (
     <span className="inline-flex flex-wrap items-baseline gap-2">
-      <span className={`font-display font-bold text-rose ${className}`}>
+      <span className={`font-display font-bold text-clay ${className}`}>
         {formatMoney(priceUsd, currency)}
       </span>
       {compareAtUsd !== undefined && (

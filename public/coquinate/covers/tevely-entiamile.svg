@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" role="img" aria-label="Tevely Entiamile by Bisi Ogun">
+    
+    <rect width="600" height="900" fill="#F3ECDC"/>
+    <path d="M0 0 L600 0 L600 560 L0 700 Z" fill="#D16655"/>
+    <path d="M0 745 L600 605 L600 665 L0 805 Z" fill="#FBF6EE" opacity="0.26"/>
+    <text x="62" y="170" text-anchor="start" font-family="Josefin Sans, Futura, Helvetica, sans-serif" font-size="70" font-weight="700" letter-spacing="1.5" fill="#FBF6EE">TEVELY</text>
+    <text x="62" y="249.8" text-anchor="start" font-family="Josefin Sans, Futura, Helvetica, sans-serif" font-size="70" font-weight="700" letter-spacing="1.5" fill="#FBF6EE">ENTIAMILE</text>
+    <line x1="62" y1="289.8" x2="146" y2="289.8" stroke="#F3ECDC" stroke-width="3"/>
+    <text x="62" y="331.8" text-anchor="start" font-family="Poppins, Helvetica, sans-serif" font-size="24" letter-spacing="3.5" fill="#F3ECDC">BISI OGUN</text>
+    <rect x="0" y="0" width="14" height="900" fill="#000" opacity="0.16"/>
+  </svg>

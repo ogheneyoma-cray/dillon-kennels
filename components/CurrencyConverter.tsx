@@ -13,15 +13,15 @@ import {
 /**
  * USD ↔ NGN converter. Type an amount on either side and the other updates;
  * the swap control flips the direction. Setting the shop currency from here
- * re-prices every product on the site.
+ * re-prices every title on the site.
  */
 export default function CurrencyConverter({
   className = "",
-  tone = "ink",
+  tone = "slate",
 }: {
   className?: string;
   /** "paper" when the converter sits inside the dark footer. */
-  tone?: "ink" | "paper";
+  tone?: "slate" | "paper";
 }) {
   const { currency, setCurrency } = useCurrency();
   const [from, setFrom] = useState<CurrencyCode>("USD");
@@ -40,22 +40,22 @@ export default function CurrencyConverter({
     setFrom(to);
   };
 
-  const shellClass = dark
-    ? "border border-paper/15 bg-paper/[0.04] p-6"
-    : "card p-6 shadow-tile";
-  const labelClass = dark ? "text-paper/60" : "text-graphite";
+  const shell = dark
+    ? "rounded-3xl border border-paper/15 bg-paper/[0.05] p-6"
+    : "card p-6 shadow-card";
+  const label = dark ? "text-paper/60" : "text-slate";
   const inputShell = dark
-    ? "border border-paper/20 bg-ink focus-within:border-rose"
-    : "border border-line bg-paper focus-within:border-rose";
-  const inputText = dark ? "text-paper" : "text-ink";
+    ? "border border-paper/20 bg-slate-deep focus-within:border-clay"
+    : "border border-line bg-cream focus-within:border-clay";
+  const inputText = dark ? "text-paper" : "text-slate";
   const copy = dark ? "text-paper/70" : "text-body";
 
   return (
-    <div className={`${shellClass} ${className}`}>
+    <div className={`${shell} ${className}`}>
       <p className="eyebrow">Currency converter</p>
       <p className={`mt-3 text-[13px] leading-relaxed ${copy}`}>
         Every price on this site is held in US dollars and converted at{" "}
-        <span className={dark ? "text-paper" : "text-ink"}>
+        <span className={dark ? "text-paper" : "text-slate"}>
           $1 = {formatAmount(USD_TO_NGN_RATE, "NGN")}
         </span>
         .
@@ -63,14 +63,11 @@ export default function CurrencyConverter({
 
       <div className="mt-5 flex items-end gap-3">
         <div className="flex-1">
-          <label
-            htmlFor="converter-amount"
-            className={`field-label ${labelClass}`}
-          >
+          <label htmlFor="converter-amount" className={`field-label ${label}`}>
             {currencyMeta(from).label}
           </label>
-          <div className={`flex items-center rounded-sm ${inputShell}`}>
-            <span className="pl-3.5 text-sm font-semibold text-rose">
+          <div className={`flex items-center rounded-pill ${inputShell}`}>
+            <span className="pl-4 text-sm font-semibold text-clay">
               {currencyMeta(from).symbol}
             </span>
             <input
@@ -81,7 +78,7 @@ export default function CurrencyConverter({
               step="any"
               value={raw}
               onChange={(event) => setRaw(event.target.value)}
-              className={`min-h-[46px] w-full bg-transparent px-2 text-sm focus:outline-none ${inputText}`}
+              className={`min-h-[50px] w-full bg-transparent px-2 text-sm focus:outline-none ${inputText}`}
             />
           </div>
         </div>
@@ -90,9 +87,9 @@ export default function CurrencyConverter({
           type="button"
           onClick={swap}
           aria-label={`Swap to entering ${currencyMeta(to).label}`}
-          className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-sm bg-rose text-paper transition-colors hover:bg-ink"
+          className="flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full bg-clay text-paper transition-colors hover:bg-slate"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path
               d="M7 4v14m0 0-3.5-3.5M7 18l3.5-3.5M17 20V6m0 0-3.5 3.5M17 6l3.5 3.5"
               stroke="currentColor"
@@ -104,11 +101,11 @@ export default function CurrencyConverter({
         </button>
 
         <div className="flex-1">
-          <p className={`field-label ${labelClass}`}>{currencyMeta(to).label}</p>
+          <p className={`field-label ${label}`}>{currencyMeta(to).label}</p>
           <output
             htmlFor="converter-amount"
-            className={`flex min-h-[46px] items-center rounded-sm px-3.5 font-display text-sm font-bold text-rose ${
-              dark ? "bg-paper/[0.06]" : "bg-mist"
+            className={`flex min-h-[50px] items-center rounded-pill px-4 font-display text-sm font-bold text-clay ${
+              dark ? "bg-paper/[0.07]" : "bg-sand"
             }`}
           >
             {valid ? formatAmount(result, to) : "—"}
@@ -122,7 +119,7 @@ export default function CurrencyConverter({
         }`}
       >
         <span
-          className={`font-display text-[11px] font-semibold uppercase tracking-wide2 ${
+          className={`font-display text-[12px] font-semibold uppercase tracking-wide2 ${
             dark ? "text-paper/50" : "text-muted"
           }`}
         >
@@ -134,12 +131,12 @@ export default function CurrencyConverter({
             type="button"
             onClick={() => setCurrency(code)}
             aria-pressed={currency === code}
-            className={`font-display text-[11px] font-bold uppercase tracking-wide2 transition-colors ${
+            className={`font-display text-[13px] font-bold uppercase tracking-wide2 transition-colors ${
               currency === code
-                ? "text-rose underline underline-offset-4"
+                ? "text-clay underline underline-offset-4"
                 : dark
                   ? "text-paper/70 hover:text-paper"
-                  : "text-body hover:text-ink"
+                  : "text-body hover:text-slate"
             }`}
           >
             {code}

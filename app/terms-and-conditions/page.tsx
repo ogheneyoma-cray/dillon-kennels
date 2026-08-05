@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description:
-    "The terms on which Crewsita sells footwear through this site — orders, pricing, currency, liability and governing law.",
+    "The terms on which Coquinate licenses and sells ebooks through this site — orders, pricing, what you may do with a file, liability and governing law.",
 };
 
 export default function TermsPage() {
@@ -15,7 +15,7 @@ export default function TermsPage() {
       <PageHeader
         title="Terms & Conditions"
         crumb="Terms"
-        intro="The agreement between you and this shop when you order from it. Last updated 1 August 2026."
+        intro="The agreement between you and this press when you buy from it. Last updated 1 August 2026."
       />
 
       <div className="wrap py-14 lg:py-16">
@@ -30,12 +30,43 @@ export default function TermsPage() {
           <h2>Orders</h2>
           <p>
             An order placed on this site is an offer to buy. The contract forms
-            when we send the dispatch email, not when you complete checkout. We
-            may decline an order — if a size has sold out between your adding it
-            to the bag and checking out, if a price has been listed in error, or
-            if we cannot deliver to the address given. Where we decline, nothing
-            is charged and we tell you why.
+            when we issue the download link, not when you complete checkout. We
+            may decline an order — if a title has been withdrawn between your
+            adding it to the basket and checking out, or if a price has been
+            listed in error. Where we decline, nothing is charged and we tell
+            you why.
           </p>
+
+          <h2>What you are buying</h2>
+          <p>
+            You are buying a personal, perpetual, non-exclusive licence to read
+            the work, together with the files needed to do so. You are not
+            buying the copyright, which remains with the author throughout.
+          </p>
+          <h3>You may</h3>
+          <ul>
+            <li>Read the book on as many of your own devices as you like.</li>
+            <li>Keep a personal backup, and re-download the files at any time.</li>
+            <li>
+              Convert a file to another format for your own reading — the files
+              carry no DRM precisely so that this is possible.
+            </li>
+            <li>
+              Quote briefly in a review, an essay or a class, with attribution.
+            </li>
+          </ul>
+          <h3>You may not</h3>
+          <ul>
+            <li>
+              Upload the files to a public site, a file-sharing service or a
+              group library, or otherwise distribute them.
+            </li>
+            <li>Resell, sublicense or rent the files.</li>
+            <li>
+              Strip the author&rsquo;s name, alter the text and pass it on, or
+              use the work to train a machine learning model.
+            </li>
+          </ul>
 
           <h2>Pricing and currency</h2>
           <p>
@@ -47,54 +78,51 @@ export default function TermsPage() {
             is confirmed.
           </p>
           <p>
-            Prices include applicable taxes. Delivery is charged separately at
-            the rates set out in the{" "}
-            <Link href="/shipping-policy">shipping policy</Link>, and is free on
-            orders over $60.
+            Prices include applicable taxes. There is no delivery charge on any
+            order, in any country, because nothing is shipped — see the{" "}
+            <Link href="/shipping-policy">delivery and downloads policy</Link>.
           </p>
 
           <h2>Demonstration build</h2>
           <p>
             This site is currently a demonstration storefront. No payment is
-            processed, no card details are collected at any point, and no order
-            placed through it will ship. The confirmation screen exists to show
-            the flow. When live payments are enabled these terms will be updated
-            before the first real order is taken.
+            processed, no card details are collected at any point, and no
+            download link is actually issued. The confirmation screen exists to
+            show the flow. When live payments are enabled these terms will be
+            updated before the first real order is taken.
           </p>
 
-          <h2>Product descriptions and photography</h2>
+          <h2>Descriptions</h2>
           <p>
-            We describe materials, sole construction and heel heights as
-            accurately as we can. Colours vary between screens, and leather is a
-            natural material — grain, shade and burnishing differ between pairs
-            of the same style. Those variations are a property of the material,
-            not a fault, and are not grounds for a faulty-goods claim. They are
-            of course grounds for a change-of-mind return within the ordinary{" "}
-            <Link href="/refunds-policy">returns window</Link>.
+            We describe page counts, formats, publication dates and content as
+            accurately as we can. Jacket artwork is our own and is
+            representative rather than a photograph of a physical object — there
+            is no physical object. A novel being difficult, sad or ambiguous is
+            not a defect where the product page says so.
           </p>
 
           <h2>Availability</h2>
           <p>
-            Stock figures on this site reflect a limited run. A size shown as
-            available may sell out while your bag is open. If that happens after
-            you have checked out, we contact you within one working day to offer
-            an alternative size or a full refund.
+            A title may be withdrawn temporarily for correction. If that happens
+            after you have bought it, your download continues to work and you
+            receive the corrected file at no charge.
           </p>
 
           <h2>Your account of yourself</h2>
           <p>
-            You agree that the delivery and contact details you give us are
-            accurate and that you are legally able to enter into this contract.
-            You may not use this site to place fraudulent orders, to scrape
-            content or pricing, or to interfere with its operation.
+            You agree that the billing details you give us are accurate and that
+            you are legally able to enter into this contract. You may not use
+            this site to place fraudulent orders, to scrape content or pricing,
+            or to interfere with its operation.
           </p>
 
           <h2>Intellectual property</h2>
           <p>
-            The {site.name} name, the shoe mark, the site design, the product
-            photography and all written copy on this site belong to us. You may
-            not reproduce them commercially without written permission. Linking
-            to any page here is welcome and needs no permission.
+            The {site.name} name, the book mark, the site design, the jacket
+            artwork and all written copy on this site belong to us or to our
+            authors. You may not reproduce them commercially without written
+            permission. Linking to any page here is welcome and needs no
+            permission.
           </p>
 
           <h2>Liability</h2>
@@ -102,11 +130,11 @@ export default function TermsPage() {
             We are responsible for loss you suffer that is a foreseeable result
             of our breaking these terms or failing to use reasonable care. We
             are not responsible for loss that was not foreseeable, for business
-            losses, or for delays caused by events outside our reasonable
-            control — including courier disruption, industrial action or
-            interruption to power or network infrastructure. Nothing here limits
-            our liability for death or personal injury caused by our negligence,
-            for fraud, or for anything that cannot lawfully be limited.
+            losses, or for interruption caused by events outside our reasonable
+            control — including failures of power, network or third-party
+            hosting. Nothing here limits our liability for death or personal
+            injury caused by our negligence, for fraud, or for anything that
+            cannot lawfully be limited.
           </p>
 
           <h2>Links out</h2>

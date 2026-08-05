@@ -7,12 +7,12 @@ import { addressLines, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Reach the Crewsita customer care desk — email, phone, shop address and opening hours.",
+    "Reach the Coquinate desk — email, phone, office address and opening hours, plus where to send a manuscript.",
 };
 
 const HOURS = [
   { day: "Monday – Friday", time: "9:00 – 18:00 WAT" },
-  { day: "Saturday", time: "10:00 – 16:00 WAT" },
+  { day: "Saturday", time: "10:00 – 15:00 WAT" },
   { day: "Sunday", time: "Closed" },
 ];
 
@@ -21,7 +21,7 @@ export default function ContactPage() {
     <>
       <PageHeader
         title="Contact"
-        intro="A question about sizing, an order already in transit, or a pair you want to try on before buying — it all reaches the same desk, and a person reads every message."
+        intro="A download that will not open, a question about an order, or a manuscript you would like us to read — it all reaches the same desk, and a person reads every message."
       />
 
       <div className="wrap grid gap-10 py-14 lg:grid-cols-[1fr_360px] lg:py-20">
@@ -37,10 +37,10 @@ export default function ContactPage() {
         </div>
 
         <aside className="space-y-6">
-          <div className="border border-line p-7">
-            <h2 className="font-display text-[12px] font-bold uppercase tracking-wide2 text-ink">
-              The shop
-              <span aria-hidden="true" className="mt-3 block h-0.5 w-8 bg-rose" />
+          <div className="card p-7 shadow-card">
+            <h2 className="font-display text-[17px] font-bold text-slate">
+              The office
+              <span aria-hidden="true" className="mt-3 block h-1 w-9 rounded-full bg-clay" />
             </h2>
             <address className="mt-5 space-y-1.5 text-[15px] not-italic leading-relaxed text-body">
               {addressLines.map((line) => (
@@ -48,38 +48,38 @@ export default function ContactPage() {
               ))}
             </address>
             <p className="mt-5 text-[13px] leading-relaxed text-muted">
-              Fittings are welcome during opening hours — message us first and
-              we will have your size out of the box and ready.
+              Visits are by appointment — we are a small editorial office rather
+              than a shopfront, so message us before coming.
             </p>
           </div>
 
-          <div className="border border-line p-7">
-            <h2 className="font-display text-[12px] font-bold uppercase tracking-wide2 text-ink">
+          <div className="card p-7 shadow-card">
+            <h2 className="font-display text-[17px] font-bold text-slate">
               Direct
-              <span aria-hidden="true" className="mt-3 block h-0.5 w-8 bg-rose" />
+              <span aria-hidden="true" className="mt-3 block h-1 w-9 rounded-full bg-clay" />
             </h2>
             <dl className="mt-5 space-y-4 text-[15px]">
               <div>
-                <dt className="font-display text-[11px] font-semibold uppercase tracking-wide2 text-muted">
+                <dt className="font-display text-[12px] font-semibold uppercase tracking-wide2 text-muted">
                   Email
                 </dt>
                 <dd className="mt-1">
                   <a
                     href={`mailto:${site.email}`}
-                    className="text-ink transition-colors hover:text-rose"
+                    className="text-slate transition-colors hover:text-clay"
                   >
                     {site.email}
                   </a>
                 </dd>
               </div>
               <div>
-                <dt className="font-display text-[11px] font-semibold uppercase tracking-wide2 text-muted">
+                <dt className="font-display text-[12px] font-semibold uppercase tracking-wide2 text-muted">
                   Phone
                 </dt>
                 <dd className="mt-1">
                   <a
                     href={site.phoneHref}
-                    className="text-ink transition-colors hover:text-rose"
+                    className="text-slate transition-colors hover:text-clay"
                   >
                     {site.phone}
                   </a>
@@ -88,10 +88,10 @@ export default function ContactPage() {
             </dl>
           </div>
 
-          <div className="border border-line p-7">
-            <h2 className="font-display text-[12px] font-bold uppercase tracking-wide2 text-ink">
+          <div className="card p-7 shadow-card">
+            <h2 className="font-display text-[17px] font-bold text-slate">
               Opening hours
-              <span aria-hidden="true" className="mt-3 block h-0.5 w-8 bg-rose" />
+              <span aria-hidden="true" className="mt-3 block h-1 w-9 rounded-full bg-clay" />
             </h2>
             <dl className="mt-5 divide-y divide-line">
               {HOURS.map((entry) => (
@@ -100,7 +100,7 @@ export default function ContactPage() {
                   className="flex justify-between gap-4 py-3 text-sm"
                 >
                   <dt className="text-body">{entry.day}</dt>
-                  <dd className="text-ink">{entry.time}</dd>
+                  <dd className="text-slate">{entry.time}</dd>
                 </div>
               ))}
             </dl>

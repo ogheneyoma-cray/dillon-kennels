@@ -4,26 +4,26 @@ import Logo from "@/components/Logo";
 import NewsletterBand from "@/components/NewsletterBand";
 import { site } from "@/lib/site";
 
-const SHOP_LINKS = [
-  { href: "/shop?category=Men%27s+Formal", label: "Men's Formal" },
-  { href: "/shop?category=Men%27s+Casual", label: "Men's Casual" },
-  { href: "/shop?category=Women%27s+Heels", label: "Women's Heels" },
-  { href: "/shop?category=Women%27s+Flats", label: "Women's Flats" },
-  { href: "/shop?category=Sneakers", label: "Sneakers" },
-];
-
-const SUPPORT_LINKS = [
+const EXPLORE_LINKS = [
+  { href: "/about", label: "About the Press" },
+  { href: "/shop", label: "All Titles" },
+  { href: "/reading-guide", label: "Reading Guide" },
   { href: "/contact", label: "Contact Us" },
-  { href: "/size-guide", label: "Size Guide" },
-  { href: "/shipping-policy", label: "Shipping & Delivery" },
-  { href: "/refunds-policy", label: "Returns & Refunds" },
 ];
 
-const INFO_LINKS = [
-  { href: "/about", label: "Our Story" },
-  { href: "/shop", label: "All Footwear" },
+const SERVICE_LINKS = [
+  { href: "/shipping-policy", label: "Delivery & Downloads" },
+  { href: "/refunds-policy", label: "Returns & Refunds" },
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
+];
+
+const CATEGORY_LINKS = [
+  { href: "/shop?category=Science+Fiction", label: "Science Fiction" },
+  { href: "/shop?category=Fantasy", label: "Fantasy" },
+  { href: "/shop?category=Romance", label: "Romance" },
+  { href: "/shop?category=Mystery+%26+Thriller", label: "Mystery & Thriller" },
+  { href: "/shop?category=Literary+Fiction", label: "Literary Fiction" },
 ];
 
 const LEGAL_LINKS = [
@@ -35,21 +35,21 @@ const PAYMENTS = ["Visa", "Mastercard"];
 
 function ColumnHeading({ children }: { children: React.ReactNode }) {
   return (
-    <p className="font-display text-[12px] font-bold uppercase tracking-wide2 text-paper">
+    <h2 className="font-display text-[18px] font-bold text-paper">
       {children}
-      <span aria-hidden="true" className="mt-3 block h-0.5 w-8 bg-rose" />
-    </p>
+      <span aria-hidden="true" className="mt-3 block h-1 w-9 rounded-full bg-clay" />
+    </h2>
   );
 }
 
 function LinkList({ links }: { links: { href: string; label: string }[] }) {
   return (
-    <ul className="mt-5 space-y-3">
+    <ul className="mt-6 space-y-3">
       {links.map((link) => (
         <li key={link.label}>
           <Link
             href={link.href}
-            className="text-sm text-paper/65 transition-colors hover:text-rose"
+            className="text-sm text-paper/65 transition-colors hover:text-clay"
           >
             {link.label}
           </Link>
@@ -66,10 +66,10 @@ export default function Footer() {
     <footer>
       <NewsletterBand />
 
-      <div className="bg-ink">
-        <div className="wrap grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.7fr]">
+      <div className="bg-slate">
+        <div className="wrap grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <Logo tone="paper" wordClassName="text-[1.5rem]" />
+            <Logo tone="paper" wordClassName="text-[1.7rem]" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-paper/65">
               {site.description}
             </p>
@@ -77,7 +77,7 @@ export default function Footer() {
               <p>
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-paper transition-colors hover:text-rose"
+                  className="text-paper transition-colors hover:text-clay"
                 >
                   {site.email}
                 </a>
@@ -85,7 +85,7 @@ export default function Footer() {
               <p>
                 <a
                   href={site.phoneHref}
-                  className="text-paper transition-colors hover:text-rose"
+                  className="text-paper transition-colors hover:text-clay"
                 >
                   {site.phone}
                 </a>
@@ -94,18 +94,18 @@ export default function Footer() {
           </div>
 
           <div>
-            <ColumnHeading>Shop</ColumnHeading>
-            <LinkList links={SHOP_LINKS} />
+            <ColumnHeading>Explore Us</ColumnHeading>
+            <LinkList links={EXPLORE_LINKS} />
           </div>
 
           <div>
-            <ColumnHeading>Support</ColumnHeading>
-            <LinkList links={SUPPORT_LINKS} />
+            <ColumnHeading>Services</ColumnHeading>
+            <LinkList links={SERVICE_LINKS} />
           </div>
 
           <div>
-            <ColumnHeading>Information</ColumnHeading>
-            <LinkList links={INFO_LINKS} />
+            <ColumnHeading>Categories</ColumnHeading>
+            <LinkList links={CATEGORY_LINKS} />
           </div>
         </div>
 
@@ -114,7 +114,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-paper/10 bg-graphite">
+      <div className="bg-slate-deep">
         <div className="wrap flex flex-col gap-5 py-6 lg:flex-row lg:items-center lg:justify-between">
           <p className="text-xs text-paper/60">
             © {year} <span className="text-paper">{site.name}</span>. All rights
@@ -126,7 +126,7 @@ export default function Footer() {
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className="font-display text-[11px] font-semibold uppercase tracking-wide2 text-paper/60 transition-colors hover:text-rose"
+                  className="font-display text-[12px] font-semibold uppercase tracking-wide2 text-paper/60 transition-colors hover:text-clay"
                 >
                   {link.label}
                 </Link>

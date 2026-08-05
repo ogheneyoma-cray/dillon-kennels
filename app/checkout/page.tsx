@@ -1,31 +1,21 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import BookCover from "@/components/BookCover";
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { formatMoney } from "@/lib/currency";
 
-const FREE_SHIPPING_THRESHOLD_USD = 60;
-const DELIVERY_FEE_USD = 4;
-
 type Errors = Record<string, string>;
 
+// Downloads need a billing identity, not a shipping address.
 const FIELDS = [
   { name: "fullName", label: "Full name", type: "text", autoComplete: "name" },
-  { name: "email", label: "Email", type: "email", autoComplete: "email" },
-  { name: "phone", label: "Phone", type: "tel", autoComplete: "tel" },
-  {
-    name: "address",
-    label: "Street address",
-    type: "text",
-    autoComplete: "street-address",
-    full: true,
-  },
+  { name: "email", label: "Email", type: "email", autoComplete: "email", full: true },
   { name: "city", label: "City", type: "text", autoComplete: "address-level2" },
-  { name: "state", label: "State", type: "text", autoComplete: "address-level1" },
+  { name: "country", label: "Country", type: "text", autoComplete: "country-name" },
 ];
 
 export default function CheckoutPage() {
@@ -34,20 +24,16 @@ export default function CheckoutPage() {
   const router = useRouter();
   const [errors, setErrors] = useState<Errors>({});
 
-  const delivery =
-    cartTotal >= FREE_SHIPPING_THRESHOLD_USD ? 0 : DELIVERY_FEE_USD;
-  const total = cartTotal + delivery;
-
   if (items.length === 0) {
     return (
       <div className="wrap flex flex-col items-center py-28 text-center lg:py-36">
-        <p className="script-line">Nothing to pay for</p>
-        <h1 className="display-1 mt-2">Your bag is empty</h1>
+        <p className="eyebrow">Nothing to pay for</p>
+        <h1 className="display-1 mt-3">Your basket is empty</h1>
         <p className="mt-5 max-w-md text-[15px] leading-relaxed text-body">
-          Add a pair to it and the checkout will open up.
+          Add a title to it and the checkout will open up.
         </p>
-        <Link href="/shop" className="btn-rose mt-8">
-          Open the shop
+        <Link href="/shop" className="btn-clay mt-8">
+          Browse the catalogue
         </Link>
       </div>
     );
@@ -59,12 +45,10 @@ export default function CheckoutPage() {
     const next: Errors = {};
 
     const required = [
-      ["fullName", "Enter the name for the delivery"],
-      ["email", "Enter an email so we can send the confirmation"],
-      ["phone", "Enter a phone number for the courier"],
-      ["address", "Enter a street address"],
+      ["fullName", "Enter the name for the receipt"],
+      ["email", "Enter an email — this is where the download link goes"],
       ["city", "Enter a city"],
-      ["state", "Enter a state"],
+      ["country", "Enter a country"],
     ] as const;
 
     for (const [field, message] of required) {
@@ -80,15 +64,15 @@ export default function CheckoutPage() {
     if (Object.keys(next).length > 0) return;
 
     // No payment processor is wired up on this build — the order is recorded
-    // client-side and the bag is cleared.
+    // client-side and the basket is cleared.
     clearCart();
     router.push("/order-confirmation");
   };
 
   return (
     <div className="wrap py-14 lg:py-16">
-      <p className="script-line">Final step</p>
-      <h1 className="display-2 mt-2">Checkout</h1>
+      <p className="eyebrow">Final step</p>
+      <h1 className="display-2 mt-3">Checkout</h1>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_340px]">
         <form onSubmit={handleSubmit} noValidate>
@@ -112,66 +96,49 @@ export default function CheckoutPage() {
                 {errors[field.name] && (
                   <p
                     id={`${field.name}-error`}
-                    className="mt-2 text-[12px] text-rose"
+                    className="mt-2 text-[12px] text-clay"
                   >
                     {errors[field.name]}
                   </p>
                 )}
               </div>
             ))}
-
-            <div className="sm:col-span-2">
-              <label htmlFor="notes" className="field-label">
-                Delivery notes <span className="normal-case">(optional)</span>
-              </label>
-              <textarea
-                id="notes"
-                name="notes"
-                rows={3}
-                placeholder="Landmarks, gate colours, or a preferred delivery window."
-                className="field resize-y py-3"
-              />
-            </div>
           </div>
 
-          <p className="mt-6 border-l-2 border-rose bg-mist px-5 py-4 text-[13px] leading-relaxed text-body">
-            This is a demonstration storefront. No payment is taken and no card
-            details are collected at any point.
+          <p className="mt-6 rounded-2xl border-l-4 border-clay bg-sand px-5 py-4 text-[13px] leading-relaxed text-body">
+            This is a demonstration storefront. No payment is taken, no card
+            details are collected at any point, and no download link is issued.
           </p>
 
-          <button type="submit" className="btn-rose mt-7 w-full sm:w-auto">
+          <button type="submit" className="btn-clay mt-7 w-full sm:w-auto">
             Place order
           </button>
         </form>
 
-        <aside className="h-fit border border-line p-7 lg:sticky lg:top-24">
-          <h2 className="font-display text-[12px] font-bold uppercase tracking-wide2 text-ink">
+        <aside className="card h-fit p-7 shadow-card lg:sticky lg:top-28">
+          <h2 className="font-display text-[17px] font-bold text-slate">
             Your order
-            <span aria-hidden="true" className="mt-3 block h-0.5 w-8 bg-rose" />
+            <span aria-hidden="true" className="mt-3 block h-1 w-9 rounded-full bg-clay" />
           </h2>
 
           <ul className="mt-6 space-y-4">
             {items.map((item) => (
               <li key={item.id} className="flex items-center gap-4">
-                <span className="relative h-14 w-14 shrink-0 overflow-hidden border border-line bg-mist">
-                  {/* Eager for the same reason as the bag: this list is
-                      client-rendered after hydration. */}
-                  <Image
-                    src={item.image}
-                    alt=""
-                    fill
-                    loading="eager"
-                    sizes="56px"
-                    className="object-cover"
-                  />
-                </span>
-                <span className="flex-1 text-[13px] leading-snug text-ink">
+                {/* Eager for the same reason as the basket: this list is
+                    client-rendered after hydration. */}
+                <BookCover
+                  src={item.image}
+                  alt=""
+                  eager
+                  className="h-16 w-11 shrink-0 rounded-r-sm object-cover shadow-card"
+                />
+                <span className="flex-1 text-[13px] leading-snug text-slate">
                   {item.name}
                   <span className="mt-1 block text-muted">
                     Qty {item.quantity}
                   </span>
                 </span>
-                <span className="text-[13px] text-ink">
+                <span className="text-[13px] text-slate">
                   {formatMoney(item.price * item.quantity, currency)}
                 </span>
               </li>
@@ -181,20 +148,18 @@ export default function CheckoutPage() {
           <dl className="mt-6 space-y-3 border-t border-line pt-5 text-sm">
             <div className="flex justify-between">
               <dt className="text-body">Subtotal</dt>
-              <dd className="text-ink">{formatMoney(cartTotal, currency)}</dd>
+              <dd className="text-slate">{formatMoney(cartTotal, currency)}</dd>
             </div>
             <div className="flex justify-between">
               <dt className="text-body">Delivery</dt>
-              <dd className="text-ink">
-                {delivery === 0 ? "Free" : formatMoney(delivery, currency)}
-              </dd>
+              <dd className="text-slate">Free</dd>
             </div>
             <div className="flex items-baseline justify-between border-t border-line pt-4">
-              <dt className="font-display text-[11px] font-semibold uppercase tracking-wide2 text-muted">
+              <dt className="font-display text-[12px] font-semibold uppercase tracking-wide2 text-muted">
                 Total
               </dt>
-              <dd className="font-display text-xl font-bold text-rose">
-                {formatMoney(total, currency)}
+              <dd className="font-display text-xl font-bold text-clay">
+                {formatMoney(cartTotal, currency)}
               </dd>
             </div>
           </dl>

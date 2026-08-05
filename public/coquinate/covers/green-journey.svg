@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" role="img" aria-label="Green Journey by Nia Bassey">
+    
+    <rect width="600" height="900" fill="#5F7A63"/>
+    <path d="M150 850 L150 700 A150 150 0 0 1 450 700 L450 850 Z" fill="#F3ECDC"/>
+    <path d="M205 850 L205 706 A95 95 0 0 1 395 706 L395 850 Z" fill="#5F7A63" opacity="0.32"/>
+    <circle cx="300" cy="706" r="40" fill="#FBF6EE" opacity="0.7"/>
+    <text x="300" y="170" text-anchor="middle" font-family="Josefin Sans, Futura, Helvetica, sans-serif" font-size="70" font-weight="700" letter-spacing="1.5" fill="#FBF6EE">GREEN</text>
+    <text x="300" y="249.8" text-anchor="middle" font-family="Josefin Sans, Futura, Helvetica, sans-serif" font-size="70" font-weight="700" letter-spacing="1.5" fill="#FBF6EE">JOURNEY</text>
+    <line x1="258" y1="289.8" x2="342" y2="289.8" stroke="#F3ECDC" stroke-width="3"/>
+    <text x="300" y="331.8" text-anchor="middle" font-family="Poppins, Helvetica, sans-serif" font-size="24" letter-spacing="3.5" fill="#F3ECDC">NIA BASSEY</text>
+    <rect x="0" y="0" width="14" height="900" fill="#000" opacity="0.16"/>
+  </svg>
