@@ -11,14 +11,17 @@ import {
 } from "@/lib/currency";
 
 /**
- * USD ↔ NGN converter. Type an amount in either direction and the other side
- * updates; the swap control flips which currency is being entered. Setting the
- * store currency from here also re-prices every product on the site.
+ * USD ↔ NGN converter. Type an amount on either side and the other updates;
+ * the swap control flips the direction. Setting the shop currency from here
+ * re-prices every product on the site.
  */
 export default function CurrencyConverter({
   className = "",
+  tone = "ink",
 }: {
   className?: string;
+  /** "paper" when the converter sits inside the dark footer. */
+  tone?: "ink" | "paper";
 }) {
   const { currency, setCurrency } = useCurrency();
   const [from, setFrom] = useState<CurrencyCode>("USD");
@@ -29,18 +32,30 @@ export default function CurrencyConverter({
   const valid = Number.isFinite(amount) && amount >= 0;
   const result = valid ? convert(amount, from, to) : 0;
 
+  const dark = tone === "paper";
+
   const swap = () => {
     // Carry the converted figure across so the swap reads as continuous.
     if (valid) setRaw(String(Number(result.toFixed(to === "NGN" ? 0 : 2))));
     setFrom(to);
   };
 
+  const shellClass = dark
+    ? "border border-paper/15 bg-paper/[0.04] p-6"
+    : "card p-6 shadow-tile";
+  const labelClass = dark ? "text-paper/60" : "text-graphite";
+  const inputShell = dark
+    ? "border border-paper/20 bg-ink focus-within:border-rose"
+    : "border border-line bg-paper focus-within:border-rose";
+  const inputText = dark ? "text-paper" : "text-ink";
+  const copy = dark ? "text-paper/70" : "text-body";
+
   return (
-    <div className={`card p-6 ${className}`}>
+    <div className={`${shellClass} ${className}`}>
       <p className="eyebrow">Currency converter</p>
-      <p className="mt-3 text-[13px] font-light leading-relaxed text-smoke">
+      <p className={`mt-3 text-[13px] leading-relaxed ${copy}`}>
         Every price on this site is held in US dollars and converted at{" "}
-        <span className="text-bone">
+        <span className={dark ? "text-paper" : "text-ink"}>
           $1 = {formatAmount(USD_TO_NGN_RATE, "NGN")}
         </span>
         .
@@ -50,12 +65,12 @@ export default function CurrencyConverter({
         <div className="flex-1">
           <label
             htmlFor="converter-amount"
-            className="field-label"
+            className={`field-label ${labelClass}`}
           >
             {currencyMeta(from).label}
           </label>
-          <div className="flex items-center border border-rule bg-panel focus-within:border-brass">
-            <span className="pl-4 text-sm text-brass">
+          <div className={`flex items-center rounded-sm ${inputShell}`}>
+            <span className="pl-3.5 text-sm font-semibold text-rose">
               {currencyMeta(from).symbol}
             </span>
             <input
@@ -66,7 +81,7 @@ export default function CurrencyConverter({
               step="any"
               value={raw}
               onChange={(event) => setRaw(event.target.value)}
-              className="min-h-[48px] w-full bg-transparent px-2 text-sm text-bone focus:outline-none"
+              className={`min-h-[46px] w-full bg-transparent px-2 text-sm focus:outline-none ${inputText}`}
             />
           </div>
         </div>
@@ -75,31 +90,42 @@ export default function CurrencyConverter({
           type="button"
           onClick={swap}
           aria-label={`Swap to entering ${currencyMeta(to).label}`}
-          className="mb-0 flex h-12 w-12 shrink-0 items-center justify-center border border-rule text-brass transition-colors hover:border-brass hover:bg-brass hover:text-ink"
+          className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-sm bg-rose text-paper transition-colors hover:bg-ink"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path
               d="M7 4v14m0 0-3.5-3.5M7 18l3.5-3.5M17 20V6m0 0-3.5 3.5M17 6l3.5 3.5"
               stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="square"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </button>
 
         <div className="flex-1">
-          <p className="field-label">{currencyMeta(to).label}</p>
+          <p className={`field-label ${labelClass}`}>{currencyMeta(to).label}</p>
           <output
             htmlFor="converter-amount"
-            className="flex min-h-[48px] items-center border border-rule bg-raised px-4 text-sm text-brass"
+            className={`flex min-h-[46px] items-center rounded-sm px-3.5 font-display text-sm font-bold text-rose ${
+              dark ? "bg-paper/[0.06]" : "bg-mist"
+            }`}
           >
             {valid ? formatAmount(result, to) : "—"}
           </output>
         </div>
       </div>
 
-      <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-rule pt-4">
-        <span className="text-[11px] uppercase tracking-micro text-slate">
+      <div
+        className={`mt-5 flex flex-wrap items-center gap-3 border-t pt-4 ${
+          dark ? "border-paper/15" : "border-line"
+        }`}
+      >
+        <span
+          className={`font-display text-[11px] font-semibold uppercase tracking-wide2 ${
+            dark ? "text-paper/50" : "text-muted"
+          }`}
+        >
           Show prices in
         </span>
         {(["USD", "NGN"] as CurrencyCode[]).map((code) => (
@@ -108,10 +134,12 @@ export default function CurrencyConverter({
             type="button"
             onClick={() => setCurrency(code)}
             aria-pressed={currency === code}
-            className={`text-[11px] font-medium uppercase tracking-micro transition-colors ${
+            className={`font-display text-[11px] font-bold uppercase tracking-wide2 transition-colors ${
               currency === code
-                ? "text-brass underline underline-offset-4"
-                : "text-smoke hover:text-bone"
+                ? "text-rose underline underline-offset-4"
+                : dark
+                  ? "text-paper/70 hover:text-paper"
+                  : "text-body hover:text-ink"
             }`}
           >
             {code}

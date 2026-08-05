@@ -1,40 +1,46 @@
 import Link from "next/link";
 
 /**
- * Interior page opener: a tall black band carrying the column rules, with the
- * title set left and the breadcrumb dropped underneath on a hairline.
+ * Breadcrumb band that opens every page except the home page — a pale grey
+ * strip with the title at the left and the trail at the right, exactly as the
+ * reference frames its inner pages.
  */
 export default function PageHeader({
   title,
-  intro,
   crumb,
+  intro,
 }: {
   title: string;
-  intro?: string;
+  /** Label for the current page in the trail; defaults to the title. */
   crumb?: string;
+  intro?: string;
 }) {
   return (
-    <div className="ruled border-b border-rule bg-pitch">
-      <div className="wrap py-16 lg:py-24">
-        <nav
-          aria-label="Breadcrumb"
-          className="flex items-center gap-3 text-[11px] font-medium uppercase tracking-micro"
-        >
-          <Link href="/" className="text-slate transition-colors hover:text-brass">
-            Home
-          </Link>
-          <span aria-hidden="true" className="h-px w-5 bg-rule" />
-          <span className="text-brass">{crumb ?? title}</span>
+    <section className="border-b border-line bg-mist">
+      <div className="wrap flex flex-col gap-4 py-12 sm:flex-row sm:items-center sm:justify-between sm:py-14">
+        <div>
+          <h1 className="display-2">{title}</h1>
+          {intro && (
+            <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-body">
+              {intro}
+            </p>
+          )}
+        </div>
+
+        <nav aria-label="Breadcrumb">
+          <ol className="flex items-center gap-2 font-display text-[11px] font-semibold uppercase tracking-wide2">
+            <li>
+              <Link href="/" className="text-muted transition-colors hover:text-rose">
+                Home
+              </Link>
+            </li>
+            <li aria-hidden="true" className="text-line-firm">
+              /
+            </li>
+            <li className="text-rose">{crumb ?? title}</li>
+          </ol>
         </nav>
-
-        <h1 className="display-1 mt-6">{title}</h1>
-
-        {intro && (
-          <p className="mt-6 max-w-2xl text-[15px] font-light leading-[1.9] text-smoke">
-            {intro}
-          </p>
-        )}
       </div>
-    </div>
+    </section>
   );
 }

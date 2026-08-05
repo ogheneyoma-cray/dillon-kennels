@@ -6,14 +6,14 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Shipping & Delivery",
   description:
-    "How Mydriad packs and delivers tailoring — dispatch times, delivery windows, charges and what to do if a parcel goes missing.",
+    "How Crewsita packs and delivers footwear — dispatch times, delivery windows, charges and what to do if a parcel goes missing.",
 };
 
 const RATES = [
   { zone: "Lagos mainland", time: "1 – 2 working days", cost: "$4" },
   { zone: "Lagos island", time: "1 – 2 working days", cost: "$4" },
   { zone: "Rest of Nigeria", time: "3 – 5 working days", cost: "$4" },
-  { zone: "Orders over $45", time: "As above", cost: "Free" },
+  { zone: "Orders over $60", time: "As above", cost: "Free" },
 ];
 
 export default function ShippingPolicyPage() {
@@ -25,112 +25,116 @@ export default function ShippingPolicyPage() {
         intro="What happens between your order landing and a box arriving. Last updated 1 August 2026."
       />
 
-      <div className="ruled">
-        <div className="wrap py-16">
-          <div className="prose-legal">
-            <h2>Dispatch</h2>
-            <p>
-              Orders confirmed before 15:00 WAT on a working day are pressed and
-              boxed the same day. Anything after that, or over a weekend, goes
-              out on the next working day. Every jacket is pressed on the
-              shoulder board, folded once at the waist, and boxed flat rather
-              than bagged — a tailored shoulder does not survive being crushed
-              into a courier sack.
-            </p>
-            <p>
-              You will receive a tracking number by email the moment the courier
-              scans the parcel out of the workroom.
-            </p>
-          </div>
+      <div className="wrap py-14 lg:py-16">
+        <div className="prose-legal">
+          <h2>Dispatch</h2>
+          <p>
+            Orders confirmed before 15:00 WAT on a working day are checked and
+            boxed the same day. Anything after that, or over a weekend, goes out
+            on the next working day. Every pair is inspected for glue marks and
+            stitch faults, stuffed at the toe so the upper does not crease in
+            transit, wrapped, and boxed with the spare laces where the pair
+            comes with them.
+          </p>
+          <p>
+            You will get a dispatch email with a tracking number the moment the
+            courier scans the parcel. If nothing has arrived in your inbox
+            within two working days of ordering, check the spam folder before
+            writing to us — the dispatch notice is the message that most often
+            gets filtered.
+          </p>
 
-          <div className="mt-14 max-w-column overflow-x-auto">
-            <table className="w-full min-w-[440px] border-collapse text-left text-sm">
-              <caption className="pb-5 text-left text-[11px] uppercase tracking-micro text-brass">
-                Delivery windows and charges
-              </caption>
+          <h2>Rates and delivery windows</h2>
+          <div className="not-prose my-6 overflow-x-auto border border-line">
+            <table className="w-full min-w-[420px] border-collapse text-sm">
               <thead>
-                <tr className="border-b border-rule">
-                  {["Destination", "Typical time", "Charge"].map((column) => (
+                <tr className="border-b border-line bg-mist">
+                  {["Destination", "Delivery window", "Charge"].map((column) => (
                     <th
                       key={column}
-                      className="pb-4 pr-4 text-[11px] font-medium uppercase tracking-micro text-slate"
+                      scope="col"
+                      className="px-5 py-3 text-left font-display text-[11px] font-semibold uppercase tracking-wide2 text-ink"
                     >
                       {column}
                     </th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="font-light text-smoke">
+              <tbody>
                 {RATES.map((rate) => (
-                  <tr key={rate.zone} className="border-b border-rule/60">
-                    <td className="py-4 pr-4 text-bone">{rate.zone}</td>
-                    <td className="py-4 pr-4">{rate.time}</td>
-                    <td className="py-4 pr-4 text-brass">{rate.cost}</td>
+                  <tr
+                    key={rate.zone}
+                    className="border-b border-line last:border-b-0"
+                  >
+                    <th
+                      scope="row"
+                      className="px-5 py-3 text-left font-normal text-ink"
+                    >
+                      {rate.zone}
+                    </th>
+                    <td className="px-5 py-3 text-body">{rate.time}</td>
+                    <td className="px-5 py-3 font-display text-[13px] font-bold text-rose">
+                      {rate.cost}
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          <p>
+            Delivery windows are counted in working days from dispatch, not from
+            the moment you place the order. They exclude public holidays. The
+            free-delivery threshold is measured on the order subtotal before
+            delivery is added.
+          </p>
 
-          <div className="prose-legal mt-14">
-            <h2>Delivery charges</h2>
-            <p>
-              Delivery is a flat $4 anywhere in Nigeria, and free on orders over
-              $45. The charge is shown separately at checkout before you place
-              the order, and converts to naira alongside everything else if you
-              have switched currency.
-            </p>
+          <h2>Charges in naira</h2>
+          <p>
+            Prices and delivery charges on this site are held in US dollars. If
+            you are reading the site in naira, the figure you see is a
+            conversion at the rate shown in the footer converter, and the amount
+            settled at checkout will follow that same rate. Switching currency
+            changes what is displayed, never what is owed in dollar terms.
+          </p>
 
-            <h2>Addresses</h2>
-            <p>
-              Give us the address where somebody will actually be during working
-              hours, and use the delivery notes field for landmarks, gate
-              colours and anything a courier who does not know the street would
-              need. Most failed deliveries in Lagos are address problems rather
-              than courier problems.
-            </p>
-            <p>
-              We can change an address while the order is still in the workroom.
-              Once it has been scanned by the courier the address is theirs to
-              change, not ours, and we will pass on their instructions.
-            </p>
+          <h2>Address accuracy</h2>
+          <p>
+            We send the parcel to the address exactly as entered at checkout. If
+            you spot a mistake, email{" "}
+            <a href={`mailto:${site.email}`}>{site.email}</a> immediately — we
+            can usually correct it before dispatch, but once a parcel is with
+            the courier we cannot redirect it. Deliveries returned to us because
+            the address was wrong or nobody was available across three attempts
+            can be resent, with the second delivery charge payable by you.
+          </p>
 
-            <h2>Delays</h2>
-            <p>
-              Fuel scarcity, flooding, public holidays and closed roads all move
-              delivery windows in ways no courier controls. Where a parcel is
-              running past the window above, write to{" "}
-              <a href={`mailto:${site.email}`}>{site.email}</a> with the order
-              number and we will chase it directly and tell you what we learn.
-            </p>
+          <h2>If a parcel is late or missing</h2>
+          <p>
+            Contact us if tracking has not updated for three working days, or if
+            the courier has marked a parcel delivered and you have not received
+            it. We will open a case with the courier the same day. Claims must
+            reach us within fourteen days of the expected delivery date; after
+            that the courier will no longer investigate.
+          </p>
 
-            <h2>Missing parcels</h2>
-            <p>
-              If tracking shows delivered and nothing arrived, tell us within
-              seven days. We will open a trace with the courier, which usually
-              takes three to five working days. Where a parcel cannot be found
-              we replace the order or refund it in full, and we do not ask you
-              to argue with the courier on our behalf.
-            </p>
+          <h2>Damage in transit</h2>
+          <p>
+            If the box arrives crushed or the pair inside is marked, photograph
+            it before wearing it and send the pictures within forty-eight hours
+            of delivery. We will replace the pair if the size is still in stock
+            or refund it in full if it is not, and we cover the return postage.
+            This sits alongside, and does not replace, your rights under the{" "}
+            <Link href="/refunds-policy">returns and refunds policy</Link>.
+          </p>
 
-            <h2>Checking the parcel</h2>
-            <p>
-              Open the box while the courier is still there if you can. If
-              something is damaged in transit, photograph it before removing the
-              garment and send the photographs with your order number — that
-              makes the claim straightforward for everyone. Faults, damage and
-              wrong items are all covered by the{" "}
-              <Link href="/refunds-policy">returns policy</Link> at our cost.
-            </p>
-
-            <h2>International orders</h2>
-            <p>
-              We currently deliver within Nigeria only. If you are outside the
-              country and want a piece, write to {site.phone} or{" "}
-              <a href={`mailto:${site.email}`}>{site.email}</a> and we will tell
-              you honestly whether we can arrange it.
-            </p>
-          </div>
+          <h2>Collection</h2>
+          <p>
+            You may collect an order from the shop during opening hours at no
+            charge. Choose any delivery option at checkout and note
+            &ldquo;collection&rdquo; in the delivery notes; we will hold the
+            parcel for fourteen days and email you when it is ready. Bring the
+            order number.
+          </p>
         </div>
       </div>
     </>

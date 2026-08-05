@@ -3,39 +3,38 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { site } from "@/lib/site";
 
 const SLIDES = [
   {
-    image: "/mydriad/hero-01.jpg",
-    eyebrow: "The house cut",
-    title: "Tailoring that\nholds its line",
-    copy: "Half-canvas chests, side vents, and a shoulder that follows yours instead of arguing with it.",
-    href: "/shop?category=Suits",
-    cta: "Shop the suits",
+    image: "/crewsita/hero-01.jpg",
+    script: "New season",
+    title: "Up to 25% off\nleather formals",
+    copy: "Oxfords, brogues and monkstraps in the whole size run — every pair under forty dollars.",
+    href: "/shop?category=Men%27s+Formal",
+    cta: "Shop men's",
   },
   {
-    image: "/mydriad/hero-02.jpg",
-    eyebrow: "Twenty pieces",
-    title: "One standard,\none price band",
-    copy: "Every jacket in the collection sits between $20 and $40. There is no better version held back for a higher tier.",
+    image: "/crewsita/hero-02.jpg",
+    script: "For her",
+    title: "Heels you can\nactually stand in",
+    copy: "Block heels, pointed pumps and flats built on a last that leaves the toes room to sit.",
+    href: "/shop?category=Women%27s+Heels",
+    cta: "Shop women's",
+  },
+  {
+    image: "/crewsita/hero-03.jpg",
+    script: "Everyday",
+    title: "Twenty pairs,\none price band",
+    copy: "Nothing in the shop costs more than $40, and nothing is held back for a higher tier.",
     href: "/shop",
     cta: "See everything",
-  },
-  {
-    image: "/mydriad/hero-03.jpg",
-    eyebrow: "After dark",
-    title: "Black tie,\nby the letter",
-    copy: "Barathea, satin facings, covered buttons and a braided outseam. The old rules, kept because they work.",
-    href: "/shop?category=Dinner+Jackets",
-    cta: "Dinner jackets",
   },
 ];
 
 /**
- * Split hero: copy on black at the left, a cross-fading image at the right,
- * with a vertical rail down the outer edge — the frame the reference builds
- * around its slider.
+ * Full-bleed image slider with the copy block sitting over the left third —
+ * the arrangement the reference uses for its nivo slider, including the thin
+ * progress rule that runs along the bottom edge.
  */
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -43,104 +42,134 @@ export default function Hero() {
   useEffect(() => {
     const timer = window.setInterval(() => {
       if (!document.hidden) setIndex((current) => (current + 1) % SLIDES.length);
-    }, 7000);
+    }, 6500);
     return () => window.clearInterval(timer);
   }, []);
+
+  const go = (next: number) =>
+    setIndex((next + SLIDES.length) % SLIDES.length);
 
   const slide = SLIDES[index];
 
   return (
-    <section className="relative isolate grid bg-ink lg:min-h-[calc(100vh-88px)] lg:grid-cols-[1.05fr_1fr]">
-      {/* Left rail — the tagline set vertically, standing in for the vertical
-          column the reference runs down the edge of its slider. */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-20 hidden w-16 items-center justify-center border-r border-rule lg:flex">
-        <span className="rotate-180 text-[10px] uppercase tracking-mega text-slate [writing-mode:vertical-rl]">
-          {site.tagline}
-        </span>
-      </div>
+    <section className="relative isolate min-h-[460px] overflow-hidden bg-ink sm:min-h-[560px] lg:min-h-[620px]">
+      {SLIDES.map((item, slideIndex) => (
+        <div
+          key={item.image}
+          aria-hidden={slideIndex !== index}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            slideIndex === index ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <Image
+            src={item.image}
+            alt=""
+            fill
+            priority={slideIndex === 0}
+            sizes="100vw"
+            className="object-cover object-[50%_72%]"
+          />
+        </div>
+      ))}
 
-      {/* Copy half */}
-      <div className="relative flex items-center px-5 py-20 sm:px-8 lg:py-28 lg:pl-28 lg:pr-14">
-        <div className="max-w-xl">
-          <p key={`e-${index}`} className="eyebrow animate-lift">
-            {slide.eyebrow}
+      {/* Wash so the copy stays legible over any of the three photographs */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(to_right,#fff_0%,rgba(255,255,255,0.94)_26%,rgba(255,255,255,0.6)_44%,rgba(255,255,255,0)_64%)]"
+      />
+
+      <div className="wrap relative flex min-h-[460px] items-center py-16 sm:min-h-[560px] lg:min-h-[620px]">
+        <div className="max-w-2xl">
+          <p key={`s-${index}`} className="script-line animate-slidein">
+            {slide.script}
           </p>
           <h1
             key={`t-${index}`}
-            className="display-1 mt-6 animate-lift whitespace-pre-line"
+            className="display-1 mt-3 animate-slidein whitespace-pre-line"
           >
             {slide.title}
           </h1>
           <p
             key={`c-${index}`}
-            className="mt-7 max-w-md animate-lift text-[15px] font-light leading-[1.9] text-smoke"
+            className="mt-5 max-w-md animate-slidein text-[15px] leading-relaxed text-body"
           >
             {slide.copy}
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link href={slide.href} className="btn-brass">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Link href={slide.href} className="btn-rose">
               {slide.cta}
             </Link>
             <Link href="/about" className="btn-line">
-              How we cut
+              Our story
             </Link>
-          </div>
-
-          {/* Slide numerals, laid along a hairline */}
-          <div className="mt-14 flex items-center gap-5">
-            {SLIDES.map((item, slideIndex) => (
-              <button
-                key={item.title}
-                type="button"
-                onClick={() => setIndex(slideIndex)}
-                aria-label={`Show slide ${slideIndex + 1}`}
-                aria-current={slideIndex === index}
-                className={`flex items-center gap-3 text-sm tracking-micro transition-colors ${
-                  slideIndex === index
-                    ? "text-brass"
-                    : "text-slate hover:text-bone"
-                }`}
-              >
-                {String(slideIndex + 1).padStart(2, "0")}
-                <span
-                  aria-hidden="true"
-                  className={`h-px transition-all duration-500 ${
-                    slideIndex === index ? "w-12 bg-brass" : "w-5 bg-rule"
-                  }`}
-                />
-              </button>
-            ))}
           </div>
         </div>
       </div>
 
-      {/* Image half */}
-      <div className="relative min-h-[420px] border-l border-rule lg:min-h-full">
-        {SLIDES.map((item, slideIndex) => (
-          <div
-            key={item.image}
-            aria-hidden={slideIndex !== index}
-            className={`absolute inset-0 transition-opacity duration-[1200ms] ${
-              slideIndex === index ? "opacity-100" : "opacity-0"
-            }`}
+      {/* Arrows */}
+      <div className="absolute inset-y-0 right-0 hidden flex-col justify-center gap-2 pr-5 sm:flex">
+        {[
+          { label: "Previous slide", delta: -1, path: "M15 5 8 12l7 7" },
+          { label: "Next slide", delta: 1, path: "m9 5 7 7-7 7" },
+        ].map((arrow) => (
+          <button
+            key={arrow.label}
+            type="button"
+            onClick={() => go(index + arrow.delta)}
+            aria-label={arrow.label}
+            className="flex h-11 w-11 items-center justify-center border border-ink/15 bg-paper/80 text-ink transition-colors hover:bg-rose hover:text-paper"
           >
-            <Image
-              src={item.image}
-              alt=""
-              fill
-              priority={slideIndex === 0}
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover object-top"
-            />
-          </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d={arrow.path}
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
         ))}
-        {/* Just enough wash to seat the image against the black half. */}
+      </div>
+
+      {/* Bullets */}
+      <div className="absolute inset-x-0 bottom-6 flex justify-center gap-2.5">
+        {SLIDES.map((item, slideIndex) => (
+          <button
+            key={item.title}
+            type="button"
+            onClick={() => setIndex(slideIndex)}
+            aria-label={`Show slide ${slideIndex + 1}`}
+            aria-current={slideIndex === index}
+            className={`h-2.5 rotate-45 transition-all duration-300 ${
+              slideIndex === index
+                ? "w-2.5 bg-rose"
+                : "w-2.5 bg-ink/25 hover:bg-ink/50"
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Progress rule */}
+      <div className="absolute inset-x-0 bottom-0 h-1 bg-ink/10">
         <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-ink/70 via-transparent to-transparent"
+          key={index}
+          className="h-full bg-rose"
+          style={{ animation: "grow 6500ms linear forwards" }}
         />
       </div>
+
+      <style jsx>{`
+        @keyframes grow {
+          from {
+            width: 0%;
+          }
+          to {
+            width: 100%;
+          }
+        }
+      `}</style>
     </section>
   );
 }

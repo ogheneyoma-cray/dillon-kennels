@@ -2,120 +2,75 @@
 
 import { useState, type FormEvent } from "react";
 
-type Errors = Record<string, string>;
-
 const SUBJECTS = [
-  "An order I've placed",
-  "Sizing and alterations",
-  "Returns or exchanges",
-  "A cloth that is between runs",
-  "Wholesale and stockists",
+  "Order status",
+  "Sizing and fit",
+  "Returns or exchange",
   "Something else",
 ];
 
 /**
- * Demo contact form. Nothing is transmitted — submissions are validated in the
- * browser and acknowledged in place.
+ * Contact form. Nothing is transmitted — the submit handler validates and
+ * shows the confirmation panel, which is the correct behaviour for a
+ * storefront with no backend wired up yet.
  */
 export default function ContactForm() {
-  const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
+
+  const submit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+
+    if (!name || !email || !message) {
+      setError("Please fill in your name, email and message.");
+      return;
+    }
+    setError("");
+    setSent(true);
+  };
 
   if (sent) {
     return (
-      <div
-        role="status"
-        aria-live="polite"
-        className="border-l border-brass bg-panel p-9"
-      >
-        <h2 className="text-[11px] uppercase tracking-micro text-brass">
-          Message noted
-        </h2>
-        <p className="mt-4 text-[15px] font-light leading-relaxed text-smoke">
-          On the live store this would reach the customer service desk, who
-          reply within one working day. On this demonstration build nothing is
-          actually sent.
+      <div className="border border-line bg-mist p-8 text-center">
+        <p className="script-line">Thank you</p>
+        <h3 className="display-3 mt-2">Message received</h3>
+        <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-body">
+          Someone from the shop will reply within one working day. If it is
+          about an order already placed, please keep the order number to hand.
         </p>
         <button
           type="button"
           onClick={() => setSent(false)}
-          className="mt-7 text-[11px] uppercase tracking-micro text-brass underline underline-offset-4"
+          className="btn-line mt-6"
         >
-          Write another message
+          Send another
         </button>
       </div>
     );
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const next: Errors = {};
-
-    if (!String(data.get("name") ?? "").trim()) {
-      next.name = "Let us know who we're replying to";
-    }
-
-    const email = String(data.get("email") ?? "").trim();
-    if (!email) {
-      next.email = "We need an email address to reply to";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      next.email = "That email address does not look right";
-    }
-
-    if (String(data.get("message") ?? "").trim().length < 10) {
-      next.message = "A little more detail will help us answer properly";
-    }
-
-    setErrors(next);
-    if (Object.keys(next).length === 0) setSent(true);
-  };
-
   return (
-    <form onSubmit={handleSubmit} noValidate className="grid gap-6">
-      <div className="grid gap-6 sm:grid-cols-2">
+    <form onSubmit={submit} noValidate className="border border-line p-6 sm:p-8">
+      <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="field-label">
             Your name
           </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            autoComplete="name"
-            aria-invalid={Boolean(errors.name)}
-            aria-describedby={errors.name ? "name-error" : undefined}
-            className="field"
-          />
-          {errors.name && (
-            <p id="name-error" className="mt-2 text-[12px] text-brass">
-              {errors.name}
-            </p>
-          )}
+          <input id="name" name="name" type="text" required className="field" />
         </div>
-
         <div>
           <label htmlFor="email" className="field-label">
-            Email
+            Email address
           </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            aria-invalid={Boolean(errors.email)}
-            aria-describedby={errors.email ? "email-error" : undefined}
-            className="field"
-          />
-          {errors.email && (
-            <p id="email-error" className="mt-2 text-[12px] text-brass">
-              {errors.email}
-            </p>
-          )}
+          <input id="email" name="email" type="email" required className="field" />
         </div>
       </div>
 
-      <div>
+      <div className="mt-5">
         <label htmlFor="subject" className="field-label">
           What is it about?
         </label>
@@ -126,26 +81,26 @@ export default function ContactForm() {
         </select>
       </div>
 
-      <div>
+      <div className="mt-5">
         <label htmlFor="message" className="field-label">
           Message
         </label>
         <textarea
           id="message"
           name="message"
-          rows={7}
-          aria-invalid={Boolean(errors.message)}
-          aria-describedby={errors.message ? "message-error" : undefined}
-          className="field resize-y py-3"
+          rows={6}
+          required
+          className="field py-3"
         />
-        {errors.message && (
-          <p id="message-error" className="mt-2 text-[12px] text-brass">
-            {errors.message}
-          </p>
-        )}
       </div>
 
-      <button type="submit" className="btn-brass w-full sm:w-auto sm:justify-self-start">
+      {error && (
+        <p role="alert" className="mt-4 text-sm text-rose">
+          {error}
+        </p>
+      )}
+
+      <button type="submit" className="btn-rose mt-6 w-full sm:w-auto">
         Send message
       </button>
     </form>

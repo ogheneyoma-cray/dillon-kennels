@@ -8,26 +8,19 @@
   }
 
   body {
-    @apply bg-ink font-display text-smoke;
+    @apply bg-paper font-body text-body;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display font-normal text-bone;
+    @apply font-display font-semibold text-ink;
   }
 
   ::selection {
-    background-color: #bb9d7b;
-    color: #000000;
-  }
-
-  /* Native controls sit on black panels, so force the dark UA palette. */
-  select,
-  input,
-  textarea {
-    color-scheme: dark;
+    background-color: #e03550;
+    color: #ffffff;
   }
 }
 
@@ -36,99 +29,95 @@
     @apply mx-auto w-full max-w-shell px-5 sm:px-8;
   }
 
-  /* The reference runs faint vertical hairlines down the whole page. Applied
-     to a section, this paints five equal columns behind its content. */
-  .ruled {
-    @apply relative isolate;
-  }
-
-  .ruled::before {
-    content: "";
-    @apply pointer-events-none absolute inset-0 -z-10;
-    background-image: repeating-linear-gradient(
-      to right,
-      transparent 0,
-      transparent calc(20% - 1px),
-      rgba(240, 240, 240, 0.055) calc(20% - 1px),
-      rgba(240, 240, 240, 0.055) 20%
-    );
-  }
-
-  /* Display sizes. The reference sets everything in one geometric sans at a
-     light weight, so size and letterspacing carry the whole hierarchy. */
+  /* Display sizes. The reference sets headings in a bold condensed-feeling
+     sans, uppercase, with the accent doing the emphasis rather than weight. */
   .display-1 {
-    @apply text-[2.6rem] font-light leading-[1.05] tracking-tight text-bone sm:text-6xl lg:text-[4.25rem];
+    @apply font-display text-[2.1rem] font-bold uppercase leading-[1.12] tracking-[0.03em] text-ink sm:text-[2.9rem] lg:text-[3.4rem];
   }
 
   .display-2 {
-    @apply text-[2rem] font-light leading-[1.1] tracking-tight text-bone sm:text-[2.75rem];
+    @apply font-display text-[1.6rem] font-bold uppercase leading-tight tracking-wide2 text-ink sm:text-[2.1rem];
   }
 
   .display-3 {
-    @apply text-2xl font-light leading-tight tracking-tight text-bone sm:text-3xl;
+    @apply font-display text-xl font-semibold uppercase leading-tight tracking-wide2 text-ink sm:text-2xl;
+  }
+
+  /* The script line the reference sets above every section title. */
+  .script-line {
+    @apply font-script text-[1.5rem] font-normal normal-case leading-none text-rose sm:text-[1.75rem];
   }
 
   .eyebrow {
-    @apply text-[11px] font-medium uppercase tracking-mega text-brass;
+    @apply font-display text-[11px] font-semibold uppercase tracking-wide3 text-rose;
   }
 
   .micro {
-    @apply text-[11px] font-medium uppercase tracking-micro;
+    @apply font-display text-[11px] font-semibold uppercase tracking-wide2;
   }
 
   .btn {
-    @apply inline-flex min-h-[52px] items-center justify-center gap-2 px-9 text-[11px] font-medium uppercase tracking-micro transition-colors duration-200;
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-sm px-8 font-display text-[11px] font-bold uppercase tracking-wide2 transition-all duration-200;
   }
 
-  .btn-brass {
-    @apply btn bg-brass text-ink hover:bg-brass-glow;
+  .btn-rose {
+    @apply btn bg-rose text-paper hover:bg-ink;
+  }
+
+  .btn-ink {
+    @apply btn bg-ink text-paper hover:bg-rose;
   }
 
   .btn-line {
-    @apply btn border border-rule text-bone hover:border-brass hover:text-brass;
+    @apply btn border border-line-firm bg-transparent text-ink hover:border-rose hover:bg-rose hover:text-paper;
   }
 
-  .btn-bone {
-    @apply btn bg-bone text-ink hover:bg-brass;
+  .btn-ghost {
+    @apply btn border border-paper/70 bg-transparent text-paper hover:bg-paper hover:text-ink;
   }
 
-  /* Brass rule that grows out from the left on hover — the underline motif
-     used on links and category tiles throughout the reference. */
-  .link-rule {
-    @apply relative inline-block pb-1 text-[11px] font-medium uppercase tracking-micro text-bone transition-colors hover:text-brass;
+  /* Underline that wipes in from the left — the link treatment used across the
+     reference nav and footer lists. */
+  .link-wipe {
+    @apply relative inline-block text-sm text-body transition-colors hover:text-rose;
   }
 
-  .link-rule::after {
+  .link-wipe::after {
     content: "";
-    @apply absolute inset-x-0 bottom-0 h-px origin-left scale-x-100 bg-brass transition-transform duration-300;
+    @apply absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-rose transition-transform duration-300;
   }
 
-  .link-rule:hover::after {
-    @apply scale-x-0;
+  .link-wipe:hover::after {
+    @apply scale-x-100;
   }
 
   .field {
-    @apply min-h-[52px] w-full border border-rule bg-panel px-4 text-sm text-bone placeholder:text-slate focus:border-brass focus:outline-none;
+    @apply min-h-[48px] w-full rounded-sm border border-line bg-paper px-4 text-sm text-ink placeholder:text-faint focus:border-rose focus:outline-none;
   }
 
   .field-label {
-    @apply mb-2 block text-[11px] font-medium uppercase tracking-micro text-smoke;
+    @apply mb-2 block font-display text-[11px] font-semibold uppercase tracking-wide2 text-graphite;
   }
 
   .card {
-    @apply border border-rule bg-panel;
+    @apply rounded-sm border border-line bg-paper;
+  }
+
+  /* Small boxed badge used for sale/new flags and payment chips. */
+  .chip {
+    @apply inline-flex items-center rounded-sm px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-wide2;
   }
 
   .prose-legal {
-    @apply max-w-column text-[15px] font-light leading-[1.95] text-smoke;
+    @apply max-w-column text-[15px] leading-[1.9] text-body;
   }
 
   .prose-legal h2 {
-    @apply mb-4 mt-12 text-2xl font-light tracking-tight text-bone;
+    @apply mb-4 mt-12 font-display text-xl font-bold uppercase tracking-wide2 text-ink;
   }
 
   .prose-legal h3 {
-    @apply mb-2 mt-8 text-base font-medium uppercase tracking-micro text-brass;
+    @apply mb-2 mt-8 font-display text-[13px] font-bold uppercase tracking-wide2 text-rose;
   }
 
   .prose-legal p {
@@ -145,10 +134,10 @@
 
   .prose-legal li::before {
     content: "";
-    @apply absolute left-0 top-[0.85em] h-px w-3 bg-brass;
+    @apply absolute left-0 top-[0.7em] h-1.5 w-1.5 rotate-45 bg-rose;
   }
 
   .prose-legal a {
-    @apply text-brass underline underline-offset-4;
+    @apply text-rose underline underline-offset-4;
   }
 }

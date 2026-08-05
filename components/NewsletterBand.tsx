@@ -1,65 +1,66 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 
 /**
- * Newsletter band above the footer columns. Demo only — there is no mailing
- * list backend on this build.
+ * Newsletter strip that sits directly above the footer — the reference runs a
+ * full-width rose band with the copy at the left and the form at the right.
  */
 export default function NewsletterBand() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
 
+  const submit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!email.trim()) return;
+    setDone(true);
+    setEmail("");
+  };
+
   return (
-    <section className="ruled">
-      <div className="wrap grid gap-10 py-16 lg:grid-cols-[1fr_1fr] lg:items-center lg:py-20">
+    <section className="bg-rose">
+      <div className="wrap grid items-center gap-6 py-12 lg:grid-cols-2 lg:py-14">
         <div>
-          <p className="eyebrow">The list</p>
-          <h2 className="display-3 mt-4">
-            First look at every cut, before the run sells out
+          <p className="font-script text-[1.6rem] leading-none text-paper/80">
+            Stay in step
+          </p>
+          <h2 className="mt-2 font-display text-[1.5rem] font-bold uppercase leading-tight tracking-wide2 text-paper sm:text-[1.9rem]">
+            New pairs, early access
           </h2>
-          <p className="mt-4 max-w-md text-sm font-light leading-relaxed text-smoke">
-            One letter a month: what is on the cutting table, what is coming
-            back, and the occasional code. Leave whenever you like.
+          <p className="mt-3 max-w-md text-[14px] leading-relaxed text-paper/80">
+            One note a fortnight — restocks, new lasts and the reduced pairs
+            before they reach the shop page. No more than that.
           </p>
         </div>
 
-        {done ? (
+        <form onSubmit={submit} className="flex flex-col gap-3 sm:flex-row">
+          <label htmlFor="newsletter-email" className="sr-only">
+            Email address
+          </label>
+          <input
+            id="newsletter-email"
+            type="email"
+            required
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="Your email address"
+            className="min-h-[52px] w-full bg-paper px-5 text-sm text-ink placeholder:text-faint focus:outline-none focus:ring-2 focus:ring-ink/30"
+          />
+          <button
+            type="submit"
+            className="min-h-[52px] shrink-0 bg-ink px-8 font-display text-[11px] font-bold uppercase tracking-wide2 text-paper transition-colors hover:bg-paper hover:text-rose"
+          >
+            Subscribe
+          </button>
+        </form>
+
+        {done && (
           <p
             role="status"
-            aria-live="polite"
-            className="border-l border-brass bg-panel px-6 py-5 text-sm font-light text-bone"
+            className="font-display text-[11px] font-semibold uppercase tracking-wide2 text-paper lg:col-start-2"
           >
-            You are on the list. The next letter goes out at the start of the
-            month.
+            Thank you — you are on the list.
           </p>
-        ) : (
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              setDone(true);
-            }}
-            className="flex flex-col sm:flex-row"
-          >
-            <label htmlFor="newsletter-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="newsletter-email"
-              type="email"
-              required
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              placeholder="your@email.com"
-              className="min-h-[56px] flex-1 border border-rule bg-panel px-5 text-sm font-light text-bone placeholder:text-slate focus:border-brass focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="min-h-[56px] bg-brass px-10 text-[11px] font-medium uppercase tracking-micro text-ink transition-colors hover:bg-brass-glow"
-            >
-              Subscribe
-            </button>
-          </form>
         )}
       </div>
     </section>

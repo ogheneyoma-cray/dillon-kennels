@@ -1,56 +1,75 @@
 import { site } from "@/lib/site";
 
 /**
- * Standalone mark — an M drawn as one mitred stroke with the middle vee cut
- * deep, so it reads as a notch lapel. The short bar across the vee is the
- * stitch motif that reappears as a divider throughout the layout.
+ * Standalone mark — a shoe in side profile, drawn as one filled silhouette:
+ * low toe at the left, a dipped throat, and the heel counter rising at the
+ * right. Solid rather than outlined so it survives at favicon size.
  */
-export function LogoMark({ className = "h-6 w-6" }: { className?: string }) {
+export function LogoMark({ className = "h-7 w-9" }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 34 30"
+      viewBox="0 0 43 24"
       fill="none"
       aria-hidden="true"
       className={className}
     >
+      {/* Upper: low toe at the left, vamp rising across the instep, then the
+          quarter and a vertical heel back at the right. */}
       <path
-        d="M3 27.5V3l14 15.5L31 3v24.5"
-        stroke="currentColor"
-        strokeWidth="2.1"
-        strokeLinejoin="miter"
+        d="M2.5 20.5c0-2.6 1.3-4.2 3.9-5.2l11-4.2c1.9-.7 3.2-1.6 4.6-3l4.4-4.4c1.1-1.1 2.2-1.6 3.7-1.6h6.1c1.6 0 2.6 1 2.6 2.6v15.8H2.5Z"
+        fill="currentColor"
       />
+      {/* Sole, a shade deeper than the upper so the two read apart on both the
+          white header and the dark footer. */}
+      <rect x="1" y="20.5" width="41" height="2.8" rx="1" fill="#C4213C" />
+      {/* Lace bars, punched out of the vamp */}
       <path
-        d="M12 12.5h10"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        opacity="0.55"
+        d="M23 9.6l6.4 2.4M20.2 12.6l6.4 2.4"
+        stroke="#fff"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </svg>
   );
 }
 
 /**
- * Lockup: mark, hairline, wordmark. The rule between them is the same hairline
- * used for the header cell dividers, so the logo reads as part of the grid
- * rather than as something dropped on top of it.
+ * Lockup: the mark beside the wordmark, with a rule-and-label line beneath.
+ * The reference centres its logo in the bar, so the lockup is built to read
+ * from the middle out.
  */
 export default function Logo({
   className = "",
-  wordClassName = "text-[1.4rem]",
-  markClassName = "h-6 w-[26px]",
+  wordClassName = "text-[1.6rem]",
+  markClassName = "h-7 w-9",
+  tone = "ink",
 }: {
   className?: string;
   wordClassName?: string;
   markClassName?: string;
+  /** "ink" on white bars, "paper" when the logo sits on a dark panel. */
+  tone?: "ink" | "paper";
 }) {
+  const word = tone === "paper" ? "text-paper" : "text-ink";
+  const label = tone === "paper" ? "text-paper/60" : "text-muted";
+
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <LogoMark className={`${markClassName} shrink-0 text-brass`} />
-      <span aria-hidden="true" className="h-5 w-px shrink-0 bg-rule" />
-      <span
-        className={`font-display font-light lowercase leading-none tracking-[0.16em] text-bone ${wordClassName}`}
-      >
-        {site.wordmark}
+      <LogoMark className={`${markClassName} shrink-0 text-rose`} />
+      <span className="flex flex-col leading-none">
+        <span
+          className={`font-display font-bold lowercase leading-none tracking-wide2 ${word} ${wordClassName}`}
+        >
+          {site.wordmark}
+        </span>
+        <span className="mt-1.5 flex items-center gap-1.5">
+          <span aria-hidden="true" className="h-px w-4 bg-rose" />
+          <span
+            className={`font-display text-[8px] font-semibold uppercase tracking-wide3 ${label}`}
+          >
+            Footwear
+          </span>
+        </span>
       </span>
     </span>
   );

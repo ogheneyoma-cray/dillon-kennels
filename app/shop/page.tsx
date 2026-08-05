@@ -2,21 +2,21 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import PageHeader from "@/components/PageHeader";
 import ShopBrowser from "@/components/ShopBrowser";
-import { products } from "@/data/products";
+import { categories, products } from "@/data/products";
 
 export const metadata: Metadata = {
-  title: "The collection",
+  title: "Shop all footwear",
   description:
-    "The full Mydriad collection — suits, blazers, dinner jackets and waistcoats for men, priced in USD or NGN.",
+    "The full Crewsita range — formal shoes, loafers, heels, flats and sneakers for men and women, priced in USD or NGN.",
 };
 
 export default function ShopPage() {
   return (
     <>
       <PageHeader
-        title="The collection"
+        title="Shop all footwear"
         crumb="Shop"
-        intro={`${products.length} pieces across four categories, none of them over $40. Use the converter in the footer, or the switch in the header, to read every price in naira.`}
+        intro={`${products.length} pairs across ${categories.length} categories, none of them over $40. Switch the currency in the header to read every price in naira.`}
       />
       {/* useSearchParams needs a Suspense boundary during static prerender. */}
       <Suspense fallback={<div className="wrap py-24" />}>

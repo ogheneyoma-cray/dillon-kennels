@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Jost } from "next/font/google";
+import { Montserrat, Open_Sans, Norican } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
@@ -8,12 +8,27 @@ import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { site } from "@/lib/site";
 
-// One family for the whole site — the reference sets headings, navigation and
-// body copy in a single geometric sans and lets weight carry the hierarchy.
-const jost = Jost({
+// Three families, exactly as the reference sets them: Montserrat for headings
+// and every uppercase control, Open Sans for running copy, and Norican for the
+// script line that sits above each section title.
+const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-jost",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-open-sans",
+  display: "swap",
+});
+
+const norican = Norican({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-norican",
   display: "swap",
 });
 
@@ -32,8 +47,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={jost.variable}>
-      <body className="flex min-h-screen flex-col bg-ink antialiased">
+    <html
+      lang="en"
+      className={`${montserrat.variable} ${openSans.variable} ${norican.variable}`}
+    >
+      <body className="flex min-h-screen flex-col bg-paper antialiased">
         <CurrencyProvider>
           <CartProvider>
             <Header />

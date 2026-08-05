@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description:
-    "The terms on which Mydriad sells tailoring through this site, including orders, pricing, currency and liability.",
+    "The terms on which Crewsita sells footwear through this site — orders, pricing, currency, liability and governing law.",
 };
 
 export default function TermsPage() {
@@ -15,110 +15,127 @@ export default function TermsPage() {
       <PageHeader
         title="Terms & Conditions"
         crumb="Terms"
-        intro="The agreement between you and this shop when you place an order. Last updated 1 August 2026."
+        intro="The agreement between you and this shop when you order from it. Last updated 1 August 2026."
       />
 
-      <div className="ruled">
-        <div className="wrap py-16">
-          <div className="prose-legal">
-            <p>
-              This site is operated by {site.name} from{" "}
-              {site.addressOneLine}. By browsing it or placing an order you
-              accept the terms below. If you do not accept them, please do not
-              order.
-            </p>
+      <div className="wrap py-14 lg:py-16">
+        <div className="prose-legal">
+          <p>
+            These terms govern your use of this site and any order you place
+            through it. By browsing or ordering you accept them. The seller is{" "}
+            {site.name}, trading from {site.addressOneLine}, contactable at{" "}
+            <a href={`mailto:${site.email}`}>{site.email}</a>.
+          </p>
 
-            <h2>Orders</h2>
-            <p>
-              An order placed on this site is an offer to buy. That offer is
-              accepted when we send the confirmation email, and the contract
-              exists from that moment. We may decline an order where a piece has
-              sold out between the click and the confirmation, where a price or
-              description was clearly wrong, or where we cannot deliver to the
-              address supplied.
-            </p>
-            <p>
-              This is a demonstration storefront. No payment is processed, no
-              card details are collected at any point, and nothing placed
-              through it will be dispatched.
-            </p>
+          <h2>Orders</h2>
+          <p>
+            An order placed on this site is an offer to buy. The contract forms
+            when we send the dispatch email, not when you complete checkout. We
+            may decline an order — if a size has sold out between your adding it
+            to the bag and checking out, if a price has been listed in error, or
+            if we cannot deliver to the address given. Where we decline, nothing
+            is charged and we tell you why.
+          </p>
 
-            <h2>Prices and currency</h2>
-            <p>
-              Every price is held in US dollars. The naira figure shown when you
-              switch currency, or produced by the converter, is a conversion at
-              a rate fixed in this build for demonstration and is not a live
-              market rate. Where the two disagree, the dollar price is the price
-              of the garment.
-            </p>
-            <p>
-              Prices include the cost of the garment only. Delivery is shown
-              separately at checkout and is free above the threshold set out in
-              the{" "}
-              <Link href="/shipping-policy">shipping policy</Link>. We may change
-              prices at any time, but never after an order has been confirmed.
-            </p>
+          <h2>Pricing and currency</h2>
+          <p>
+            Every price on this site is set in US dollars. The naira figures
+            shown when you switch currency are a conversion at the rate
+            published in the footer converter and are shown for convenience.
+            Where a dollar and a naira figure disagree, the dollar figure is the
+            price. We may change prices at any time, but never after your order
+            is confirmed.
+          </p>
+          <p>
+            Prices include applicable taxes. Delivery is charged separately at
+            the rates set out in the{" "}
+            <Link href="/shipping-policy">shipping policy</Link>, and is free on
+            orders over $60.
+          </p>
 
-            <h2>Description of the garments</h2>
-            <p>
-              We describe cloth weight, construction and fit as accurately as we
-              can, and every product page states how the piece is built. Colour
-              rendering varies between screens, and natural fibres vary between
-              rolls of cloth — a slight difference in shade between two orders
-              of the same piece is a property of the material rather than a
-              fault.
-            </p>
-            <p>
-              Where a jacket is described as half-canvas, half-lined or cut with
-              spare cloth in the seams, that description is a term of this
-              contract. If a garment you receive does not match it, it is faulty
-              and the{" "}
-              <Link href="/refunds-policy">returns policy</Link> applies at our
-              cost.
-            </p>
+          <h2>Demonstration build</h2>
+          <p>
+            This site is currently a demonstration storefront. No payment is
+            processed, no card details are collected at any point, and no order
+            placed through it will ship. The confirmation screen exists to show
+            the flow. When live payments are enabled these terms will be updated
+            before the first real order is taken.
+          </p>
 
-            <h2>Alterations</h2>
-            <p>
-              Our garments are cut to be altered, and we encourage it. Once a
-              piece has been shortened, taken in or otherwise worked on by a
-              third party, it can no longer be returned as unworn — but your
-              rights in respect of a genuine manufacturing fault are unaffected
-              by an unrelated alteration.
-            </p>
+          <h2>Product descriptions and photography</h2>
+          <p>
+            We describe materials, sole construction and heel heights as
+            accurately as we can. Colours vary between screens, and leather is a
+            natural material — grain, shade and burnishing differ between pairs
+            of the same style. Those variations are a property of the material,
+            not a fault, and are not grounds for a faulty-goods claim. They are
+            of course grounds for a change-of-mind return within the ordinary{" "}
+            <Link href="/refunds-policy">returns window</Link>.
+          </p>
 
-            <h2>Your use of this site</h2>
-            <p>
-              You may browse, share links, and print pages for your own use. You
-              may not copy the photography, product text or page design for
-              commercial use, scrape the site by automated means, or attempt to
-              interfere with its operation. All content on this site remains our
-              property or that of our licensors.
-            </p>
+          <h2>Availability</h2>
+          <p>
+            Stock figures on this site reflect a limited run. A size shown as
+            available may sell out while your bag is open. If that happens after
+            you have checked out, we contact you within one working day to offer
+            an alternative size or a full refund.
+          </p>
 
-            <h2>Liability</h2>
-            <p>
-              We are responsible for loss you suffer as a foreseeable result of
-              us breaking this contract or failing to use reasonable care. We
-              are not responsible for loss that was not foreseeable, for
-              business losses, or for delays caused by events outside our
-              reasonable control. Nothing here limits liability for death or
-              personal injury caused by our negligence, for fraud, or for
-              anything else that cannot lawfully be limited.
-            </p>
+          <h2>Your account of yourself</h2>
+          <p>
+            You agree that the delivery and contact details you give us are
+            accurate and that you are legally able to enter into this contract.
+            You may not use this site to place fraudulent orders, to scrape
+            content or pricing, or to interfere with its operation.
+          </p>
 
-            <h2>Governing law</h2>
-            <p>
-              These terms are governed by the laws of the Federal Republic of
-              Nigeria, and the Nigerian courts have jurisdiction over any
-              dispute arising from them.
-            </p>
+          <h2>Intellectual property</h2>
+          <p>
+            The {site.name} name, the shoe mark, the site design, the product
+            photography and all written copy on this site belong to us. You may
+            not reproduce them commercially without written permission. Linking
+            to any page here is welcome and needs no permission.
+          </p>
 
-            <h2>Reaching us</h2>
-            <p>
-              Questions about these terms go to{" "}
-              <a href={`mailto:${site.email}`}>{site.email}</a> or {site.phone}.
-            </p>
-          </div>
+          <h2>Liability</h2>
+          <p>
+            We are responsible for loss you suffer that is a foreseeable result
+            of our breaking these terms or failing to use reasonable care. We
+            are not responsible for loss that was not foreseeable, for business
+            losses, or for delays caused by events outside our reasonable
+            control — including courier disruption, industrial action or
+            interruption to power or network infrastructure. Nothing here limits
+            our liability for death or personal injury caused by our negligence,
+            for fraud, or for anything that cannot lawfully be limited.
+          </p>
+
+          <h2>Links out</h2>
+          <p>
+            Where this site links to somewhere else, we are not responsible for
+            the content or the practices of that other site.
+          </p>
+
+          <h2>Changes to these terms</h2>
+          <p>
+            We may revise these terms. The version that applies to your order is
+            the one published when you placed it, and material changes are dated
+            at the top of this page.
+          </p>
+
+          <h2>Governing law</h2>
+          <p>
+            These terms are governed by the laws of the Federal Republic of
+            Nigeria, and the courts of Lagos State have jurisdiction over any
+            dispute arising under them.
+          </p>
+
+          <h2>Reaching us</h2>
+          <p>
+            Any question about these terms goes to{" "}
+            <a href={`mailto:${site.email}`}>{site.email}</a>, or through the{" "}
+            <Link href="/contact">contact page</Link>. We reply within one
+            working day.
+          </p>
         </div>
       </div>
     </>

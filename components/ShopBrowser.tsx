@@ -1,114 +1,140 @@
 "use client";
 
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
-import { Category, categories, products } from "@/data/products";
+import { useSearchParams } from "next/navigation";
+import { categories, products, type Category } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 
-type Sort = "featured" | "price-asc" | "price-desc" | "rating" | "name";
+type Sort = "featured" | "price-asc" | "price-desc" | "rating";
 
-const SORTS: { id: Sort; label: string }[] = [
-  { id: "featured", label: "House order" },
-  { id: "price-asc", label: "Price: low to high" },
-  { id: "price-desc", label: "Price: high to low" },
-  { id: "rating", label: "Highest rated" },
-  { id: "name", label: "Alphabetical" },
+const SORTS: { value: Sort; label: string }[] = [
+  { value: "featured", label: "Featured" },
+  { value: "price-asc", label: "Price: low to high" },
+  { value: "price-desc", label: "Price: high to low" },
+  { value: "rating", label: "Top rated" },
 ];
 
-function isCategory(value: string | null): value is Category {
-  return value !== null && (categories as string[]).includes(value);
-}
-
+/**
+ * Shop page body: a left sidebar of category and price filters with the grid
+ * at the right, matching the reference's shop layout. Category and search term
+ * seed from the query string so header search and footer links land correctly.
+ */
 export default function ShopBrowser() {
   const params = useSearchParams();
-  const category = params.get("category");
-  const query = (params.get("q") ?? "").trim().toLowerCase();
+  const initialCategory = params.get("category") as Category | null;
   const saleOnly = params.get("filter") === "sale";
+  const query = (params.get("q") ?? "").trim().toLowerCase();
+
+  const [category, setCategory] = useState<Category | "All">(
+    initialCategory && categories.includes(initialCategory)
+      ? initialCategory
+      : "All"
+  );
+  const [maxPrice, setMaxPrice] = useState(40);
   const [sort, setSort] = useState<Sort>("featured");
 
-  const activeCategory = isCategory(category) ? category : null;
+  const results = useMemo(() => {
+    let list = products.filter((product) => product.price <= maxPrice);
 
-  const visible = useMemo(() => {
-    let list = products;
-
-    if (activeCategory) {
-      list = list.filter((product) => product.category === activeCategory);
+    if (category !== "All") {
+      list = list.filter((product) => product.category === category);
     }
     if (saleOnly) {
       list = list.filter((product) => product.compareAt !== undefined);
     }
     if (query) {
-      list = list.filter(
-        (product) =>
-          product.name.toLowerCase().includes(query) ||
-          product.category.toLowerCase().includes(query) ||
-          product.cloth.toLowerCase().includes(query) ||
-          product.cut.toLowerCase().includes(query)
+      list = list.filter((product) =>
+        `${product.name} ${product.category} ${product.upper}`
+          .toLowerCase()
+          .includes(query)
       );
     }
 
     const sorted = [...list];
-    switch (sort) {
-      case "price-asc":
-        sorted.sort((a, b) => a.price - b.price);
-        break;
-      case "price-desc":
-        sorted.sort((a, b) => b.price - a.price);
-        break;
-      case "rating":
-        sorted.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews);
-        break;
-      case "name":
-        sorted.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      default:
-        break;
-    }
+    if (sort === "price-asc") sorted.sort((a, b) => a.price - b.price);
+    if (sort === "price-desc") sorted.sort((a, b) => b.price - a.price);
+    if (sort === "rating")
+      sorted.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews);
     return sorted;
-  }, [activeCategory, query, saleOnly, sort]);
-
-  const chip = (active: boolean) =>
-    `inline-flex min-h-[40px] items-center px-5 text-[11px] font-medium uppercase tracking-micro transition-colors ${
-      active
-        ? "bg-brass text-ink"
-        : "border border-rule text-smoke hover:border-brass hover:text-bone"
-    }`;
+  }, [category, maxPrice, query, saleOnly, sort]);
 
   return (
-    <div className="ruled">
-      <div className="wrap py-14">
-        <div className="flex flex-col gap-6 border-b border-rule pb-7 lg:flex-row lg:items-center lg:justify-between">
-          <ul className="flex flex-wrap gap-2">
-            <li>
-              <Link
-                href="/shop"
-                className={chip(!activeCategory && !saleOnly && !query)}
-              >
-                All ({products.length})
-              </Link>
-            </li>
-            {categories.map((item) => (
-              <li key={item}>
-                <Link
-                  href={`/shop?category=${encodeURIComponent(item)}`}
-                  className={chip(activeCategory === item)}
+    <div className="wrap grid gap-10 py-14 lg:grid-cols-[240px_1fr] lg:py-20">
+      <aside className="lg:sticky lg:top-24 lg:self-start">
+        <div className="border border-line p-6">
+          <p className="font-display text-[12px] font-bold uppercase tracking-wide2 text-ink">
+            Categories
+            <span aria-hidden="true" className="mt-3 block h-0.5 w-8 bg-rose" />
+          </p>
+          <ul className="mt-5 space-y-3">
+            {(["All", ...categories] as const).map((option) => (
+              <li key={option}>
+                <button
+                  type="button"
+                  onClick={() => setCategory(option)}
+                  aria-pressed={category === option}
+                  className={`text-sm transition-colors ${
+                    category === option
+                      ? "font-semibold text-rose"
+                      : "text-body hover:text-rose"
+                  }`}
                 >
-                  {item}
-                </Link>
+                  {option}
+                  <span className="ml-1.5 text-[11px] text-muted">
+                    (
+                    {option === "All"
+                      ? products.length
+                      : products.filter((p) => p.category === option).length}
+                    )
+                  </span>
+                </button>
               </li>
             ))}
-            <li>
-              <Link href="/shop?filter=sale" className={chip(saleOnly)}>
-                Reduced
-              </Link>
-            </li>
           </ul>
+        </div>
 
-          <div className="flex items-center gap-3">
+        <div className="mt-6 border border-line p-6">
+          <p className="font-display text-[12px] font-bold uppercase tracking-wide2 text-ink">
+            Price
+            <span aria-hidden="true" className="mt-3 block h-0.5 w-8 bg-rose" />
+          </p>
+          <label htmlFor="max-price" className="mt-5 block text-sm text-body">
+            Up to <span className="font-semibold text-rose">${maxPrice}</span>
+          </label>
+          <input
+            id="max-price"
+            type="range"
+            min={20}
+            max={40}
+            step={1}
+            value={maxPrice}
+            onChange={(event) => setMaxPrice(Number(event.target.value))}
+            className="mt-3 w-full accent-rose"
+          />
+          <div className="mt-1 flex justify-between text-[11px] text-muted">
+            <span>$20</span>
+            <span>$40</span>
+          </div>
+        </div>
+      </aside>
+
+      <div>
+        <div className="flex flex-wrap items-center justify-between gap-4 border border-line px-5 py-4">
+          <p className="text-sm text-body">
+            Showing <span className="font-semibold text-ink">{results.length}</span>{" "}
+            of {products.length} pairs
+            {query && (
+              <>
+                {" "}
+                for <span className="font-semibold text-ink">“{query}”</span>
+              </>
+            )}
+          </p>
+
+          <div className="flex items-center gap-2">
             <label
               htmlFor="sort"
-              className="whitespace-nowrap text-[11px] uppercase tracking-micro text-slate"
+              className="font-display text-[11px] font-semibold uppercase tracking-wide2 text-muted"
             >
               Sort
             </label>
@@ -116,10 +142,10 @@ export default function ShopBrowser() {
               id="sort"
               value={sort}
               onChange={(event) => setSort(event.target.value as Sort)}
-              className="min-h-[40px] border border-rule bg-panel px-4 text-[13px] font-light text-bone focus:border-brass focus:outline-none"
+              className="min-h-[38px] border border-line bg-paper px-3 text-sm text-ink focus:border-rose focus:outline-none"
             >
               {SORTS.map((option) => (
-                <option key={option.id} value={option.id}>
+                <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
               ))}
@@ -127,34 +153,14 @@ export default function ShopBrowser() {
           </div>
         </div>
 
-        <p
-          className="mt-6 text-[11px] uppercase tracking-micro text-slate"
-          role="status"
-          aria-live="polite"
-        >
-          Showing {visible.length} of {products.length}
-          {query && (
-            <>
-              {" "}
-              for <span className="text-brass">“{query}”</span>
-            </>
-          )}
-        </p>
-
-        {visible.length === 0 ? (
-          <p className="py-28 text-center text-[15px] font-light text-smoke">
-            Nothing in the range matches that.{" "}
-            <Link
-              href="/shop"
-              className="text-brass underline underline-offset-4"
-            >
-              View everything
-            </Link>
-            .
+        {results.length === 0 ? (
+          <p className="mt-12 text-center text-sm text-body">
+            No pairs match those filters. Try widening the price range or
+            choosing another category.
           </p>
         ) : (
-          <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-14 lg:grid-cols-4 lg:gap-x-6">
-            {visible.map((product) => (
+          <div className="mt-6 grid grid-cols-2 gap-5 xl:grid-cols-3">
+            {results.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

@@ -18,7 +18,7 @@ const CurrencyContext = createContext<CurrencyContextValue | undefined>(
   undefined
 );
 
-const STORAGE_KEY = "mydriad-currency";
+const STORAGE_KEY = "crewsita-currency";
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
   const [currency, setCurrencyState] = useState<CurrencyCode>("USD");

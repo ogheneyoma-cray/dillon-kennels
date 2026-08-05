@@ -8,28 +8,25 @@
  * legal pages, where it is required.
  */
 export const site = {
-  name: "Mydriad",
-  wordmark: "mydriad",
-  tagline: "Tailoring for men, cut clean and priced plainly",
+  name: "Crewsita",
+  wordmark: "crewsita",
+  tagline: "Shoes for men and women, built to be walked in",
   description:
-    "Mydriad is a menswear house working in one register — suits, blazers, dinner jackets and waistcoats, built to a single standard and sold at one honest price.",
-  email: "cs@mydriad.com",
+    "Crewsita is a footwear shop for men and women — oxfords, loafers, heels, flats and sneakers, made on lasts that fit real feet and never priced past forty dollars.",
+  email: "care@crewsita.com",
   // Placeholder until the full subscriber number is confirmed.
   phone: "234",
   phoneHref: "tel:234",
   address: {
-    line1: "13 Engineer Greg Obioha Street",
-    line2: "Off Community Road, Ago Palace Way",
-    line3: "Okota, Oshodi-Isolo Local Government Area",
-    line4: "Lagos State",
+    line1: "No. 3 Oke-Ori Omi Street",
+    line2: "Lagos Mainland",
+    line3: "Lagos State",
   },
-  addressOneLine:
-    "13 Engineer Greg Obioha Street, Off Community Road, Ago Palace Way, Okota, Oshodi-Isolo Local Government Area, Lagos State",
+  addressOneLine: "No. 3 Oke-Ori Omi Street, Lagos Mainland, Lagos State",
 } as const;
 
 export const addressLines = [
   site.address.line1,
   site.address.line2,
   site.address.line3,
-  site.address.line4,
 ];

@@ -2,32 +2,33 @@
 
 import { useEffect, useState } from "react";
 
-/** Square scroll-to-top control, keyed to the brass accent. */
+/** Rose square that appears once the page has scrolled past a screen height. */
 export default function BackToTop() {
-  const [visible, setVisible] = useState(false);
+  const [shown, setShown] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 700);
+    const onScroll = () => setShown(window.scrollY > 600);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (!visible) return null;
+  if (!shown) return null;
 
   return (
     <button
       type="button"
-      aria-label="Back to top"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed bottom-8 right-8 z-40 flex h-12 w-12 items-center justify-center border border-brass bg-ink text-brass transition-colors hover:bg-brass hover:text-ink"
+      aria-label="Back to top"
+      className="fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center bg-rose text-paper shadow-lift transition-colors hover:bg-ink"
     >
-      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path
-          d="M10 16V4M4.5 9.5 10 4l5.5 5.5"
+          d="M12 19V5m0 0-6 6m6-6 6 6"
           stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinecap="square"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </button>

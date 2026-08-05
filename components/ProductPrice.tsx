@@ -4,8 +4,8 @@ import { useCurrency } from "@/context/CurrencyContext";
 import { formatMoney } from "@/lib/currency";
 
 /**
- * Price in the active currency. When `compareAtUsd` is supplied the original
- * is struck through and set in the muted grey the reference uses for prices.
+ * Price in the shopper's chosen currency, with the struck-through original
+ * beside it when the pair is reduced.
  */
 export default function ProductPrice({
   priceUsd,
@@ -20,16 +20,16 @@ export default function ProductPrice({
 }) {
   const { currency } = useCurrency();
 
-  if (compareAtUsd === undefined) {
-    return <span className={className}>{formatMoney(priceUsd, currency)}</span>;
-  }
-
   return (
     <span className="inline-flex flex-wrap items-baseline gap-2">
-      <span className={`text-slate line-through ${compareClassName}`}>
-        {formatMoney(compareAtUsd, currency)}
+      <span className={`font-display font-bold text-rose ${className}`}>
+        {formatMoney(priceUsd, currency)}
       </span>
-      <span className={className}>{formatMoney(priceUsd, currency)}</span>
+      {compareAtUsd !== undefined && (
+        <span className={`text-muted line-through ${compareClassName}`}>
+          {formatMoney(compareAtUsd, currency)}
+        </span>
+      )}
     </span>
   );
 }

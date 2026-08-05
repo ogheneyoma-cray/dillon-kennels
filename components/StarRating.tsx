@@ -1,7 +1,6 @@
 /**
- * Rating shown as five hairline segments rather than stars — the reference
- * never uses a filled icon, so the score is carried by rule length and a
- * numeral. Falls back to a readable label for assistive technology.
+ * Amber five-star row. The reference prints filled and empty stars in the same
+ * amber, with the empty ones dropped to a pale grey — never a half star.
  */
 export default function StarRating({
   rating,
@@ -13,26 +12,28 @@ export default function StarRating({
   className?: string;
 }) {
   return (
-    <span
-      className={`inline-flex items-center gap-2 ${className}`}
-      aria-label={`Rated ${rating} out of 5${
-        reviews === undefined ? "" : ` from ${reviews} reviews`
-      }`}
-    >
-      <span aria-hidden="true" className="flex items-center gap-[3px]">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <span
-            key={index}
-            className={`block h-px w-3.5 ${
-              index < rating ? "bg-brass" : "bg-rule"
-            }`}
-          />
+    <span className={`inline-flex items-center gap-1.5 ${className}`}>
+      <span
+        className="inline-flex items-center gap-0.5"
+        aria-label={`Rated ${rating} out of 5`}
+      >
+        {[1, 2, 3, 4, 5].map((star) => (
+          <svg
+            key={star}
+            width="12"
+            height="12"
+            viewBox="0 0 20 20"
+            aria-hidden="true"
+            className={star <= rating ? "text-amber" : "text-line-firm"}
+            fill="currentColor"
+          >
+            <path d="m10 1.6 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L1.6 7.7l5.8-.8L10 1.6Z" />
+          </svg>
         ))}
       </span>
-      <span aria-hidden="true" className="text-[11px] tracking-micro text-slate">
-        {rating.toFixed(1)}
-        {reviews !== undefined && ` · ${reviews}`}
-      </span>
+      {reviews !== undefined && (
+        <span className="text-[11px] text-muted">({reviews})</span>
+      )}
     </span>
   );
 }

@@ -6,25 +6,25 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Returns & Refunds",
   description:
-    "How to return or exchange a Mydriad piece — the window, the condition we need it in, and how refunds are paid.",
+    "Crewsita's returns policy — the fourteen-day window, what counts as unworn, how exchanges work and how refunds are paid back.",
 };
 
 const STEPS = [
   {
     title: "Write to us",
-    copy: "Email the customer service desk with your order number and which piece is going back. No form to fill in and no automated portal to argue with.",
+    copy: "Email the order number and say whether you want an exchange or a refund. You do not need to give a reason, though it helps us fix the size guide if you do.",
   },
   {
     title: "We send the label",
-    copy: "You get a return instruction and a collection window by reply, usually the same working day.",
+    copy: "You get return instructions within one working day, and a drop-off point if you are in Lagos.",
   },
   {
-    title: "We check the piece",
-    copy: "A cutter looks at it within two working days of arrival — mainly to confirm it is unworn and that nothing has been altered.",
+    title: "We check the pair",
+    copy: "Returns are inspected within two working days of arriving. Exchanges are dispatched the same day the check clears.",
   },
   {
-    title: "Refund or exchange",
-    copy: "Exchanges go back out the same day. Refunds are issued to the original payment method within five working days of the check.",
+    title: "Money goes back",
+    copy: "Refunds are issued to the original payment method within five working days of the check clearing.",
   },
 ];
 
@@ -34,121 +34,123 @@ export default function RefundsPolicyPage() {
       <PageHeader
         title="Returns & Refunds"
         crumb="Returns"
-        intro="Fourteen days to change your mind, and the first size exchange is free. Last updated 1 August 2026."
+        intro="Fourteen days to change your mind, and a straightforward route back if the size is wrong. Last updated 1 August 2026."
       />
 
-      <div className="ruled">
-        <div className="wrap py-16">
-          <div className="prose-legal">
-            <h2>The window</h2>
-            <p>
-              You have 14 days from the day a parcel arrives to tell us you want
-              to return something, and a further 14 days to get it back to us.
-              Tailoring is harder to judge from a photograph than most clothing,
-              which is why the window starts when the box lands rather than when
-              the order is placed.
-            </p>
+      <div className="wrap py-14 lg:py-16">
+        <div className="prose-legal">
+          <h2>The window</h2>
+          <p>
+            You have fourteen days from the day a parcel is delivered to tell us
+            you want to return it, and a further fourteen days to get it back to
+            us. Both counts run from the delivery date on the courier record.
+          </p>
 
-            <h2>Condition</h2>
-            <p>
-              The piece needs to come back unworn, with tags attached, in the
-              box it arrived in. Trying a jacket on over a shirt to check the
-              shoulder is exactly what the window is for. Wearing it to an event
-              and returning it on Monday is not, and we will decline those.
-            </p>
-            <p>
-              A piece that has been shortened, taken in or otherwise altered
-              cannot be returned as unworn. This does not affect your rights
-              where the fault is ours.
-            </p>
+          <h2>What counts as unworn</h2>
+          <p>
+            Shoes are returnable if they have only been tried on indoors, on a
+            clean floor, the way you would try them on in a shop. That means:
+          </p>
+          <ul>
+            <li>No scuffing or dirt on the sole beyond light indoor marks.</li>
+            <li>No creasing across the vamp from walking any distance.</li>
+            <li>
+              Original box intact — it is part of the product, so please do not
+              tape a courier label directly onto it.
+            </li>
+            <li>All spare laces, dust bags and inserts included.</li>
+          </ul>
+          <p>
+            A pair worn outside cannot be resold and cannot be returned. This is
+            the one part of this policy we cannot be flexible about.
+          </p>
 
-            <h2>The first exchange is free</h2>
-            <p>
-              If the size is wrong, the first exchange on any order costs you
-              nothing in either direction. Tell us what arrived and what you
-              need instead, and we will send the replacement as soon as the
-              first is collected. Subsequent exchanges on the same order carry
-              the standard $4 delivery charge.
-            </p>
-          </div>
-
-          <ol className="mt-14 grid gap-px border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-4">
+          <h2>How it works</h2>
+          <ol className="not-prose my-6 grid gap-5 sm:grid-cols-2">
             {STEPS.map((step, index) => (
-              <li key={step.title} className="bg-panel p-7">
-                <span className="text-[11px] tracking-micro text-brass">
+              <li key={step.title} className="border border-line p-6">
+                <span className="font-display text-[12px] font-bold tracking-wide2 text-rose">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h2 className="mt-4 text-base font-light text-bone">
+                <h3 className="mt-3 font-display text-[13px] font-bold uppercase tracking-wide2 text-ink">
                   {step.title}
-                </h2>
-                <p className="mt-3 text-[13px] font-light leading-relaxed text-smoke">
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-body">
                   {step.copy}
                 </p>
               </li>
             ))}
           </ol>
 
-          <div className="prose-legal mt-14">
-            <h2>Who pays for the return</h2>
-            <ul>
-              <li>
-                <strong>We do</strong> where the piece is faulty, damaged in
-                transit, described wrongly, or simply not what you ordered.
-              </li>
-              <li>
-                <strong>We do</strong> for the first size exchange on any order.
-              </li>
-              <li>
-                <strong>You do</strong> where you have changed your mind, or for
-                a second and further exchange on the same order — a flat $4.
-              </li>
-            </ul>
+          <h2>Who pays the return postage</h2>
+          <ul>
+            <li>
+              <strong>We do</strong> if the pair is faulty, damaged in transit,
+              or not what you ordered.
+            </li>
+            <li>
+              <strong>We do</strong> on your first size exchange for any order —
+              getting the size right is our job as much as yours.
+            </li>
+            <li>
+              <strong>You do</strong> on a change-of-mind return, and on any
+              second or subsequent exchange of the same order.
+            </li>
+          </ul>
 
-            <h2>Faults</h2>
-            <p>
-              A fault is a failure of construction: a seam that opens, a lining
-              that tears at the armhole, a canvas that bubbles across the chest,
-              a button that pulls its cloth through. Send photographs with your
-              order number and we will replace the garment or refund it in full,
-              including delivery both ways.
-            </p>
-            <p>
-              Creasing in linen, a slight shade difference between two rolls of
-              cloth, and the way a soft shoulder settles after a few wears are
-              properties of the material rather than faults. We describe all
-              three on the relevant product pages before you buy.
-            </p>
+          <h2>Exchanges</h2>
+          <p>
+            Exchanges are for a different size of the same pair. If the size you
+            want is out of stock we will tell you before you send anything back,
+            and you can wait for the next run or take a refund instead. To swap
+            for a different style entirely, return the first pair for a refund
+            and place a fresh order — it is faster than processing it as an
+            exchange.
+          </p>
 
-            <h2>Refunds</h2>
-            <p>
-              Refunds go back to the original payment method within five working
-              days of the piece passing its check. If you paid in naira the
-              refund is issued in naira at the same conversion applied to the
-              order, so the figure you get back matches the figure you paid
-              regardless of what the rate has done since.
-            </p>
-            <p>
-              Where an order qualified for free delivery and a partial return
-              drops it below the $45 threshold, we do not claw the delivery
-              charge back.
-            </p>
+          <h2>Refunds</h2>
+          <p>
+            Refunds cover the price of the pair and, where the return is our
+            fault, the original delivery charge. They are paid to the method you
+            paid with, within five working days of the returned pair passing
+            inspection. Your bank may take a further few days to show it.
+          </p>
 
-            <h2>What cannot be returned</h2>
-            <p>
-              Altered garments, as above. Everything else in the collection can
-              come back within the window — there are no final-sale pieces and a
-              reduced price does not change your rights.
-            </p>
+          <h2>Faults after wearing</h2>
+          <p>
+            A sole that separates, a strap that tears at the anchor or stitching
+            that comes away within six months of delivery is a manufacturing
+            fault, not wear, and we will replace or refund the pair. Send
+            photographs to <a href={`mailto:${site.email}`}>{site.email}</a>.
+            Ordinary wear — worn-down heel tips, creasing across the vamp,
+            scuffed toes, faded suede — is not a fault.
+          </p>
 
-            <h2>Starting a return</h2>
-            <p>
-              Email <a href={`mailto:${site.email}`}>{site.email}</a> or call{" "}
-              {site.phone} with your order number. If the return is about fit,
-              the <Link href="/size-guide">fit guide</Link> will usually tell us
-              which size to send instead before the first parcel is even
-              collected.
-            </p>
-          </div>
+          <h2>What cannot be returned</h2>
+          <ul>
+            <li>Pairs worn outdoors.</li>
+            <li>Pairs returned without the original box.</li>
+            <li>
+              Pairs damaged by being cleaned in a way the product page warns
+              against — machine-washing a vulcanised sneaker, for instance.
+            </li>
+          </ul>
+
+          <h2>Getting it right first time</h2>
+          <p>
+            Most returns we see are half a size out. The{" "}
+            <Link href="/size-guide">size guide</Link> converts EU, UK and US and
+            says which way each last runs, and we will happily check a foot
+            measurement against a specific pair if you{" "}
+            <Link href="/contact">write to us</Link> before ordering.
+          </p>
+
+          <h2>Your statutory rights</h2>
+          <p>
+            Nothing in this policy limits the rights you have under the Federal
+            Competition and Consumer Protection Act. Where our policy is more
+            generous, our policy applies.
+          </p>
         </div>
       </div>
     </>
