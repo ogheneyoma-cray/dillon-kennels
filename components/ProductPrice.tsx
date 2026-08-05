@@ -5,7 +5,7 @@ import { formatMoney } from "@/lib/currency";
 
 /**
  * Price in the active currency. When `compareAtUsd` is supplied the original
- * is struck through before the reduced one, as on the reference cards.
+ * is struck through and set in the muted grey the reference uses for prices.
  */
 export default function ProductPrice({
   priceUsd,
@@ -26,7 +26,7 @@ export default function ProductPrice({
 
   return (
     <span className="inline-flex flex-wrap items-baseline gap-2">
-      <span className={`text-mist line-through ${compareClassName}`}>
+      <span className={`text-slate line-through ${compareClassName}`}>
         {formatMoney(compareAtUsd, currency)}
       </span>
       <span className={className}>{formatMoney(priceUsd, currency)}</span>

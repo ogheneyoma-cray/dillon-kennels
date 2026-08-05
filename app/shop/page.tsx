@@ -5,20 +5,21 @@ import ShopBrowser from "@/components/ShopBrowser";
 import { products } from "@/data/products";
 
 export const metadata: Metadata = {
-  title: "Shop everything",
+  title: "The collection",
   description:
-    "The full Adom Attic collection — tees, denim, skirts, hoodies, jackets and trainers for teenagers, priced in USD or NGN.",
+    "The full Mydriad collection — suits, blazers, dinner jackets and waistcoats for men, priced in USD or NGN.",
 };
 
 export default function ShopPage() {
   return (
     <>
       <PageHeader
-        title="Shop"
-        intro={`${products.length} pieces, none of them over $40. Switch currency in the header to see everything in naira.`}
+        title="The collection"
+        crumb="Shop"
+        intro={`${products.length} pieces across four categories, none of them over $40. Use the converter in the footer, or the switch in the header, to read every price in naira.`}
       />
       {/* useSearchParams needs a Suspense boundary during static prerender. */}
-      <Suspense fallback={<div className="frame py-24" />}>
+      <Suspense fallback={<div className="wrap py-24" />}>
         <ShopBrowser />
       </Suspense>
     </>

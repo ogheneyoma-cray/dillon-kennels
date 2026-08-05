@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Kaushan_Script, Manrope } from "next/font/google";
+import { Jost } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
@@ -8,16 +8,12 @@ import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { site } from "@/lib/site";
 
-const kaushan = Kaushan_Script({
+// One family for the whole site — the reference sets headings, navigation and
+// body copy in a single geometric sans and lets weight carry the hierarchy.
+const jost = Jost({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-kaushan",
-  display: "swap",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-jost",
   display: "swap",
 });
 
@@ -36,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${kaushan.variable} ${manrope.variable}`}>
-      <body className="flex min-h-screen flex-col antialiased">
+    <html lang="en" className={jost.variable}>
+      <body className="flex min-h-screen flex-col bg-ink antialiased">
         <CurrencyProvider>
           <CartProvider>
             <Header />

@@ -3,30 +3,35 @@
 import { useState } from "react";
 
 /**
- * Newsletter band on the grey field, as it sits above the reference footer.
- * Demo only — there is no mailing-list backend on this build.
+ * Newsletter band above the footer columns. Demo only — there is no mailing
+ * list backend on this build.
  */
 export default function NewsletterBand() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
 
   return (
-    <section className="bg-haze">
-      <div className="frame py-16 text-center">
-        <p className="eyebrow">Newsletter</p>
-        <h2 className="display-2 mt-3">Get 15% off your first order</h2>
-        <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-ash">
-          New drops, restocks and the occasional discount code. One email a
-          month, and you can leave whenever you like.
-        </p>
+    <section className="ruled">
+      <div className="wrap grid gap-10 py-16 lg:grid-cols-[1fr_1fr] lg:items-center lg:py-20">
+        <div>
+          <p className="eyebrow">The list</p>
+          <h2 className="display-3 mt-4">
+            First look at every cut, before the run sells out
+          </h2>
+          <p className="mt-4 max-w-md text-sm font-light leading-relaxed text-smoke">
+            One letter a month: what is on the cutting table, what is coming
+            back, and the occasional code. Leave whenever you like.
+          </p>
+        </div>
 
         {done ? (
           <p
             role="status"
             aria-live="polite"
-            className="mx-auto mt-8 max-w-lg border border-camel/40 bg-paper px-6 py-4 text-sm text-camel-dark"
+            className="border-l border-brass bg-panel px-6 py-5 text-sm font-light text-bone"
           >
-            You&apos;re on the list. Watch your inbox for the code.
+            You are on the list. The next letter goes out at the start of the
+            month.
           </p>
         ) : (
           <form
@@ -34,7 +39,7 @@ export default function NewsletterBand() {
               event.preventDefault();
               setDone(true);
             }}
-            className="mx-auto mt-8 flex max-w-xl flex-col sm:flex-row"
+            className="flex flex-col sm:flex-row"
           >
             <label htmlFor="newsletter-email" className="sr-only">
               Email address
@@ -45,12 +50,12 @@ export default function NewsletterBand() {
               required
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              placeholder="Enter your email ..."
-              className="min-h-[52px] flex-1 border border-line bg-paper px-5 text-sm text-onyx placeholder:text-mist focus:border-camel focus:outline-none"
+              placeholder="your@email.com"
+              className="min-h-[56px] flex-1 border border-rule bg-panel px-5 text-sm font-light text-bone placeholder:text-slate focus:border-brass focus:outline-none"
             />
             <button
               type="submit"
-              className="min-h-[52px] bg-onyx px-9 text-[11px] font-bold uppercase tracking-wide2 text-paper transition-colors hover:bg-camel"
+              className="min-h-[56px] bg-brass px-10 text-[11px] font-medium uppercase tracking-micro text-ink transition-colors hover:bg-brass-glow"
             >
               Subscribe
             </button>

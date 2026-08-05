@@ -8,23 +8,23 @@
  * legal pages, where it is required.
  */
 export const site = {
-  name: "Adom Attic",
-  wordmark: "adom attic",
-  tagline: "Clothes for the years you figure out who you are",
+  name: "Mydriad",
+  wordmark: "mydriad",
+  tagline: "Tailoring for men, cut clean and priced plainly",
   description:
-    "Adom Attic makes everyday clothing and shoes for teenagers — tees, denim, skirts, hoodies, jackets and trainers, cut for the way sixteen actually dresses.",
-  email: "supportteam@adomattic.com",
+    "Mydriad is a menswear house working in one register — suits, blazers, dinner jackets and waistcoats, built to a single standard and sold at one honest price.",
+  email: "cs@mydriad.com",
   // Placeholder until the full subscriber number is confirmed.
   phone: "234",
   phoneHref: "tel:234",
   address: {
-    line1: "20A Kayode Oduba Street",
-    line2: "Ajah",
-    line3: "Eti-Osa Local Government Area",
+    line1: "13 Engineer Greg Obioha Street",
+    line2: "Off Community Road, Ago Palace Way",
+    line3: "Okota, Oshodi-Isolo Local Government Area",
     line4: "Lagos State",
   },
   addressOneLine:
-    "20A Kayode Oduba Street, Ajah, Eti-Osa Local Government Area, Lagos State",
+    "13 Engineer Greg Obioha Street, Off Community Road, Ago Palace Way, Okota, Oshodi-Isolo Local Government Area, Lagos State",
 } as const;
 
 export const addressLines = [

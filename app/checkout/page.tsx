@@ -40,13 +40,14 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <div className="frame flex flex-col items-center py-28 text-center">
-        <h1 className="display-1">Your bag is empty</h1>
-        <p className="mt-4 max-w-md text-[15px] text-ash">
-          Add something to it and the checkout will open up.
+      <div className="wrap flex flex-col items-start py-32">
+        <p className="eyebrow">Nothing to pay for</p>
+        <h1 className="display-1 mt-5">Your bag is empty</h1>
+        <p className="mt-5 max-w-md text-[15px] font-light text-smoke">
+          Add a piece to it and the checkout will open up.
         </p>
-        <Link href="/shop" className="btn-camel mt-8">
-          Browse the shop
+        <Link href="/shop" className="btn-brass mt-9">
+          Open the collection
         </Link>
       </div>
     );
@@ -85,110 +86,120 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="frame py-14">
-      <h1 className="display-2">Checkout</h1>
+    <div className="ruled">
+      <div className="wrap py-14">
+        <p className="eyebrow">Final step</p>
+        <h1 className="display-2 mt-4">Checkout</h1>
 
-      <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_340px]">
-        <form onSubmit={handleSubmit} noValidate>
-          <div className="grid gap-5 sm:grid-cols-2">
-            {FIELDS.map((field) => (
-              <div key={field.name} className={field.full ? "sm:col-span-2" : ""}>
-                <label htmlFor={field.name} className="field-label">
-                  {field.label}
-                </label>
-                <input
-                  id={field.name}
-                  name={field.name}
-                  type={field.type}
-                  autoComplete={field.autoComplete}
-                  aria-invalid={Boolean(errors[field.name])}
-                  aria-describedby={
-                    errors[field.name] ? `${field.name}-error` : undefined
-                  }
-                  className="field"
-                />
-                {errors[field.name] && (
-                  <p
-                    id={`${field.name}-error`}
-                    className="mt-1.5 text-[12px] font-semibold text-camel-dark"
-                  >
-                    {errors[field.name]}
-                  </p>
-                )}
-              </div>
-            ))}
-
-            <div className="sm:col-span-2">
-              <label htmlFor="notes" className="field-label">
-                Delivery notes <span className="font-normal">(optional)</span>
-              </label>
-              <textarea
-                id="notes"
-                name="notes"
-                rows={3}
-                placeholder="Landmarks, gate colours, or a preferred delivery window."
-                className="field resize-y py-3"
-              />
-            </div>
-          </div>
-
-          <p className="mt-6 border-l-2 border-camel bg-blush px-4 py-3.5 text-[13px] leading-relaxed text-onyx">
-            This is a demonstration storefront. No payment is taken and no card
-            details are collected at any point.
-          </p>
-
-          <button type="submit" className="btn-dark mt-7 w-full sm:w-auto">
-            Place order
-          </button>
-        </form>
-
-        <aside className="h-fit border border-line p-7 lg:sticky lg:top-32">
-          <h2 className="text-[13px] font-bold uppercase tracking-wide2 text-onyx">
-            Your order
-          </h2>
-
-          <ul className="mt-6 space-y-4">
-            {items.map((item) => (
-              <li key={item.id} className="flex items-center gap-3">
-                <span className="relative h-16 w-12 shrink-0 overflow-hidden bg-haze">
-                  <Image
-                    src={item.image}
-                    alt=""
-                    fill
-                    sizes="48px"
-                    className="object-cover"
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_360px]">
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="grid gap-6 sm:grid-cols-2">
+              {FIELDS.map((field) => (
+                <div key={field.name} className={field.full ? "sm:col-span-2" : ""}>
+                  <label htmlFor={field.name} className="field-label">
+                    {field.label}
+                  </label>
+                  <input
+                    id={field.name}
+                    name={field.name}
+                    type={field.type}
+                    autoComplete={field.autoComplete}
+                    aria-invalid={Boolean(errors[field.name])}
+                    aria-describedby={
+                      errors[field.name] ? `${field.name}-error` : undefined
+                    }
+                    className="field"
                   />
-                </span>
-                <span className="flex-1 text-[13px] leading-snug text-onyx">
-                  {item.name}
-                  <span className="mt-0.5 block text-ash">
-                    Qty {item.quantity}
-                  </span>
-                </span>
-                <span className="text-[13px] font-semibold">
-                  {formatMoney(item.price * item.quantity, currency)}
-                </span>
-              </li>
-            ))}
-          </ul>
+                  {errors[field.name] && (
+                    <p
+                      id={`${field.name}-error`}
+                      className="mt-2 text-[12px] text-brass"
+                    >
+                      {errors[field.name]}
+                    </p>
+                  )}
+                </div>
+              ))}
 
-          <dl className="mt-6 space-y-3 border-t border-line pt-5 text-sm">
-            <div className="flex justify-between">
-              <dt className="text-ash">Subtotal</dt>
-              <dd>{formatMoney(cartTotal, currency)}</dd>
+              <div className="sm:col-span-2">
+                <label htmlFor="notes" className="field-label">
+                  Delivery notes <span className="normal-case">(optional)</span>
+                </label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows={3}
+                  placeholder="Landmarks, gate colours, or a preferred delivery window."
+                  className="field resize-y py-3"
+                />
+              </div>
             </div>
-            <div className="flex justify-between">
-              <dt className="text-ash">Delivery</dt>
-              <dd>
-                {delivery === 0 ? "Free" : formatMoney(delivery, currency)}
-              </dd>
-            </div>
-            <div className="flex justify-between border-t border-line pt-3 text-base font-semibold">
-              <dt>Total</dt>
-              <dd className="text-camel">{formatMoney(total, currency)}</dd>
-            </div>
-          </dl>
-        </aside>
+
+            <p className="mt-7 border-l border-brass bg-panel px-5 py-4 text-[13px] font-light leading-relaxed text-smoke">
+              This is a demonstration storefront. No payment is taken and no card
+              details are collected at any point.
+            </p>
+
+            <button type="submit" className="btn-brass mt-8 w-full sm:w-auto">
+              Place order
+            </button>
+          </form>
+
+          <aside className="card h-fit p-8 lg:sticky lg:top-32">
+            <h2 className="text-[11px] uppercase tracking-micro text-brass">
+              Your order
+            </h2>
+
+            <ul className="mt-7 space-y-5">
+              {items.map((item) => (
+                <li key={item.id} className="flex items-center gap-4">
+                  <span className="relative h-[68px] w-[52px] shrink-0 overflow-hidden border border-rule bg-raised">
+                    {/* Eager for the same reason as the bag: this list is
+                        client-rendered after hydration. */}
+                    <Image
+                      src={item.image}
+                      alt=""
+                      fill
+                      loading="eager"
+                      sizes="52px"
+                      className="object-cover opacity-90"
+                    />
+                  </span>
+                  <span className="flex-1 text-[13px] font-light leading-snug text-bone">
+                    {item.name}
+                    <span className="mt-1 block text-slate">
+                      Qty {item.quantity}
+                    </span>
+                  </span>
+                  <span className="text-[13px] text-bone">
+                    {formatMoney(item.price * item.quantity, currency)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <dl className="mt-7 space-y-3 border-t border-rule pt-6 text-sm font-light">
+              <div className="flex justify-between">
+                <dt className="text-smoke">Subtotal</dt>
+                <dd className="text-bone">{formatMoney(cartTotal, currency)}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-smoke">Delivery</dt>
+                <dd className="text-bone">
+                  {delivery === 0 ? "Free" : formatMoney(delivery, currency)}
+                </dd>
+              </div>
+              <div className="flex items-baseline justify-between border-t border-rule pt-4">
+                <dt className="text-[11px] uppercase tracking-micro text-slate">
+                  Total
+                </dt>
+                <dd className="text-xl text-brass">
+                  {formatMoney(total, currency)}
+                </dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
       </div>
     </div>
   );

@@ -4,54 +4,52 @@ import PageHeader from "@/components/PageHeader";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Size Guide",
+  title: "Fit Guide",
   description:
-    "Body measurements for Adom Attic apparel, denim and shoes, with advice on which cuts to size up in.",
+    "Jacket, trouser and waistcoat measurements for Mydriad tailoring, with guidance on regular versus long and which cuts run close.",
 };
 
-const APPAREL = [
-  { size: "XS", chest: "82 – 86", waist: "63 – 67", hip: "88 – 92" },
-  { size: "S", chest: "87 – 92", waist: "68 – 73", hip: "93 – 98" },
-  { size: "M", chest: "93 – 98", waist: "74 – 79", hip: "99 – 104" },
-  { size: "L", chest: "99 – 105", waist: "80 – 86", hip: "105 – 111" },
-  { size: "XL", chest: "106 – 113", waist: "87 – 94", hip: "112 – 119" },
+const JACKETS = [
+  { size: "36R", chest: "91 – 94", waist: "79 – 82", sleeve: "62.5", length: "74" },
+  { size: "38R", chest: "96 – 99", waist: "84 – 87", sleeve: "63.5", length: "75" },
+  { size: "40R", chest: "101 – 104", waist: "89 – 92", sleeve: "64.5", length: "76" },
+  { size: "42R", chest: "106 – 109", waist: "94 – 97", sleeve: "65.5", length: "77" },
+  { size: "44R", chest: "111 – 114", waist: "99 – 102", sleeve: "66.5", length: "78" },
+  { size: "46R", chest: "116 – 119", waist: "104 – 107", sleeve: "67.5", length: "79" },
 ];
 
-const DENIM = [
-  { size: "24", waist: "61 – 63", hip: "86 – 89" },
-  { size: "26", waist: "66 – 68", hip: "91 – 94" },
-  { size: "28", waist: "71 – 73", hip: "96 – 99" },
-  { size: "30", waist: "76 – 79", hip: "101 – 104" },
-  { size: "32", waist: "81 – 84", hip: "106 – 109" },
-  { size: "34", waist: "86 – 89", hip: "111 – 114" },
+const LONGS = [
+  { size: "38L", chest: "96 – 99", sleeve: "66", length: "78" },
+  { size: "40L", chest: "101 – 104", sleeve: "67", length: "79" },
+  { size: "42L", chest: "106 – 109", sleeve: "68", length: "80" },
+  { size: "44L", chest: "111 – 114", sleeve: "69", length: "81" },
+  { size: "46L", chest: "116 – 119", sleeve: "70", length: "82" },
 ];
 
-const SHOES = [
-  { size: "EU 36", foot: "22.8", uk: "3.5" },
-  { size: "EU 37", foot: "23.5", uk: "4" },
-  { size: "EU 38", foot: "24.1", uk: "5" },
-  { size: "EU 39", foot: "24.8", uk: "6" },
-  { size: "EU 40", foot: "25.4", uk: "6.5" },
-  { size: "EU 41", foot: "26.0", uk: "7.5" },
-  { size: "EU 42", foot: "26.7", uk: "8" },
+const VESTS = [
+  { size: "S", chest: "91 – 96", waist: "79 – 84" },
+  { size: "M", chest: "97 – 104", waist: "85 – 92" },
+  { size: "L", chest: "105 – 112", waist: "93 – 100" },
+  { size: "XL", chest: "113 – 120", waist: "101 – 108" },
+  { size: "XXL", chest: "121 – 128", waist: "109 – 116" },
 ];
 
 const FITS = [
   {
     name: "Take your usual size",
-    copy: "Tees, the polo dress, the pleated skirt and all footwear. These are cut true and sizing up will only make them look borrowed.",
+    copy: "The charcoal herringbone, the graphite city suit, the black suit and both dinner jackets are cut to standard drop. If you know your jacket size, order it.",
   },
   {
-    name: "Size up if between",
-    copy: "The oversized sweatshirt and both hoodies are already generous, but if you want the fully dropped look, go one up rather than two.",
+    name: "Consider one up",
+    copy: "The midnight navy slim suit and the cobalt suit are cut closer through the waist and high in the armhole. If you sit between two chest measurements, take the larger.",
   },
   {
-    name: "Size down in rigid denim",
-    copy: "Our high-rise mom jeans are rigid and will relax roughly half a size across the waist within a week of wear. Buy them snug.",
+    name: "Consider one down",
+    copy: "The taupe relaxed blazer and the noir oversized blazer already carry extra volume in the body. Ordering your usual size gives a deliberately loose line; size down for a normal one.",
   },
   {
-    name: "Take your usual size in the sherpa",
-    copy: "The lined jacket is already cut wider through the chest and armhole to allow for the lining. Sizing up makes the shoulders drop too far.",
+    name: "Take Long if you are over 6ft",
+    copy: "Long adds roughly 2.5cm to the sleeve and 3cm to the body without changing the chest. The espresso suit and the midnight dinner suit are cut in Long only.",
   },
 ];
 
@@ -67,32 +65,30 @@ function Table({
   const keys = Object.keys(rows[0]);
 
   return (
-    <div className="max-w-3xl overflow-x-auto">
-      <table className="w-full min-w-[420px] border-collapse text-left text-sm">
-        <caption className="pb-4 text-left text-[13px] font-bold uppercase tracking-wide2 text-onyx">
+    <div className="overflow-x-auto">
+      <table className="w-full min-w-[520px] border-collapse text-left text-sm">
+        <caption className="pb-5 text-left text-[11px] uppercase tracking-micro text-brass">
           {caption}
         </caption>
         <thead>
-          <tr className="border-b border-onyx/20">
+          <tr className="border-b border-rule">
             {columns.map((column) => (
               <th
                 key={column}
-                className="pb-3 pr-4 text-[11px] font-bold uppercase tracking-wide2 text-ash"
+                className="pb-4 pr-4 text-[11px] font-medium uppercase tracking-micro text-slate"
               >
                 {column}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="text-ash">
+        <tbody className="font-light text-smoke">
           {rows.map((row) => (
-            <tr key={row.size} className="border-b border-line">
+            <tr key={row.size} className="border-b border-rule/60">
               {keys.map((key) => (
                 <td
                   key={key}
-                  className={`py-3.5 pr-4 ${
-                    key === "size" ? "font-semibold text-onyx" : ""
-                  }`}
+                  className={`py-4 pr-4 ${key === "size" ? "text-bone" : ""}`}
                 >
                   {row[key]}
                 </td>
@@ -109,97 +105,108 @@ export default function SizeGuidePage() {
   return (
     <>
       <PageHeader
-        title="Size Guide"
-        intro="All measurements below are body measurements in centimetres, not finished garment measurements. Measure over a thin layer and keep the tape level."
+        title="Fit Guide"
+        crumb="Fit"
+        intro="All figures below are body measurements in centimetres, not finished garment measurements. Measure over a shirt, keep the tape level, and do not hold your breath."
       />
 
-      <div className="frame py-14">
-        <div className="prose-legal max-w-3xl">
-          <h2>How to measure</h2>
-          <ul>
-            <li>
-              <strong>Chest.</strong> Around the fullest part, tape flat across
-              the back and level under the arms, arms relaxed.
-            </li>
-            <li>
-              <strong>Waist.</strong> Around the narrowest part of the torso.
-              For denim, measure where you actually wear the waistband instead.
-            </li>
-            <li>
-              <strong>Hip.</strong> Around the fullest part, roughly 20cm below
-              the waist, with feet together.
-            </li>
-            <li>
-              <strong>Foot length.</strong> Stand on paper, mark heel and
-              longest toe, measure between. Do both feet and use the larger.
-            </li>
-          </ul>
-        </div>
+      <div className="ruled">
+        <div className="wrap py-16">
+          <div className="prose-legal">
+            <h2>How to measure</h2>
+            <ul>
+              <li>
+                <strong>Chest.</strong> Around the fullest part, tape flat
+                across the back and level under the arms, arms relaxed at your
+                sides. This is the number that sets your jacket size.
+              </li>
+              <li>
+                <strong>Waist.</strong> Around the natural waist, roughly at the
+                navel — not where a low-rise trouser sits.
+              </li>
+              <li>
+                <strong>Sleeve.</strong> From the centre back of the neck, over
+                the point of the shoulder, down to the wrist bone with the arm
+                slightly bent.
+              </li>
+              <li>
+                <strong>Jacket length.</strong> From the base of the collar seam
+                straight down the back to the hem. A jacket should finish where
+                your fingers curl.
+              </li>
+            </ul>
+          </div>
 
-        <div className="mt-14">
-          <Table
-            caption="Apparel"
-            columns={["Size", "Chest (cm)", "Waist (cm)", "Hip (cm)"]}
-            rows={APPAREL}
-          />
-        </div>
+          <div className="mt-16">
+            <Table
+              caption="Jackets — Regular"
+              columns={[
+                "Size",
+                "Chest (cm)",
+                "Waist (cm)",
+                "Sleeve (cm)",
+                "Length (cm)",
+              ]}
+              rows={JACKETS}
+            />
+          </div>
 
-        <div className="mt-16">
-          <Table
-            caption="Denim"
-            columns={["Size", "Waist (cm)", "Hip (cm)"]}
-            rows={DENIM}
-          />
-        </div>
+          <div className="mt-16">
+            <Table
+              caption="Jackets — Long"
+              columns={["Size", "Chest (cm)", "Sleeve (cm)", "Length (cm)"]}
+              rows={LONGS}
+            />
+            <p className="mt-5 max-w-column text-[13px] font-light leading-relaxed text-slate">
+              Long carries the same chest as its Regular equivalent. If your
+              chest is a 40 but your sleeves finish short in a 40R, 40L is the
+              correct order rather than 42R.
+            </p>
+          </div>
 
-        <div className="mt-16">
-          <Table
-            caption="Footwear"
-            columns={["Size", "Foot length (cm)", "UK"]}
-            rows={SHOES}
-          />
-          <p className="mt-4 max-w-3xl text-[13px] leading-relaxed text-ash">
-            Leave about 1cm beyond the longest toe. All three canvas styles are
-            built on the same last, so your size carries between them.
+          <div className="mt-16">
+            <Table
+              caption="Waistcoats"
+              columns={["Size", "Chest (cm)", "Waist (cm)"]}
+              rows={VESTS}
+            />
+          </div>
+
+          <div className="mt-20 max-w-column">
+            <h2 className="text-[11px] uppercase tracking-micro text-brass">
+              Which cuts run close
+            </h2>
+            <dl className="mt-7 divide-y divide-rule border-y border-rule">
+              {FITS.map((fit) => (
+                <div key={fit.name} className="py-6">
+                  <dt className="text-[15px] text-bone">{fit.name}</dt>
+                  <dd className="mt-2 text-[15px] font-light leading-relaxed text-smoke">
+                    {fit.copy}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <p className="mt-12 max-w-column border-l border-brass bg-panel p-7 text-[15px] font-light leading-relaxed text-smoke">
+            Still unsure? Send your chest, waist and height to{" "}
+            <a
+              href={`mailto:${site.email}`}
+              className="text-brass underline underline-offset-4"
+            >
+              {site.email}
+            </a>{" "}
+            with the piece you are looking at and we will tell you which size we
+            would cut for you. The first size exchange is free — see the{" "}
+            <Link
+              href="/refunds-policy"
+              className="text-brass underline underline-offset-4"
+            >
+              returns policy
+            </Link>
+            .
           </p>
         </div>
-
-        <div className="mt-16 max-w-3xl">
-          <h2 className="text-[13px] font-bold uppercase tracking-wide2 text-onyx">
-            Which cuts to size up in
-          </h2>
-          <dl className="mt-6 divide-y divide-line border-y border-line">
-            {FITS.map((fit) => (
-              <div key={fit.name} className="py-5">
-                <dt className="text-[15px] font-semibold text-onyx">
-                  {fit.name}
-                </dt>
-                <dd className="mt-1.5 text-[15px] leading-relaxed text-ash">
-                  {fit.copy}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        <p className="mt-10 max-w-3xl border-l-2 border-camel bg-blush p-6 text-[15px] leading-relaxed text-onyx">
-          Still unsure? Send your measurements to{" "}
-          <a
-            href={`mailto:${site.email}`}
-            className="font-semibold text-camel-dark underline underline-offset-4"
-          >
-            {site.email}
-          </a>{" "}
-          with the piece you are looking at and we will tell you which size we
-          would send. The first size exchange is free — see the{" "}
-          <Link
-            href="/refunds-policy"
-            className="font-semibold text-camel-dark underline underline-offset-4"
-          >
-            returns policy
-          </Link>
-          .
-        </p>
       </div>
     </>
   );

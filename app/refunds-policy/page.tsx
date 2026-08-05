@@ -6,8 +6,27 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Returns & Refunds",
   description:
-    "How to return or exchange an Adom Attic piece, what qualifies, and how long a refund takes.",
+    "How to return or exchange a Mydriad piece — the window, the condition we need it in, and how refunds are paid.",
 };
+
+const STEPS = [
+  {
+    title: "Write to us",
+    copy: "Email the customer service desk with your order number and which piece is going back. No form to fill in and no automated portal to argue with.",
+  },
+  {
+    title: "We send the label",
+    copy: "You get a return instruction and a collection window by reply, usually the same working day.",
+  },
+  {
+    title: "We check the piece",
+    copy: "A cutter looks at it within two working days of arrival — mainly to confirm it is unworn and that nothing has been altered.",
+  },
+  {
+    title: "Refund or exchange",
+    copy: "Exchanges go back out the same day. Refunds are issued to the original payment method within five working days of the check.",
+  },
+];
 
 export default function RefundsPolicyPage() {
   return (
@@ -15,128 +34,121 @@ export default function RefundsPolicyPage() {
       <PageHeader
         title="Returns & Refunds"
         crumb="Returns"
-        intro="Thirty days to change your mind and a free first size exchange. Last updated 1 August 2026."
+        intro="Fourteen days to change your mind, and the first size exchange is free. Last updated 1 August 2026."
       />
 
-      <div className="frame py-14">
-        <div className="prose-legal max-w-3xl">
-          <p>
-            Buying clothes you have not tried on is guesswork, and buying them
-            at an age when you are still growing is worse. You have 30 days from
-            delivery to start a return for any reason at all — double the
-            statutory minimum, and deliberately so.
-          </p>
+      <div className="ruled">
+        <div className="wrap py-16">
+          <div className="prose-legal">
+            <h2>The window</h2>
+            <p>
+              You have 14 days from the day a parcel arrives to tell us you want
+              to return something, and a further 14 days to get it back to us.
+              Tailoring is harder to judge from a photograph than most clothing,
+              which is why the window starts when the box lands rather than when
+              the order is placed.
+            </p>
 
-          <h2>What we can accept back</h2>
-          <ul>
-            <li>Unworn beyond trying on, and unwashed.</li>
-            <li>With all original tags still attached.</li>
-            <li>In its original packaging where that is still intact.</li>
-            <li>Shoes returned unmarked, having only been tried indoors.</li>
-          </ul>
-          <p>
-            The shoe point matters more than it sounds. A vulcanised sole picks
-            up scuffs within minutes of going outside and cannot then be resold,
-            so please try new pairs on carpet before committing to them.
-          </p>
+            <h2>Condition</h2>
+            <p>
+              The piece needs to come back unworn, with tags attached, in the
+              box it arrived in. Trying a jacket on over a shirt to check the
+              shoulder is exactly what the window is for. Wearing it to an event
+              and returning it on Monday is not, and we will decline those.
+            </p>
+            <p>
+              A piece that has been shortened, taken in or otherwise altered
+              cannot be returned as unworn. This does not affect your rights
+              where the fault is ours.
+            </p>
 
-          <h2>What we cannot accept back</h2>
-          <p>
-            Any item sold as a final-sale clearance piece, which is marked as
-            such on the product page before you buy, and gift cards. None of
-            this affects your rights if an item arrives faulty or is not as
-            described.
-          </p>
+            <h2>The first exchange is free</h2>
+            <p>
+              If the size is wrong, the first exchange on any order costs you
+              nothing in either direction. Tell us what arrived and what you
+              need instead, and we will send the replacement as soon as the
+              first is collected. Subsequent exchanges on the same order carry
+              the standard $4 delivery charge.
+            </p>
+          </div>
 
-          <h2>The first size exchange is free</h2>
-          <p>
-            This is the part most people use. The first size exchange on any
-            order is free anywhere in Lagos State — we collect the wrong size
-            and deliver the right one in the same visit, at no charge. Elsewhere
-            in Nigeria we cover the outbound leg of the replacement and you
-            cover the return. Email us the order number and the size you need
-            and we will hold the replacement for ten days while the first piece
-            comes back.
-          </p>
+          <ol className="mt-14 grid gap-px border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-4">
+            {STEPS.map((step, index) => (
+              <li key={step.title} className="bg-panel p-7">
+                <span className="text-[11px] tracking-micro text-brass">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h2 className="mt-4 text-base font-light text-bone">
+                  {step.title}
+                </h2>
+                <p className="mt-3 text-[13px] font-light leading-relaxed text-smoke">
+                  {step.copy}
+                </p>
+              </li>
+            ))}
+          </ol>
 
-          <h2>Starting a return</h2>
-          <p>
-            Email{" "}
-            <a
-              href={`mailto:${site.email}`}
-              className="font-semibold text-camel underline underline-offset-4"
-            >
-              {site.email}
-            </a>{" "}
-            with your order number and which pieces you are sending back. You do
-            not need to give a reason, though it helps us if you do. We reply
-            within one working day with a return authorisation and the address.
-          </p>
-          <p>
-            Within Lagos we arrange a courier pickup at your convenience.
-            Elsewhere you arrange the return shipping, and we strongly recommend
-            a tracked service — until the parcel reaches us it is still your
-            responsibility, and an untracked return that goes missing cannot be
-            refunded.
-          </p>
+          <div className="prose-legal mt-14">
+            <h2>Who pays for the return</h2>
+            <ul>
+              <li>
+                <strong>We do</strong> where the piece is faulty, damaged in
+                transit, described wrongly, or simply not what you ordered.
+              </li>
+              <li>
+                <strong>We do</strong> for the first size exchange on any order.
+              </li>
+              <li>
+                <strong>You do</strong> where you have changed your mind, or for
+                a second and further exchange on the same order — a flat $4.
+              </li>
+            </ul>
 
-          <h2>Who pays return postage</h2>
-          <p>
-            If the piece is faulty, damaged in transit, or not what you ordered,
-            we cover the return cost entirely and refund your original delivery
-            charge as well. If you are simply changing your mind, return postage
-            is yours — within Lagos we deduct a flat ₦2,500 pickup fee from the
-            refund, which is less than arranging it yourself.
-          </p>
+            <h2>Faults</h2>
+            <p>
+              A fault is a failure of construction: a seam that opens, a lining
+              that tears at the armhole, a canvas that bubbles across the chest,
+              a button that pulls its cloth through. Send photographs with your
+              order number and we will replace the garment or refund it in full,
+              including delivery both ways.
+            </p>
+            <p>
+              Creasing in linen, a slight shade difference between two rolls of
+              cloth, and the way a soft shoulder settles after a few wears are
+              properties of the material rather than faults. We describe all
+              three on the relevant product pages before you buy.
+            </p>
 
-          <h2>Refund timing</h2>
-          <p>
-            We inspect returns on the day they arrive and email you the outcome.
-            Approved refunds go back to the original payment method within three
-            working days. How long it then takes to appear depends on the bank:
-            Nigerian cards are usually 3 to 5 working days, international cards
-            up to 10. We refund the price you actually paid, including any
-            reduction that applied at the time. Where an order was paid for by a
-            parent or guardian, the refund goes back to their card rather than
-            to whoever sends the parcel back.
-          </p>
+            <h2>Refunds</h2>
+            <p>
+              Refunds go back to the original payment method within five working
+              days of the piece passing its check. If you paid in naira the
+              refund is issued in naira at the same conversion applied to the
+              order, so the figure you get back matches the figure you paid
+              regardless of what the rate has done since.
+            </p>
+            <p>
+              Where an order qualified for free delivery and a partial return
+              drops it below the $45 threshold, we do not claw the delivery
+              charge back.
+            </p>
 
-          <h2>Faulty pieces</h2>
-          <p>
-            If something fails in normal wear — a seam opens, a zip breaks, a
-            sole separates, a print cracks — tell us within six months of
-            delivery and we will repair it, replace it, or refund it in full, at
-            your choice. Send a photograph with your first message and we can
-            usually resolve it without any back and forth.
-          </p>
-          <p>
-            What is not a fault: denim fading and whiskering, garment-dyed
-            colour softening, creasing, ordinary wear at the knee and cuff, and
-            canvas marking. Every one of those is described on the relevant
-            product page before you buy, because they are what the fabric is
-            supposed to do.
-          </p>
+            <h2>What cannot be returned</h2>
+            <p>
+              Altered garments, as above. Everything else in the collection can
+              come back within the window — there are no final-sale pieces and a
+              reduced price does not change your rights.
+            </p>
 
-          <h2>Your statutory rights</h2>
-          <p>
-            Nothing in this policy limits the rights you have under the Federal
-            Competition and Consumer Protection Act. These terms sit alongside
-            our{" "}
-            <Link
-              href="/terms-and-conditions"
-              className="font-semibold text-camel underline underline-offset-4"
-            >
-              terms and conditions
-            </Link>{" "}
-            and{" "}
-            <Link
-              href="/shipping-policy"
-              className="font-semibold text-camel underline underline-offset-4"
-            >
-              shipping policy
-            </Link>
-            .
-          </p>
+            <h2>Starting a return</h2>
+            <p>
+              Email <a href={`mailto:${site.email}`}>{site.email}</a> or call{" "}
+              {site.phone} with your order number. If the return is about fit,
+              the <Link href="/size-guide">fit guide</Link> will usually tell us
+              which size to send instead before the first parcel is even
+              collected.
+            </p>
+          </div>
         </div>
       </div>
     </>

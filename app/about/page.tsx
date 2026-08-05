@@ -5,23 +5,27 @@ import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "The Atelier",
   description:
-    "Adom Attic makes clothing and shoes for teenagers, priced so a wardrobe can change as fast as the person wearing it.",
+    "How Mydriad cuts men's suits, blazers, dinner jackets and waistcoats — what we spend on, what we refuse to fake, and why every piece sits in one price band.",
 };
 
 const PRINCIPLES = [
   {
-    title: "Nothing over $40",
-    copy: "A hard ceiling, not a marketing line. Taste changes fast at this age and nothing here should feel too precious to actually wear out.",
+    title: "Float the canvas",
+    copy: "Fusing is glue. It is faster, it is cheaper, and in heat it bubbles across the chest within a season. We pad-stitch a floating canvas into every jacket instead, and it is the single largest cost in the garment.",
   },
   {
-    title: "Construction over branding",
-    copy: "Twin-needled necks, bar-tacked pockets, vulcanised soles, recovery yarn in the stretch denim. The money goes where the garment fails.",
+    title: "Cut for the climate",
+    copy: "Nothing in the range is heavier than 280gsm, most of it is half-lined, and the linings we do use are woven rather than solid polyester. A suit that cannot be worn at two in the afternoon is not a suit here.",
   },
   {
-    title: "Honest descriptions",
-    copy: "Every product page says what the fabric will do — what fades, what creases, what needs hand washing. Before you buy, not after.",
+    title: "Leave room to alter",
+    copy: "Every jacket carries spare cloth in the side seams and centre back; every trouser carries it at the waist and seat. Your tailor can move our fit properly rather than fighting it.",
+  },
+  {
+    title: "Say the price once",
+    copy: "There is no premium line, no anniversary edition, no better cloth held back for people who ask. The whole collection sits between $20 and $40 and that is the whole of the pricing story.",
   },
 ];
 
@@ -29,77 +33,98 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
-        title="About"
-        intro="Adom Attic started from one observation: teenagers are sold either fast fashion that survives a term, or adult brands priced for adult salaries."
+        title="The Atelier"
+        crumb="Atelier"
+        intro="Mydriad began with one complaint: a man in Lagos looking for a first proper suit is offered either a fused rack jacket that dies in a season, or bespoke priced for a salary he does not have yet."
       />
 
-      <div className="frame grid gap-12 py-14 lg:grid-cols-2 lg:gap-16">
-        <div className="relative aspect-[4/5] overflow-hidden bg-haze">
+      <section className="grid border-b border-rule lg:grid-cols-2">
+        <div className="relative min-h-[420px] lg:min-h-[640px]">
           <Image
-            src="/adomattic/look-03.jpg"
-            alt="An Adom Attic look photographed on location"
+            src="/mydriad/atelier-portrait.jpg"
+            alt="A cutter at work in the Mydriad workroom"
             fill
-            sizes="(min-width: 1024px) 46vw, 92vw"
-            className="object-cover"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover opacity-85"
           />
         </div>
 
-        <div className="prose-legal lg:pt-4">
-          <p>
-            We began with six pieces and a price ceiling. The ceiling came
-            first, because it was the part that mattered: at sixteen you are
-            working out what you want to look like, and that process involves
-            being wrong a lot. Clothes priced as investments make being wrong
-            expensive.
-          </p>
-          <p>
-            So everything here sits between $20 and $40, and the difference
-            between us and the fast fashion at the same price is where that
-            money goes. There is no licensed graphic, no celebrity name, and no
-            campaign budget. What there is instead: a 190gsm cotton instead of a
-            140gsm, a vulcanised sole instead of a glued one, a recovery yarn in
-            the stretch denim so the knees do not bag, and water-based inks so
-            the prints stay soft rather than cracking in half.
-          </p>
-          <p>
-            None of that shows in a photograph, which is exactly why most brands
-            at this price skip it. It shows in the second term.
-          </p>
+        <div className="ruled flex items-center px-6 py-16 sm:px-12 lg:px-16">
+          <div className="prose-legal">
+            <p>
+              We started with four jackets and one rule: whatever we could not
+              afford to do properly, we would not do at all. That is why there
+              is no shirt in this collection, no tie, no shoe. Every one of
+              those is a different craft with a different failure point, and
+              stretching across them is how a small house ends up selling
+              twenty mediocre things instead of twenty good ones.
+            </p>
+            <p>
+              So the range is jackets, and the trousers and waistcoats that go
+              with them. Twenty pieces. Four ways a jacket closes. One standard
+              of construction that does not move whether you spend twenty
+              dollars or forty.
+            </p>
+            <p>
+              The difference between us and the fast tailoring at the same price
+              is not visible in a photograph, which is precisely why most houses
+              at this price skip it. It is a floating canvas instead of glue, a
+              woven lining instead of a plastic one, spare cloth in the seams
+              instead of a raw edge, and a shoulder built with an unpadded head
+              so it follows yours. None of that photographs. All of it shows up
+              in year three.
+            </p>
+          </div>
         </div>
-      </div>
-
-      <section className="frame pb-16">
-        <SectionHeading title="How we work" />
-        <ul className="mt-14 grid gap-6 md:grid-cols-3">
-          {PRINCIPLES.map((principle) => (
-            <li key={principle.title} className="border border-line p-7">
-              <span
-                aria-hidden="true"
-                className="block h-[8px] w-[8px] rotate-45 bg-camel"
-              />
-              <h3 className="mt-5 text-[13px] font-bold uppercase tracking-wide2 text-onyx">
-                {principle.title}
-              </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-ash">
-                {principle.copy}
-              </p>
-            </li>
-          ))}
-        </ul>
       </section>
 
-      <section className="bg-haze">
-        <div className="frame py-16 text-center">
-          <h2 className="display-2">Have a look at the collection</h2>
-          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-ash">
-            Twenty pieces, five categories, one price band.
+      <section className="ruled">
+        <div className="wrap py-20 lg:py-24">
+          <SectionHeading
+            eyebrow="Working method"
+            title="Four decisions, made once"
+          />
+
+          <ul className="mt-16 grid gap-px border border-rule bg-rule md:grid-cols-2">
+            {PRINCIPLES.map((principle, index) => (
+              <li key={principle.title} className="bg-panel p-9">
+                <span className="text-[11px] tracking-micro text-brass">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-5 text-xl font-light text-bone">
+                  {principle.title}
+                </h3>
+                <p className="mt-4 text-sm font-light leading-relaxed text-smoke">
+                  {principle.copy}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="relative isolate border-t border-rule">
+        <Image
+          src="/mydriad/banner-showroom.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="-z-20 object-cover opacity-25"
+        />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink/60" />
+
+        <div className="wrap py-24 text-center">
+          <h2 className="display-2">Twenty pieces. One standard.</h2>
+          <p className="mx-auto mt-5 max-w-lg text-[15px] font-light leading-relaxed text-smoke">
+            Four categories, six sizes, and prices held in dollars so they
+            convert cleanly to naira at whatever the day's rate is.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="/shop" className="btn-camel">
-              Shop everything
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Link href="/shop" className="btn-brass">
+              Open the collection
             </Link>
-            <Link href="/contact" className="btn-outline">
-              Get in touch
+            <Link href="/contact" className="btn-line">
+              Talk to us
             </Link>
           </div>
         </div>

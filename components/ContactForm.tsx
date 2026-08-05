@@ -6,8 +6,9 @@ type Errors = Record<string, string>;
 
 const SUBJECTS = [
   "An order I've placed",
-  "Sizing and fit",
+  "Sizing and alterations",
   "Returns or exchanges",
+  "A cloth that is between runs",
   "Wholesale and stockists",
   "Something else",
 ];
@@ -25,19 +26,20 @@ export default function ContactForm() {
       <div
         role="status"
         aria-live="polite"
-        className="border-l-2 border-camel bg-blush p-8"
+        className="border-l border-brass bg-panel p-9"
       >
-        <h2 className="text-[13px] font-bold uppercase tracking-wide2 text-onyx">
+        <h2 className="text-[11px] uppercase tracking-micro text-brass">
           Message noted
         </h2>
-        <p className="mt-3 text-[15px] leading-relaxed text-ash">
-          On the live store this would reach the support team, who reply within
-          one working day. On this demonstration build nothing is actually sent.
+        <p className="mt-4 text-[15px] font-light leading-relaxed text-smoke">
+          On the live store this would reach the customer service desk, who
+          reply within one working day. On this demonstration build nothing is
+          actually sent.
         </p>
         <button
           type="button"
           onClick={() => setSent(false)}
-          className="mt-6 text-[11px] font-bold uppercase tracking-wide2 text-camel underline underline-offset-4"
+          className="mt-7 text-[11px] uppercase tracking-micro text-brass underline underline-offset-4"
         >
           Write another message
         </button>
@@ -70,8 +72,8 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="grid gap-5">
-      <div className="grid gap-5 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} noValidate className="grid gap-6">
+      <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="field-label">
             Your name
@@ -86,7 +88,7 @@ export default function ContactForm() {
             className="field"
           />
           {errors.name && (
-            <p id="name-error" className="mt-1.5 text-[12px] font-semibold text-camel-dark">
+            <p id="name-error" className="mt-2 text-[12px] text-brass">
               {errors.name}
             </p>
           )}
@@ -106,7 +108,7 @@ export default function ContactForm() {
             className="field"
           />
           {errors.email && (
-            <p id="email-error" className="mt-1.5 text-[12px] font-semibold text-camel-dark">
+            <p id="email-error" className="mt-2 text-[12px] text-brass">
               {errors.email}
             </p>
           )}
@@ -131,19 +133,19 @@ export default function ContactForm() {
         <textarea
           id="message"
           name="message"
-          rows={6}
+          rows={7}
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? "message-error" : undefined}
           className="field resize-y py-3"
         />
         {errors.message && (
-          <p id="message-error" className="mt-1.5 text-[12px] font-semibold text-camel-dark">
+          <p id="message-error" className="mt-2 text-[12px] text-brass">
             {errors.message}
           </p>
         )}
       </div>
 
-      <button type="submit" className="btn-dark w-full sm:w-auto sm:justify-self-start">
+      <button type="submit" className="btn-brass w-full sm:w-auto sm:justify-self-start">
         Send message
       </button>
     </form>

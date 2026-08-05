@@ -1,62 +1,54 @@
 import { site } from "@/lib/site";
 
 /**
- * Standalone diamond mark — the motif the whole layout is built on (nav
- * separators, section dots, slider bullets, back-to-top). Two nested rotated
- * squares with an open centre.
+ * Standalone mark — an M drawn as one mitred stroke with the middle vee cut
+ * deep, so it reads as a notch lapel. The short bar across the vee is the
+ * stitch motif that reappears as a divider throughout the layout.
  */
 export function LogoMark({ className = "h-6 w-6" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" className={className}>
-      <rect
-        x="16"
-        y="1.5"
-        width="20.5"
-        height="20.5"
-        rx="2"
-        transform="rotate(45 16 1.5)"
+    <svg
+      viewBox="0 0 34 30"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <path
+        d="M3 27.5V3l14 15.5L31 3v24.5"
+        stroke="currentColor"
+        strokeWidth="2.1"
+        strokeLinejoin="miter"
+      />
+      <path
+        d="M12 12.5h10"
         stroke="currentColor"
         strokeWidth="1.4"
-      />
-      <rect
-        x="16"
-        y="9"
-        width="9.9"
-        height="9.9"
-        rx="1"
-        transform="rotate(45 16 9)"
-        fill="currentColor"
-        opacity="0.9"
+        opacity="0.55"
       />
     </svg>
   );
 }
 
 /**
- * Wordmark with the diamond outline sitting behind its centre, echoing the
- * hexagon-behind-letters treatment in the reference header. The mark is
- * absolutely positioned so the letterspacing stays even.
+ * Lockup: mark, hairline, wordmark. The rule between them is the same hairline
+ * used for the header cell dividers, so the logo reads as part of the grid
+ * rather than as something dropped on top of it.
  */
 export default function Logo({
   className = "",
-  wordClassName = "text-[1.35rem]",
-  tone = "dark",
+  wordClassName = "text-[1.4rem]",
+  markClassName = "h-6 w-[26px]",
 }: {
   className?: string;
   wordClassName?: string;
-  tone?: "dark" | "light";
+  markClassName?: string;
 }) {
   return (
-    <span className={`relative inline-flex items-center ${className}`}>
-      <LogoMark
-        className={`pointer-events-none absolute left-1/2 top-1/2 h-[2.15em] w-[2.15em] -translate-x-1/2 -translate-y-1/2 text-camel ${
-          tone === "light" ? "opacity-70" : "opacity-60"
-        }`}
-      />
+    <span className={`inline-flex items-center gap-2.5 ${className}`}>
+      <LogoMark className={`${markClassName} shrink-0 text-brass`} />
+      <span aria-hidden="true" className="h-5 w-px shrink-0 bg-rule" />
       <span
-        className={`relative font-body font-semibold lowercase tracking-wide3 ${wordClassName} ${
-          tone === "light" ? "text-paper" : "text-onyx"
-        }`}
+        className={`font-display font-light lowercase leading-none tracking-[0.16em] text-bone ${wordClassName}`}
       >
         {site.wordmark}
       </span>

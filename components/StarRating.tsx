@@ -1,4 +1,8 @@
-/** Five-star row used on product cards and list rows. */
+/**
+ * Rating shown as five hairline segments rather than stars — the reference
+ * never uses a filled icon, so the score is carried by rule length and a
+ * numeral. Falls back to a readable label for assistive technology.
+ */
 export default function StarRating({
   rating,
   reviews,
@@ -10,29 +14,25 @@ export default function StarRating({
 }) {
   return (
     <span
-      className={`inline-flex items-center gap-1 ${className}`}
+      className={`inline-flex items-center gap-2 ${className}`}
       aria-label={`Rated ${rating} out of 5${
         reviews === undefined ? "" : ` from ${reviews} reviews`
       }`}
     >
-      {Array.from({ length: 5 }).map((_, index) => (
-        <svg
-          key={index}
-          width="12"
-          height="12"
-          viewBox="0 0 20 20"
-          aria-hidden="true"
-          className={index < rating ? "text-camel" : "text-line"}
-        >
-          <path
-            d="m10 1.6 2.5 5.1 5.6.8-4.05 3.95.96 5.55L10 14.4l-5.01 2.6.96-5.55L1.9 7.5l5.6-.8L10 1.6Z"
-            fill="currentColor"
+      <span aria-hidden="true" className="flex items-center gap-[3px]">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <span
+            key={index}
+            className={`block h-px w-3.5 ${
+              index < rating ? "bg-brass" : "bg-rule"
+            }`}
           />
-        </svg>
-      ))}
-      {reviews !== undefined && (
-        <span className="ml-1 text-[11px] text-mist">({reviews})</span>
-      )}
+        ))}
+      </span>
+      <span aria-hidden="true" className="text-[11px] tracking-micro text-slate">
+        {rating.toFixed(1)}
+        {reviews !== undefined && ` · ${reviews}`}
+      </span>
     </span>
   );
 }

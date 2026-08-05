@@ -1,6 +1,9 @@
 import Link from "next/link";
 
-/** Light title band with breadcrumb, opening every interior page. */
+/**
+ * Interior page opener: a tall black band carrying the column rules, with the
+ * title set left and the breadcrumb dropped underneath on a hairline.
+ */
 export default function PageHeader({
   title,
   intro,
@@ -11,23 +14,23 @@ export default function PageHeader({
   crumb?: string;
 }) {
   return (
-    <div className="border-b border-line bg-haze">
-      <div className="frame py-14 text-center lg:py-20">
-        <h1 className="display-1">{title}</h1>
-
+    <div className="ruled border-b border-rule bg-pitch">
+      <div className="wrap py-16 lg:py-24">
         <nav
           aria-label="Breadcrumb"
-          className="mt-4 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-wide2"
+          className="flex items-center gap-3 text-[11px] font-medium uppercase tracking-micro"
         >
-          <Link href="/" className="text-ash transition-colors hover:text-camel">
+          <Link href="/" className="text-slate transition-colors hover:text-brass">
             Home
           </Link>
-          <span aria-hidden="true" className="h-[5px] w-[5px] rotate-45 bg-camel" />
-          <span className="text-camel">{crumb ?? title}</span>
+          <span aria-hidden="true" className="h-px w-5 bg-rule" />
+          <span className="text-brass">{crumb ?? title}</span>
         </nav>
 
+        <h1 className="display-1 mt-6">{title}</h1>
+
         {intro && (
-          <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-ash">
+          <p className="mt-6 max-w-2xl text-[15px] font-light leading-[1.9] text-smoke">
             {intro}
           </p>
         )}

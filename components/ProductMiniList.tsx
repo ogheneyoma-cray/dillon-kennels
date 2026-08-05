@@ -5,8 +5,8 @@ import ProductPrice from "@/components/ProductPrice";
 import StarRating from "@/components/StarRating";
 
 /**
- * Compact list column — diamond-bulleted heading, then thumbnail rows with
- * name, stars and price, as in the reference's three-column block.
+ * Compact list column — a ruled heading, then thumbnail rows carrying name,
+ * rating and price. Used three-up beneath the main grid.
  */
 export default function ProductMiniList({
   title,
@@ -21,48 +21,47 @@ export default function ProductMiniList({
 
   return (
     <section>
-      <div className="flex items-center justify-between border-b border-line pb-4">
-        <h2 className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-wide2 text-onyx">
-          <span aria-hidden="true" className="h-[6px] w-[6px] rotate-45 bg-camel" />
+      <div className="flex items-center justify-between border-b border-rule pb-4">
+        <h2 className="text-[11px] font-medium uppercase tracking-micro text-brass">
           {title}
         </h2>
         <Link
           href={href}
-          className="text-[11px] font-bold uppercase tracking-wide2 text-mist transition-colors hover:text-camel"
+          className="text-[11px] uppercase tracking-micro text-slate transition-colors hover:text-bone"
         >
           View all
         </Link>
       </div>
 
-      <ul className="mt-5 space-y-5">
+      <ul className="mt-6 space-y-6">
         {products.map((product) => (
           <li key={product.id} className="flex items-start gap-4">
             <Link
               href={`/shop/${product.slug}`}
-              className="relative h-[92px] w-[72px] shrink-0 overflow-hidden bg-haze"
+              className="relative h-[100px] w-[78px] shrink-0 overflow-hidden border border-rule bg-panel"
             >
               <Image
                 src={product.image}
                 alt=""
                 fill
-                sizes="72px"
-                className="object-cover"
+                sizes="78px"
+                className="object-cover opacity-90"
               />
             </Link>
-            <div className="min-w-0 pt-1">
+            <div className="min-w-0 pt-0.5">
               <h3>
                 <Link
                   href={`/shop/${product.slug}`}
-                  className="text-[12px] font-semibold uppercase tracking-wide2 text-onyx transition-colors hover:text-camel"
+                  className="text-sm font-light leading-snug text-bone transition-colors hover:text-brass"
                 >
                   {product.name}
                 </Link>
               </h3>
-              <StarRating rating={product.rating} className="mt-1.5" />
+              <StarRating rating={product.rating} className="mt-2" />
               <ProductPrice
                 priceUsd={product.price}
                 compareAtUsd={product.compareAt}
-                className="mt-1.5 block text-sm font-semibold text-camel"
+                className="mt-2 block text-sm text-brass"
                 compareClassName="text-[12px]"
               />
             </div>

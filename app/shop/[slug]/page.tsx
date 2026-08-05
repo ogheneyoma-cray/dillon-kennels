@@ -39,92 +39,118 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     .slice(0, 4);
 
   const details = [
-    { label: "Fabric", value: product.fabric },
+    { label: "Cloth", value: product.cloth },
+    { label: "Construction", value: product.cut },
     { label: "Category", value: product.category },
     { label: "Sizes", value: product.sizes.join(" · ") },
     {
       label: "Availability",
-      value: product.inStock ? "In stock, ships in 48 hours" : "Between runs",
+      value: product.inStock
+        ? "In stock — leaves the workroom within 48 hours"
+        : "Between runs",
     },
   ];
 
   return (
     <>
-      <div className="frame pt-8">
-        <nav
-          aria-label="Breadcrumb"
-          className="flex flex-wrap items-center gap-3 text-[11px] font-bold uppercase tracking-wide2"
-        >
-          <Link href="/" className="text-ash transition-colors hover:text-camel">
-            Home
-          </Link>
-          <span aria-hidden="true" className="h-[5px] w-[5px] rotate-45 bg-camel" />
-          <Link href="/shop" className="text-ash transition-colors hover:text-camel">
-            Shop
-          </Link>
-          <span aria-hidden="true" className="h-[5px] w-[5px] rotate-45 bg-camel" />
-          <span className="text-camel">{product.name}</span>
-        </nav>
+      <div className="border-b border-rule bg-pitch">
+        <div className="wrap py-6">
+          <nav
+            aria-label="Breadcrumb"
+            className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-micro"
+          >
+            <Link href="/" className="text-slate transition-colors hover:text-brass">
+              Home
+            </Link>
+            <span aria-hidden="true" className="h-px w-5 bg-rule" />
+            <Link
+              href="/shop"
+              className="text-slate transition-colors hover:text-brass"
+            >
+              Collection
+            </Link>
+            <span aria-hidden="true" className="h-px w-5 bg-rule" />
+            <span className="text-brass">{product.name}</span>
+          </nav>
+        </div>
       </div>
 
-      <article className="frame grid gap-10 py-10 lg:grid-cols-2 lg:gap-14">
-        <div className="relative aspect-[3/4] overflow-hidden bg-haze">
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            priority
-            sizes="(min-width: 1024px) 46vw, 92vw"
-            className="object-cover"
-          />
-          {!product.inStock && (
-            <span className="absolute left-4 top-4 bg-onyx px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide2 text-paper">
-              Sold out
-            </span>
-          )}
-        </div>
-
-        <div>
-          <p className="eyebrow">{product.category}</p>
-          <h1 className="display-2 mt-3">{product.name}</h1>
-
-          <div className="mt-4">
-            <StarRating rating={product.rating} reviews={product.reviews} />
+      <article className="ruled">
+        <div className="wrap grid gap-12 py-14 lg:grid-cols-2 lg:gap-16">
+          <div className="relative aspect-[3/4] overflow-hidden border border-rule bg-panel">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              priority
+              sizes="(min-width: 1024px) 46vw, 92vw"
+              className="object-cover opacity-95"
+            />
+            {!product.inStock && (
+              <span className="absolute left-0 top-0 bg-bone px-4 py-2 text-[10px] font-medium uppercase tracking-micro text-ink">
+                Between runs
+              </span>
+            )}
           </div>
 
-          <ProductPrice
-            priceUsd={product.price}
-            compareAtUsd={product.compareAt}
-            className="mt-5 inline-block text-2xl font-semibold text-camel"
-            compareClassName="text-lg"
-          />
+          <div>
+            <p className="eyebrow">{product.category}</p>
+            <h1 className="display-2 mt-4">{product.name}</h1>
 
-          <p className="mt-6 text-[15px] leading-[1.9] text-ash">
-            {product.description}
-          </p>
+            <div className="mt-5">
+              <StarRating rating={product.rating} reviews={product.reviews} />
+            </div>
 
-          <ProductDetailActions product={product} />
+            <ProductPrice
+              priceUsd={product.price}
+              compareAtUsd={product.compareAt}
+              className="mt-6 inline-block text-3xl font-light text-brass"
+              compareClassName="text-xl"
+            />
 
-          <dl className="mt-10 divide-y divide-line border-y border-line">
-            {details.map((detail) => (
-              <div key={detail.label} className="flex gap-6 py-3.5 text-sm">
-                <dt className="w-32 shrink-0 text-[11px] font-bold uppercase tracking-wide2 text-ash">
-                  {detail.label}
-                </dt>
-                <dd className="text-onyx">{detail.value}</dd>
-              </div>
-            ))}
-          </dl>
+            <p className="mt-7 text-[15px] font-light leading-[1.95] text-smoke">
+              {product.description}
+            </p>
+
+            <ProductDetailActions product={product} />
+
+            <dl className="mt-12 divide-y divide-rule border-y border-rule">
+              {details.map((detail) => (
+                <div key={detail.label} className="flex gap-6 py-4 text-sm">
+                  <dt className="w-36 shrink-0 text-[11px] uppercase tracking-micro text-slate">
+                    {detail.label}
+                  </dt>
+                  <dd className="font-light text-bone">{detail.value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <p className="mt-6 text-[13px] font-light leading-relaxed text-slate">
+              Not sure of your jacket size? The{" "}
+              <Link
+                href="/size-guide"
+                className="text-brass underline underline-offset-4"
+              >
+                fit guide
+              </Link>{" "}
+              takes two measurements and one minute.
+            </p>
+          </div>
         </div>
       </article>
 
       {related.length > 0 && (
-        <section className="frame pb-20">
-          <SectionHeading title="You might also like" />
-          <div className="mt-14 grid grid-cols-2 gap-x-5 gap-y-12 lg:grid-cols-4 lg:gap-x-6">
-            {related.map((item) => (
-              <ProductCard key={item.id} product={item} />
-            ))}
+        <section className="ruled border-t border-rule">
+          <div className="wrap py-20">
+            <SectionHeading
+              eyebrow="Same category"
+              title="Cut alongside it"
+            />
+            <div className="mt-14 grid grid-cols-2 gap-x-5 gap-y-14 lg:grid-cols-4 lg:gap-x-6">
+              {related.map((item) => (
+                <ProductCard key={item.id} product={item} />
+              ))}
+            </div>
           </div>
         </section>
       )}

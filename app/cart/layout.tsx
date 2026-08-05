@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 // The cart page itself is a client component and cannot export metadata.
 export const metadata: Metadata = {
   title: "Your bag",
-  description: "Review the pieces in your Adom Attic bag before checking out.",
+  description: "Review the pieces in your Mydriad bag before checking out.",
 };
 
 export default function CartLayout({
