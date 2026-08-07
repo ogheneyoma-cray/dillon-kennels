@@ -11,9 +11,8 @@ export const site = {
   description:
     "Xira Dix is a Lagos sleepwear house making nightwear for men and women — satin slips, brushed-cotton pyjama sets, robes and lounge sets designed for rest.",
   email: "care@xiradix.com",
-  // Placeholder until the full subscriber number is confirmed.
-  phone: "234",
-  phoneHref: "tel:234",
+  phone: "0806 234 2487",
+  phoneHref: "tel:+2348062342487",
   address: {
     line1: "9 Bakare Avenue, off Babatunde Street",
     line2: "Oke Ira, Ajah",

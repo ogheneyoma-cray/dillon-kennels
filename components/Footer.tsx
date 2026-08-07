@@ -18,7 +18,7 @@ const CUSTOMER_CARE = [
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
 ];
 
-const PAYMENTS = ["Visa", "Mastercard", "Verve"];
+const PAYMENTS = ["Visa", "Mastercard"];
 
 export default function Footer() {
   const year = new Date().getFullYear();
