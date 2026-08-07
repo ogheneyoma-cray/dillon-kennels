@@ -58,7 +58,7 @@ export default function ShippingPolicyPage() {
             email and SMS to the phone number provided at checkout. If you
             haven't received tracking information within 3 business days of
             placing your order, please contact our support team at
-            supportteam@dillonkennels.com or +234 701 124 6613.
+            supportteam@dillonkennels.com or +234 902 332 6345.
           </p>
         </section>
 

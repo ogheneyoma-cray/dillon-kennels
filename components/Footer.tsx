@@ -93,8 +93,8 @@ export default function Footer() {
               </a>
             </p>
             <p>
-              <a href="tel:+2347011246613" className="hover:text-cream">
-                +234 701 124 6613
+              <a href="tel:+2349023326345" className="hover:text-cream">
+                +234 902 332 6345
               </a>
             </p>
           </address>
