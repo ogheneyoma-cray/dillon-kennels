@@ -81,7 +81,7 @@ export default function PrivacyPolicyPage() {
           <h2 className="font-display text-xl text-ink">Contact Us</h2>
           <p className="mt-3 leading-relaxed">
             Questions about this Privacy Policy can be sent to
-            csteam@nudgeinc.com or +234 708 976 1129, or by post to Ile
+            csteam@nudgeinc.com or +234 708 838 5063, or by post to Ile
             Alaso, Imale Falatori Area, Oyo Town, Oyo West Local Government
             Area, Oyo State.
           </p>

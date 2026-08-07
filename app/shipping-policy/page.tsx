@@ -60,7 +60,7 @@ export default function ShippingPolicyPage() {
             email and SMS to the phone number provided at checkout. If you
             haven't received tracking information within 3 business days of
             placing your order, contact our support team at
-            csteam@nudgeinc.com or +234 708 976 1129.
+            csteam@nudgeinc.com or +234 708 838 5063.
           </p>
         </section>
 
