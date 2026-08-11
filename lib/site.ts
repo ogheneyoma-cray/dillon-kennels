@@ -14,9 +14,8 @@ export const site = {
   description:
     "Crewsita is a footwear shop for men and women — oxfords, loafers, heels, flats and sneakers, made on lasts that fit real feet and never priced past forty dollars.",
   email: "care@crewsita.com",
-  // Placeholder until the full subscriber number is confirmed.
-  phone: "234",
-  phoneHref: "tel:234",
+  phone: "09047430981",
+  phoneHref: "tel:09047430981",
   address: {
     line1: "No. 3 Oke-Ori Omi Street",
     line2: "Lagos Mainland",
