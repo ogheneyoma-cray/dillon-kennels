@@ -14,9 +14,8 @@ export const site = {
   description:
     "Coquinate publishes and sells fiction in ebook form — science fiction, fantasy, romance, mystery and literary novels, delivered to your reader the second you buy them.",
   email: "care@coquinate.com",
-  // Placeholder until the full subscriber number is confirmed.
-  phone: "234",
-  phoneHref: "tel:234",
+  phone: "08082180992",
+  phoneHref: "tel:08082180992",
   address: {
     line1: "2 Folarin Street",
     line2: "Iju Ishaga",
