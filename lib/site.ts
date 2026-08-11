@@ -14,9 +14,8 @@ export const site = {
   description:
     "Adom Attic makes everyday clothing and shoes for teenagers — tees, denim, skirts, hoodies, jackets and trainers, cut for the way sixteen actually dresses.",
   email: "supportteam@adomattic.com",
-  // Placeholder until the full subscriber number is confirmed.
-  phone: "234",
-  phoneHref: "tel:234",
+  phone: "07082697704",
+  phoneHref: "tel:07082697704",
   address: {
     line1: "20A Kayode Oduba Street",
     line2: "Ajah",
