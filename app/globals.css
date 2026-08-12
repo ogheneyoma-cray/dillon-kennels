@@ -11,22 +11,22 @@
     @apply bg-cream text-ink font-body;
     background-image: radial-gradient(
         circle at 100% 0%,
-        rgba(183, 82, 46, 0.06),
+        rgba(124, 58, 237, 0.06),
         transparent 45%
       ),
-      radial-gradient(circle at 0% 100%, rgba(107, 107, 71, 0.06), transparent 45%);
+      radial-gradient(circle at 0% 100%, rgba(76, 95, 224, 0.06), transparent 45%);
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display;
+    @apply font-display font-bold;
   }
 
   ::selection {
-    background-color: #b7522e;
-    color: #f6f1e9;
+    background-color: #7c3aed;
+    color: #ffffff;
   }
 }
 
@@ -36,23 +36,26 @@
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-widest2 text-rust;
+    @apply text-xs font-bold uppercase tracking-widest2 text-rust;
   }
 
+  /* The reference reserves its amber-to-lime gradient for every primary
+     call to action, with dark ink type so the gradient still reads as the
+     loudest thing on the page. */
   .btn-primary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 bg-ink px-7 py-3 text-sm font-semibold uppercase tracking-wider text-cream transition-colors duration-200 hover:bg-rust active:bg-rust-dark;
+    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber to-lime px-7 py-3 text-sm font-bold uppercase tracking-wider text-ink transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 border border-ink px-7 py-3 text-sm font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:border-rust hover:text-rust;
+    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full border-2 border-ink px-7 py-3 text-sm font-bold uppercase tracking-wider text-ink transition-colors duration-200 hover:border-rust hover:text-rust;
   }
 
   .btn-ghost {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-ink underline decoration-rust decoration-2 underline-offset-4 transition-colors hover:text-rust;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-ink underline decoration-rust decoration-2 underline-offset-4 transition-colors hover:text-rust;
   }
 
   .input-field {
-    @apply w-full min-h-[44px] border border-ink/20 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-rust focus:outline-none focus:ring-1 focus:ring-rust;
+    @apply w-full min-h-[44px] rounded-xl border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-rust focus:outline-none focus:ring-1 focus:ring-rust;
   }
 
   .label-text {
@@ -60,6 +63,17 @@
   }
 
   .section-heading {
-    @apply font-display text-3xl leading-tight text-ink sm:text-4xl;
+    @apply font-display text-3xl font-bold leading-tight text-ink sm:text-4xl;
+  }
+
+  /* A block of gradient sitting behind part of a heading, the way the
+     reference underlines its hero claim. */
+  .highlight-bar {
+    @apply relative isolate inline-block;
+  }
+
+  .highlight-bar::before {
+    content: "";
+    @apply absolute inset-x-0 bottom-1 -z-10 h-[38%] rounded bg-gradient-to-r from-amber to-lime;
   }
 }

@@ -1,5 +1,11 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * Palette lifted from the Coze reference: a near-black nav/footer, a violet
+ * primary accent, an amber-to-lime gradient reserved for call-to-action
+ * buttons, and a pink/blue pair used only for decorative shapes. Page bands
+ * sit on a pale lavender-white rather than pure white.
+ */
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
@@ -9,25 +15,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#F6F1E9",
-        paper: "#FBF8F2",
-        ink: "#211C17",
-        charcoal: "#332C24",
-        rust: "#B7522E",
-        "rust-dark": "#8F3D20",
-        olive: "#6B6B47",
-        sand: "#E4D8C3",
-        clay: "#C98B5E",
+        ink: "#0B0B14",
+        "ink-deep": "#000000",
+        clay: "#7C3AED",
+        "clay-dark": "#5B21B6",
+        rust: "#7C3AED",
+        "rust-dark": "#5B21B6",
+        rose: "#EC4899",
+        amber: "#FFC93C",
+        lime: "#C6E94B",
+        blue: "#4C5FE0",
+        olive: "#22C55E",
+        cream: "#FAF9FE",
+        sand: "#F1EEFC",
+        paper: "#FFFFFF",
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "serif"],
-        body: ["var(--font-work-sans)", "sans-serif"],
+        display: ["var(--font-space-grotesk)", "sans-serif"],
+        body: ["var(--font-inter)", "sans-serif"],
       },
       letterSpacing: {
-        widest2: "0.25em",
+        widest2: "0.14em",
       },
       maxWidth: {
-        content: "1400px",
+        content: "1320px",
+      },
+      boxShadow: {
+        tile: "0 6px 26px rgba(11, 11, 20, 0.08)",
+        lift: "0 16px 40px rgba(11, 11, 20, 0.16)",
       },
     },
   },

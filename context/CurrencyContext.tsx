@@ -18,16 +18,16 @@ const CurrencyContext = createContext<CurrencyContextValue | undefined>(
   undefined
 );
 
-const STORAGE_KEY = "dillon-kennels-currency";
+const STORAGE_KEY = "wazuri-currency";
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
-  const [currency, setCurrencyState] = useState<CurrencyCode>("NGN");
+  const [currency, setCurrencyState] = useState<CurrencyCode>("GHS");
 
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY) as
       | CurrencyCode
       | null;
-    if (stored === "NGN" || stored === "USD") {
+    if (stored === "GHS" || stored === "USD") {
       setCurrencyState(stored);
     }
   }, []);

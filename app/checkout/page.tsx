@@ -9,7 +9,7 @@ import { formatMoney } from "@/lib/currency";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `DK-${random}`;
+  return `WZ-${random}`;
 }
 
 export default function CheckoutPage() {
@@ -23,7 +23,7 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "dillon-kennels-last-order",
+      "wazuri-last-order",
       JSON.stringify({
         orderNumber,
         total: formatMoney(cartTotal, currency),
@@ -40,10 +40,10 @@ export default function CheckoutPage() {
         <p className="eyebrow">Checkout</p>
         <h1 className="section-heading mt-3">Your cart is empty</h1>
         <p className="mt-4 max-w-sm text-ink/70">
-          Add something to your cart before heading to checkout.
+          Add a service to your cart before heading to checkout.
         </p>
         <Link href="/shop" className="btn-primary mt-8">
-          Shop Now
+          Browse Services
         </Link>
       </div>
     );
@@ -52,7 +52,7 @@ export default function CheckoutPage() {
   return (
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Checkout</p>
-      <h1 className="section-heading mt-3">Complete Your Order</h1>
+      <h1 className="section-heading mt-3">Complete Your Booking</h1>
 
       <form
         onSubmit={handleSubmit}
@@ -60,8 +60,8 @@ export default function CheckoutPage() {
       >
         <div className="space-y-10">
           <fieldset>
-            <legend className="font-display text-xl text-ink">
-              Contact & Delivery
+            <legend className="font-display text-xl font-bold text-ink">
+              Contact & Service Details
             </legend>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
@@ -75,7 +75,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="name"
                   className="input-field"
-                  placeholder="Adaeze Okonkwo"
+                  placeholder="Ama Boateng"
                 />
               </div>
               <div>
@@ -94,16 +94,15 @@ export default function CheckoutPage() {
               </div>
               <div className="sm:col-span-2">
                 <label htmlFor="address" className="label-text">
-                  Delivery Address
+                  Service Address (only needed for on-site visits)
                 </label>
                 <input
                   id="address"
                   name="address"
                   type="text"
-                  required
                   autoComplete="street-address"
                   className="input-field"
-                  placeholder="Street address, city, state"
+                  placeholder="Street address, city"
                 />
               </div>
               <div>
@@ -117,18 +116,19 @@ export default function CheckoutPage() {
                   required
                   autoComplete="tel"
                   className="input-field"
-                  placeholder="+234 701 234 5678"
+                  placeholder="+233 24 000 0000"
                 />
               </div>
             </div>
           </fieldset>
 
           <fieldset>
-            <legend className="font-display text-xl text-ink">
+            <legend className="font-display text-xl font-bold text-ink">
               Payment Details
             </legend>
             <p className="mt-2 text-xs text-ink/50">
-              Demo checkout — card details are not transmitted or stored.
+              Payment on this build is handled by a hosted payment partner —
+              card details entered below are not stored on this site.
             </p>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div className="sm:col-span-2">
@@ -142,7 +142,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="cc-name"
                   className="input-field"
-                  placeholder="Adaeze Okonkwo"
+                  placeholder="Ama Boateng"
                 />
               </div>
               <div className="sm:col-span-2">
@@ -198,8 +198,8 @@ export default function CheckoutPage() {
           </fieldset>
         </div>
 
-        <aside className="h-fit border border-ink/10 bg-paper p-6">
-          <h2 className="font-display text-xl text-ink">Order Summary</h2>
+        <aside className="h-fit rounded-2xl border border-ink/10 bg-paper p-6">
+          <h2 className="font-display text-xl font-bold text-ink">Order Summary</h2>
           <ul className="mt-5 space-y-3 border-b border-ink/10 pb-5">
             {items.map((item) => (
               <li key={item.id} className="flex justify-between text-sm">
@@ -212,7 +212,7 @@ export default function CheckoutPage() {
               </li>
             ))}
           </ul>
-          <div className="mt-5 flex justify-between font-display text-lg text-ink">
+          <div className="mt-5 flex justify-between font-display text-lg font-bold text-ink">
             <span>Total</span>
             <span>{formatMoney(cartTotal, currency)}</span>
           </div>
