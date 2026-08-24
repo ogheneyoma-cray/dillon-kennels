@@ -3,24 +3,26 @@
  * than one place reads from here so there is exactly one line to change per
  * detail.
  *
- * Note: the street address is deliberately NOT surfaced in the header, footer
- * or on the home page — it appears only on the contact page and within the
- * legal pages, where it is required.
+ * Note: the street address is deliberately NOT surfaced in the logo or on
+ * the home page — it appears only on the contact page and within the legal
+ * pages, where it is required.
  */
 export const site = {
-  name: "Wazuri Technologies",
-  wordmark: "Wazuri",
-  tagline: "Technology support you can actually reach",
+  name: "Nedupe Limited",
+  wordmark: "Nedupe",
+  tagline: "Ebooks worth staying up for",
   description:
-    "Wazuri Technologies is a technology support service provider — remote and on-site help with devices, networks, cybersecurity, cloud backup and software, delivered by certified technicians across Ghana.",
-  email: "care@wazuritech.com",
+    "Nedupe Limited is a digital bookstore — practical, well-edited ebooks across business, self-development, technology, health and fiction, delivered instantly as EPUB, PDF and MOBI.",
+  email: "care@nedupe.com",
+  phone: "234",
   address: {
-    line1: "UNN House, Near The Market",
-    line2: "Achimota-Accra",
-    line3: "2nd Avenue",
-    line4: "Accra, Ghana",
+    line1: "Flat 2, Plot 612",
+    line2: "Kubwa Extension Layout, Gbazango",
+    line3: "Kubwa, Abuja Municipal Area Council (AMAC)",
+    line4: "Federal Capital Territory (FCT)",
   },
-  addressOneLine: "UNN House, Near The Market, Achimota-Accra, 2nd Avenue, Accra, Ghana",
+  addressOneLine:
+    "Flat 2, Plot 612, Kubwa Extension Layout, Gbazango, Kubwa, Abuja Municipal Area Council (AMAC), Federal Capital Territory (FCT)",
 } as const;
 
 export const addressLines = [

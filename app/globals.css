@@ -8,24 +8,18 @@
   }
 
   body {
-    @apply bg-cream text-ink font-body;
-    background-image: radial-gradient(
-        circle at 100% 0%,
-        rgba(124, 58, 237, 0.06),
-        transparent 45%
-      ),
-      radial-gradient(circle at 0% 100%, rgba(76, 95, 224, 0.06), transparent 45%);
+    @apply bg-mist text-ink font-body;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display font-bold;
+    @apply font-display font-semibold;
   }
 
   ::selection {
-    background-color: #7c3aed;
+    background-color: #4fa3d1;
     color: #ffffff;
   }
 }
@@ -36,26 +30,25 @@
   }
 
   .eyebrow {
-    @apply text-xs font-bold uppercase tracking-widest2 text-rust;
+    @apply text-xs font-bold uppercase tracking-widest2 text-sky-dark;
   }
 
-  /* The reference reserves its amber-to-lime gradient for every primary
-     call to action, with dark ink type so the gradient still reads as the
-     loudest thing on the page. */
+  /* The reference reserves a solid sky-blue pill for every primary call to
+     action, white text, and a soft lift on hover — no gradients. */
   .btn-primary {
-    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber to-lime px-7 py-3 text-sm font-bold uppercase tracking-wider text-ink transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0;
+    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full bg-sky px-7 py-3 text-sm font-bold uppercase tracking-wider text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-dark active:translate-y-0;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full border-2 border-ink px-7 py-3 text-sm font-bold uppercase tracking-wider text-ink transition-colors duration-200 hover:border-rust hover:text-rust;
+    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full border-2 border-sky px-7 py-3 text-sm font-bold uppercase tracking-wider text-sky-dark transition-colors duration-200 hover:bg-sky-pale;
   }
 
   .btn-ghost {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-ink underline decoration-rust decoration-2 underline-offset-4 transition-colors hover:text-rust;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-ink underline decoration-sky decoration-2 underline-offset-4 transition-colors hover:text-sky-dark;
   }
 
   .input-field {
-    @apply w-full min-h-[44px] rounded-xl border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-rust focus:outline-none focus:ring-1 focus:ring-rust;
+    @apply w-full min-h-[44px] rounded-xl border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-sky focus:outline-none focus:ring-1 focus:ring-sky;
   }
 
   .label-text {
@@ -63,17 +56,17 @@
   }
 
   .section-heading {
-    @apply font-display text-3xl font-bold leading-tight text-ink sm:text-4xl;
+    @apply font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl;
   }
 
-  /* A block of gradient sitting behind part of a heading, the way the
-     reference underlines its hero claim. */
+  /* A short teal ribbon under a heading, echoing the reference's cover
+     stripes rather than the usual gradient underline. */
   .highlight-bar {
     @apply relative isolate inline-block;
   }
 
   .highlight-bar::before {
     content: "";
-    @apply absolute inset-x-0 bottom-1 -z-10 h-[38%] rounded bg-gradient-to-r from-amber to-lime;
+    @apply absolute inset-x-0 bottom-1 -z-10 h-[34%] rounded bg-gold/35;
   }
 }

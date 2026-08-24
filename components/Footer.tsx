@@ -3,7 +3,7 @@ import Logo from "@/components/Logo";
 import { addressLines, site } from "@/lib/site";
 
 const SHOP_LINKS = [
-  { href: "/shop", label: "All Services" },
+  { href: "/shop", label: "All Ebooks" },
   { href: "/cart", label: "Cart" },
   { href: "/checkout", label: "Checkout" },
 ];
@@ -11,7 +11,7 @@ const SHOP_LINKS = [
 const HELP_LINKS = [
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact Us" },
-  { href: "/shipping-policy", label: "Delivery & Turnaround" },
+  { href: "/shipping-policy", label: "Digital Delivery" },
   { href: "/refunds-policy", label: "Refunds Policy" },
 ];
 
@@ -24,21 +24,21 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-cream/10 bg-ink text-cream">
+    <footer className="border-t border-ink/10 bg-cloud text-ink">
       <div className="container-page grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Logo tone="cream" wordClassName="text-xl" />
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/65">
+          <Logo wordClassName="text-xl" />
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink/65">
             {site.description}
           </p>
         </div>
 
         <div>
-          <p className="eyebrow text-amber">Services</p>
+          <p className="eyebrow">Shop</p>
           <ul className="mt-4 space-y-2">
             {SHOP_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm text-cream/75 transition-colors hover:text-cream">
+                <Link href={link.href} className="text-sm text-ink/75 transition-colors hover:text-sky-dark">
                   {link.label}
                 </Link>
               </li>
@@ -47,21 +47,21 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="eyebrow text-amber">Help</p>
+          <p className="eyebrow">Help</p>
           <ul className="mt-4 space-y-2">
             {HELP_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm text-cream/75 transition-colors hover:text-cream">
+                <Link href={link.href} className="text-sm text-ink/75 transition-colors hover:text-sky-dark">
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <p className="eyebrow mt-6 text-amber">Legal</p>
+          <p className="eyebrow mt-6">Legal</p>
           <ul className="mt-4 space-y-2">
             {LEGAL_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm text-cream/75 transition-colors hover:text-cream">
+                <Link href={link.href} className="text-sm text-ink/75 transition-colors hover:text-sky-dark">
                   {link.label}
                 </Link>
               </li>
@@ -70,13 +70,13 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="eyebrow text-amber">Get in Touch</p>
-          <address className="mt-4 space-y-2 text-sm not-italic text-cream/75">
+          <p className="eyebrow">Get in Touch</p>
+          <address className="mt-4 space-y-2 text-sm not-italic text-ink/75">
             {addressLines.map((line) => (
               <p key={line}>{line}</p>
             ))}
             <p>
-              <a href={`mailto:${site.email}`} className="hover:text-cream">
+              <a href={`mailto:${site.email}`} className="hover:text-sky-dark">
                 {site.email}
               </a>
             </p>
@@ -84,8 +84,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-cream/10 py-6">
-        <p className="container-page text-center text-xs text-cream/45">
+      <div className="border-t border-ink/10 py-6">
+        <p className="container-page text-center text-xs text-ink/45">
           © {year} {site.name}. All rights reserved.
         </p>
       </div>

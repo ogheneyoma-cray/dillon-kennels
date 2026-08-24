@@ -4,9 +4,9 @@ import ProductCard from "@/components/ProductCard";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `Services | ${site.name}`,
+  title: `Shop | ${site.name}`,
   description:
-    "Every technology support service Wazuri Technologies offers, from device repair to cloud migration, priced up front in USD or GHS.",
+    "Every ebook Nedupe Limited offers, from business and self-development to technology, health and fiction, priced up front in USD or GHS.",
 };
 
 export default function ShopPage({
@@ -25,13 +25,13 @@ export default function ShopPage({
   return (
     <div className="container-page py-12 lg:py-16">
       <div className="max-w-xl">
-        <p className="eyebrow">Full Service List</p>
+        <p className="eyebrow">Full Catalogue</p>
         <h1 className="section-heading mt-3">
-          {activeCategory ?? "All Services"}
+          {activeCategory ?? "All Ebooks"}
         </h1>
         <p className="mt-4 text-base leading-relaxed text-ink/70">
-          Thirty services across device support, networking, cybersecurity,
-          cloud and software — each priced up front. Prices convert
+          Thirty ebooks across business, self-development, technology,
+          health and fiction — each priced up front. Prices convert
           automatically between US Dollars and Ghana Cedis using the toggle
           in the header.
         </p>
@@ -41,7 +41,7 @@ export default function ShopPage({
         <a
           href="/shop"
           className={`rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
-            !activeCategory ? "border-ink bg-ink text-cream" : "border-ink/20 text-ink hover:border-rust hover:text-rust"
+            !activeCategory ? "border-sky bg-sky text-white" : "border-ink/20 text-ink hover:border-sky hover:text-sky-dark"
           }`}
         >
           All
@@ -52,8 +52,8 @@ export default function ShopPage({
             href={`/shop?category=${encodeURIComponent(category)}`}
             className={`rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
               activeCategory === category
-                ? "border-ink bg-ink text-cream"
-                : "border-ink/20 text-ink hover:border-rust hover:text-rust"
+                ? "border-sky bg-sky text-white"
+                : "border-ink/20 text-ink hover:border-sky hover:text-sky-dark"
             }`}
           >
             {category}

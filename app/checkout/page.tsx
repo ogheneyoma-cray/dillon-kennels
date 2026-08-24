@@ -9,7 +9,7 @@ import { formatMoney } from "@/lib/currency";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `WZ-${random}`;
+  return `ND-${random}`;
 }
 
 export default function CheckoutPage() {
@@ -23,7 +23,7 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "wazuri-last-order",
+      "nedupe-last-order",
       JSON.stringify({
         orderNumber,
         total: formatMoney(cartTotal, currency),
@@ -40,10 +40,10 @@ export default function CheckoutPage() {
         <p className="eyebrow">Checkout</p>
         <h1 className="section-heading mt-3">Your cart is empty</h1>
         <p className="mt-4 max-w-sm text-ink/70">
-          Add a service to your cart before heading to checkout.
+          Add an ebook to your cart before heading to checkout.
         </p>
         <Link href="/shop" className="btn-primary mt-8">
-          Browse Services
+          Shop Ebooks
         </Link>
       </div>
     );
@@ -52,7 +52,7 @@ export default function CheckoutPage() {
   return (
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Checkout</p>
-      <h1 className="section-heading mt-3">Complete Your Booking</h1>
+      <h1 className="section-heading mt-3">Complete Your Order</h1>
 
       <form
         onSubmit={handleSubmit}
@@ -60,9 +60,12 @@ export default function CheckoutPage() {
       >
         <div className="space-y-10">
           <fieldset>
-            <legend className="font-display text-xl font-bold text-ink">
-              Contact & Service Details
+            <legend className="font-display text-xl font-semibold text-ink">
+              Contact Details
             </legend>
+            <p className="mt-2 text-xs text-ink/50">
+              Your download links and receipt are sent to the email address below.
+            </p>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
                 <label htmlFor="fullName" className="label-text">
@@ -75,7 +78,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="name"
                   className="input-field"
-                  placeholder="Ama Boateng"
+                  placeholder="Ada Nwosu"
                 />
               </div>
               <div>
@@ -94,12 +97,13 @@ export default function CheckoutPage() {
               </div>
               <div className="sm:col-span-2">
                 <label htmlFor="address" className="label-text">
-                  Service Address (only needed for on-site visits)
+                  Billing Address
                 </label>
                 <input
                   id="address"
                   name="address"
                   type="text"
+                  required
                   autoComplete="street-address"
                   className="input-field"
                   placeholder="Street address, city"
@@ -116,14 +120,14 @@ export default function CheckoutPage() {
                   required
                   autoComplete="tel"
                   className="input-field"
-                  placeholder="+233 24 000 0000"
+                  placeholder="+234 800 000 0000"
                 />
               </div>
             </div>
           </fieldset>
 
           <fieldset>
-            <legend className="font-display text-xl font-bold text-ink">
+            <legend className="font-display text-xl font-semibold text-ink">
               Payment Details
             </legend>
             <p className="mt-2 text-xs text-ink/50">
@@ -142,7 +146,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="cc-name"
                   className="input-field"
-                  placeholder="Ama Boateng"
+                  placeholder="Ada Nwosu"
                 />
               </div>
               <div className="sm:col-span-2">
@@ -199,7 +203,7 @@ export default function CheckoutPage() {
         </div>
 
         <aside className="h-fit rounded-2xl border border-ink/10 bg-paper p-6">
-          <h2 className="font-display text-xl font-bold text-ink">Order Summary</h2>
+          <h2 className="font-display text-xl font-semibold text-ink">Order Summary</h2>
           <ul className="mt-5 space-y-3 border-b border-ink/10 pb-5">
             {items.map((item) => (
               <li key={item.id} className="flex justify-between text-sm">
@@ -212,7 +216,7 @@ export default function CheckoutPage() {
               </li>
             ))}
           </ul>
-          <div className="mt-5 flex justify-between font-display text-lg font-bold text-ink">
+          <div className="mt-5 flex justify-between font-display text-lg font-semibold text-ink">
             <span>Total</span>
             <span>{formatMoney(cartTotal, currency)}</span>
           </div>

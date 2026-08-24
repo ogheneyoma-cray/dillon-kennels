@@ -4,48 +4,27 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `FAQ | ${site.name}`,
-  description:
-    "Answers to common questions about booking, pricing, coverage and trust for Wazuri Technologies support services.",
+  description: "Answers to common questions about downloads, formats, pricing and licensing for Nedupe Limited ebooks.",
 };
 
 const GROUPS = [
   {
-    title: "Booking & Turnaround",
+    title: "Downloads & Formats",
     faqs: [
       {
-        question: "How fast can you actually get to me?",
+        question: "How do I get my ebook after I pay?",
         answer:
-          "Most remote requests are picked up the same day they're booked. On-site visits in Accra and Kumasi are typically scheduled within 24–48 hours, and same-day slots are often available — the exact turnaround for each service is listed on its page.",
+          "Your download links arrive by email within minutes of checkout clearing, and the same links are available from your order confirmation page. Each title ships as EPUB and PDF, with MOBI included where the title's format list mentions it.",
       },
       {
-        question: "Can I book more than one service at once?",
+        question: "Can I read the ebook on my phone, e-reader and laptop?",
         answer:
-          "Yes — add each service to your cart the same way you would items in a shop, and they're handled as one booking. For larger jobs like an office network install, message us first so we can scope it properly before you pay.",
+          "Yes — there's no device limit on a single purchase. EPUB works on most e-readers and reading apps, PDF opens anywhere, and MOBI is for older Kindle devices. Use whichever format your device prefers.",
       },
       {
-        question: "Can I reschedule or cancel a booking?",
+        question: "My download link isn't working — what do I do?",
         answer:
-          "Yes, free of charge up to 4 hours before the scheduled appointment. See our Refunds Policy for what happens after that window or on a missed on-site visit.",
-      },
-    ],
-  },
-  {
-    title: "Coverage & Delivery",
-    faqs: [
-      {
-        question: "Do you cover locations outside Accra and Kumasi?",
-        answer:
-          "Remote support reaches anywhere with an internet connection, so most of our service list is available nationwide. On-site visits are currently limited to Accra and Kumasi; if you're elsewhere, message us and we'll tell you honestly whether we can help.",
-      },
-      {
-        question: "What do I need for a remote session?",
-        answer:
-          "A stable internet connection and to be available at your device for the duration of the appointment. We'll send a secure remote-access link ahead of the confirmed time.",
-      },
-      {
-        question: "What if a technician runs late for an on-site visit?",
-        answer:
-          "If we're going to be more than 30 minutes outside a confirmed window, we'll contact you before the appointment time to explain why and offer to reschedule.",
+          "Email us your order number and we'll resend the links the same day. Download links don't expire, so this is almost always a typo in the original email address rather than an actual problem with your order.",
       },
     ],
   },
@@ -55,37 +34,52 @@ const GROUPS = [
       {
         question: "Are prices really shown up front?",
         answer:
-          "Yes — every service on the site is priced in full before you book, in either US Dollars or Ghana Cedis. There are no call-out fees added afterward.",
+          "Yes — every ebook on the site is priced in full before you buy, in either US Dollars or Ghana Cedis. There are no hidden fees added at checkout.",
       },
       {
-        question: "What if the fix doesn't actually work?",
+        question: "Which currencies can I pay in?",
         answer:
-          "If the issue you booked us for isn't resolved, we come back or continue remotely at no extra charge until it is, or refund the service — see our Refunds Policy for the full detail.",
-      },
-      {
-        question: "Do you charge for parts or third-party licences?",
-        answer:
-          "Only where a service involves buying a replacement part or licence on your behalf and with your prior approval — that cost is separate from the listed service price and confirmed with you before we spend it.",
-      },
-    ],
-  },
-  {
-    title: "Trust & Security",
-    faqs: [
-      {
-        question: "Do you sign a confidentiality agreement before working on business systems?",
-        answer:
-          "Yes, on request, before we're given access to business accounts, servers or client data. Ask for one when you book and we'll send it ahead of the appointment.",
-      },
-      {
-        question: "How much access does a technician actually get to my device?",
-        answer:
-          "Only what's needed for the specific service you booked. Remote access tools are removed once the job is closed unless you've asked us to leave them for ongoing support.",
+          "Prices are set in US Dollars and converted to Ghana Cedis using the toggle in the header. The currency you have selected at checkout is the amount charged to your card.",
       },
       {
         question: "Is my card information stored on your site?",
         answer:
           "No. Payment is handled by a hosted payment partner, and card details entered at checkout are never stored on our servers.",
+      },
+    ],
+  },
+  {
+    title: "Licensing & Usage",
+    faqs: [
+      {
+        question: "Can I share the ebook I bought with someone else?",
+        answer:
+          "Each purchase is licensed for personal use by the buyer. You're welcome to read it across your own devices, but reselling, redistributing or publicly sharing the file isn't covered by your purchase — see our Terms & Conditions for the full detail.",
+      },
+      {
+        question: "Can I buy a copy as a gift?",
+        answer:
+          "You can, but the download links go to the email address used at checkout, so use the recipient's email if you'd like them to receive it directly, or forward the confirmation email yourself.",
+      },
+      {
+        question: "Do you offer bulk or team licensing?",
+        answer:
+          "Not on the site yet — message us with the title and number of copies you need and we'll quote a bulk rate directly.",
+      },
+    ],
+  },
+  {
+    title: "Refunds",
+    faqs: [
+      {
+        question: "Can I get a refund if I change my mind?",
+        answer:
+          "Because ebooks are delivered instantly, refunds are limited to cases where a file is genuinely corrupted, missing, or clearly not what was listed — see our Refunds Policy for exactly what qualifies and how to request one.",
+      },
+      {
+        question: "What if I bought the wrong title by mistake?",
+        answer:
+          "Email us right away with your order number — if you haven't downloaded the file yet, we can usually correct the order rather than issue a full refund.",
       },
     ],
   },
@@ -97,9 +91,9 @@ export default function FaqPage() {
       <p className="eyebrow">Support</p>
       <h1 className="section-heading mt-3">Frequently Asked Questions</h1>
       <p className="mt-4 max-w-xl text-ink/70">
-        Booking, pricing, coverage and trust — the questions we get asked
-        most, answered up front. Still stuck? The{" "}
-        <Link href="/contact" className="text-rust underline underline-offset-4">
+        Downloads, formats, pricing and licensing — the questions we get
+        asked most, answered up front. Still stuck? The{" "}
+        <Link href="/contact" className="text-sky-dark underline underline-offset-4">
           contact form
         </Link>{" "}
         reaches a person, not a queue.
@@ -108,13 +102,13 @@ export default function FaqPage() {
       <div className="mt-12 space-y-14">
         {GROUPS.map((group) => (
           <section key={group.title}>
-            <h2 className="font-display text-xl font-bold text-ink">{group.title}</h2>
+            <h2 className="font-display text-xl font-semibold text-ink">{group.title}</h2>
             <div className="mt-4 divide-y divide-ink/10 border-y border-ink/10">
               {group.faqs.map((faq) => (
                 <details key={faq.question} className="group py-5">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-bold text-ink marker:content-none">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-semibold text-ink marker:content-none">
                     {faq.question}
-                    <span className="shrink-0 text-xl text-rust transition-transform group-open:rotate-45">
+                    <span className="shrink-0 text-xl text-sky-dark transition-transform group-open:rotate-45">
                       +
                     </span>
                   </summary>
@@ -129,10 +123,10 @@ export default function FaqPage() {
       </div>
 
       <section className="mt-16 rounded-2xl border border-ink/10 bg-paper p-8 text-center">
-        <h2 className="font-display text-xl font-bold text-ink">Didn't find your answer?</h2>
+        <h2 className="font-display text-xl font-semibold text-ink">Didn't find your answer?</h2>
         <p className="mx-auto mt-2 max-w-md text-sm text-ink/70">
           Send us a message at{" "}
-          <a href={`mailto:${site.email}`} className="text-rust underline underline-offset-4">
+          <a href={`mailto:${site.email}`} className="text-sky-dark underline underline-offset-4">
             {site.email}
           </a>{" "}
           or use the contact form and we'll reply within one business day.

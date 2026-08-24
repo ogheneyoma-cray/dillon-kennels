@@ -16,7 +16,9 @@ export interface CartItem {
   name: string;
   slug: string;
   price: number;
-  image: string;
+  author: string;
+  coverColor: Product["coverColor"];
+  category: Product["category"];
   quantity: number;
 }
 
@@ -32,7 +34,7 @@ interface CartContextValue {
 
 const CartContext = createContext<CartContextValue | undefined>(undefined);
 
-const STORAGE_KEY = "wazuri-cart";
+const STORAGE_KEY = "nedupe-cart";
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
@@ -74,7 +76,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
           name: product.name,
           slug: product.slug,
           price: product.price,
-          image: product.image,
+          author: product.author,
+          coverColor: product.coverColor,
+          category: product.category,
           quantity,
         },
       ];

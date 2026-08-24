@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { formatMoney } from "@/lib/currency";
+import EbookCover from "@/components/EbookCover";
 
 export default function CartPage() {
   const { items, updateQuantity, removeFromCart, cartTotal } = useCart();
@@ -14,13 +14,13 @@ export default function CartPage() {
     return (
       <div className="container-page flex flex-col items-center justify-center py-24 text-center">
         <p className="eyebrow">Your Cart</p>
-        <h1 className="section-heading mt-3">Nothing booked yet</h1>
+        <h1 className="section-heading mt-3">Your library is empty</h1>
         <p className="mt-4 max-w-sm text-ink/70">
-          You haven't added any services to your cart yet. Browse the list
-          and book what you need.
+          You haven't added any ebooks to your cart yet. Browse the shop and
+          find something to read.
         </p>
         <Link href="/shop" className="btn-primary mt-8">
-          Browse Services
+          Shop Ebooks
         </Link>
       </div>
     );
@@ -29,7 +29,7 @@ export default function CartPage() {
   return (
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Your Cart</p>
-      <h1 className="section-heading mt-3">Service Cart</h1>
+      <h1 className="section-heading mt-3">Ebook Cart</h1>
 
       <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_360px]">
         <ul className="divide-y divide-ink/10 border-y border-ink/10">
@@ -37,9 +37,9 @@ export default function CartPage() {
             <li key={item.id} className="flex gap-4 py-6 sm:gap-6">
               <Link
                 href={`/shop/${item.slug}`}
-                className="relative h-24 w-20 shrink-0 overflow-hidden rounded-xl bg-sand sm:h-32 sm:w-28"
+                className="relative h-24 w-20 shrink-0 sm:h-32 sm:w-28"
               >
-                <Image src={item.image} alt={item.name} fill sizes="120px" className="object-cover" />
+                <EbookCover product={item} />
               </Link>
 
               <div className="flex flex-1 flex-col justify-between">
@@ -47,7 +47,7 @@ export default function CartPage() {
                   <div>
                     <Link
                       href={`/shop/${item.slug}`}
-                      className="font-display text-base font-bold leading-snug text-ink hover:text-rust sm:text-lg"
+                      className="font-display text-base font-semibold leading-snug text-ink hover:text-sky-dark sm:text-lg"
                     >
                       {item.name}
                     </Link>
@@ -66,7 +66,7 @@ export default function CartPage() {
                       type="button"
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
                       aria-label={`Decrease quantity of ${item.name}`}
-                      className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-sand"
+                      className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-sky-pale"
                     >
                       −
                     </button>
@@ -77,7 +77,7 @@ export default function CartPage() {
                       type="button"
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
                       aria-label={`Increase quantity of ${item.name}`}
-                      className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-sand"
+                      className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-sky-pale"
                     >
                       +
                     </button>
@@ -85,7 +85,7 @@ export default function CartPage() {
                   <button
                     type="button"
                     onClick={() => removeFromCart(item.id)}
-                    className="min-h-[44px] px-2 text-sm font-semibold text-ink/60 underline underline-offset-4 hover:text-rust"
+                    className="min-h-[44px] px-2 text-sm font-semibold text-ink/60 underline underline-offset-4 hover:text-sky-dark"
                   >
                     Remove
                   </button>
@@ -96,18 +96,18 @@ export default function CartPage() {
         </ul>
 
         <aside className="h-fit rounded-2xl border border-ink/10 bg-paper p-6">
-          <h2 className="font-display text-xl font-bold text-ink">Order Summary</h2>
+          <h2 className="font-display text-xl font-semibold text-ink">Order Summary</h2>
           <div className="mt-5 space-y-3 text-sm">
             <div className="flex justify-between text-ink/70">
               <span>Subtotal</span>
               <span>{formatMoney(cartTotal, currency)}</span>
             </div>
             <div className="flex justify-between text-ink/70">
-              <span>Call-out fee</span>
-              <span>None — priced in full above</span>
+              <span>Delivery</span>
+              <span>Instant download</span>
             </div>
           </div>
-          <div className="mt-5 flex justify-between border-t border-ink/10 pt-5 font-display text-lg font-bold text-ink">
+          <div className="mt-5 flex justify-between border-t border-ink/10 pt-5 font-display text-lg font-semibold text-ink">
             <span>Total</span>
             <span>{formatMoney(cartTotal, currency)}</span>
           </div>
