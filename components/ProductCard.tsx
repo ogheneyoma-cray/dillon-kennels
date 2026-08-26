@@ -1,11 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { formatMoney } from "@/lib/currency";
-import EbookCover from "@/components/EbookCover";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();
@@ -15,30 +15,35 @@ export default function ProductCard({ product }: { product: Product }) {
     <div className="group relative flex flex-col">
       <Link
         href={`/shop/${product.slug}`}
-        className="relative block aspect-[4/5] overflow-hidden rounded-2xl shadow-tile transition-transform duration-300 ease-out group-hover:-translate-y-1"
+        className="relative block aspect-[4/5] overflow-hidden rounded-2xl bg-mist shadow-tile transition-transform duration-300 ease-out group-hover:-translate-y-1"
       >
-        <EbookCover product={product} />
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+        />
         {product.popular && (
-          <span className="absolute left-3 top-3 rounded-full bg-gold px-3 py-1 text-[10px] font-bold uppercase tracking-widest2 text-white">
-            Bestseller
+          <span className="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest2 text-orange-dark shadow-tile">
+            Popular
           </span>
         )}
         {!product.inStock && (
-          <span className="absolute left-3 top-3 rounded-full bg-ink px-3 py-1 text-[10px] font-bold uppercase tracking-widest2 text-white">
+          <span className="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest2 text-ink/70 shadow-tile">
             Out of Stock
           </span>
         )}
       </Link>
       <div className="mt-4 flex flex-1 flex-col">
         <Link href={`/shop/${product.slug}`}>
-          <h3 className="font-display text-lg font-semibold leading-snug text-ink transition-colors group-hover:text-sky-dark">
+          <h3 className="font-display text-base font-bold leading-snug text-ink transition-colors group-hover:text-gold-dark">
             {product.name}
           </h3>
         </Link>
-        <p className="mt-1 text-xs text-ink/50">by {product.author}</p>
-        <p className="mt-2 text-sm font-semibold text-ink/70">
+        <p className="mt-1 text-xs text-ink/50">{product.category}</p>
+        <p className="mt-2 text-sm font-bold text-ink">
           {formatMoney(product.price, currency)}
-          <span className="ml-1 font-normal text-ink/45">· {product.pages} pages</span>
         </p>
         <button
           type="button"

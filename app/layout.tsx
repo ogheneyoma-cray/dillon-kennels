@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Work_Sans } from "next/font/google";
+import { Archivo, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
@@ -7,15 +7,15 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
 
-const fraunces = Fraunces({
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-archivo",
   display: "swap",
 });
 
-const workSans = Work_Sans({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-work-sans",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${workSans.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${dmSans.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
         <CurrencyProvider>
           <CartProvider>

@@ -9,7 +9,7 @@ import { formatMoney } from "@/lib/currency";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `ND-${random}`;
+  return `TI-${random}`;
 }
 
 export default function CheckoutPage() {
@@ -23,7 +23,7 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "nedupe-last-order",
+      "ticad-iboo-last-order",
       JSON.stringify({
         orderNumber,
         total: formatMoney(cartTotal, currency),
@@ -40,10 +40,10 @@ export default function CheckoutPage() {
         <p className="eyebrow">Checkout</p>
         <h1 className="section-heading mt-3">Your cart is empty</h1>
         <p className="mt-4 max-w-sm text-ink/70">
-          Add an ebook to your cart before heading to checkout.
+          Add a product to your cart before heading to checkout.
         </p>
         <Link href="/shop" className="btn-primary mt-8">
-          Shop Ebooks
+          Shop All Products
         </Link>
       </div>
     );
@@ -60,11 +60,12 @@ export default function CheckoutPage() {
       >
         <div className="space-y-10">
           <fieldset>
-            <legend className="font-display text-xl font-semibold text-ink">
-              Contact Details
+            <legend className="font-display text-xl font-bold text-ink">
+              Contact &amp; Delivery Details
             </legend>
             <p className="mt-2 text-xs text-ink/50">
-              Your download links and receipt are sent to the email address below.
+              Your order confirmation and delivery updates are sent to the
+              email address below.
             </p>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
@@ -97,7 +98,7 @@ export default function CheckoutPage() {
               </div>
               <div className="sm:col-span-2">
                 <label htmlFor="address" className="label-text">
-                  Billing Address
+                  Delivery Address
                 </label>
                 <input
                   id="address"
@@ -120,14 +121,14 @@ export default function CheckoutPage() {
                   required
                   autoComplete="tel"
                   className="input-field"
-                  placeholder="+234 800 000 0000"
+                  placeholder="080 0000 0000"
                 />
               </div>
             </div>
           </fieldset>
 
           <fieldset>
-            <legend className="font-display text-xl font-semibold text-ink">
+            <legend className="font-display text-xl font-bold text-ink">
               Payment Details
             </legend>
             <p className="mt-2 text-xs text-ink/50">
@@ -203,7 +204,7 @@ export default function CheckoutPage() {
         </div>
 
         <aside className="h-fit rounded-2xl border border-ink/10 bg-paper p-6">
-          <h2 className="font-display text-xl font-semibold text-ink">Order Summary</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Order Summary</h2>
           <ul className="mt-5 space-y-3 border-b border-ink/10 pb-5">
             {items.map((item) => (
               <li key={item.id} className="flex justify-between text-sm">
@@ -216,7 +217,7 @@ export default function CheckoutPage() {
               </li>
             ))}
           </ul>
-          <div className="mt-5 flex justify-between font-display text-lg font-semibold text-ink">
+          <div className="mt-5 flex justify-between font-display text-lg font-bold text-ink">
             <span>Total</span>
             <span>{formatMoney(cartTotal, currency)}</span>
           </div>

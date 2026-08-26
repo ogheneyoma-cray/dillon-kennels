@@ -16,8 +16,7 @@ export interface CartItem {
   name: string;
   slug: string;
   price: number;
-  author: string;
-  coverColor: Product["coverColor"];
+  image: string;
   category: Product["category"];
   quantity: number;
 }
@@ -34,7 +33,7 @@ interface CartContextValue {
 
 const CartContext = createContext<CartContextValue | undefined>(undefined);
 
-const STORAGE_KEY = "nedupe-cart";
+const STORAGE_KEY = "ticad-iboo-cart";
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
@@ -76,8 +75,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           name: product.name,
           slug: product.slug,
           price: product.price,
-          author: product.author,
-          coverColor: product.coverColor,
+          image: product.image,
           category: product.category,
           quantity,
         },

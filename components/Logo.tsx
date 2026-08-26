@@ -1,24 +1,23 @@
 import { site } from "@/lib/site";
 
 /**
- * Standalone mark: a rounded square in sky blue with a simple open-book
- * glyph cut out in white, and a small teal page-corner accent — reads
- * clearly at favicon size and carries no location or contact detail.
+ * Standalone mark: a rounded gold square with a black corner-frame glyph and
+ * a center dot, reading as a viewfinder around a single item — a stand-in
+ * for "browse the catalogue" that isn't tied to any one product category.
+ * Reads clearly at favicon size and carries no location or contact detail.
  */
 export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
   return (
     <svg viewBox="0 0 40 40" fill="none" aria-hidden="true" className={className}>
-      <rect width="40" height="40" rx="11" fill="#4FA3D1" />
+      <rect width="40" height="40" rx="11" fill="#F5B400" />
       <path
-        d="M9 12.5c3.4-1.6 6.6-1.6 9.5 0v16c-2.9-1.6-6.1-1.6-9.5 0v-16Z"
-        fill="#FFFFFF"
+        d="M11 17v-6h6M23 11h6v6M29 23v6h-6M17 29h-6v-6"
+        stroke="#181818"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-      <path
-        d="M31 12.5c-3.4-1.6-6.6-1.6-9.5 0v16c2.9-1.6 6.1-1.6 9.5 0v-16Z"
-        fill="#FFFFFF"
-        fillOpacity="0.88"
-      />
-      <circle cx="30.5" cy="10.5" r="2.6" fill="#E0A23B" />
+      <circle cx="20" cy="20" r="3.2" fill="#181818" />
     </svg>
   );
 }
@@ -46,11 +45,11 @@ export default function Logo({
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <LogoMark className={`${markClassName} shrink-0`} />
       <span className="flex flex-col leading-none">
-        <span className={`font-display font-semibold leading-none tracking-tight ${word} ${wordClassName}`}>
+        <span className={`font-display font-extrabold leading-none tracking-tight ${word} ${wordClassName}`}>
           {site.wordmark}
         </span>
         <span className={`mt-1 font-body text-[9px] font-bold uppercase tracking-widest2 ${label}`}>
-          Ebooks
+          Home &amp; Electronics
         </span>
       </span>
     </span>

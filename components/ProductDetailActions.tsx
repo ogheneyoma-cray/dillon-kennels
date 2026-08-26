@@ -23,13 +23,13 @@ export default function ProductDetailActions({ product }: { product: Product }) 
   return (
     <div>
       <div className="flex items-center gap-4">
-        <span className="label-text mb-0">Copies</span>
+        <span className="label-text mb-0">Quantity</span>
         <div className="flex items-center rounded-full border border-ink/20">
           <button
             type="button"
             onClick={decrease}
             aria-label="Decrease quantity"
-            className="flex h-11 w-11 items-center justify-center rounded-full text-lg text-ink transition-colors hover:bg-sky-pale disabled:opacity-30"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-lg text-ink transition-colors hover:bg-gold-pale disabled:opacity-30"
             disabled={quantity <= 1}
           >
             −
@@ -41,7 +41,7 @@ export default function ProductDetailActions({ product }: { product: Product }) 
             type="button"
             onClick={increase}
             aria-label="Increase quantity"
-            className="flex h-11 w-11 items-center justify-center rounded-full text-lg text-ink transition-colors hover:bg-sky-pale"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-lg text-ink transition-colors hover:bg-gold-pale"
           >
             +
           </button>

@@ -3,7 +3,7 @@ import Logo from "@/components/Logo";
 import { addressLines, site } from "@/lib/site";
 
 const SHOP_LINKS = [
-  { href: "/shop", label: "All Ebooks" },
+  { href: "/shop", label: "All Products" },
   { href: "/cart", label: "Cart" },
   { href: "/checkout", label: "Checkout" },
 ];
@@ -11,7 +11,7 @@ const SHOP_LINKS = [
 const HELP_LINKS = [
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact Us" },
-  { href: "/shipping-policy", label: "Digital Delivery" },
+  { href: "/shipping-policy", label: "Shipping Policy" },
   { href: "/refunds-policy", label: "Refunds Policy" },
 ];
 
@@ -38,7 +38,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-2">
             {SHOP_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm text-ink/75 transition-colors hover:text-sky-dark">
+                <Link href={link.href} className="text-sm text-ink/75 transition-colors hover:text-ink">
                   {link.label}
                 </Link>
               </li>
@@ -51,7 +51,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-2">
             {HELP_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm text-ink/75 transition-colors hover:text-sky-dark">
+                <Link href={link.href} className="text-sm text-ink/75 transition-colors hover:text-ink">
                   {link.label}
                 </Link>
               </li>
@@ -61,7 +61,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-2">
             {LEGAL_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm text-ink/75 transition-colors hover:text-sky-dark">
+                <Link href={link.href} className="text-sm text-ink/75 transition-colors hover:text-ink">
                   {link.label}
                 </Link>
               </li>
@@ -76,8 +76,13 @@ export default function Footer() {
               <p key={line}>{line}</p>
             ))}
             <p>
-              <a href={`mailto:${site.email}`} className="hover:text-sky-dark">
+              <a href={`mailto:${site.email}`} className="hover:text-ink">
                 {site.email}
+              </a>
+            </p>
+            <p>
+              <a href={`tel:${site.phoneHref}`} className="hover:text-ink">
+                {site.phone}
               </a>
             </p>
           </address>

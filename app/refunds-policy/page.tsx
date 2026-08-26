@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Refunds Policy | ${site.name}`,
-  description: "Refund terms for Nedupe Limited ebook purchases.",
+  description: "Return and refund terms for Ticad Iboo product purchases.",
 };
 
 export default function RefundsPolicyPage() {
@@ -15,55 +15,55 @@ export default function RefundsPolicyPage() {
 
       <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
         <section>
-          <h2 className="font-display text-xl font-semibold text-ink">Digital Goods, Limited Refunds</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Change of Mind Returns</h2>
           <p className="mt-3 leading-relaxed">
-            Because every ebook is delivered instantly as a downloadable
-            file, refunds are limited compared to a physical product store.
-            We will issue a full refund where the file you received is
-            genuinely corrupted, missing, or clearly not the title you
-            ordered.
+            If you simply change your mind, you can return an unused item in
+            its original packaging within 7 days of delivery for a full
+            refund of the item price. The cost of returning the item is the
+            buyer's responsibility unless the return is due to our error.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-ink">How to Request a Refund</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Damaged or Faulty Items</h2>
+          <p className="mt-3 leading-relaxed">
+            If an item arrives damaged, defective, or different from what
+            you ordered, email us photos of the item and packaging along
+            with your order number within 48 hours of delivery. We'll
+            arrange a replacement or a full refund, including any delivery
+            fee paid, at no extra cost to you.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-display text-xl font-bold text-ink">How to Request a Return</h2>
           <p className="mt-3 leading-relaxed">
             Email{" "}
-            <a href={`mailto:${site.email}`} className="text-sky-dark underline underline-offset-4">
+            <a href={`mailto:${site.email}`} className="text-ink underline underline-offset-4">
               {site.email}
             </a>{" "}
-            with your order number and a short description of the problem,
-            within 7 days of purchase. Our team will confirm eligibility
-            and, where a refund is approved, explain how and when it will
-            be paid back.
+            with your order number and a short description of the issue. Our
+            team will confirm eligibility and share instructions for
+            returning the item, where applicable.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-ink">Refund Processing</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Refund Processing</h2>
           <p className="mt-3 leading-relaxed">
             Approved refunds are processed back to your original payment
-            method within 5–10 business days, depending on your bank or
+            method once the returned item has been received and inspected,
+            typically within 5–10 business days depending on your bank or
             card issuer's processing times.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-ink">Ordered the Wrong Title</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Items Not Eligible for Return</h2>
           <p className="mt-3 leading-relaxed">
-            If you bought the wrong ebook by mistake, contact us right
-            away — if you haven't downloaded the file yet, we can usually
-            correct the order to the right title rather than issue a full
-            refund.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-display text-xl font-semibold text-ink">Change of Mind</h2>
-          <p className="mt-3 leading-relaxed">
-            Because the file is available to you the moment payment
-            clears, a simple change of mind after a successful download is
-            not eligible for a refund under this policy.
+            Items that show signs of use, are missing original packaging, or
+            were marked as final sale at the time of purchase are not
+            eligible for a change-of-mind return.
           </p>
         </section>
       </div>

@@ -1,9 +1,9 @@
 export type Category =
-  | "Business & Finance"
-  | "Personal Development"
-  | "Technology & Coding"
-  | "Health & Wellness"
-  | "Fiction & Storytelling";
+  | "Kitchen & Dining"
+  | "Small Appliances"
+  | "Home & Living"
+  | "Audio & Accessories"
+  | "Smart Gadgets";
 
 export interface Product {
   id: number;
@@ -11,466 +11,282 @@ export interface Product {
   slug: string;
   price: number; // in USD
   description: string;
-  author: string;
+  image: string;
   category: Category;
   inStock: boolean;
-  pages: number;
-  format: string;
-  /** Cover accent color, keyed to the Tailwind palette used by EbookCover. */
-  coverColor: "sky" | "gold" | "teal" | "rose" | "ink";
   popular?: boolean;
 }
 
 export const categories: Category[] = [
-  "Business & Finance",
-  "Personal Development",
-  "Technology & Coding",
-  "Health & Wellness",
-  "Fiction & Storytelling",
+  "Kitchen & Dining",
+  "Small Appliances",
+  "Home & Living",
+  "Audio & Accessories",
+  "Smart Gadgets",
 ];
 
-export const products: Product[] = [
-  // ------------------------------------------------------ Business & Finance
+interface Seed {
+  name: string;
+  price: number;
+  category: Category;
+  description: string;
+  popular?: boolean;
+  inStock?: boolean;
+}
+
+const seeds: Seed[] = [
+  // ---------------------------------------------------------- Kitchen & Dining
   {
-    id: 1,
-    name: "The Bootstrapped Founder's Playbook",
-    slug: "the-bootstrapped-founders-playbook",
-    price: 32,
-    author: "Adaeze Nwosu",
-    category: "Business & Finance",
-    inStock: true,
-    popular: true,
-    pages: 214,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "sky",
-    description:
-      "A field guide for founders building without outside funding — how to price your first product, hold onto margin, and say no to growth that doesn't pay for itself. Written from a decade of self-funded launches, it skips the pitch-deck theatre and focuses on the plumbing: cash flow, hiring your first contractor, and knowing when a slow month is normal versus a warning sign.",
-  },
-  {
-    id: 2,
-    name: "Cash Flow Clarity",
-    slug: "cash-flow-clarity",
+    name: "Stainless Steel Electric Kettle",
     price: 28,
-    author: "Tunde Bakare",
-    category: "Business & Finance",
-    inStock: true,
-    pages: 168,
-    format: "EPUB · PDF",
-    coverColor: "gold",
-    description:
-      "Small-business money management stripped of jargon: a simple weekly routine for knowing exactly what's coming in, what's going out, and what's left. Includes worksheet templates for a 13-week cash flow forecast that you can rebuild in any spreadsheet in under an hour, plus a chapter on separating personal and business finances properly.",
-  },
-  {
-    id: 3,
-    name: "Negotiate Like You Mean It",
-    slug: "negotiate-like-you-mean-it",
-    price: 24,
-    author: "Grace Owusu",
-    category: "Business & Finance",
-    inStock: true,
-    pages: 152,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "teal",
-    description:
-      "A short, direct book on getting better terms — from a supplier contract to a salary review — without resorting to tricks that damage the relationship. Built around a repeatable four-step framework and a dozen real scripted exchanges you can adapt on the spot.",
-  },
-  {
-    id: 4,
-    name: "Freelance to Firm",
-    slug: "freelance-to-firm",
-    price: 30,
-    author: "Chinedu Eze",
-    category: "Business & Finance",
-    inStock: true,
-    pages: 196,
-    format: "EPUB · PDF",
-    coverColor: "rose",
-    description:
-      "The transition from solo freelancer to a small team, covering the decisions that actually matter: when to hire your first contractor, how to price retainer work, and how to keep the quality that got you clients in the first place once someone else is doing the work.",
-  },
-  {
-    id: 5,
-    name: "The Budgeting Reset",
-    slug: "the-budgeting-reset",
-    price: 22,
-    author: "Amara Chukwu",
-    category: "Business & Finance",
-    inStock: true,
-    pages: 134,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "ink",
-    description:
-      "For anyone starting a personal budget over after it fell apart — again. A calm, no-shame walkthrough of building a budget you'll actually keep, with a simple envelope-style system that works whether your income is fixed or unpredictable.",
-  },
-  {
-    id: 6,
-    name: "Pitch Decks That Get Funded",
-    slug: "pitch-decks-that-get-funded",
-    price: 36,
-    author: "Kwame Asante",
-    category: "Business & Finance",
-    inStock: true,
-    pages: 178,
-    format: "EPUB · PDF",
-    coverColor: "sky",
-    description:
-      "A slide-by-slide teardown of what investors actually read a pitch deck for, built from patterns across hundreds of raised and rejected decks. Covers the story arc, the numbers slide investors distrust least, and how to answer the questions a deck can't.",
-  },
-
-  // -------------------------------------------------- Personal Development
-  {
-    id: 7,
-    name: "Deep Focus, Shallow Distractions",
-    slug: "deep-focus-shallow-distractions",
-    price: 26,
-    author: "Ifeoma Obi",
-    category: "Personal Development",
-    inStock: true,
+    category: "Kitchen & Dining",
     popular: true,
-    pages: 188,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "teal",
     description:
-      "A practical system for protecting attention in a job full of notifications and open calendars. Rather than another willpower pep talk, it walks through environment design, message triage, and how to negotiate quiet hours with a team that expects instant replies.",
+      "A 1.7-litre brushed-steel kettle with a concealed heating element and rapid boil-dry shutoff. The wide spout pours cleanly without dribbling down the side, and the cool-touch handle stays comfortable even a minute after boiling. Sits flush on its 360-degree cordless base so you can lift and pour from any angle.",
   },
   {
-    id: 8,
-    name: "The Discipline Ledger",
-    slug: "the-discipline-ledger",
-    price: 24,
-    author: "Samuel Adeyemi",
-    category: "Personal Development",
-    inStock: true,
-    pages: 142,
-    format: "EPUB · PDF",
-    coverColor: "gold",
-    description:
-      "Discipline treated as a resource you track and rebuild, not a personality trait you either have or don't. Includes a simple daily ledger method for noticing where your discipline actually leaks — and where it doesn't need to be spent at all.",
-  },
-  {
-    id: 9,
-    name: "Say Less, Mean More",
-    slug: "say-less-mean-more",
-    price: 23,
-    author: "Ngozi Eze",
-    category: "Personal Development",
-    inStock: true,
-    pages: 128,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "rose",
-    description:
-      "A guide to direct, kind communication for people who over-explain under pressure. Short chapters on cutting the padding out of hard conversations, disagreeing without apologizing for the disagreement, and asking for what you need in one clear sentence.",
-  },
-  {
-    id: 10,
-    name: "Morning Architecture",
-    slug: "morning-architecture",
-    price: 21,
-    author: "David Mensah",
-    category: "Personal Development",
-    inStock: true,
-    pages: 116,
-    format: "EPUB · PDF",
-    coverColor: "sky",
-    description:
-      "Designing your first hour of the day on purpose, without a rigid 5 a.m. routine that collapses the first time life gets busy. A flexible framework you rebuild around your own energy, not someone else's morning routine video.",
-  },
-  {
-    id: 11,
-    name: "The Confidence Rebuild",
-    slug: "the-confidence-rebuild",
-    price: 27,
-    author: "Blessing Nnamdi",
-    category: "Personal Development",
-    inStock: true,
-    pages: 164,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "ink",
-    description:
-      "For rebuilding confidence after a specific setback — a layoff, a failed launch, a hard breakup — rather than generic self-esteem advice. Structured around small, provable wins rather than affirmations, with a chapter on separating the setback from your self-worth.",
-  },
-  {
-    id: 12,
-    name: "Habits That Hold When Life Doesn't",
-    slug: "habits-that-hold-when-life-doesnt",
-    price: 29,
-    author: "Emeka Chukwuemeka",
-    category: "Personal Development",
-    inStock: true,
-    pages: 172,
-    format: "EPUB · PDF",
-    coverColor: "teal",
-    description:
-      "Habit systems built for the weeks that don't go to plan — travel, illness, a busy quarter at work. Instead of an all-or-nothing streak, it teaches a minimum-viable version of every habit so a disrupted week doesn't undo months of progress.",
-  },
-
-  // -------------------------------------------------- Technology & Coding
-  {
-    id: 13,
-    name: "JavaScript Without the Jargon",
-    slug: "javascript-without-the-jargon",
-    price: 34,
-    author: "Wale Fashina",
-    category: "Technology & Coding",
-    inStock: true,
-    popular: true,
-    pages: 246,
-    format: "EPUB · PDF",
-    coverColor: "gold",
-    description:
-      "A ground-up JavaScript book for people who learn best from plain explanations and small working examples, not academic definitions. Covers the language as it's actually written in 2026 — async/await, modules, and the DOM — without assuming prior programming experience.",
-  },
-  {
-    id: 14,
-    name: "Practical System Design for Small Teams",
-    slug: "practical-system-design-for-small-teams",
+    name: "Compact Espresso Maker",
     price: 38,
-    author: "Chiamaka Uche",
-    category: "Technology & Coding",
-    inStock: true,
-    popular: true,
-    pages: 232,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "sky",
+    category: "Kitchen & Dining",
     description:
-      "System design advice scaled down for teams of three to ten engineers, not hypothetical unicorn-scale interviews. Real trade-offs on databases, caching and queues explained through the actual constraints small teams face — limited budget, limited on-call coverage, limited time.",
+      "A single-boiler espresso maker sized for a small kitchen counter, with a 15-bar pump strong enough for a proper crema without the footprint of a full machine. The steam wand froths a single cup of milk in under twenty seconds, and the drip tray lifts out in one piece for a quick rinse.",
   },
   {
-    id: 15,
-    name: "The Clean API Handbook",
-    slug: "the-clean-api-handbook",
-    price: 32,
-    author: "Peter Okoye",
-    category: "Technology & Coding",
-    inStock: true,
-    pages: 198,
-    format: "EPUB · PDF",
-    coverColor: "teal",
+    name: "Nonstick Ceramic Frying Pan Set",
+    price: 34,
+    category: "Kitchen & Dining",
     description:
-      "A short, opinionated handbook on designing REST and JSON APIs that are pleasant to consume — consistent naming, sane pagination, and error messages a caller can actually act on. Every rule comes with a before-and-after example lifted from real API reviews.",
+      "Two ceramic-coated frying pans — 20cm and 26cm — built on a heavy aluminium base that spreads heat evenly and holds it through a full stir-fry. The coating is PFOA-free and releases food without needing much oil, and both pans work on gas, electric and induction hobs.",
   },
   {
-    id: 16,
-    name: "Automating the Boring 80%",
-    slug: "automating-the-boring-80-percent",
-    price: 29,
-    author: "Funmi Adeleke",
-    category: "Technology & Coding",
-    inStock: true,
-    pages: 176,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "rose",
-    description:
-      "Practical scripting for the repetitive parts of a technical job — file renaming, report generation, deploy checklists — using plain Python and shell scripts rather than heavyweight tooling. Aimed at engineers who want their time back, not a new framework to learn.",
-  },
-  {
-    id: 17,
-    name: "Databases for Builders, Not Academics",
-    slug: "databases-for-builders-not-academics",
-    price: 35,
-    author: "Ibrahim Sule",
-    category: "Technology & Coding",
-    inStock: true,
-    pages: 220,
-    format: "EPUB · PDF",
-    coverColor: "ink",
-    description:
-      "Relational database fundamentals taught through the questions builders actually ask — when to add an index, why a query got slow after the table grew, and how to design a schema that won't need a rewrite in a year. No relational calculus, just working judgment.",
-  },
-  {
-    id: 18,
-    name: "Shipping Fast Without Breaking Things",
-    slug: "shipping-fast-without-breaking-things",
-    price: 31,
-    author: "Chidinma Okafor",
-    category: "Technology & Coding",
-    inStock: true,
-    pages: 204,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "sky",
-    description:
-      "A practical guide to release process for small engineering teams — feature flags, staged rollouts, and a rollback plan you actually test. Written to be adopted incrementally by a team with no dedicated platform engineer.",
-  },
-
-  // -------------------------------------------------------- Health & Wellness
-  {
-    id: 19,
-    name: "The Sleep Reset Protocol",
-    slug: "the-sleep-reset-protocol",
-    price: 25,
-    author: "Dr. Yemisi Balogun",
-    category: "Health & Wellness",
-    inStock: true,
-    popular: true,
-    pages: 158,
-    format: "EPUB · PDF",
-    coverColor: "teal",
-    description:
-      "A two-week protocol for resetting a broken sleep schedule, written by a sleep-focused physician for a lay audience. Covers light exposure, caffeine timing, and what to do on the nights the plan doesn't work, rather than pretending it always will.",
-  },
-  {
-    id: 20,
-    name: "Eating for Energy, Not Restriction",
-    slug: "eating-for-energy-not-restriction",
-    price: 23,
-    author: "Halima Yusuf",
-    category: "Health & Wellness",
-    inStock: true,
-    pages: 146,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "gold",
-    description:
-      "An approach to eating built around sustained energy through the day rather than calorie restriction, with simple swaps for common West African staples. No meal plans to follow exactly — just principles you apply to what's already in your kitchen.",
-  },
-  {
-    id: 21,
-    name: "Desk-Bound",
-    slug: "desk-bound",
-    price: 22,
-    author: "Michael Adisa",
-    category: "Health & Wellness",
-    inStock: true,
-    pages: 118,
-    format: "EPUB · PDF",
-    coverColor: "rose",
-    description:
-      "A mobility guide for office workers built around ten-minute routines you can actually fit into a workday — no gym required. Photographs are replaced with clear step-by-step text descriptions so the book stays light and readable on any device.",
-  },
-  {
-    id: 22,
-    name: "The Quiet Mind",
-    slug: "the-quiet-mind",
-    price: 20,
-    author: "Nkechi Aliyu",
-    category: "Health & Wellness",
-    inStock: true,
-    pages: 104,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "sky",
-    description:
-      "A practical, secular introduction to meditation for people who've bounced off apps and guided tracks before. Short chapters, no mysticism, and an honest chapter on what meditation won't fix.",
-  },
-  {
-    id: 23,
-    name: "Strength Training After 30",
-    slug: "strength-training-after-30",
-    price: 28,
-    author: "Chukwudi Okoro",
-    category: "Health & Wellness",
-    inStock: true,
-    pages: 190,
-    format: "EPUB · PDF",
-    coverColor: "ink",
-    description:
-      "A beginner-friendly strength program for people starting training later, with an emphasis on joint-friendly progression and realistic weekly time budgets. Includes a 12-week plan usable with just dumbbells or a basic gym membership.",
-  },
-  {
-    id: 24,
-    name: "Recovering From Burnout, Properly",
-    slug: "recovering-from-burnout-properly",
+    name: "Glass Food Storage Set (10-Piece)",
     price: 26,
-    author: "Dr. Folake Ogundele",
-    category: "Health & Wellness",
-    inStock: true,
-    pages: 172,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "teal",
+    category: "Kitchen & Dining",
     description:
-      "A structured recovery path for burnout that goes beyond 'take a break' — covering the conversation with your employer, the financial planning a real recovery period needs, and how to tell the difference between rest and avoidance.",
+      "Five borosilicate glass containers with snap-lock lids in a range of sizes, from a small dip pot to a full meal-prep tray. The glass goes straight from fridge to microwave to oven without staining or holding onto smells, and the lids seal tightly enough to stack a full set on their side.",
+  },
+  {
+    name: "Digital Kitchen Scale",
+    price: 22,
+    category: "Kitchen & Dining",
+    description:
+      "A slimline scale that weighs up to 5kg in 1-gram increments, with a tare button that lets you add several ingredients to the same bowl without doing the maths yourself. The backlit display is easy to read at counter height, and it folds flat for a narrow drawer.",
+  },
+  {
+    name: "Stackable Bamboo Cutting Board Set",
+    price: 24,
+    category: "Kitchen & Dining",
+    description:
+      "Three bamboo boards in graduated sizes with juice grooves along one edge and a finger notch for easy lifting. Bamboo is naturally more resistant to knife scarring and odour than softer woods, and the set stores upright in the included stand rather than taking up drawer space.",
   },
 
-  // ---------------------------------------------------- Fiction & Storytelling
+  // -------------------------------------------------------- Small Appliances
   {
-    id: 25,
-    name: "The Last Signal",
-    slug: "the-last-signal",
-    price: 24,
-    author: "Obinna Maduike",
-    category: "Fiction & Storytelling",
-    inStock: true,
+    name: "2-Slice Wide Slot Toaster",
+    price: 32,
+    category: "Small Appliances",
     popular: true,
-    pages: 312,
-    format: "EPUB · MOBI",
-    coverColor: "ink",
     description:
-      "A near-future novel following a radio engineer in a coastal city who picks up a transmission that shouldn't exist. Slow-burn and character-driven, more about the engineer's fraying marriage than the mystery itself — until the two collide in the final act.",
+      "Extra-wide slots fit thick artisan bread and English muffins without needing a second pass, and seven browning levels take it from a light warm-through to a deep crunch. A dedicated defrost setting and a removable crumb tray round out the everyday features.",
   },
   {
-    id: 26,
-    name: "Salt and Harmattan",
-    slug: "salt-and-harmattan",
-    price: 22,
-    author: "Aisha Bello",
-    category: "Fiction & Storytelling",
-    inStock: true,
-    pages: 168,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "gold",
-    description:
-      "A collection of twelve short stories set across a single harmattan season, moving between a fishing town and the capital. Each story stands alone but shares a thread of characters who cross paths in small, unnoticed ways.",
-  },
-  {
-    id: 27,
-    name: "The Cartographer's Daughter",
-    slug: "the-cartographers-daughter",
-    price: 27,
-    author: "Rita Uzoma",
-    category: "Fiction & Storytelling",
-    inStock: true,
-    pages: 288,
-    format: "EPUB · MOBI",
-    coverColor: "teal",
-    description:
-      "A historical novel following a mapmaker's daughter who inherits her father's unfinished survey of a disputed border region, and the decision she has to make about what the finished map will mean for the people living on it.",
-  },
-  {
-    id: 28,
-    name: "Nine Doors in Kubwa",
-    slug: "nine-doors-in-kubwa",
-    price: 23,
-    author: "Ikenna Obasi",
-    category: "Fiction & Storytelling",
-    inStock: true,
-    pages: 204,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "rose",
-    description:
-      "A quietly funny novel about a landlord in Abuja managing nine tenants across one compound, told in interlocking chapters from each tenant's point of view. Sharp, warm, and rooted firmly in one neighbourhood.",
-  },
-  {
-    id: 29,
-    name: "The Weight of Small Rooms",
-    slug: "the-weight-of-small-rooms",
-    price: 25,
-    author: "Zainab Lawal",
-    category: "Fiction & Storytelling",
-    inStock: true,
-    pages: 236,
-    format: "EPUB · MOBI",
-    coverColor: "sky",
-    description:
-      "A literary novel about three sisters clearing out their late mother's flat over one week, and everything the packing boxes force them to finally say to each other. Told in alternating perspectives with a dry, understated humour.",
-  },
-  {
-    id: 30,
-    name: "Echoes From the Third Mainland",
-    slug: "echoes-from-the-third-mainland",
+    name: "Handheld Immersion Blender",
     price: 29,
-    author: "Segun Adebayo",
-    category: "Fiction & Storytelling",
-    inStock: true,
-    pages: 256,
-    format: "EPUB · PDF · MOBI",
-    coverColor: "gold",
+    category: "Small Appliances",
     description:
-      "A Lagos-set mystery following a retired detective pulled back for one last case involving a body found beneath the Third Mainland Bridge. Atmospheric and briskly plotted, with a city as vividly drawn as any of its characters.",
+      "A stick blender with a stainless steel shaft that goes straight into the soup pot, plus a whisk and a small chopping bowl attachment for garlic and herbs. Two speeds and a splash guard on the blending head keep it controllable in a shallow pan.",
+  },
+  {
+    name: "Compact Air Fryer (2.5L)",
+    price: 39,
+    category: "Small Appliances",
+    popular: true,
+    description:
+      "A single-basket air fryer sized for one or two people, with a rapid-air system that gets a small batch of fries genuinely crisp in under fifteen minutes. The dial controls are simple to operate without a manual, and the basket and pan are dishwasher safe.",
+  },
+  {
+    name: "Portable Steam Iron",
+    price: 27,
+    category: "Small Appliances",
+    description:
+      "A lightweight iron with a ceramic soleplate that glides over cotton and linen without dragging, and a variable steam dial for anything from a quick touch-up to a heavy crease. The self-clean function flushes mineral buildup out of the vents before it can stain fabric.",
+  },
+  {
+    name: "Mini Rice Cooker (3-Cup)",
+    price: 31,
+    category: "Small Appliances",
+    description:
+      "A one-touch rice cooker sized for a small household, with a nonstick inner pot and a keep-warm mode that switches on automatically once cooking finishes. The included steamer tray lets you cook vegetables over the rice at the same time.",
+  },
+  {
+    name: "Personal Blender Bottle Set",
+    price: 23,
+    category: "Small Appliances",
+    description:
+      "A compact blender built around two travel bottles with flip-top lids, so a smoothie or shake blends and pours from the same container. The motor base is small enough to store in a cupboard and powerful enough to crush ice without stalling.",
+  },
+
+  // -------------------------------------------------------------- Home & Living
+  {
+    name: "LED Desk Lamp with USB Port",
+    price: 25,
+    category: "Home & Living",
+    popular: true,
+    description:
+      "A flexible-arm desk lamp with five brightness levels and three colour temperatures, from a warm reading glow to a cool daylight setting for close work. A built-in USB port on the base keeps a phone charged without needing a second outlet.",
+  },
+  {
+    name: "Tower Fan with Remote",
+    price: 37,
+    category: "Home & Living",
+    description:
+      "A slim oscillating tower fan with three speeds and a built-in timer, quiet enough to run overnight in a bedroom. The remote control means you're not reaching down to the base to adjust it, and the slim footprint fits into a corner without becoming an obstacle.",
+  },
+  {
+    name: "Aroma Diffuser & Humidifier",
+    price: 28,
+    category: "Home & Living",
+    description:
+      "An ultrasonic diffuser that runs for up to eight hours on a single fill, cycling through a soft colour-changing light or holding steady on one tone. A few drops of oil in the water tank is enough to fill a mid-sized room without becoming overpowering.",
+  },
+  {
+    name: "Cordless Handheld Vacuum",
+    price: 40,
+    category: "Home & Living",
+    popular: true,
+    description:
+      "A rechargeable handheld vacuum built for crumbs, pet hair and car interiors rather than whole-room cleaning, with a washable filter and a narrow crevice tool included. A full charge runs for around twenty minutes of continuous suction.",
+  },
+  {
+    name: "Memory Foam Lumbar Cushion",
+    price: 21,
+    category: "Home & Living",
+    description:
+      "A curved memory-foam cushion that straps onto a desk or car seat to support the lower back through a long day of sitting. The cover unzips for a cold wash, and the foam holds its shape rather than flattening out after a few weeks of use.",
+  },
+  {
+    name: "Blackout Curtain Pair (2 Panels)",
+    price: 30,
+    category: "Home & Living",
+    description:
+      "Two triple-weave panels that block outside light and dampen street noise more effectively than a standard curtain, without needing a separate liner. The grommet top slides easily along most standard rods, and the fabric resists creasing in storage.",
+  },
+
+  // ---------------------------------------------------------- Audio & Accessories
+  {
+    name: "Over-Ear Wireless Headphones",
+    price: 36,
+    category: "Audio & Accessories",
+    popular: true,
+    description:
+      "Padded over-ear cups and a Bluetooth connection good for around 20 hours of playback on a single charge, with physical buttons on the earcup for volume and calls rather than a touch surface. The headband folds flat into the included pouch for travel.",
+  },
+  {
+    name: "Portable Bluetooth Speaker",
+    price: 30,
+    category: "Audio & Accessories",
+    description:
+      "A palm-sized speaker with a splash-resistant shell, rated for around ten hours of playback and loud enough to fill a single room without distortion. Two units can be paired together for stereo sound, and a built-in mic handles hands-free calls.",
+  },
+  {
+    name: "True Wireless Earbuds",
+    price: 27,
+    category: "Audio & Accessories",
+    description:
+      "A pair of in-ear earbuds with a compact charging case that adds several extra charges on top of the buds' own battery. Touch controls on each bud handle play, skip and calls, and three sizes of ear tip are included for a secure fit.",
+  },
+  {
+    name: "USB-C Fast Charging Hub (6-in-1)",
+    price: 24,
+    category: "Audio & Accessories",
+    description:
+      "A single USB-C hub that breaks out into HDMI, two USB-A ports, an SD card reader and pass-through charging, useful for turning a laptop into a mini workstation. The aluminium body stays cool under sustained data transfer.",
+  },
+  {
+    name: "Wireless Charging Pad",
+    price: 20,
+    category: "Audio & Accessories",
+    description:
+      "A flat charging pad that powers most Qi-compatible phones through their case, with an LED ring that dims once the phone is fully charged rather than staying lit overnight. The non-slip base keeps the phone from sliding off during a call.",
+  },
+  {
+    name: "Bluetooth Neckband Earphones",
+    price: 23,
+    category: "Audio & Accessories",
+    description:
+      "A lightweight neckband that keeps the earbuds within reach when you're not using them, with magnetic tips that clip together and pause playback automatically. Around eight hours of playback on a charge makes it a reasonable fit for a full workday.",
+  },
+
+  // -------------------------------------------------------------- Smart Gadgets
+  {
+    name: "Smart Plug (2-Pack, WiFi)",
+    price: 22,
+    category: "Smart Gadgets",
+    popular: true,
+    description:
+      "Two WiFi-enabled plugs that turn any lamp or small appliance into something you can schedule or switch from a phone app, no separate hub required. Voice control works with most major assistants, and each plug reports basic energy use over time.",
+  },
+  {
+    name: "Digital Photo Frame (10-inch)",
+    price: 39,
+    category: "Smart Gadgets",
+    description:
+      "A 10-inch WiFi photo frame that lets family upload photos directly from their own phones without needing a shared account. The screen adjusts brightness to the room automatically, and photos can be set to rotate on a schedule you choose.",
+  },
+  {
+    name: "Smart LED Light Strip (5m)",
+    price: 26,
+    category: "Smart Gadgets",
+    description:
+      "A 5-metre RGB light strip that sticks along a shelf, desk or TV unit and syncs colour changes to music or a chosen scene through the companion app. Cuttable at marked points, it can be trimmed to fit a specific run without extra hardware.",
+  },
+  {
+    name: "Video Doorbell Camera",
+    price: 40,
+    category: "Smart Gadgets",
+    popular: true,
+    description:
+      "A WiFi doorbell camera with motion-triggered alerts and two-way audio, so you can see and speak to whoever's at the door from a phone anywhere. Night vision keeps footage usable after dark, and it installs with the included screws or an adhesive mount.",
+  },
+  {
+    name: "Mini Portable Projector",
+    price: 38,
+    category: "Smart Gadgets",
+    description:
+      "A pocket-sized projector that throws a watchable image up to 100 inches from across a small room, with a built-in speaker so it works without a separate sound system. HDMI and USB inputs cover most streaming sticks and laptops directly.",
+  },
+  {
+    name: "Smart Power Strip with USB",
+    price: 25,
+    category: "Smart Gadgets",
+    description:
+      "A surge-protected power strip with four smart-app-controlled outlets, two always-on sockets and a pair of USB ports for everyday charging. Each smart outlet can be scheduled or switched individually, useful for a cluster of devices behind a TV or desk.",
   },
 ];
+
+export const products: Product[] = seeds.map((seed, index) => {
+  const slug = seed.name
+    .toLowerCase()
+    .replace(/[()]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+  return {
+    id: index + 1,
+    slug,
+    name: seed.name,
+    price: seed.price,
+    description: seed.description,
+    image: `/products/${slug}.jpg`,
+    category: seed.category,
+    inStock: seed.inStock ?? true,
+    popular: seed.popular,
+  };
+});
 
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((product) => product.slug === slug);
 }
 
 export function getFeaturedProducts(): Product[] {
-  return products.filter((product) => product.popular);
+  return products.filter((product) => product.popular).slice(0, 6);
 }

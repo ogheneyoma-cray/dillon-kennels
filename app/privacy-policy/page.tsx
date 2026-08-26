@@ -3,7 +3,7 @@ import { addressLines, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Privacy Policy | ${site.name}`,
-  description: "How Nedupe Limited collects, uses, and protects your personal data.",
+  description: "How Ticad Iboo collects, uses, and protects your personal data.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -15,10 +15,10 @@ export default function PrivacyPolicyPage() {
 
       <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
         <section>
-          <h2 className="font-display text-xl font-semibold text-ink">Information We Collect</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Information We Collect</h2>
           <p className="mt-3 leading-relaxed">
-            When you buy an ebook, contact us, or browse our site, we may
-            collect your name, email address, phone number and billing
+            When you buy a product, contact us, or browse our site, we may
+            collect your name, email address, phone number and delivery
             address. Payment card details entered at checkout are used
             solely to process your transaction through our hosted payment
             partner and are not stored on our servers. We also collect
@@ -28,18 +28,18 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-ink">How We Use Your Information</h2>
+          <h2 className="font-display text-xl font-bold text-ink">How We Use Your Information</h2>
           <p className="mt-3 leading-relaxed">
-            We use the information you provide to deliver the ebook files
-            you've purchased, send order confirmations and download links,
-            respond to support enquiries, and, where you've opted in, share
-            updates about new titles. We do not sell your personal
-            information to third parties under any circumstances.
+            We use the information you provide to process and deliver your
+            order, send order confirmations and delivery updates, respond to
+            support enquiries, and, where you've opted in, share updates
+            about new products. We do not sell your personal information to
+            third parties under any circumstances.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-ink">Cookies &amp; Local Storage</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Cookies &amp; Local Storage</h2>
           <p className="mt-3 leading-relaxed">
             Our site uses browser local storage to remember the contents of
             your cart and your preferred currency between visits. This data
@@ -50,22 +50,24 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-ink">Sharing With Third Parties</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Sharing With Third Parties</h2>
           <p className="mt-3 leading-relaxed">
             Payment information is processed through a secure third-party
             payment processor and is never stored on our systems in full.
-            We do not share your personal details with anyone outside the
-            team that fulfils and supports your order.
+            Delivery details are shared with our logistics partners only to
+            the extent needed to complete your delivery. We do not share
+            your personal details with anyone outside the team that fulfils
+            and supports your order.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-ink">Your Rights</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Your Rights</h2>
           <p className="mt-3 leading-relaxed">
             You have the right to request access to, correction of, or
             deletion of your personal information held by us. To make such
             a request, please contact us at{" "}
-            <a href={`mailto:${site.email}`} className="text-sky-dark underline underline-offset-4">
+            <a href={`mailto:${site.email}`} className="text-ink underline underline-offset-4">
               {site.email}
             </a>{" "}
             and we will respond within a reasonable timeframe.
@@ -73,11 +75,11 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-ink">Contact Us</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Contact Us</h2>
           <p className="mt-3 leading-relaxed">
             If you have any questions about this Privacy Policy, please
             reach out to us at{" "}
-            <a href={`mailto:${site.email}`} className="text-sky-dark underline underline-offset-4">
+            <a href={`mailto:${site.email}`} className="text-ink underline underline-offset-4">
               {site.email}
             </a>{" "}
             or write to us at {addressLines.join(", ")}.

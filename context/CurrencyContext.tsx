@@ -18,7 +18,7 @@ const CurrencyContext = createContext<CurrencyContextValue | undefined>(
   undefined
 );
 
-const STORAGE_KEY = "nedupe-currency";
+const STORAGE_KEY = "ticad-iboo-currency";
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
   const [currency, setCurrencyState] = useState<CurrencyCode>("USD");
@@ -27,7 +27,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
     const stored = window.localStorage.getItem(STORAGE_KEY) as
       | CurrencyCode
       | null;
-    if (stored === "GHS" || stored === "USD") {
+    if (stored === "NGN" || stored === "USD") {
       setCurrencyState(stored);
     }
   }, []);

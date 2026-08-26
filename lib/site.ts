@@ -8,21 +8,22 @@
  * pages, where it is required.
  */
 export const site = {
-  name: "Nedupe Limited",
-  wordmark: "Nedupe",
-  tagline: "Ebooks worth staying up for",
+  name: "Ticad Iboo",
+  wordmark: "Ticad Iboo",
+  tagline: "Home goods & electronics, priced straight",
   description:
-    "Nedupe Limited is a digital bookstore — practical, well-edited ebooks across business, self-development, technology, health and fiction, delivered instantly as EPUB, PDF and MOBI.",
-  email: "care@nedupe.com",
-  phone: "234",
+    "Ticad Iboo is an online store for home goods and everyday electronics — kitchen essentials, small appliances, lighting, audio and smart gadgets, priced up front in USD or NGN.",
+  email: "contact@ticadiboo.com",
+  phone: "09027251243",
+  phoneHref: "+2349027251243",
   address: {
-    line1: "Flat 2, Plot 612",
-    line2: "Kubwa Extension Layout, Gbazango",
-    line3: "Kubwa, Abuja Municipal Area Council (AMAC)",
-    line4: "Federal Capital Territory (FCT)",
+    line1: "11B, Yusuf Close",
+    line2: "New Olorunfemi Estate, Akesan",
+    line3: "Igando",
+    line4: "Lagos State, Nigeria",
   },
   addressOneLine:
-    "Flat 2, Plot 612, Kubwa Extension Layout, Gbazango, Kubwa, Abuja Municipal Area Council (AMAC), Federal Capital Territory (FCT)",
+    "11B, Yusuf Close, New Olorunfemi Estate, Akesan, Igando, Lagos State, Nigeria",
 } as const;
 
 export const addressLines = [

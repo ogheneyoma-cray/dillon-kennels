@@ -1,11 +1,12 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Palette lifted from the csmthemes "Book" ebook landing page reference: a
- * bright white/pale-mist page, a friendly sky-blue primary accent, a warm
- * gold used the way the reference uses its mustard book-cover color, and a
- * teal ribbon accent for small highlights. No dark ink bands — every
- * section sits on white or a very light gray.
+ * Palette and rhythm lifted from the Marketo marketplace-theme reference: a
+ * bright white page, a near-black wordmark/nav, a marketplace-yellow primary
+ * accent reserved for CTAs and the category bar, and a burnt-orange /
+ * steel-blue pair used the way the reference uses its two promo-banner
+ * colors. No dark ink bands anywhere — every section sits on white or a
+ * very light warm gray.
  */
 const config: Config = {
   content: [
@@ -16,22 +17,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#293241",
-        "ink-soft": "#5B6472",
-        sky: "#4FA3D1",
-        "sky-dark": "#2E7EA8",
-        "sky-pale": "#EAF4FA",
-        gold: "#E0A23B",
-        "gold-dark": "#B87F26",
-        teal: "#3FB6A8",
-        rose: "#E07A6B",
-        mist: "#F4F8FB",
-        cloud: "#EAEFF3",
+        ink: "#181818",
+        "ink-soft": "#5C5C5C",
+        gold: "#F5B400",
+        "gold-dark": "#C98F00",
+        "gold-pale": "#FEF6E0",
+        orange: "#F2762E",
+        "orange-dark": "#D65E1A",
+        blue: "#3E7CB1",
+        "blue-dark": "#2C5C86",
+        teal: "#1E8E7E",
+        rose: "#E14336",
+        mist: "#F7F7F5",
+        cloud: "#EFEFEA",
         paper: "#FFFFFF",
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "Georgia", "serif"],
-        body: ["var(--font-work-sans)", "sans-serif"],
+        display: ["var(--font-archivo)", "Arial Black", "sans-serif"],
+        body: ["var(--font-dm-sans)", "sans-serif"],
       },
       letterSpacing: {
         widest2: "0.14em",
@@ -40,8 +43,8 @@ const config: Config = {
         content: "1320px",
       },
       boxShadow: {
-        tile: "0 6px 24px rgba(41, 50, 65, 0.07)",
-        lift: "0 18px 40px rgba(41, 50, 65, 0.14)",
+        tile: "0 6px 24px rgba(24, 24, 24, 0.07)",
+        lift: "0 18px 40px rgba(24, 24, 24, 0.14)",
       },
     },
   },

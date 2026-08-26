@@ -5,7 +5,7 @@ import { addressLines, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Contact Us | ${site.name}`,
-  description: "Get in touch with the Nedupe Limited team — office address, email, and support hours.",
+  description: "Get in touch with the Ticad Iboo team — office address, email, and support hours.",
 };
 
 export default function ContactPage() {
@@ -14,7 +14,7 @@ export default function ContactPage() {
       <p className="eyebrow">Get in Touch</p>
       <h1 className="section-heading mt-3">Contact Us</h1>
       <p className="mt-4 max-w-xl text-ink/70">
-        A question about an order, a download that isn't opening, or
+        A question about an order, a product that arrived damaged, or
         something you'd rather ask before buying — send a message or reach
         out directly using the details below.
       </p>
@@ -24,7 +24,7 @@ export default function ContactPage() {
 
         <aside className="space-y-8">
           <div className="rounded-2xl border border-ink/10 bg-paper p-6">
-            <h2 className="font-display text-xl font-semibold text-ink">Office Details</h2>
+            <h2 className="font-display text-xl font-bold text-ink">Office Details</h2>
             <dl className="mt-5 space-y-4 text-sm text-ink/80">
               <div>
                 <dt className="font-semibold text-ink">Address</dt>
@@ -39,7 +39,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Email</dt>
                 <dd className="mt-1">
-                  <a href={`mailto:${site.email}`} className="hover:text-sky-dark">
+                  <a href={`mailto:${site.email}`} className="hover:text-ink">
                     {site.email}
                   </a>
                 </dd>
@@ -47,7 +47,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Phone</dt>
                 <dd className="mt-1">
-                  <a href={`tel:${site.phone}`} className="hover:text-sky-dark">
+                  <a href={`tel:${site.phoneHref}`} className="hover:text-ink">
                     {site.phone}
                   </a>
                 </dd>
@@ -56,7 +56,7 @@ export default function ContactPage() {
           </div>
 
           <div className="rounded-2xl border border-ink/10 bg-paper p-6">
-            <h2 className="font-display text-xl font-semibold text-ink">Support Hours</h2>
+            <h2 className="font-display text-xl font-bold text-ink">Support Hours</h2>
             <dl className="mt-5 space-y-2 text-sm text-ink/80">
               <div className="flex justify-between">
                 <dt>Monday – Friday</dt>
@@ -78,8 +78,8 @@ export default function ContactPage() {
       <section className="mt-20 border-t border-ink/10 pt-14 text-center">
         <h2 className="section-heading">Have a Quick Question?</h2>
         <p className="mx-auto mt-3 max-w-md text-ink/70">
-          Check the FAQ before writing in — most download, licensing and
-          payment questions are already answered there.
+          Check the FAQ before writing in — most delivery, payment and
+          returns questions are already answered there.
         </p>
         <Link href="/faq" className="btn-secondary mt-6 inline-flex">
           Visit the FAQ

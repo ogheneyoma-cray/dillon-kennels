@@ -8,19 +8,19 @@
   }
 
   body {
-    @apply bg-mist text-ink font-body;
+    @apply bg-paper text-ink font-body;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display font-semibold;
+    @apply font-display font-bold;
   }
 
   ::selection {
-    background-color: #4fa3d1;
-    color: #ffffff;
+    background-color: #f5b400;
+    color: #181818;
   }
 }
 
@@ -30,25 +30,25 @@
   }
 
   .eyebrow {
-    @apply text-xs font-bold uppercase tracking-widest2 text-sky-dark;
+    @apply text-xs font-bold uppercase tracking-widest2 text-gold-dark;
   }
 
-  /* The reference reserves a solid sky-blue pill for every primary call to
-     action, white text, and a soft lift on hover — no gradients. */
+  /* The reference reserves a solid marketplace-yellow pill for every primary
+     call to action, ink text, and a soft lift on hover — no gradients. */
   .btn-primary {
-    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full bg-sky px-7 py-3 text-sm font-bold uppercase tracking-wider text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-dark active:translate-y-0;
+    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full bg-gold px-7 py-3 text-sm font-bold uppercase tracking-wider text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-gold-dark hover:text-white active:translate-y-0;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full border-2 border-sky px-7 py-3 text-sm font-bold uppercase tracking-wider text-sky-dark transition-colors duration-200 hover:bg-sky-pale;
+    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full border-2 border-ink px-7 py-3 text-sm font-bold uppercase tracking-wider text-ink transition-colors duration-200 hover:bg-ink hover:text-white;
   }
 
   .btn-ghost {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-ink underline decoration-sky decoration-2 underline-offset-4 transition-colors hover:text-sky-dark;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-ink underline decoration-gold decoration-2 underline-offset-4 transition-colors hover:text-gold-dark;
   }
 
   .input-field {
-    @apply w-full min-h-[44px] rounded-xl border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-sky focus:outline-none focus:ring-1 focus:ring-sky;
+    @apply w-full min-h-[44px] rounded-xl border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold;
   }
 
   .label-text {
@@ -56,17 +56,17 @@
   }
 
   .section-heading {
-    @apply font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl;
+    @apply font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl;
   }
 
-  /* A short teal ribbon under a heading, echoing the reference's cover
-     stripes rather than the usual gradient underline. */
+  /* A short orange ribbon under a heading, echoing the reference's promo-tile
+     accents rather than the usual gradient underline. */
   .highlight-bar {
     @apply relative isolate inline-block;
   }
 
   .highlight-bar::before {
     content: "";
-    @apply absolute inset-x-0 bottom-1 -z-10 h-[34%] rounded bg-gold/35;
+    @apply absolute inset-x-0 bottom-1 -z-10 h-[38%] rounded bg-gold/60;
   }
 }

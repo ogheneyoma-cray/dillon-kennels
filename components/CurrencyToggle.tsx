@@ -15,7 +15,7 @@ export default function CurrencyToggle({ className = "" }: { className?: string 
         type="button"
         onClick={() => setCurrency("USD")}
         className={`min-h-[36px] rounded-full px-3 transition-colors ${
-          currency === "USD" ? "bg-sky text-white" : "bg-transparent text-ink/60 hover:text-ink"
+          currency === "USD" ? "bg-gold text-ink" : "bg-transparent text-ink/60 hover:text-ink"
         }`}
         aria-pressed={currency === "USD"}
       >
@@ -23,13 +23,13 @@ export default function CurrencyToggle({ className = "" }: { className?: string 
       </button>
       <button
         type="button"
-        onClick={() => setCurrency("GHS")}
+        onClick={() => setCurrency("NGN")}
         className={`min-h-[36px] rounded-full px-3 transition-colors ${
-          currency === "GHS" ? "bg-sky text-white" : "bg-transparent text-ink/60 hover:text-ink"
+          currency === "NGN" ? "bg-gold text-ink" : "bg-transparent text-ink/60 hover:text-ink"
         }`}
-        aria-pressed={currency === "GHS"}
+        aria-pressed={currency === "NGN"}
       >
-        GHS
+        NGN
       </button>
     </div>
   );
