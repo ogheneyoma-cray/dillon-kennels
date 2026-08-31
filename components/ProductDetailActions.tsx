@@ -29,7 +29,7 @@ export default function ProductDetailActions({ product }: { product: Product }) 
             type="button"
             onClick={decrease}
             aria-label="Decrease quantity"
-            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-sand disabled:opacity-30"
+            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-orange-pale disabled:opacity-30"
             disabled={quantity <= 1}
           >
             −
@@ -41,7 +41,7 @@ export default function ProductDetailActions({ product }: { product: Product }) 
             type="button"
             onClick={increase}
             aria-label="Increase quantity"
-            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-sand"
+            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-orange-pale"
           >
             +
           </button>
@@ -55,7 +55,7 @@ export default function ProductDetailActions({ product }: { product: Product }) 
           disabled={!product.inStock}
           className="btn-primary flex-1 disabled:cursor-not-allowed disabled:opacity-40"
         >
-          {product.inStock ? (added ? "Added ✓" : "Add to Cart") : "Sold Out"}
+          {product.inStock ? (added ? "Added ✓" : "Add to Cart") : "Out of Stock"}
         </button>
         <button
           type="button"

@@ -14,13 +14,13 @@ export default function CartPage() {
     return (
       <div className="container-page flex flex-col items-center justify-center py-24 text-center">
         <p className="eyebrow">Your Cart</p>
-        <h1 className="section-heading mt-3">It's looking empty in here</h1>
+        <h1 className="section-heading mt-3">Your cart is empty</h1>
         <p className="mt-4 max-w-sm text-ink/70">
-          You haven't added anything to your cart yet. Explore the collection
-          and find something to love.
+          You haven't added anything to your cart yet. Browse the shop and
+          find something for the house.
         </p>
         <Link href="/shop" className="btn-primary mt-8">
-          Shop Now
+          Shop All Products
         </Link>
       </div>
     );
@@ -37,15 +37,9 @@ export default function CartPage() {
             <li key={item.id} className="flex gap-4 py-6 sm:gap-6">
               <Link
                 href={`/shop/${item.slug}`}
-                className="relative h-24 w-20 shrink-0 overflow-hidden bg-sand sm:h-32 sm:w-28"
+                className="relative h-24 w-20 shrink-0 overflow-hidden bg-mist sm:h-32 sm:w-28"
               >
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  sizes="120px"
-                  className="object-cover"
-                />
+                <Image src={item.image} alt={item.name} fill sizes="112px" className="object-cover" />
               </Link>
 
               <div className="flex flex-1 flex-col justify-between">
@@ -53,7 +47,7 @@ export default function CartPage() {
                   <div>
                     <Link
                       href={`/shop/${item.slug}`}
-                      className="font-display text-base leading-snug text-ink hover:text-rust sm:text-lg"
+                      className="font-display text-base font-bold leading-snug text-ink hover:text-orange sm:text-lg"
                     >
                       {item.name}
                     </Link>
@@ -72,7 +66,7 @@ export default function CartPage() {
                       type="button"
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
                       aria-label={`Decrease quantity of ${item.name}`}
-                      className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-sand"
+                      className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-orange-pale"
                     >
                       −
                     </button>
@@ -83,7 +77,7 @@ export default function CartPage() {
                       type="button"
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
                       aria-label={`Increase quantity of ${item.name}`}
-                      className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-sand"
+                      className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-orange-pale"
                     >
                       +
                     </button>
@@ -91,7 +85,7 @@ export default function CartPage() {
                   <button
                     type="button"
                     onClick={() => removeFromCart(item.id)}
-                    className="min-h-[44px] px-2 text-sm font-medium text-ink/60 underline underline-offset-4 hover:text-rust"
+                    className="min-h-[44px] px-2 text-sm font-semibold text-ink/60 underline underline-offset-4 hover:text-ink"
                   >
                     Remove
                   </button>
@@ -102,18 +96,18 @@ export default function CartPage() {
         </ul>
 
         <aside className="h-fit border border-ink/10 bg-paper p-6">
-          <h2 className="font-display text-xl text-ink">Order Summary</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Order Summary</h2>
           <div className="mt-5 space-y-3 text-sm">
             <div className="flex justify-between text-ink/70">
               <span>Subtotal</span>
               <span>{formatMoney(cartTotal, currency)}</span>
             </div>
             <div className="flex justify-between text-ink/70">
-              <span>Shipping</span>
+              <span>Delivery</span>
               <span>Calculated at checkout</span>
             </div>
           </div>
-          <div className="mt-5 flex justify-between border-t border-ink/10 pt-5 font-display text-lg text-ink">
+          <div className="mt-5 flex justify-between border-t border-ink/10 pt-5 font-display text-lg font-bold text-ink">
             <span>Total</span>
             <span>{formatMoney(cartTotal, currency)}</span>
           </div>
