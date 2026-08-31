@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Logo from "@/components/Logo";
+import { addressLines, site } from "@/lib/site";
 
 const SHOP_LINKS = [
-  { href: "/shop", label: "All Products" },
+  { href: "/shop", label: "All Books" },
   { href: "/cart", label: "Cart" },
   { href: "/checkout", label: "Checkout" },
 ];
@@ -24,16 +26,14 @@ export default function Footer() {
     <footer className="border-t border-ink/10 bg-ink text-cream">
       <div className="container-page grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="font-display text-2xl">Dillon Kennels</p>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-cream/70">
-            Fashion rooted in West African heritage, tailored for everyday
-            life. Handcrafted clothing, footwear, and accessories out of
-            Lagos, Nigeria.
+          <Logo tone="cream" wordClassName="text-xl" />
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/70">
+            {site.description}
           </p>
         </div>
 
         <div>
-          <p className="eyebrow text-clay">Shop</p>
+          <p className="eyebrow text-gold">Shop</p>
           <ul className="mt-4 space-y-2">
             {SHOP_LINKS.map((link) => (
               <li key={link.href}>
@@ -49,7 +49,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="eyebrow text-clay">Help</p>
+          <p className="eyebrow text-gold">Help</p>
           <ul className="mt-4 space-y-2">
             {HELP_LINKS.map((link) => (
               <li key={link.href}>
@@ -62,7 +62,7 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-          <p className="eyebrow mt-6 text-clay">Legal</p>
+          <p className="eyebrow mt-6 text-gold">Legal</p>
           <ul className="mt-4 space-y-2">
             {LEGAL_LINKS.map((link) => (
               <li key={link.href}>
@@ -78,23 +78,19 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="eyebrow text-clay">Get in Touch</p>
+          <p className="eyebrow text-gold">Get in Touch</p>
           <address className="mt-4 space-y-2 text-sm not-italic text-cream/80">
+            {addressLines.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
             <p>
-              8 Olotu House, Opposite Baale House, Abule Tirninmiljeun Odeda,
-              Ajeromi-Ifelodun, Lagos State
-            </p>
-            <p>
-              <a
-                href="mailto:supportteam@dillonkennels.com"
-                className="hover:text-cream"
-              >
-                supportteam@dillonkennels.com
+              <a href={`mailto:${site.email}`} className="hover:text-cream">
+                {site.email}
               </a>
             </p>
             <p>
-              <a href="tel:+2349023326345" className="hover:text-cream">
-                +234 902 332 6345
+              <a href={`tel:${site.phoneHref}`} className="hover:text-cream">
+                {site.phone}
               </a>
             </p>
           </address>
@@ -103,7 +99,7 @@ export default function Footer() {
 
       <div className="border-t border-cream/10 py-6">
         <p className="container-page text-center text-xs text-cream/50">
-          © {year} Dillon Kennels. All rights reserved.
+          © {year} {site.legalName}. All rights reserved.
         </p>
       </div>
     </footer>

@@ -9,7 +9,7 @@ import { formatMoney } from "@/lib/currency";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `DK-${random}`;
+  return `ALC-${random}`;
 }
 
 export default function CheckoutPage() {
@@ -23,7 +23,7 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "dillon-kennels-last-order",
+      "alcopip-last-order",
       JSON.stringify({
         orderNumber,
         total: formatMoney(cartTotal, currency),

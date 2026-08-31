@@ -1,28 +1,28 @@
 import type { Metadata } from "next";
-import { Fraunces, Work_Sans } from "next/font/google";
+import { Playfair_Display, Karla } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { site } from "@/lib/site";
 
-const fraunces = Fraunces({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-playfair",
   display: "swap",
-  axes: ["opsz", "SOFT", "WONK"],
 });
 
-const workSans = Work_Sans({
+const karla = Karla({
   subsets: ["latin"],
-  variable: "--font-work-sans",
+  variable: "--font-karla",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Dillon Kennels | Fashion Rooted in Heritage",
-  description:
-    "Dillon Kennels is a Lagos-based fashion house crafting clothing, footwear, and accessories that blend West African textile heritage with contemporary tailoring.",
+  title: `${site.wordmark} | ${site.tagline}`,
+  description: site.description,
+  icons: { icon: "/icon.svg" },
 };
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${workSans.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${karla.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
         <CurrencyProvider>
           <CartProvider>

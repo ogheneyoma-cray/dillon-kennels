@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { formatMoney } from "@/lib/currency";
+import BookCover from "@/components/BookCover";
 
 export default function CartPage() {
   const { items, updateQuantity, removeFromCart, cartTotal } = useCart();
@@ -37,14 +37,13 @@ export default function CartPage() {
             <li key={item.id} className="flex gap-4 py-6 sm:gap-6">
               <Link
                 href={`/shop/${item.slug}`}
-                className="relative h-24 w-20 shrink-0 overflow-hidden bg-sand sm:h-32 sm:w-28"
+                className="relative w-20 shrink-0 overflow-hidden bg-sand sm:w-28"
               >
-                <Image
+                <BookCover
                   src={item.image}
-                  alt={item.name}
-                  fill
-                  sizes="120px"
-                  className="object-cover"
+                  alt={`${item.name} cover`}
+                  eager
+                  className="w-full"
                 />
               </Link>
 
@@ -53,7 +52,7 @@ export default function CartPage() {
                   <div>
                     <Link
                       href={`/shop/${item.slug}`}
-                      className="font-display text-base leading-snug text-ink hover:text-rust sm:text-lg"
+                      className="font-display text-base leading-snug text-ink hover:text-wine sm:text-lg"
                     >
                       {item.name}
                     </Link>
@@ -91,7 +90,7 @@ export default function CartPage() {
                   <button
                     type="button"
                     onClick={() => removeFromCart(item.id)}
-                    className="min-h-[44px] px-2 text-sm font-medium text-ink/60 underline underline-offset-4 hover:text-rust"
+                    className="min-h-[44px] px-2 text-sm font-medium text-ink/60 underline underline-offset-4 hover:text-wine"
                   >
                     Remove
                   </button>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900" role="img" aria-label="The Long Road to the Deep Silence by Richard Mann">
+    
+    <rect width="600" height="900" fill="#241A16"/>
+    <circle cx="300" cy="230" r="70" fill="none" stroke="#A83E4C" stroke-width="3"/>
+    <circle cx="300" cy="230" r="46" fill="#A83E4C" opacity="0.85"/>
+    <text x="300" y="420" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#F7EFE1">The Long Road</text>
+    <text x="300" y="488.44" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#F7EFE1">to the Deep</text>
+    <text x="300" y="556.88" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#F7EFE1">Silence</text>
+    <line x1="260" y1="590.88" x2="340" y2="590.88" stroke="#A83E4C" stroke-width="2"/>
+    <text x="300" y="624.88" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" letter-spacing="2.5" fill="#A83E4C">RICHARD MANN</text>
+    <rect x="0" y="0" width="12" height="900" fill="#000" opacity="0.14"/>
+  </svg>

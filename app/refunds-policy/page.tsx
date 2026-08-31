@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Refunds Policy | Dillon Kennels",
-  description: "Returns, exchanges, and refund timelines for Dillon Kennels orders.",
+  title: `Refunds Policy | ${site.name}`,
+  description: "Returns and refund timelines for alcopip orders.",
 };
 
 export default function RefundsPolicyPage() {
@@ -10,36 +11,35 @@ export default function RefundsPolicyPage() {
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Legal</p>
       <h1 className="section-heading mt-3">Refunds Policy</h1>
-      <p className="mt-2 text-sm text-ink/50">Last updated: July 2026</p>
+      <p className="mt-2 text-sm text-ink/50">Last updated: August 2026</p>
 
       <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
         <section>
           <h2 className="font-display text-xl text-ink">Return Window</h2>
           <p className="mt-3 leading-relaxed">
-            We accept returns and exchanges within 7 days of the delivery
-            date shown on your tracking confirmation. To be eligible, items
-            must be unworn, unwashed, undamaged, and returned with their
-            original tags and packaging intact. Items marked as final sale
-            at the time of purchase are not eligible for return.
+            We accept returns within 7 days of the delivery date shown on
+            your order confirmation, for books that arrive damaged,
+            defective, or different from what you ordered. To be eligible,
+            the book must be returned in the condition it arrived in.
+            Discounted or clearance titles marked as final sale at the time
+            of purchase are not eligible for return.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl text-ink">How to Start a Return</h2>
           <p className="mt-3 leading-relaxed">
-            Email supportteam@dillonkennels.com with your order number and
-            the reason for your return within 7 days of delivery. Our team
-            will confirm your eligibility and provide instructions for
-            returning the item, including our workshop address at 8 Olotu
-            House, Opposite Baale House, Abule Tirninmiljeun Odeda,
-            Ajeromi-Ifelodun, Lagos State.
+            Email {site.email} with your order number and the reason for your
+            return within 7 days of delivery. Our team will confirm your
+            eligibility and provide instructions for returning the title,
+            including our warehouse address at {site.addressOneLine}.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl text-ink">Refund Processing</h2>
           <p className="mt-3 leading-relaxed">
-            Once we receive and inspect your returned item, we will notify
+            Once we receive and inspect your returned book, we will notify
             you of the approval status of your refund. Approved refunds are
             processed back to your original payment method within 5–10
             business days, depending on your bank or card issuer's
@@ -50,23 +50,23 @@ export default function RefundsPolicyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">Exchanges</h2>
+          <h2 className="font-display text-xl text-ink">Damaged, Missing or Incorrect Titles</h2>
           <p className="mt-3 leading-relaxed">
-            If you'd like a different size or color, indicate this when
-            starting your return and we'll prioritize shipping the exchange
-            item as soon as your returned item is received, subject to
-            availability. If your preferred replacement is out of stock, we
-            will offer a full refund instead.
+            If your order arrives damaged, incomplete, or you receive the
+            wrong title, contact us within 48 hours of delivery with photos
+            of the book and its packaging. We will arrange a replacement or
+            full refund, including any delivery costs, at no additional
+            charge to you.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">Damaged or Incorrect Items</h2>
+          <h2 className="font-display text-xl text-ink">Order Cancellations</h2>
           <p className="mt-3 leading-relaxed">
-            If your order arrives damaged or you receive the wrong item,
-            contact us within 48 hours of delivery with photos of the item
-            and packaging. We will arrange a replacement or full refund,
-            including any shipping costs, at no additional charge to you.
+            Orders can be changed or cancelled free of charge within 2 hours
+            of purchase, before the order is packed for dispatch. Contact{" "}
+            {site.email} or {site.phone} as soon as possible if you need to
+            make a change.
           </p>
         </section>
       </div>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900" role="img" aria-label="It's a Really Strange Story by Burt Geller">
+    
+    <rect width="600" height="900" fill="#241A16"/>
+    <rect x="0" y="0" width="64" height="900" fill="#A83E4C"/>
+    <rect x="64" y="0" width="10" height="900" fill="#A83E4C" opacity="0.4"/>
+    <text x="120" y="300" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#F7EFE1">It's a</text>
+    <text x="120" y="368.44" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#F7EFE1">Really</text>
+    <text x="120" y="436.88" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#F7EFE1">Strange</text>
+    <text x="120" y="505.32" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#F7EFE1">Story</text>
+    <line x1="120" y1="539.3199999999999" x2="200" y2="539.3199999999999" stroke="#A83E4C" stroke-width="2"/>
+    <text x="120" y="573.3199999999999" text-anchor="start" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" letter-spacing="2.5" fill="#A83E4C">BURT GELLER</text>
+    <rect x="0" y="0" width="12" height="900" fill="#000" opacity="0.14"/>
+  </svg>

@@ -1,5 +1,12 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * Palette and type lifted from the Booklovers publishing-house reference: a
+ * warm cream page, near-black ink for headings and nav, a single deep wine
+ * red carrying every call to action and price tag, and a muted gold reserved
+ * for star ratings and small badges. A quiet moss green marks in-stock /
+ * success states — nowhere else.
+ */
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
@@ -9,25 +16,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#F6F1E9",
-        paper: "#FBF8F2",
-        ink: "#211C17",
-        charcoal: "#332C24",
-        rust: "#B7522E",
-        "rust-dark": "#8F3D20",
-        olive: "#6B6B47",
-        sand: "#E4D8C3",
-        clay: "#C98B5E",
+        cream: "#F7EFE1",
+        paper: "#FFFFFF",
+        ink: "#241A16",
+        sand: "#EFE1C8",
+        wine: "#7C1F2E",
+        "wine-dark": "#59141F",
+        "wine-light": "#A83E4C",
+        gold: "#B9902F",
+        "gold-pale": "#F3E6C4",
+        moss: "#4B6B4F",
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "serif"],
-        body: ["var(--font-work-sans)", "sans-serif"],
+        display: ["var(--font-playfair)", "serif"],
+        body: ["var(--font-karla)", "sans-serif"],
       },
       letterSpacing: {
-        widest2: "0.25em",
+        widest2: "0.2em",
       },
       maxWidth: {
-        content: "1400px",
+        content: "1360px",
+      },
+      boxShadow: {
+        tile: "0 6px 24px rgba(36, 26, 22, 0.1)",
+        lift: "0 20px 44px rgba(36, 26, 22, 0.18)",
       },
     },
   },

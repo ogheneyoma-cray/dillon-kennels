@@ -5,6 +5,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import CurrencyToggle from "@/components/CurrencyToggle";
+import Logo from "@/components/Logo";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -20,15 +21,11 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/95 backdrop-blur">
       <div className="border-b border-ink/10 bg-ink py-2 text-center text-[11px] font-medium uppercase tracking-widest2 text-cream">
-        Free Lagos delivery on orders over ₦75,000
+        New releases in every week — browse the shelf
       </div>
       <div className="container-page flex h-20 items-center justify-between">
-        <Link
-          href="/"
-          className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
-          onClick={() => setMenuOpen(false)}
-        >
-          Dillon Kennels
+        <Link href="/" onClick={() => setMenuOpen(false)}>
+          <Logo />
         </Link>
 
         <nav className="hidden items-center gap-10 md:flex">
@@ -39,7 +36,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-semibold uppercase tracking-wider transition-colors ${
-                  active ? "text-rust" : "text-ink hover:text-rust"
+                  active ? "text-wine" : "text-ink hover:text-wine"
                 }`}
               >
                 {link.label}
@@ -73,7 +70,7 @@ export default function Header() {
               <circle cx="17" cy="21" r="1.3" fill="currentColor" stroke="none" />
             </svg>
             {cartCount > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-rust text-[10px] font-bold text-cream">
+              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-wine text-[10px] font-bold text-cream">
                 {cartCount > 9 ? "9+" : cartCount}
               </span>
             )}

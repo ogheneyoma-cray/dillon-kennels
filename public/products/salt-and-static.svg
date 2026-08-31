@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900" role="img" aria-label="Salt and Static by Owen Marsh">
+    
+    <rect width="600" height="900" fill="#241A16"/>
+    <rect x="0" y="0" width="64" height="900" fill="#A83E4C"/>
+    <rect x="64" y="0" width="10" height="900" fill="#A83E4C" opacity="0.4"/>
+    <text x="120" y="300" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#F7EFE1">Salt and</text>
+    <text x="120" y="368.44" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#F7EFE1">Static</text>
+    <line x1="120" y1="402.44" x2="200" y2="402.44" stroke="#A83E4C" stroke-width="2"/>
+    <text x="120" y="436.44" text-anchor="start" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" letter-spacing="2.5" fill="#A83E4C">OWEN MARSH</text>
+    <rect x="0" y="0" width="12" height="900" fill="#000" opacity="0.14"/>
+  </svg>
