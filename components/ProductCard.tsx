@@ -15,7 +15,7 @@ export default function ProductCard({ product }: { product: Product }) {
     <div className="group relative flex flex-col">
       <Link
         href={`/shop/${product.slug}`}
-        className="relative block aspect-[4/5] overflow-hidden bg-sand"
+        className="relative block aspect-[4/5] overflow-hidden bg-linen"
       >
         <Image
           src={product.image}
@@ -25,21 +25,26 @@ export default function ProductCard({ product }: { product: Product }) {
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
         />
         {!product.inStock && (
-          <span className="absolute left-3 top-3 bg-ink px-3 py-1 text-[10px] font-semibold uppercase tracking-widest2 text-cream">
+          <span className="absolute left-3 top-3 bg-ink px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-paper">
             Sold Out
           </span>
         )}
-        <span className="absolute right-3 top-3 border border-ink/20 bg-cream/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink/70">
+        {product.popular && product.inStock && (
+          <span className="absolute left-3 top-3 bg-raspberry px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-paper">
+            Best Seller
+          </span>
+        )}
+        <span className="absolute right-3 top-3 border border-ink/15 bg-paper/90 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-ink/70">
           {product.category}
         </span>
       </Link>
       <div className="mt-4 flex flex-1 flex-col">
         <Link href={`/shop/${product.slug}`}>
-          <h3 className="font-display text-lg leading-snug text-ink transition-colors group-hover:text-rust">
+          <h3 className="font-display text-base leading-tight text-ink transition-colors group-hover:text-raspberry">
             {product.name}
           </h3>
         </Link>
-        <p className="mt-1 text-sm font-semibold text-ink/70">
+        <p className="mt-1 text-sm font-bold text-ink/70">
           {formatMoney(product.price, currency)}
         </p>
         <button

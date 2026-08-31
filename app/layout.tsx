@@ -1,28 +1,29 @@
 import type { Metadata } from "next";
-import { Fraunces, Work_Sans } from "next/font/google";
+import { Archivo_Black, Public_Sans } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { site } from "@/lib/site";
 
-const fraunces = Fraunces({
+const archivoBlack = Archivo_Black({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-archivo-black",
   display: "swap",
-  axes: ["opsz", "SOFT", "WONK"],
+  weight: ["400"],
 });
 
-const workSans = Work_Sans({
+const publicSans = Public_Sans({
   subsets: ["latin"],
-  variable: "--font-work-sans",
+  variable: "--font-public-sans",
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Dillon Kennels | Fashion Rooted in Heritage",
-  description:
-    "Dillon Kennels is a Lagos-based fashion house crafting clothing, footwear, and accessories that blend West African textile heritage with contemporary tailoring.",
+  title: `${site.name} | Womenswear with a point of view`,
+  description: site.description,
 };
 
 export default function RootLayout({
@@ -31,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${workSans.variable}`}>
+    <html lang="en" className={`${archivoBlack.variable} ${publicSans.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
         <CurrencyProvider>
           <CartProvider>
