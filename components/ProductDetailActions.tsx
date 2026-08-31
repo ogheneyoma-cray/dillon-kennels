@@ -24,7 +24,7 @@ export default function ProductDetailActions({ product }: { product: Product }) 
     <div>
       <div className="flex items-center gap-4">
         <span className="label-text mb-0">Quantity</span>
-        <div className="flex items-center border border-ink/20">
+        <div className="flex items-center rounded-full border border-ink/15">
           <button
             type="button"
             onClick={decrease}
@@ -34,7 +34,7 @@ export default function ProductDetailActions({ product }: { product: Product }) 
           >
             −
           </button>
-          <span className="flex h-11 w-12 items-center justify-center border-x border-ink/20 text-sm font-semibold">
+          <span className="flex h-11 w-12 items-center justify-center border-x border-ink/15 text-sm font-semibold">
             {quantity}
           </span>
           <button
@@ -52,10 +52,9 @@ export default function ProductDetailActions({ product }: { product: Product }) 
         <button
           type="button"
           onClick={handleAdd}
-          disabled={!product.inStock}
-          className="btn-primary flex-1 disabled:cursor-not-allowed disabled:opacity-40"
+          className="btn-primary flex-1"
         >
-          {product.inStock ? (added ? "Added ✓" : "Add to Cart") : "Sold Out"}
+          {added ? "Added ✓" : "Add to Cart"}
         </button>
         <button
           type="button"
@@ -63,8 +62,7 @@ export default function ProductDetailActions({ product }: { product: Product }) 
             addToCart(product, quantity);
             router.push("/cart");
           }}
-          disabled={!product.inStock}
-          className="btn-secondary flex-1 disabled:cursor-not-allowed disabled:opacity-40"
+          className="btn-secondary flex-1"
         >
           Buy Now
         </button>

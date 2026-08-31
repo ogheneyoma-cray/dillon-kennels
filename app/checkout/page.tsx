@@ -9,7 +9,7 @@ import { formatMoney } from "@/lib/currency";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `DK-${random}`;
+  return `HGP-${random}`;
 }
 
 export default function CheckoutPage() {
@@ -23,7 +23,7 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "dillon-kennels-last-order",
+      "hogposh-last-order",
       JSON.stringify({
         orderNumber,
         total: formatMoney(cartTotal, currency),
@@ -39,7 +39,7 @@ export default function CheckoutPage() {
       <div className="container-page flex flex-col items-center justify-center py-24 text-center">
         <p className="eyebrow">Checkout</p>
         <h1 className="section-heading mt-3">Your cart is empty</h1>
-        <p className="mt-4 max-w-sm text-ink/70">
+        <p className="mt-4 max-w-sm text-ink-soft">
           Add something to your cart before heading to checkout.
         </p>
         <Link href="/shop" className="btn-primary mt-8">
@@ -75,7 +75,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="name"
                   className="input-field"
-                  placeholder="Adaeze Okonkwo"
+                  placeholder="Amaka Bello"
                 />
               </div>
               <div>
@@ -127,7 +127,7 @@ export default function CheckoutPage() {
             <legend className="font-display text-xl text-ink">
               Payment Details
             </legend>
-            <p className="mt-2 text-xs text-ink/50">
+            <p className="mt-2 text-xs text-ink-soft">
               Demo checkout — card details are not transmitted or stored.
             </p>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -142,7 +142,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="cc-name"
                   className="input-field"
-                  placeholder="Adaeze Okonkwo"
+                  placeholder="Amaka Bello"
                 />
               </div>
               <div className="sm:col-span-2">
@@ -198,12 +198,12 @@ export default function CheckoutPage() {
           </fieldset>
         </div>
 
-        <aside className="h-fit border border-ink/10 bg-paper p-6">
+        <aside className="h-fit rounded-lg border border-line bg-paper p-6">
           <h2 className="font-display text-xl text-ink">Order Summary</h2>
-          <ul className="mt-5 space-y-3 border-b border-ink/10 pb-5">
+          <ul className="mt-5 space-y-3 border-b border-line pb-5">
             {items.map((item) => (
               <li key={item.id} className="flex justify-between text-sm">
-                <span className="text-ink/70">
+                <span className="text-ink-soft">
                   {item.name} × {item.quantity}
                 </span>
                 <span className="font-medium text-ink">

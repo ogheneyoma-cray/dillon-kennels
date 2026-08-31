@@ -5,10 +5,12 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import CurrencyToggle from "@/components/CurrencyToggle";
+import Logo from "@/components/Logo";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
+  { href: "/cosmetics-guide", label: "Cosmetics Guide" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -18,28 +20,24 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/95 backdrop-blur">
-      <div className="border-b border-ink/10 bg-ink py-2 text-center text-[11px] font-medium uppercase tracking-widest2 text-cream">
-        Free Lagos delivery on orders over ₦75,000
+    <header className="sticky top-0 z-50 border-b border-line bg-ivory/95 backdrop-blur">
+      <div className="border-b border-ink/10 bg-ink py-2 text-center text-[11px] font-medium uppercase tracking-widest2 text-ivory">
+        Free delivery within Abuja on orders over $60
       </div>
       <div className="container-page flex h-20 items-center justify-between">
-        <Link
-          href="/"
-          className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
-          onClick={() => setMenuOpen(false)}
-        >
-          Dillon Kennels
+        <Link href="/" onClick={() => setMenuOpen(false)}>
+          <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-10 md:flex">
+        <nav className="hidden items-center gap-9 md:flex">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-semibold uppercase tracking-wider transition-colors ${
-                  active ? "text-rust" : "text-ink hover:text-rust"
+                className={`text-sm font-medium transition-colors ${
+                  active ? "text-clay" : "text-ink hover:text-clay"
                 }`}
               >
                 {link.label}
@@ -73,7 +71,7 @@ export default function Header() {
               <circle cx="17" cy="21" r="1.3" fill="currentColor" stroke="none" />
             </svg>
             {cartCount > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-rust text-[10px] font-bold text-cream">
+              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-clay text-[10px] font-bold text-ivory">
                 {cartCount > 9 ? "9+" : cartCount}
               </span>
             )}
@@ -107,14 +105,14 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-ink/10 bg-paper md:hidden">
+        <nav className="border-t border-line bg-paper md:hidden">
           <div className="container-page flex flex-col py-2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="flex min-h-[44px] items-center border-b border-ink/5 text-sm font-semibold uppercase tracking-wider text-ink last:border-b-0"
+                className="flex min-h-[44px] items-center border-b border-line text-sm font-medium text-ink last:border-b-0"
               >
                 {link.label}
               </Link>
