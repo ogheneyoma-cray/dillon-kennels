@@ -24,7 +24,7 @@ export default function CategoryTiles({ categories }: { categories: Category[] }
                 alt=""
                 fill
                 sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
-                className="rounded-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                className="scale-125 rounded-full object-cover object-top origin-top transition-transform duration-500 ease-out group-hover:scale-[1.35]"
               />
             )}
             <span className="relative mb-3 rounded-full bg-paper/90 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-ink shadow-tile">
