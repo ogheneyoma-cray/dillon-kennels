@@ -33,7 +33,7 @@ export default function ShippingPolicyPage() {
             within Lagos State typically arrive within 1–3 business days
             after dispatch. Orders to other states are delivered via our
             logistics partners and typically arrive within 3–7 business
-            days, depending on the destination's distance from Lagos and
+            days, depending on the destination&apos;s distance from Lagos and
             local road conditions.
           </p>
         </section>
@@ -51,8 +51,8 @@ export default function ShippingPolicyPage() {
         <section>
           <h2 className="font-display text-xl font-bold text-ink">Tracking Your Order</h2>
           <p className="mt-3 leading-relaxed">
-            Once your order ships, you'll receive tracking information by
-            email to the address provided at checkout. If you haven't
+            Once your order ships, you&apos;ll receive tracking information by
+            email to the address provided at checkout. If you haven&apos;t
             received tracking information within 3 business days of placing
             your order, please contact our support team at {site.email} or{" "}
             {site.phone}.

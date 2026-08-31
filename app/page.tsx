@@ -34,7 +34,7 @@ export default function HomePage() {
               Thirty Household Essentials
             </p>
             <h1 className="mt-4 max-w-md font-display text-4xl font-extrabold leading-[1.05] text-ink sm:text-5xl">
-              Everything the house needs, nothing it doesn't
+              Everything the house needs, nothing it doesn&apos;t
             </h1>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-ink/70">
               Kitchen, cleaning, bed &amp; bath, storage and decor — priced up

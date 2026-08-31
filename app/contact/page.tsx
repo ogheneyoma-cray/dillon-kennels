@@ -43,7 +43,7 @@ export default function ContactPage() {
       <h1 className="section-heading mt-3">Contact Us</h1>
       <p className="mt-4 max-w-xl text-ink/70">
         A question about an order, a product that arrived damaged, or
-        something you'd rather ask before buying — send a message or reach
+        something you&apos;d rather ask before buying — send a message or reach
         out directly using the details below.
       </p>
 
@@ -123,13 +123,13 @@ export default function ContactPage() {
       </section>
 
       <section className="mt-16 border border-ink/10 bg-paper p-8 text-center">
-        <h2 className="font-display text-xl font-bold text-ink">Didn't find your answer?</h2>
+        <h2 className="font-display text-xl font-bold text-ink">Didn&apos;t find your answer?</h2>
         <p className="mx-auto mt-2 max-w-md text-sm text-ink/70">
           Send us a message at{" "}
           <a href={`mailto:${site.email}`} className="text-ink underline underline-offset-4">
             {site.email}
           </a>{" "}
-          or use the contact form above and we'll reply within one business day.
+          or use the contact form above and we&apos;ll reply within one business day.
         </p>
         <Link href="/shop" className="btn-primary mt-6 inline-flex">
           Continue Shopping

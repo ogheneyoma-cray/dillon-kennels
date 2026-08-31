@@ -41,7 +41,7 @@ export default function RefundsPolicyPage() {
             Once we receive and inspect your returned item, we will notify
             you of the approval status of your refund. Approved refunds are
             processed back to your original payment method within 5–10
-            business days, depending on your bank or card issuer's
+            business days, depending on your bank or card issuer&apos;s
             processing times. Return shipping costs are covered by the
             customer unless the return is due to a defect or an error on our
             part.
@@ -51,8 +51,8 @@ export default function RefundsPolicyPage() {
         <section>
           <h2 className="font-display text-xl font-bold text-ink">Exchanges</h2>
           <p className="mt-3 leading-relaxed">
-            If you'd like a different item, indicate this when starting your
-            return and we'll prioritize shipping the exchange as soon as
+            If you&apos;d like a different item, indicate this when starting your
+            return and we&apos;ll prioritize shipping the exchange as soon as
             your returned item is received, subject to availability. If your
             preferred replacement is out of stock, we will offer a full
             refund instead.

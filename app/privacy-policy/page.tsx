@@ -44,7 +44,7 @@ export default function PrivacyPolicyPage() {
             your shopping cart and your preferred currency between visits.
             This data is stored on your device and is not transmitted to our
             servers. You can clear this data at any time by clearing your
-            browser's site data for pantherade.com.
+            browser&apos;s site data for pantherade.com.
           </p>
         </section>
 

@@ -16,7 +16,7 @@ export default function CartPage() {
         <p className="eyebrow">Your Cart</p>
         <h1 className="section-heading mt-3">Your cart is empty</h1>
         <p className="mt-4 max-w-sm text-ink/70">
-          You haven't added anything to your cart yet. Browse the shop and
+          You haven&apos;t added anything to your cart yet. Browse the shop and
           find something for the house.
         </p>
         <Link href="/shop" className="btn-primary mt-8">

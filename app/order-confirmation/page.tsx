@@ -26,7 +26,7 @@ function ConfirmationContent() {
       <p className="eyebrow mt-6">Order Confirmed</p>
       <h1 className="section-heading mt-3">Thank you for your order</h1>
       <p className="mt-4 max-w-md text-ink/70">
-        We've received your order and we're getting it ready. A confirmation
+        We&apos;ve received your order and we&apos;re getting it ready. A confirmation
         email with your order details has been sent to your inbox.
       </p>
 
