@@ -43,7 +43,7 @@ export default function ShippingPolicyPage() {
           <p className="mt-3 leading-relaxed">
             Delivery costs are calculated at checkout based on your delivery
             address and the size of your order. Prices are shown in USD or
-            GHS using the toggle in the header, and the itemized delivery
+            NGN using the toggle in the header, and the itemized delivery
             fee will always be shown before you confirm payment.
           </p>
         </section>

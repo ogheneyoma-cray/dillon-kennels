@@ -23,13 +23,13 @@ export default function CurrencyToggle({ className = "" }: { className?: string 
       </button>
       <button
         type="button"
-        onClick={() => setCurrency("GHS")}
+        onClick={() => setCurrency("NGN")}
         className={`min-h-[36px] rounded-full px-3 transition-colors ${
-          currency === "GHS" ? "bg-orange text-white" : "bg-transparent text-ink/60 hover:text-ink"
+          currency === "NGN" ? "bg-orange text-white" : "bg-transparent text-ink/60 hover:text-ink"
         }`}
-        aria-pressed={currency === "GHS"}
+        aria-pressed={currency === "NGN"}
       >
-        GHS
+        NGN
       </button>
     </div>
   );

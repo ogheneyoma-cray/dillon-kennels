@@ -17,7 +17,7 @@ const FAQS = [
   {
     question: "Which currencies can I pay in?",
     answer:
-      "Prices are set in US Dollars and converted to Ghanaian Cedis using the toggle in the header. The currency you have selected at checkout is the amount charged to your card.",
+      "Prices are set in US Dollars and converted to Nigerian Naira using the toggle in the header. The currency you have selected at checkout is the amount charged to your card.",
   },
   {
     question: "What is your returns and refunds policy?",

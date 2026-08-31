@@ -79,7 +79,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="name"
                   className="input-field"
-                  placeholder="Ama Boateng"
+                  placeholder="Ada Nwosu"
                 />
               </div>
               <div>
@@ -147,7 +147,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="cc-name"
                   className="input-field"
-                  placeholder="Ama Boateng"
+                  placeholder="Ada Nwosu"
                 />
               </div>
               <div className="sm:col-span-2">

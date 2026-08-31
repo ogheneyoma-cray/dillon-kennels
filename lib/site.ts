@@ -13,7 +13,7 @@ export const site = {
   wordmark: "Panther-rade",
   tagline: "Household items, priced to move",
   description:
-    "Panther-rade Ltd is an online store for everyday household items — kitchen, cleaning, bedroom, storage and decor essentials, thirty pieces priced up front in USD or GHS.",
+    "Panther-rade Ltd is an online store for everyday household items — kitchen, cleaning, bedroom, storage and decor essentials, thirty pieces priced up front in USD or NGN.",
   email: "support@pantherade.com",
   phone: "09075794546",
   phoneHref: "+2349075794546",

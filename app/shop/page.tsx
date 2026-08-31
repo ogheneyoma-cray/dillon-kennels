@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: `Shop | ${site.name}`,
   description:
-    "Every product Panther-rade offers, from kitchen and cleaning essentials to bed & bath, storage and decor, priced up front in USD or GHS.",
+    "Every product Panther-rade offers, from kitchen and cleaning essentials to bed & bath, storage and decor, priced up front in USD or NGN.",
 };
 
 export default function ShopPage({
@@ -35,7 +35,7 @@ export default function ShopPage({
         <p className="mt-4 text-base leading-relaxed text-ink/70">
           Thirty products across kitchen, cleaning, bed &amp; bath, storage
           and decor — each priced up front. Prices convert automatically
-          between US Dollars and Ghanaian Cedis using the toggle in the header.
+          between US Dollars and Nigerian Naira using the toggle in the header.
         </p>
         {query && (
           <p className="mt-3 text-sm text-ink/60">

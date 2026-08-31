@@ -38,7 +38,7 @@ export default function HomePage() {
             </h1>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-ink/70">
               Kitchen, cleaning, bed &amp; bath, storage and decor — priced up
-              front in USD or GHS, no surprises at checkout.
+              front in USD or NGN, no surprises at checkout.
             </p>
             <div className="mt-7">
               <Link href="/shop" className="btn-primary">
