@@ -342,7 +342,7 @@ export const products: Product[] = seeds.map((seed, index) => {
     price: seed.price,
     rating: seed.rating,
     description: seed.description,
-    image: `/products/${slug}.svg`,
+    image: `/products/${slug}.png`,
     category: seed.category,
     inStock: seed.inStock ?? true,
     popular: seed.popular,
