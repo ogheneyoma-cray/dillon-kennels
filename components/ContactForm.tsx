@@ -13,8 +13,8 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="border border-olive/30 bg-olive/10 p-6">
-        <p className="font-display text-xl text-ink">Message sent</p>
+      <div className="border border-spruce/30 bg-spruce-pale p-6">
+        <p className="font-display text-2xl uppercase text-ink">Message sent</p>
         <p className="mt-2 text-sm text-ink/70">
           Thanks for reaching out — our support team will reply to your email
           within one business day.

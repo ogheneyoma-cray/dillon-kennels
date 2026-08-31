@@ -29,19 +29,19 @@ export default function ProductDetailActions({ product }: { product: Product }) 
             type="button"
             onClick={decrease}
             aria-label="Decrease quantity"
-            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-sand disabled:opacity-30"
+            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-stone disabled:opacity-30"
             disabled={quantity <= 1}
           >
             −
           </button>
-          <span className="flex h-11 w-12 items-center justify-center border-x border-ink/20 text-sm font-semibold">
+          <span className="flex h-11 w-12 items-center justify-center border-x border-ink/20 text-sm font-bold">
             {quantity}
           </span>
           <button
             type="button"
             onClick={increase}
             aria-label="Increase quantity"
-            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-sand"
+            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-stone"
           >
             +
           </button>

@@ -1,45 +1,45 @@
 import type { Metadata } from "next";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Dillon Kennels",
-  description: "The terms and conditions governing use of the Dillon Kennels website and orders.",
+  title: `Terms & Conditions | ${site.name}`,
+  description: `The terms and conditions governing use of the ${site.name} website and orders.`,
 };
 
 export default function TermsPage() {
   return (
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Legal</p>
-      <h1 className="section-heading mt-3">Terms & Conditions</h1>
-      <p className="mt-2 text-sm text-ink/50">Last updated: July 2026</p>
+      <h1 className="section-heading mt-3">Terms &amp; Conditions</h1>
+      <p className="mt-2 text-sm text-ink/50">Last updated: August 2026</p>
 
       <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
         <section>
-          <h2 className="font-display text-xl text-ink">1. Acceptance of Terms</h2>
+          <h2 className="font-display text-xl uppercase text-ink">1. Acceptance of Terms</h2>
           <p className="mt-3 leading-relaxed">
-            By accessing or using the Dillon Kennels website, you agree to be
-            bound by these Terms & Conditions. If you do not agree with any
-            part of these terms, please do not use our site or place an
+            By accessing or using the {site.name} website, you agree to be
+            bound by these Terms &amp; Conditions. If you do not agree with
+            any part of these terms, please do not use our site or place an
             order with us.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">2. Products & Pricing</h2>
+          <h2 className="font-display text-xl uppercase text-ink">2. Products &amp; Pricing</h2>
           <p className="mt-3 leading-relaxed">
-            All prices are listed in Nigerian Naira (₦) and are also
-            displayed in US Dollars ($) for reference using a fixed
-            conversion rate, which may differ slightly from real-time
-            exchange rates. We reserve the right to update pricing at any
-            time without prior notice, though changes will never affect
-            orders already confirmed. Because many pieces are handcrafted,
-            slight variation in color, print placement, or texture between
-            the product photo and the item received is expected and is not
-            considered a defect.
+            All prices are listed in US Dollars ($) and are also displayed in
+            Nigerian Naira (₦) for reference using a fixed conversion rate,
+            which may differ slightly from real-time exchange rates. We
+            reserve the right to update pricing at any time without prior
+            notice, though changes will never affect orders already
+            confirmed. Slight variation in color between the product photo
+            and the item received is expected due to screen display
+            differences and is not considered a defect.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">3. Orders & Payment</h2>
+          <h2 className="font-display text-xl uppercase text-ink">3. Orders &amp; Payment</h2>
           <p className="mt-3 leading-relaxed">
             By placing an order, you confirm that the payment and delivery
             information you provide is accurate and that you are authorized
@@ -51,19 +51,19 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">4. Intellectual Property</h2>
+          <h2 className="font-display text-xl uppercase text-ink">4. Intellectual Property</h2>
           <p className="mt-3 leading-relaxed">
             All content on this site, including product photography, text,
-            logos, and design, is the property of Dillon Kennels and may not
-            be reproduced, distributed, or used commercially without our
+            logos, and design, is the property of {site.legalName} and may
+            not be reproduced, distributed, or used commercially without our
             prior written consent.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">5. Limitation of Liability</h2>
+          <h2 className="font-display text-xl uppercase text-ink">5. Limitation of Liability</h2>
           <p className="mt-3 leading-relaxed">
-            Dillon Kennels is not liable for any indirect, incidental, or
+            {site.name} is not liable for any indirect, incidental, or
             consequential damages arising from the use of our website or
             products, including delivery delays caused by third-party
             logistics providers beyond our reasonable control.
@@ -71,22 +71,22 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">6. Governing Law</h2>
+          <h2 className="font-display text-xl uppercase text-ink">6. Governing Law</h2>
           <p className="mt-3 leading-relaxed">
-            These Terms & Conditions are governed by the laws of the Federal
-            Republic of Nigeria. Any disputes arising from these terms will
-            be subject to the exclusive jurisdiction of the courts of Lagos
-            State.
+            These Terms &amp; Conditions are governed by the laws of the
+            Federal Republic of Nigeria. Any disputes arising from these
+            terms will be subject to the exclusive jurisdiction of the
+            courts of Rivers State.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">7. Changes to These Terms</h2>
+          <h2 className="font-display text-xl uppercase text-ink">7. Changes to These Terms</h2>
           <p className="mt-3 leading-relaxed">
-            We may update these Terms & Conditions from time to time. Changes
-            will be posted on this page with an updated revision date.
-            Continued use of the site after changes are posted constitutes
-            acceptance of the revised terms.
+            We may update these Terms &amp; Conditions from time to time.
+            Changes will be posted on this page with an updated revision
+            date. Continued use of the site after changes are posted
+            constitutes acceptance of the revised terms.
           </p>
         </section>
       </div>
