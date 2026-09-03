@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
@@ -42,10 +43,17 @@ export default function Header() {
         <div className="container-page flex h-20 items-center justify-between gap-4">
           <Link
             href="/"
-            className="shrink-0 font-display text-2xl font-bold uppercase tracking-tight text-paper sm:text-3xl"
+            className="relative block h-9 w-[180px] shrink-0 sm:h-10 sm:w-[210px]"
             onClick={() => setMenuOpen(false)}
           >
-            {site.wordmark}
+            <Image
+              src="/logo-white.png"
+              alt={site.wordmark}
+              fill
+              priority
+              sizes="210px"
+              className="object-contain object-left"
+            />
           </Link>
 
           <div className="hidden flex-1 items-center gap-4 lg:flex">

@@ -95,7 +95,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-4">
-            {featured.map((product) => (
+            {featured.slice(0, 4).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
