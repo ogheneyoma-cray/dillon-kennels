@@ -9,25 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#F6F1E9",
-        paper: "#FBF8F2",
-        ink: "#211C17",
-        charcoal: "#332C24",
-        rust: "#B7522E",
-        "rust-dark": "#8F3D20",
-        olive: "#6B6B47",
-        sand: "#E4D8C3",
-        clay: "#C98B5E",
+        paper: "#FFFFFF",
+        cream: "#F5EFE4",
+        ink: "#1B1B1A",
+        "ink-soft": "#5E5B54",
+        navy: "#12294B",
+        "navy-deep": "#0B1B33",
+        "navy-soft": "#1E3A63",
+        rust: "#C1622B",
+        "rust-dark": "#984A1E",
+        "rust-pale": "#FBE7D8",
+        sand: "#E9E1D2",
+        line: "#E3DCCC",
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "serif"],
-        body: ["var(--font-work-sans)", "sans-serif"],
-      },
-      letterSpacing: {
-        widest2: "0.25em",
+        display: ["var(--font-oswald)", "sans-serif"],
+        body: ["var(--font-inter)", "sans-serif"],
       },
       maxWidth: {
         content: "1400px",
+      },
+      boxShadow: {
+        tile: "0 1px 2px rgba(18, 41, 75, 0.08)",
+        lift: "0 20px 45px -20px rgba(11, 27, 51, 0.45)",
       },
     },
   },

@@ -9,7 +9,7 @@ import { formatMoney } from "@/lib/currency";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `DK-${random}`;
+  return `VTC-${random}`;
 }
 
 export default function CheckoutPage() {
@@ -23,7 +23,7 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "dillon-kennels-last-order",
+      "venture-collection-last-order",
       JSON.stringify({
         orderNumber,
         total: formatMoney(cartTotal, currency),
@@ -39,7 +39,7 @@ export default function CheckoutPage() {
       <div className="container-page flex flex-col items-center justify-center py-24 text-center">
         <p className="eyebrow">Checkout</p>
         <h1 className="section-heading mt-3">Your cart is empty</h1>
-        <p className="mt-4 max-w-sm text-ink/70">
+        <p className="mt-4 max-w-sm text-ink-soft">
           Add something to your cart before heading to checkout.
         </p>
         <Link href="/shop" className="btn-primary mt-8">
@@ -60,8 +60,8 @@ export default function CheckoutPage() {
       >
         <div className="space-y-10">
           <fieldset>
-            <legend className="font-display text-xl text-ink">
-              Contact & Delivery
+            <legend className="font-display text-xl font-medium text-navy">
+              Contact &amp; Delivery
             </legend>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
@@ -75,7 +75,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="name"
                   className="input-field"
-                  placeholder="Adaeze Okonkwo"
+                  placeholder="Adaeze Okafor"
                 />
               </div>
               <div>
@@ -117,18 +117,19 @@ export default function CheckoutPage() {
                   required
                   autoComplete="tel"
                   className="input-field"
-                  placeholder="+234 701 234 5678"
+                  placeholder="+234 704 681 5504"
                 />
               </div>
             </div>
           </fieldset>
 
           <fieldset>
-            <legend className="font-display text-xl text-ink">
+            <legend className="font-display text-xl font-medium text-navy">
               Payment Details
             </legend>
-            <p className="mt-2 text-xs text-ink/50">
-              Demo checkout — card details are not transmitted or stored.
+            <p className="mt-2 text-xs text-ink-soft">
+              We accept Visa and Mastercard only. Demo checkout — card
+              details are not transmitted or stored.
             </p>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div className="sm:col-span-2">
@@ -142,7 +143,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="cc-name"
                   className="input-field"
-                  placeholder="Adaeze Okonkwo"
+                  placeholder="Adaeze Okafor"
                 />
               </div>
               <div className="sm:col-span-2">
@@ -198,21 +199,21 @@ export default function CheckoutPage() {
           </fieldset>
         </div>
 
-        <aside className="h-fit border border-ink/10 bg-paper p-6">
-          <h2 className="font-display text-xl text-ink">Order Summary</h2>
-          <ul className="mt-5 space-y-3 border-b border-ink/10 pb-5">
+        <aside className="h-fit border border-line bg-cream p-6">
+          <h2 className="font-display text-xl font-medium text-navy">Order Summary</h2>
+          <ul className="mt-5 space-y-3 border-b border-line pb-5">
             {items.map((item) => (
               <li key={item.id} className="flex justify-between text-sm">
-                <span className="text-ink/70">
+                <span className="text-ink-soft">
                   {item.name} × {item.quantity}
                 </span>
-                <span className="font-medium text-ink">
+                <span className="font-semibold text-ink">
                   {formatMoney(item.price * item.quantity, currency)}
                 </span>
               </li>
             ))}
           </ul>
-          <div className="mt-5 flex justify-between font-display text-lg text-ink">
+          <div className="mt-5 flex justify-between font-display text-lg font-medium text-navy">
             <span>Total</span>
             <span>{formatMoney(cartTotal, currency)}</span>
           </div>
@@ -223,6 +224,9 @@ export default function CheckoutPage() {
           >
             {submitting ? "Placing Order…" : "Place Order"}
           </button>
+          <p className="mt-3 text-center text-[11px] uppercase tracking-wide text-ink-soft/70">
+            Visa · Mastercard
+          </p>
         </aside>
       </form>
     </div>
