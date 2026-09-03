@@ -19,7 +19,7 @@ export function generateMetadata({
 }): Metadata {
   const product = getProductBySlug(params.slug);
   if (!product) {
-    return { title: `Product Not Found | ${site.name}` };
+    return { title: `Course Not Found | ${site.name}` };
   }
   return {
     title: `${product.name} | ${site.name}`,
@@ -44,19 +44,19 @@ export default function ProductPage({
   return (
     <div className="container-page py-10 lg:py-16">
       <nav className="mb-8 text-xs font-semibold uppercase tracking-wide text-ink/50">
-        <Link href="/" className="hover:text-raspberry">
+        <Link href="/" className="hover:text-indigo">
           Home
         </Link>
         <span className="mx-2">/</span>
-        <Link href="/shop" className="hover:text-raspberry">
-          Shop
+        <Link href="/shop" className="hover:text-indigo">
+          Courses
         </Link>
         <span className="mx-2">/</span>
         <span className="text-ink/80">{product.name}</span>
       </nav>
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="relative aspect-[4/5] overflow-hidden bg-linen">
+        <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-linen">
           <Image
             src={product.image}
             alt={product.name}
@@ -69,12 +69,17 @@ export default function ProductPage({
 
         <div>
           <p className="eyebrow">{product.category}</p>
-          <h1 className="mt-3 font-display text-3xl leading-tight text-ink sm:text-4xl">
+          <h1 className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
             {product.name}
           </h1>
+          <div className="mt-3 flex items-center gap-4 text-sm text-ink-soft">
+            <span className="inline-flex items-center gap-1 text-gold-dark">★ {product.rating}</span>
+            <span>{product.hours} hours</span>
+            <span>{product.level}</span>
+          </div>
           <ProductPrice
-            priceUsd={product.price}
-            className="mt-3 block text-xl font-bold text-raspberry"
+            product={product}
+            className="mt-4 block text-2xl font-bold text-indigo"
           />
 
           <p className="mt-6 text-base leading-relaxed text-ink/80">
@@ -88,8 +93,8 @@ export default function ProductPage({
           <dl className="mt-8 space-y-2 border-t border-ink/10 pt-6 text-sm text-ink/70">
             <div className="flex justify-between">
               <dt>Availability</dt>
-              <dd className={product.inStock ? "text-raspberry-dark" : "text-ink/50"}>
-                {product.inStock ? "In Stock" : "Sold Out"}
+              <dd className={product.inStock ? "text-indigo-dark" : "text-ink/50"}>
+                {product.inStock ? "Available" : "Unavailable"}
               </dd>
             </div>
             <div className="flex justify-between">
@@ -97,18 +102,18 @@ export default function ProductPage({
               <dd>{product.category}</dd>
             </div>
             <div className="flex justify-between">
-              <dt>Available Sizes</dt>
-              <dd>{product.size}</dd>
+              <dt>Format</dt>
+              <dd>{product.format}</dd>
             </div>
             <div className="flex justify-between">
-              <dt>Delivery</dt>
-              <dd>3–7 business days across Nigeria</dd>
+              <dt>Access</dt>
+              <dd>Instant, lifetime access after checkout</dd>
             </div>
           </dl>
           <p className="mt-4 text-xs text-ink/50">
-            Not sure what size to order? Check our{" "}
-            <Link href="/size-guide" className="underline hover:text-raspberry">
-              Size Guide
+            Questions before enrolling? Visit our{" "}
+            <Link href="/contact" className="underline hover:text-indigo">
+              Contact page
             </Link>
             .
           </p>

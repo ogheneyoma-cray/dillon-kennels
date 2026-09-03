@@ -5,14 +5,14 @@ import Link from "next/link";
 import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
-import { formatMoney } from "@/lib/currency";
+import { formatProductMoney } from "@/lib/currency";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();
   const { currency } = useCurrency();
 
   return (
-    <div className="group relative flex flex-col">
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper shadow-tile transition-shadow duration-300 hover:shadow-lift">
       <Link
         href={`/shop/${product.slug}`}
         className="relative block aspect-[4/5] overflow-hidden bg-linen"
@@ -24,28 +24,39 @@ export default function ProductCard({ product }: { product: Product }) {
           sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
         />
-        {!product.inStock && (
-          <span className="absolute left-3 top-3 bg-ink px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-paper">
-            Sold Out
+        {product.popular && (
+          <span className="absolute left-3 top-3 rounded-full bg-gold px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-navy">
+            Popular
           </span>
         )}
-        {product.popular && product.inStock && (
-          <span className="absolute left-3 top-3 bg-raspberry px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-paper">
-            Best Seller
-          </span>
-        )}
-        <span className="absolute right-3 top-3 border border-ink/15 bg-paper/90 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-ink/70">
-          {product.category}
-        </span>
-      </Link>
-      <div className="mt-4 flex flex-1 flex-col">
-        <Link href={`/shop/${product.slug}`}>
-          <h3 className="font-display text-base leading-tight text-ink transition-colors group-hover:text-raspberry">
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/95 via-navy/70 to-transparent px-4 pb-3 pt-10">
+          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-gold">
+            {product.category}
+          </p>
+          <h3 className="mt-1 font-display text-sm font-bold leading-tight text-paper">
             {product.name}
           </h3>
-        </Link>
-        <p className="mt-1 text-sm font-bold text-ink/70">
-          {formatMoney(product.price, currency)}
+        </div>
+      </Link>
+      <div className="flex flex-1 flex-col p-4">
+        <div className="flex items-center gap-3 text-xs text-ink-soft">
+          <span className="inline-flex items-center gap-1">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            {product.hours}h
+          </span>
+          <span className="inline-flex items-center gap-1 text-gold-dark">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l2.9 6.3 6.9.9-5 4.8 1.3 6.9-6.1-3.3-6.1 3.3 1.3-6.9-5-4.8 6.9-.9z" />
+            </svg>
+            {product.rating}
+          </span>
+          <span>{product.level}</span>
+        </div>
+        <p className="mt-3 text-base font-bold text-ink">
+          {formatProductMoney(product, currency)}
         </p>
         <button
           type="button"

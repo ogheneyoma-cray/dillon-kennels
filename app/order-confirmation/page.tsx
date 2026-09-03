@@ -6,11 +6,11 @@ import { useSearchParams } from "next/navigation";
 
 function ConfirmationContent() {
   const searchParams = useSearchParams();
-  const orderNumber = searchParams.get("order") ?? "FLM-000000";
+  const orderNumber = searchParams.get("order") ?? "TYD-000000";
 
   return (
     <div className="container-page flex flex-col items-center py-20 text-center lg:py-28">
-      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-raspberry-pale text-raspberry">
+      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-indigo-pale text-indigo">
         <svg
           width="30"
           height="30"
@@ -26,21 +26,20 @@ function ConfirmationContent() {
       <p className="eyebrow mt-6">Order Confirmed</p>
       <h1 className="section-heading mt-3">Thank you for your order</h1>
       <p className="mt-4 max-w-md text-ink/70">
-        We&apos;ve received your order and we&apos;re getting it ready. A
-        confirmation email with your order details has been sent to your
-        inbox.
+        We&apos;ve received your order. Your course access links, along with
+        a receipt, have been sent to your inbox.
       </p>
 
-      <div className="mt-8 border border-ink/10 bg-linen px-8 py-5">
+      <div className="mt-8 rounded-xl border border-ink/10 bg-linen px-8 py-5">
         <p className="text-xs font-bold uppercase tracking-wide text-ink/50">
           Order Number
         </p>
-        <p className="mt-1 font-display text-2xl text-raspberry">{orderNumber}</p>
+        <p className="mt-1 font-display text-2xl font-bold text-indigo">{orderNumber}</p>
       </div>
 
       <div className="mt-10 flex flex-wrap justify-center gap-4">
         <Link href="/shop" className="btn-primary">
-          Continue Shopping
+          Continue Browsing
         </Link>
         <Link href="/contact" className="btn-secondary">
           Contact Support

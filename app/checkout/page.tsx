@@ -5,15 +5,15 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
-import { formatMoney } from "@/lib/currency";
+import { formatLineItemsTotal } from "@/lib/currency";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `FLM-${random}`;
+  return `TYD-${random}`;
 }
 
 export default function CheckoutPage() {
-  const { items, cartTotal, clearCart } = useCart();
+  const { items, clearCart } = useCart();
   const { currency } = useCurrency();
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
@@ -23,10 +23,10 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "floralisem-last-order",
+      "toyeti-digi-last-order",
       JSON.stringify({
         orderNumber,
-        total: formatMoney(cartTotal, currency),
+        total: formatLineItemsTotal(items, currency),
         itemCount: items.reduce((sum, item) => sum + item.quantity, 0),
       })
     );
@@ -40,10 +40,10 @@ export default function CheckoutPage() {
         <p className="eyebrow">Checkout</p>
         <h1 className="section-heading mt-3">Your cart is empty</h1>
         <p className="mt-4 max-w-sm text-ink/70">
-          Add something to your cart before heading to checkout.
+          Add a course to your cart before heading to checkout.
         </p>
         <Link href="/shop" className="btn-primary mt-8">
-          Shop Now
+          Browse Courses
         </Link>
       </div>
     );
@@ -60,9 +60,13 @@ export default function CheckoutPage() {
       >
         <div className="space-y-10">
           <fieldset>
-            <legend className="font-display text-xl text-ink">
-              Contact &amp; Delivery
+            <legend className="font-display text-xl font-bold text-ink">
+              Contact Details
             </legend>
+            <p className="mt-2 text-xs text-ink/50">
+              Course access links are sent to this email address right after
+              payment.
+            </p>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
                 <label htmlFor="fullName" className="label-text">
@@ -75,7 +79,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="name"
                   className="input-field"
-                  placeholder="Chiamaka Eze"
+                  placeholder="Ayodele Toyeti"
                 />
               </div>
               <div>
@@ -93,20 +97,6 @@ export default function CheckoutPage() {
                 />
               </div>
               <div className="sm:col-span-2">
-                <label htmlFor="address" className="label-text">
-                  Delivery Address
-                </label>
-                <input
-                  id="address"
-                  name="address"
-                  type="text"
-                  required
-                  autoComplete="street-address"
-                  className="input-field"
-                  placeholder="Street address, city, state"
-                />
-              </div>
-              <div>
                 <label htmlFor="phone" className="label-text">
                   Phone Number
                 </label>
@@ -117,14 +107,14 @@ export default function CheckoutPage() {
                   required
                   autoComplete="tel"
                   className="input-field"
-                  placeholder="+234 904 719 4857"
+                  placeholder="+234 703 591 9624"
                 />
               </div>
             </div>
           </fieldset>
 
           <fieldset>
-            <legend className="font-display text-xl text-ink">
+            <legend className="font-display text-xl font-bold text-ink">
               Payment Details
             </legend>
             <p className="mt-2 text-xs text-ink/50">
@@ -143,7 +133,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="cc-name"
                   className="input-field"
-                  placeholder="Chiamaka Eze"
+                  placeholder="Ayodele Toyeti"
                 />
               </div>
               <div className="sm:col-span-2">
@@ -199,8 +189,8 @@ export default function CheckoutPage() {
           </fieldset>
         </div>
 
-        <aside className="h-fit border border-ink/10 bg-linen p-6">
-          <h2 className="font-display text-xl text-ink">Order Summary</h2>
+        <aside className="h-fit rounded-2xl border border-ink/10 bg-linen p-6">
+          <h2 className="font-display text-xl font-bold text-ink">Order Summary</h2>
           <ul className="mt-5 space-y-3 border-b border-ink/10 pb-5">
             {items.map((item) => (
               <li key={item.id} className="flex justify-between text-sm">
@@ -208,14 +198,14 @@ export default function CheckoutPage() {
                   {item.name} × {item.quantity}
                 </span>
                 <span className="font-semibold text-ink">
-                  {formatMoney(item.price * item.quantity, currency)}
+                  {formatLineItemsTotal([item], currency)}
                 </span>
               </li>
             ))}
           </ul>
-          <div className="mt-5 flex justify-between font-display text-lg text-ink">
+          <div className="mt-5 flex justify-between font-display text-lg font-bold text-ink">
             <span>Total</span>
-            <span>{formatMoney(cartTotal, currency)}</span>
+            <span>{formatLineItemsTotal(items, currency)}</span>
           </div>
           <button
             type="submit"

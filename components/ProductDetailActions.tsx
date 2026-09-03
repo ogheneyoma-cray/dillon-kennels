@@ -24,7 +24,7 @@ export default function ProductDetailActions({ product }: { product: Product }) 
     <div>
       <div className="flex items-center gap-4">
         <span className="label-text mb-0">Quantity</span>
-        <div className="flex items-center border border-ink/20">
+        <div className="flex items-center rounded-lg border border-ink/20">
           <button
             type="button"
             onClick={decrease}

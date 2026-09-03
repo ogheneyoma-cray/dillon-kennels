@@ -4,24 +4,19 @@ import { site, addressLines } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Contact Us | ${site.name}`,
-  description: `Get in touch with the ${site.name} team — store address, phone, email, and business hours.`,
+  description: `Get in touch with the ${site.name} team — support email, phone, and business hours.`,
 };
 
 const FAQS = [
   {
-    question: "How long does delivery take within Nigeria?",
+    question: "How do I get access to a course after buying it?",
     answer:
-      "Orders within Port Harcourt typically arrive within 1–3 business days. Deliveries to other states across Nigeria take 3–7 business days depending on location. You'll receive a tracking update by email and SMS once your order has shipped from our Port Harcourt studio.",
+      "As soon as your payment is confirmed, we send your course access links and login instructions to the email address you used at checkout. Access is instant and yours to keep — there's no expiry on your course library.",
   },
   {
-    question: "Do you ship outside Nigeria?",
+    question: "Do you offer refunds on courses?",
     answer:
-      "At this time, Floralisem ships exclusively within Nigeria. We're working on international shipping options and recommend checking back on this page for updates on when international delivery becomes available.",
-  },
-  {
-    question: "What is your returns and exchange policy?",
-    answer:
-      "We accept returns and exchanges within 7 days of delivery, provided the item is unworn, unwashed, and has its original tags attached. Please visit our Refunds Policy page for the full process, including how to initiate a return and expected timelines for refunds.",
+      "Yes, within a limited window before a course has been substantially accessed. Visit our Refunds Policy page for the full eligibility criteria and how to request one.",
   },
   {
     question: "Which payment methods do you accept?",
@@ -29,9 +24,14 @@ const FAQS = [
       "We accept Visa and Mastercard only. Card details are collected securely at checkout and are never stored on our servers.",
   },
   {
-    question: "How do I know what size to order?",
+    question: "Can I pay in Naira instead of Dollars?",
     answer:
-      "Visit our Size Guide page for full bust, waist, and hip measurements across our dresses, tops, knitwear and denim. If you're still unsure, message our support team with your usual size in similar brands and we'll recommend the closest match before you order.",
+      "Yes. Use the currency toggle in the header to switch between USD and NGN pricing at any point while browsing or at checkout — the price shown is the price you pay.",
+  },
+  {
+    question: "Do courses expire or require a subscription?",
+    answer:
+      "No. Every course is a one-time purchase with lifetime access — there's no recurring subscription and no time limit on when you can start or finish a course.",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function ContactPage() {
       <p className="eyebrow">Get in Touch</p>
       <h1 className="section-heading mt-3">Contact Us</h1>
       <p className="mt-4 max-w-xl text-ink/70">
-        Have a question about an order, a product, or just want to say hello?
+        Have a question about a course, an order, or just want to say hello?
         Send us a message or reach out directly using the details below.
       </p>
 
@@ -49,8 +49,8 @@ export default function ContactPage() {
         <ContactForm />
 
         <aside className="space-y-8">
-          <div className="border border-ink/10 bg-linen p-6">
-            <h2 className="font-display text-xl text-ink">Store Details</h2>
+          <div className="rounded-2xl border border-ink/10 bg-linen p-6">
+            <h2 className="font-display text-xl font-bold text-ink">Support Details</h2>
             <dl className="mt-5 space-y-4 text-sm text-ink/80">
               <div>
                 <dt className="font-bold text-ink">Address</dt>
@@ -59,7 +59,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-bold text-ink">Email</dt>
                 <dd className="mt-1">
-                  <a href={`mailto:${site.email}`} className="hover:text-raspberry">
+                  <a href={`mailto:${site.email}`} className="hover:text-indigo">
                     {site.email}
                   </a>
                 </dd>
@@ -67,7 +67,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-bold text-ink">Phone</dt>
                 <dd className="mt-1">
-                  <a href={`tel:${site.phoneHref}`} className="hover:text-raspberry">
+                  <a href={`tel:${site.phoneHref}`} className="hover:text-indigo">
                     {site.phone}
                   </a>
                 </dd>
@@ -75,8 +75,8 @@ export default function ContactPage() {
             </dl>
           </div>
 
-          <div className="border border-ink/10 bg-linen p-6">
-            <h2 className="font-display text-xl text-ink">Business Hours</h2>
+          <div className="rounded-2xl border border-ink/10 bg-linen p-6">
+            <h2 className="font-display text-xl font-bold text-ink">Support Hours</h2>
             <dl className="mt-5 space-y-2 text-sm text-ink/80">
               <div className="flex justify-between">
                 <dt>Monday – Friday</dt>
@@ -100,9 +100,9 @@ export default function ContactPage() {
         <div className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
           {FAQS.map((faq) => (
             <details key={faq.question} className="group py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg text-ink marker:content-none">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-bold text-ink marker:content-none">
                 {faq.question}
-                <span className="shrink-0 text-xl text-raspberry transition-transform group-open:rotate-45">
+                <span className="shrink-0 text-xl text-indigo transition-transform group-open:rotate-45">
                   +
                 </span>
               </summary>

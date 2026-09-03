@@ -8,22 +8,21 @@
  * pages, where it is required. No social links appear anywhere on the site.
  */
 export const site = {
-  name: "Floralisem",
-  legalName: "Floralisem Ltd",
-  wordmark: "Floralisem",
-  tagline: "Womenswear with a point of view",
+  name: "Toyeti Digi",
+  legalName: "Toyeti Digi Ltd",
+  wordmark: "Toyeti Digi",
+  tagline: "Skills you can start using today",
   description:
-    "Floralisem is an online fashion store stocking women's dresses, tops, knitwear, outerwear, denim and accessories — priced up front in USD or NGN.",
-  email: "support@floralisem.com",
-  phone: "09047194857",
-  phoneHref: "+2349047194857",
+    "Toyeti Digi is a digital marketplace for practical, self-paced online courses — business, design, marketing, data and productivity skills, priced up front in USD or NGN.",
+  email: "supportteam@toyeti.com",
+  phone: "07035919624",
+  phoneHref: "+2347035919624",
   address: {
-    line1: "5, Echendu Layout, off J-State Junction",
-    line2: "Woji, Obio/Akpor L.G.A",
-    line3: "Port Harcourt, Rivers State",
+    line1: "8, Itun Egbe Street",
+    line2: "Oke-Ira, Ajah",
+    line3: "Lagos State, Nigeria",
   },
-  addressOneLine:
-    "5, Echendu Layout, off J-State Junction, Woji, Obio/Akpor L.G.A, Port Harcourt, Rivers State",
+  addressOneLine: "8, Itun Egbe Street, Oke-Ira, Ajah, Lagos State, Nigeria",
 } as const;
 
 export const addressLines = [site.address.line1, site.address.line2, site.address.line3];

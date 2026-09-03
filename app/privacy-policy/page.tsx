@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site, addressLines } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Privacy Policy | ${site.name}`,
@@ -11,56 +11,57 @@ export default function PrivacyPolicyPage() {
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Legal</p>
       <h1 className="section-heading mt-3">Privacy Policy</h1>
-      <p className="mt-2 text-sm text-ink/50">Last updated: August 2026</p>
+      <p className="mt-2 text-sm text-ink/50">Last updated: September 2026</p>
 
       <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
         <section>
-          <h2 className="font-display text-lg text-ink">Information We Collect</h2>
+          <h2 className="font-display text-lg font-bold text-ink">Information We Collect</h2>
           <p className="mt-3 leading-relaxed">
-            When you place an order, contact us, or browse this site, we may
-            collect information including your name, email address, phone
-            number, delivery address, and order history. Card details
-            entered at checkout are used solely to process your Visa or
-            Mastercard transaction and are not stored on our servers. We
-            also collect limited technical information, such as browser
-            type and general usage patterns, to help us improve the site.
+            When you purchase a course, contact us, or browse this site, we
+            may collect information including your name, email address,
+            phone number, and order history. Card details entered at
+            checkout are used solely to process your Visa or Mastercard
+            transaction and are not stored on our servers. We also collect
+            limited technical information, such as browser type and general
+            usage patterns, to help us improve the site.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg text-ink">How We Use Your Information</h2>
+          <h2 className="font-display text-lg font-bold text-ink">How We Use Your Information</h2>
           <p className="mt-3 leading-relaxed">
-            We use the information you provide to process and deliver your
-            orders, respond to customer service inquiries, and send order
-            confirmations and shipping updates. We do not sell your personal
-            information to third parties under any circumstances.
+            We use the information you provide to process your order, grant
+            and manage access to the courses you purchase, respond to
+            support inquiries, and send order confirmations and important
+            account updates. We do not sell your personal information to
+            third parties under any circumstances.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg text-ink">Cookies &amp; Local Storage</h2>
+          <h2 className="font-display text-lg font-bold text-ink">Cookies &amp; Local Storage</h2>
           <p className="mt-3 leading-relaxed">
             Our site uses browser local storage to remember the contents of
-            your shopping cart and your preferred currency between visits.
-            This data is stored on your device and is not transmitted to our
-            servers. You can clear this data at any time by clearing your
-            browser&apos;s site data for floralisem.com.
+            your cart and your preferred currency between visits. This data
+            is stored on your device and is not transmitted to our servers.
+            You can clear this data at any time by clearing your browser&apos;s
+            site data for toyeti.com.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg text-ink">Sharing With Third Parties</h2>
+          <h2 className="font-display text-lg font-bold text-ink">Sharing With Third Parties</h2>
           <p className="mt-3 leading-relaxed">
-            We share limited order information — such as your name, address,
-            and phone number — with logistics partners solely for the
-            purpose of delivering your order. Card payments are processed
-            through secure third-party payment processors and are never
-            stored on our systems in full.
+            Card payments are processed through secure third-party payment
+            processors and are never stored on our systems in full. We do
+            not share your personal information with any other third party
+            except where required to deliver the service you&apos;ve paid for
+            or where required by law.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg text-ink">Your Rights</h2>
+          <h2 className="font-display text-lg font-bold text-ink">Your Rights</h2>
           <p className="mt-3 leading-relaxed">
             You have the right to request access to, correction of, or
             deletion of your personal information held by us. To make such a
@@ -70,11 +71,10 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-lg text-ink">Contact Us</h2>
+          <h2 className="font-display text-lg font-bold text-ink">Contact Us</h2>
           <p className="mt-3 leading-relaxed">
             If you have any questions about this Privacy Policy, please
-            reach out to us at {site.email} or {site.phone}, or write to us
-            at {addressLines.join(", ")}.
+            reach out to us at {site.email} or {site.phone}.
           </p>
         </section>
       </div>

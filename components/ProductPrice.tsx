@@ -1,15 +1,16 @@
 "use client";
 
+import { Product } from "@/data/products";
 import { useCurrency } from "@/context/CurrencyContext";
-import { formatMoney } from "@/lib/currency";
+import { formatProductMoney } from "@/lib/currency";
 
 export default function ProductPrice({
-  priceUsd,
+  product,
   className = "",
 }: {
-  priceUsd: number;
+  product: Product;
   className?: string;
 }) {
   const { currency } = useCurrency();
-  return <span className={className}>{formatMoney(priceUsd, currency)}</span>;
+  return <span className={className}>{formatProductMoney(product, currency)}</span>;
 }

@@ -16,6 +16,7 @@ export interface CartItem {
   name: string;
   slug: string;
   price: number;
+  ngnOverride?: number;
   image: string;
   quantity: number;
 }
@@ -32,7 +33,7 @@ interface CartContextValue {
 
 const CartContext = createContext<CartContextValue | undefined>(undefined);
 
-const STORAGE_KEY = "floralisem-cart";
+const STORAGE_KEY = "toyeti-digi-cart";
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
@@ -74,6 +75,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           name: product.name,
           slug: product.slug,
           price: product.price,
+          ngnOverride: product.ngnOverride,
           image: product.image,
           quantity,
         },

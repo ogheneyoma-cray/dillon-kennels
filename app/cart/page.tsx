@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
-import { formatMoney } from "@/lib/currency";
+import { formatProductMoney, formatLineItemsTotal } from "@/lib/currency";
 
 export default function CartPage() {
-  const { items, updateQuantity, removeFromCart, cartTotal } = useCart();
+  const { items, updateQuantity, removeFromCart } = useCart();
   const { currency } = useCurrency();
 
   if (items.length === 0) {
@@ -17,10 +17,10 @@ export default function CartPage() {
         <h1 className="section-heading mt-3">It&apos;s looking empty in here</h1>
         <p className="mt-4 max-w-sm text-ink/70">
           You haven&apos;t added anything to your cart yet. Explore the
-          collection and find something to love.
+          catalog and find your next course.
         </p>
         <Link href="/shop" className="btn-primary mt-8">
-          Shop Now
+          Browse Courses
         </Link>
       </div>
     );
@@ -37,7 +37,7 @@ export default function CartPage() {
             <li key={item.id} className="flex gap-4 py-6 sm:gap-6">
               <Link
                 href={`/shop/${item.slug}`}
-                className="relative h-24 w-20 shrink-0 overflow-hidden bg-linen sm:h-32 sm:w-28"
+                className="relative h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-linen sm:h-32 sm:w-28"
               >
                 <Image
                   src={item.image}
@@ -53,21 +53,21 @@ export default function CartPage() {
                   <div>
                     <Link
                       href={`/shop/${item.slug}`}
-                      className="font-display text-base leading-snug text-ink hover:text-raspberry"
+                      className="font-display text-base leading-snug text-ink hover:text-indigo"
                     >
                       {item.name}
                     </Link>
                     <p className="mt-1 text-sm text-ink/60">
-                      {formatMoney(item.price, currency)} each
+                      {formatProductMoney(item, currency)} each
                     </p>
                   </div>
                   <p className="whitespace-nowrap font-bold text-ink">
-                    {formatMoney(item.price * item.quantity, currency)}
+                    {formatLineItemsTotal([item], currency)}
                   </p>
                 </div>
 
                 <div className="mt-4 flex items-center justify-between">
-                  <div className="flex items-center border border-ink/20">
+                  <div className="flex items-center rounded-lg border border-ink/20">
                     <button
                       type="button"
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -91,7 +91,7 @@ export default function CartPage() {
                   <button
                     type="button"
                     onClick={() => removeFromCart(item.id)}
-                    className="min-h-[44px] px-2 text-sm font-semibold text-ink/60 underline underline-offset-4 hover:text-raspberry"
+                    className="min-h-[44px] px-2 text-sm font-semibold text-ink/60 underline underline-offset-4 hover:text-indigo"
                   >
                     Remove
                   </button>
@@ -101,21 +101,21 @@ export default function CartPage() {
           ))}
         </ul>
 
-        <aside className="h-fit border border-ink/10 bg-linen p-6">
-          <h2 className="font-display text-xl text-ink">Order Summary</h2>
+        <aside className="h-fit rounded-2xl border border-ink/10 bg-linen p-6">
+          <h2 className="font-display text-xl font-bold text-ink">Order Summary</h2>
           <div className="mt-5 space-y-3 text-sm">
             <div className="flex justify-between text-ink/70">
               <span>Subtotal</span>
-              <span>{formatMoney(cartTotal, currency)}</span>
+              <span>{formatLineItemsTotal(items, currency)}</span>
             </div>
             <div className="flex justify-between text-ink/70">
-              <span>Shipping</span>
-              <span>Calculated at checkout</span>
+              <span>Delivery</span>
+              <span>Instant, by email</span>
             </div>
           </div>
-          <div className="mt-5 flex justify-between border-t border-ink/10 pt-5 font-display text-lg text-ink">
+          <div className="mt-5 flex justify-between border-t border-ink/10 pt-5 font-display text-lg font-bold text-ink">
             <span>Total</span>
-            <span>{formatMoney(cartTotal, currency)}</span>
+            <span>{formatLineItemsTotal(items, currency)}</span>
           </div>
           <Link href="/checkout" className="btn-primary mt-6 w-full">
             Proceed to Checkout

@@ -1,38 +1,48 @@
 export type Category =
-  | "Dresses"
-  | "Tops & Blouses"
-  | "Knitwear"
-  | "Outerwear"
-  | "Denim & Trousers"
-  | "Accessories";
+  | "Business & Finance"
+  | "Design & Creative"
+  | "Marketing & Sales"
+  | "Data & Analytics"
+  | "Productivity & Tools"
+  | "Personal Growth";
+
+export type Level = "Beginner" | "Intermediate" | "Advanced";
 
 export interface Product {
   id: number;
   name: string;
   slug: string;
   price: number; // base price in USD
+  ngnOverride?: number; // fixed NGN price, when it doesn't follow the standard rate
   description: string;
   image: string;
   category: Category;
-  size: string;
+  level: Level;
+  hours: number;
+  format: string;
+  rating: number;
   inStock: boolean;
   popular?: boolean;
 }
 
 export const categories: Category[] = [
-  "Dresses",
-  "Tops & Blouses",
-  "Knitwear",
-  "Outerwear",
-  "Denim & Trousers",
-  "Accessories",
+  "Business & Finance",
+  "Design & Creative",
+  "Marketing & Sales",
+  "Data & Analytics",
+  "Productivity & Tools",
+  "Personal Growth",
 ];
 
 interface Seed {
   name: string;
   price: number;
+  ngnOverride?: number;
   category: Category;
-  size: string;
+  level: Level;
+  hours: number;
+  format: string;
+  rating: number;
   inStock: boolean;
   popular?: boolean;
   description: string;
@@ -40,189 +50,250 @@ interface Seed {
 
 const seeds: Seed[] = [
   {
-    name: "Floral Wrap Midi Dress",
-    price: 39,
-    category: "Dresses",
-    size: "XS, S, M, L, XL",
+    name: "Excel for Business Analysts",
+    price: 43,
+    ngnOverride: 66470.95,
+    category: "Data & Analytics",
+    level: "Intermediate",
+    hours: 12,
+    format: "Self-paced video course + workbook",
+    rating: 4.9,
     inStock: true,
     popular: true,
     description:
-      "A soft floral print wrap dress cut in a fluid crepe that skims rather than clings. A self-tie waist defines the shape, while the midi-length, gently flared skirt moves easily from a desk to dinner. Fully lined, with a V-neckline finished in a narrow self-fabric trim.",
+      "Build the exact Excel skillset business analysts are hired for: dynamic dashboards, pivot tables, INDEX/MATCH and XLOOKUP, scenario modelling, and clean handoff-ready reporting. Every module is built around real analyst deliverables — board packs, variance reports, forecast trackers — not toy spreadsheets. You'll leave with a portfolio of three finished workbooks and a reusable dashboard template.",
   },
   {
-    name: "Ivory Linen Shift Dress",
-    price: 34,
-    category: "Dresses",
-    size: "XS, S, M, L, XL",
+    name: "Financial Modeling Fundamentals",
+    price: 39,
+    category: "Business & Finance",
+    level: "Intermediate",
+    hours: 10,
+    format: "Self-paced video course + templates",
+    rating: 4.8,
     inStock: true,
+    popular: true,
     description:
-      "A relaxed shift dress in a breathable linen-cotton blend, cut with a clean boat neckline and dropped shoulders. Side seam pockets and a straight, unfussy silhouette make it an easy warm-weather staple that layers well under a jacket.",
+      "Learn to build three-statement financial models from a blank sheet — income statement, balance sheet, and cash flow, fully linked. Covers assumptions design, sensitivity analysis, and how to present a model to non-finance stakeholders without losing them in the mechanics. Includes a downloadable model template used throughout the course.",
   },
   {
-    name: "Polka Dot Puff-Sleeve Dress",
-    price: 37,
-    category: "Dresses",
-    size: "XS, S, M, L",
-    inStock: true,
-    description:
-      "A playful polka dot dress with dramatic puff sleeves gathered at an elasticated cuff, paired with a fitted bodice and a flowing knee-length skirt. A concealed back zip keeps the silhouette clean, with a self-tie belt to define the waist.",
-  },
-  {
-    name: "Ribbed Bodycon Dress",
+    name: "Small Business Bookkeeping Mastery",
     price: 28,
-    category: "Dresses",
-    size: "XS, S, M, L",
+    category: "Business & Finance",
+    level: "Beginner",
+    hours: 7,
+    format: "Self-paced video course",
+    rating: 4.7,
     inStock: true,
     description:
-      "A fine ribbed knit dress with real stretch, cut close to the body with a round neckline and long sleeves. Minimal in shape and detail, it works equally well dressed up with heels or down with sneakers and a denim jacket.",
+      "A practical bookkeeping course for founders and freelancers who need to keep their own books straight — recording transactions, reconciling accounts, tracking receivables, and preparing simple monthly statements. No accounting background required; every lesson uses a running example business.",
   },
   {
-    name: "Eco Aware Organic Cotton Top",
-    price: 27,
-    category: "Tops & Blouses",
-    size: "XS, S, M, L, XL",
+    name: "Investment Analysis & Valuation",
+    price: 37,
+    category: "Business & Finance",
+    level: "Advanced",
+    hours: 11,
+    format: "Self-paced video course + case studies",
+    rating: 4.8,
     inStock: true,
-    popular: true,
     description:
-      "A relaxed-fit top made from certified organic cotton jersey, garment-washed for a soft, lived-in hand-feel. A dropped shoulder and ribbed crew neckline keep the shape easy, making it a genuine everyday layering piece.",
+      "A grounded introduction to company valuation — comparable company analysis, discounted cash flow, and precedent transactions — taught through five real, anonymized case studies. Built for analysts who need to defend a number in a room, not just calculate one.",
   },
   {
-    name: "Polka Dot Short Sleeve Blouse",
+    name: "Graphic Design Foundations with Adobe",
     price: 32,
-    category: "Tops & Blouses",
-    size: "XS, S, M, L",
+    category: "Design & Creative",
+    level: "Beginner",
+    hours: 9,
+    format: "Self-paced video course + source files",
+    rating: 4.7,
     inStock: true,
     description:
-      "A lightweight woven blouse in a classic polka dot print, with a soft point collar, short sleeves, and a button-through front. Cut with a gentle waist shaping, it tucks cleanly into trousers or skirts for a polished daytime look.",
+      "Covers the core design principles — layout, type, color, hierarchy — alongside hands-on practice in Photoshop and Illustrator. You'll finish five real briefs: a social post set, a poster, a logo, a brochure, and a resume, each critiqued against professional standards.",
   },
   {
-    name: "Printed Silky Cami Top",
-    price: 25,
-    category: "Tops & Blouses",
-    size: "XS, S, M, L",
-    inStock: true,
-    description:
-      "A fluid satin-effect camisole in a soft printed finish, cut on a gentle bias for natural drape. Adjustable straps and a scooped neckline make it easy to dress up under a blazer or wear alone on warmer days.",
-  },
-  {
-    name: "Viscose Relaxed T-Shirt",
-    price: 22,
-    category: "Tops & Blouses",
-    size: "XS, S, M, L, XL",
-    inStock: true,
-    description:
-      "A drapey viscose-blend tee with a relaxed, slightly boxy fit and a dropped shoulder seam. The fabric has a soft, cool hand-feel that makes it a genuine step up from a basic cotton tee, in a versatile crew neckline.",
-  },
-  {
-    name: "Embossed Knit Cardigan",
-    price: 33,
-    category: "Knitwear",
-    size: "XS, S, M, L",
+    name: "UI/UX Design for Beginners",
+    price: 35,
+    category: "Design & Creative",
+    level: "Beginner",
+    hours: 10,
+    format: "Self-paced video course + Figma files",
+    rating: 4.9,
     inStock: true,
     popular: true,
     description:
-      "A textured cardigan knitted in an embossed floral-effect stitch, with a relaxed, open front and dropped shoulders. Ribbed cuffs and hem keep the shape through wear, and the mid-weight yarn makes it a genuine three-season layer.",
+      "Go from a blank canvas to a clickable prototype. Covers user research basics, wireframing, Figma component systems, and usability testing, structured around a single app project you design from start to finish across the course.",
   },
   {
-    name: "High Turtleneck Jumper",
-    price: 30,
-    category: "Knitwear",
-    size: "XS, S, M, L",
-    inStock: true,
-    description:
-      "A fine-gauge turtleneck jumper knitted from a soft cotton-wool blend, with a fitted rib body and a generously high neck. Long sleeves finish in a ribbed cuff, making this the layering piece the rest of your wardrobe builds around.",
-  },
-  {
-    name: "Cardigan With Pockets",
+    name: "Adobe Photoshop Creative Mastery",
     price: 29,
-    category: "Knitwear",
-    size: "XS, S, M, L, XL",
+    category: "Design & Creative",
+    level: "Intermediate",
+    hours: 8,
+    format: "Self-paced video course",
+    rating: 4.6,
     inStock: true,
     description:
-      "A classic button-through cardigan finished with two patch pockets at the hip. Knitted in a soft acrylic-cotton blend with a ribbed collar, cuffs and hem, it layers easily over blouses and tees for a polished, put-together look.",
+      "Move past basic edits into compositing, retouching, and advanced layer work. Built for anyone producing marketing or product imagery who wants control over masks, blend modes, and non-destructive editing without the guesswork.",
   },
   {
-    name: "Lightweight Fitted Jumper",
-    price: 26,
-    category: "Knitwear",
-    size: "XS, S, M, L",
+    name: "Canva for Content Creators",
+    price: 22,
+    category: "Design & Creative",
+    level: "Beginner",
+    hours: 5,
+    format: "Self-paced video course + templates",
+    rating: 4.6,
     inStock: true,
     description:
-      "A fine-knit fitted jumper in a lightweight cotton-blend yarn, cut close to the body with a round neckline. Thin enough to layer under a jacket, substantial enough to wear on its own — a genuine knitwear staple.",
+      "A fast, practical course for creators who need on-brand graphics without a design background. Covers brand kits, reusable templates, animated posts, and a repeatable workflow for turning one piece of content into a week's worth of posts.",
   },
   {
-    name: "Faux Suede Biker Jacket",
-    price: 39,
-    category: "Outerwear",
-    size: "XS, S, M, L",
-    inStock: true,
-    popular: true,
-    description:
-      "A soft-hand faux suede jacket cut in a classic biker silhouette, with an asymmetric zip front, notch lapel, and zippered cuffs. Fully lined for easy on-off wear, it adds an edge to dresses and softens up denim in equal measure.",
-  },
-  {
-    name: "Parka Jacket With Hood",
-    price: 38,
-    category: "Outerwear",
-    size: "S, M, L, XL",
-    inStock: true,
-    description:
-      "A lightweight parka in a water-resistant shell, finished with a drawstring hood, adjustable waist toggle, and four functional pockets. Built for transitional weather, it layers easily over knitwear without adding bulk.",
-  },
-  {
-    name: "Blended Wool Coat",
-    price: 40,
-    category: "Outerwear",
-    size: "XS, S, M, L",
-    inStock: true,
-    description:
-      "A single-breasted wool-blend coat with a notch lapel, welt pockets, and a straight, tailored silhouette that skims rather than clings. A genuine outerwear anchor, dressy enough for the office and warm enough for daily wear.",
-  },
-  {
-    name: "Basic Sweat Joggers",
-    price: 24,
-    category: "Denim & Trousers",
-    size: "XS, S, M, L, XL",
-    inStock: true,
-    description:
-      "Relaxed-fit joggers in a brushed-back cotton fleece, with an elasticated drawstring waist and ribbed cuffs at the ankle. Deep side pockets and a soft, substantial hand-feel make these a genuine loungewear-to-errands staple.",
-  },
-  {
-    name: "Straight Leg Denim Jeans",
+    name: "Digital Marketing Strategy Blueprint",
     price: 34,
-    category: "Denim & Trousers",
-    size: "XS, S, M, L, XL",
+    category: "Marketing & Sales",
+    level: "Intermediate",
+    hours: 9,
+    format: "Self-paced video course + planning kit",
+    rating: 4.7,
+    inStock: true,
+    description:
+      "A channel-agnostic framework for planning a marketing strategy from scratch — audience research, positioning, channel selection, budget allocation, and measurement. Includes the same planning worksheet used to build the in-course example strategy end to end.",
+  },
+  {
+    name: "Social Media Growth & Content Systems",
+    price: 26,
+    category: "Marketing & Sales",
+    level: "Beginner",
+    hours: 6,
+    format: "Self-paced video course",
+    rating: 4.8,
     inStock: true,
     popular: true,
     description:
-      "Mid-rise straight leg jeans in a rigid cotton denim with a hint of stretch for comfort. A classic five-pocket construction and a clean, un-distressed wash make these the jeans that go with everything else in your wardrobe.",
+      "Build a content system that doesn't depend on daily inspiration — batching, repurposing, a 30-day content calendar template, and platform-specific posting tactics for Instagram, TikTok and LinkedIn. Focused on consistent output over viral luck.",
   },
   {
-    name: "Pleated Wide-Leg Trousers",
+    name: "Search Engine Optimization Essentials",
     price: 31,
-    category: "Denim & Trousers",
-    size: "XS, S, M, L",
+    category: "Marketing & Sales",
+    level: "Beginner",
+    hours: 8,
+    format: "Self-paced video course + audit checklist",
+    rating: 4.6,
     inStock: true,
     description:
-      "Tailored wide-leg trousers with a front pleat and a fluid drape from a lightweight woven fabric. A concealed side zip and belt loops at a flattering high rise make these easy to dress up for the office or down for the weekend.",
+      "Keyword research, on-page optimization, technical SEO basics, and link building explained without the jargon. You'll run a full SEO audit on a real site using the same checklist included with the course, so the skill transfers immediately.",
   },
   {
-    name: "Quilted Chain Shoulder Bag",
+    name: "Sales Funnel & Copywriting Bootcamp",
+    price: 33,
+    category: "Marketing & Sales",
+    level: "Intermediate",
+    hours: 9,
+    format: "Self-paced video course + swipe file",
+    rating: 4.7,
+    inStock: true,
+    description:
+      "Learn to write landing pages, email sequences, and ad copy that move people through a funnel, from cold traffic to paying customer. Includes an annotated swipe file of real, high-performing copy broken down line by line.",
+  },
+  {
+    name: "Data Analysis with Python",
+    price: 40,
+    category: "Data & Analytics",
+    level: "Intermediate",
+    hours: 14,
+    format: "Self-paced video course + notebooks",
+    rating: 4.9,
+    inStock: true,
+    popular: true,
+    description:
+      "Covers pandas, data cleaning, exploratory analysis, and visualization with matplotlib and seaborn, all applied to real, messy datasets rather than toy examples. Ends with a full analysis project you can add directly to a portfolio.",
+  },
+  {
+    name: "Power BI for Decision Makers",
     price: 36,
-    category: "Accessories",
-    size: "One Size",
+    category: "Data & Analytics",
+    level: "Intermediate",
+    hours: 10,
+    format: "Self-paced video course + sample datasets",
+    rating: 4.7,
     inStock: true,
     description:
-      "A structured quilted shoulder bag finished with a polished chain-and-leather strap and a signature turn-lock closure. Sized to carry the essentials, it works as a daytime crossbody or an evening shoulder bag in equal measure.",
+      "Build interactive dashboards and reports that stakeholders actually use — data modelling, DAX fundamentals, and dashboard design that avoids the usual clutter. Structured around building one polished executive dashboard from raw data to publish.",
   },
   {
-    name: "Wide Brim Straw Hat",
-    price: 23,
-    category: "Accessories",
-    size: "One Size",
+    name: "SQL for Data Professionals",
+    price: 30,
+    category: "Data & Analytics",
+    level: "Beginner",
+    hours: 9,
+    format: "Self-paced video course + practice database",
+    rating: 4.8,
     inStock: true,
     description:
-      "A woven straw hat with a wide, gently curved brim and a grosgrain ribbon band. Lightweight and packable, it's the finishing piece for warm-weather outfits and genuine sun protection on brighter days.",
+      "From SELECT statements to window functions and query optimization, taught against a realistic sample database so every exercise resembles a question you'd actually be asked to answer at work.",
+  },
+  {
+    name: "Google Sheets Automation & Dashboards",
+    price: 24,
+    category: "Productivity & Tools",
+    level: "Beginner",
+    hours: 6,
+    format: "Self-paced video course + templates",
+    rating: 4.6,
+    inStock: true,
+    description:
+      "Turn Google Sheets into a lightweight reporting tool — formulas, conditional formatting, Apps Script basics, and linked dashboards that update themselves. Built for teams that need automation without a full BI stack.",
+  },
+  {
+    name: "Notion for Productivity & Project Management",
+    price: 21,
+    category: "Productivity & Tools",
+    level: "Beginner",
+    hours: 5,
+    format: "Self-paced video course + template pack",
+    rating: 4.7,
+    inStock: true,
+    description:
+      "A practical walkthrough of building a Notion workspace that sticks — databases, views, relations, and a project tracker you can duplicate and adapt on day one. Focused on systems you'll still be using in six months.",
+  },
+  {
+    name: "Project Management with Agile & Scrum",
+    price: 38,
+    category: "Productivity & Tools",
+    level: "Intermediate",
+    hours: 11,
+    format: "Self-paced video course + templates",
+    rating: 4.8,
+    inStock: true,
+    description:
+      "Covers Scrum roles, ceremonies, and backlog management alongside practical Agile planning you can run without certification-speak. Includes sprint planning templates and a sample backlog to practice against.",
+  },
+  {
+    name: "Public Speaking & Presentation Skills",
+    price: 23,
+    category: "Personal Growth",
+    level: "Beginner",
+    hours: 5,
+    format: "Self-paced video course",
+    rating: 4.7,
+    inStock: true,
+    description:
+      "Structure, delivery, and nerves — practical techniques for building a talk that holds attention and delivering it without reading from a script. Includes a framework for turning any topic into a clear, three-part presentation.",
+  },
+  {
+    name: "Time Management & Deep Work Systems",
+    price: 20,
+    category: "Personal Growth",
+    level: "Beginner",
+    hours: 4,
+    format: "Self-paced video course + planner",
+    rating: 4.6,
+    inStock: true,
+    description:
+      "A no-nonsense system for protecting focused work time — task triage, calendar blocking, and reducing context-switching. Short by design, built to be finished and applied in a single weekend.",
   },
 ];
 
@@ -242,11 +313,15 @@ export const products: Product[] = seeds.map((seed, index) => {
     name: seed.name,
     slug,
     price: seed.price,
+    ngnOverride: seed.ngnOverride,
     category: seed.category,
-    size: seed.size,
+    level: seed.level,
+    hours: seed.hours,
+    format: seed.format,
+    rating: seed.rating,
     inStock: seed.inStock,
     popular: seed.popular,
-    image: `/products/${slug}.png`,
+    image: `/products/${slug}.jpg`,
     description: seed.description,
   };
 });

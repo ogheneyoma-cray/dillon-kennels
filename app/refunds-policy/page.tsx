@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { site, addressLines } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Refunds Policy | ${site.name}`,
-  description: `Returns, exchanges, and refund timelines for ${site.name} orders.`,
+  description: `Refund eligibility and processing timelines for ${site.name} course purchases.`,
 };
 
 export default function RefundsPolicyPage() {
@@ -11,61 +11,57 @@ export default function RefundsPolicyPage() {
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Legal</p>
       <h1 className="section-heading mt-3">Refunds Policy</h1>
-      <p className="mt-2 text-sm text-ink/50">Last updated: August 2026</p>
+      <p className="mt-2 text-sm text-ink/50">Last updated: September 2026</p>
 
       <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
         <section>
-          <h2 className="font-display text-lg text-ink">Return Window</h2>
+          <h2 className="font-display text-lg font-bold text-ink">Refund Window</h2>
           <p className="mt-3 leading-relaxed">
-            We accept returns and exchanges within 7 days of the delivery
-            date shown on your tracking confirmation. To be eligible, items
-            must be unworn, unwashed, undamaged, and returned with their
-            original tags and packaging intact. Items marked as final sale
-            at the time of purchase are not eligible for return.
+            Because our courses are delivered digitally and access is
+            instant, we offer refunds within 48 hours of purchase, provided
+            you have not completed more than 20% of the course content.
+            This window lets you evaluate whether a course is the right fit
+            before we treat the purchase as final.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg text-ink">How to Start a Return</h2>
+          <h2 className="font-display text-lg font-bold text-ink">How to Request a Refund</h2>
           <p className="mt-3 leading-relaxed">
-            Email {site.email} with your order number and the reason for
-            your return within 7 days of delivery. Our team will confirm
-            your eligibility and provide instructions for returning the
-            item, including our studio address at {addressLines.join(", ")}.
+            Email {site.email} with your order number and the course name
+            within 48 hours of purchase. Our team will review your request
+            against your course progress and confirm eligibility within one
+            business day.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg text-ink">Refund Processing</h2>
+          <h2 className="font-display text-lg font-bold text-ink">Refund Processing</h2>
           <p className="mt-3 leading-relaxed">
-            Once we receive and inspect your returned item, we will notify
-            you of the approval status of your refund. Approved refunds are
-            processed back to the original Visa or Mastercard used for
-            payment within 5–10 business days, depending on your card
-            issuer&apos;s processing times. Return shipping costs are covered
-            by the customer unless the return is due to a defect or an
-            error on our part.
+            Approved refunds are processed back to the original Visa or
+            Mastercard used for payment within 5–10 business days, depending
+            on your card issuer&apos;s processing times. Once a refund is
+            issued, access to the course is revoked.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg text-ink">Exchanges</h2>
+          <h2 className="font-display text-lg font-bold text-ink">Non-Refundable Situations</h2>
           <p className="mt-3 leading-relaxed">
-            If you&apos;d like a different size, indicate this when starting
-            your return and we&apos;ll prioritize shipping the exchange item
-            as soon as your returned item is received, subject to
-            availability. If your preferred replacement is out of stock, we
-            will offer a full refund instead.
+            Requests made after the 48-hour window, or after more than 20%
+            of a course has been accessed, are not eligible for a refund.
+            This threshold exists because digital course content, once
+            substantially consumed, cannot be meaningfully &quot;returned.&quot;
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg text-ink">Damaged or Incorrect Items</h2>
+          <h2 className="font-display text-lg font-bold text-ink">Access Issues</h2>
           <p className="mt-3 leading-relaxed">
-            If your order arrives damaged or you receive the wrong item,
-            contact us within 48 hours of delivery with photos of the item
-            and packaging. We will arrange a replacement or full refund,
-            including any shipping costs, at no additional charge to you.
+            If you paid for a course but did not receive your access link,
+            or you&apos;re experiencing a technical issue accessing your
+            course, contact us within 48 hours with your order number and
+            we&apos;ll resolve it or issue a full refund at no charge to you.
           </p>
         </section>
       </div>

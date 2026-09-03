@@ -19,7 +19,7 @@
   }
 
   ::selection {
-    background-color: #c21e4b;
+    background-color: #4f5ff2;
     color: #ffffff;
   }
 }
@@ -30,23 +30,23 @@
   }
 
   .eyebrow {
-    @apply text-xs font-bold uppercase tracking-[0.22em] text-raspberry;
+    @apply text-xs font-bold uppercase tracking-[0.22em] text-indigo;
   }
 
   .btn-primary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 bg-ink px-7 py-3 text-sm font-bold uppercase tracking-wide text-paper transition-colors duration-200 hover:bg-raspberry active:bg-raspberry-dark;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-indigo px-7 py-3 text-sm font-bold text-paper transition-colors duration-200 hover:bg-indigo-dark active:bg-indigo-dark;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 border-2 border-ink px-7 py-3 text-sm font-bold uppercase tracking-wide text-ink transition-colors duration-200 hover:border-raspberry hover:text-raspberry;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border-2 border-ink/15 px-7 py-3 text-sm font-bold text-ink transition-colors duration-200 hover:border-indigo hover:text-indigo;
   }
 
   .btn-ghost {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-ink underline decoration-raspberry decoration-2 underline-offset-4 transition-colors hover:text-raspberry;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-ink underline decoration-indigo decoration-2 underline-offset-4 transition-colors hover:text-indigo;
   }
 
   .input-field {
-    @apply w-full min-h-[44px] border border-ink/20 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-raspberry focus:outline-none focus:ring-1 focus:ring-raspberry;
+    @apply w-full min-h-[44px] rounded-lg border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-indigo focus:outline-none focus:ring-1 focus:ring-indigo;
   }
 
   .label-text {
@@ -54,10 +54,14 @@
   }
 
   .section-heading {
-    @apply font-display text-4xl uppercase leading-[1.05] tracking-tight text-ink sm:text-5xl;
+    @apply font-display text-4xl font-bold leading-[1.08] tracking-tight text-ink sm:text-5xl;
   }
 
   .badge-pill {
-    @apply inline-flex items-center gap-1.5 rounded-full bg-raspberry-pale px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-raspberry-dark;
+    @apply inline-flex items-center gap-1.5 rounded-full bg-indigo-pale px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-indigo-dark;
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-ink/10 bg-paper shadow-tile;
   }
 }

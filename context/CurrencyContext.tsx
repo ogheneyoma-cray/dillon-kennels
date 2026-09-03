@@ -18,7 +18,7 @@ const CurrencyContext = createContext<CurrencyContextValue | undefined>(
   undefined
 );
 
-const STORAGE_KEY = "floralisem-currency";
+const STORAGE_KEY = "toyeti-digi-currency";
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
   const [currency, setCurrencyState] = useState<CurrencyCode>("NGN");

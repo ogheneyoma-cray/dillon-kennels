@@ -5,8 +5,8 @@ import ProductCard from "@/components/ProductCard";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `Shop | ${site.name}`,
-  description: `Browse the full ${site.name} collection of dresses, tops, knitwear, outerwear, denim and accessories.`,
+  title: `Courses | ${site.name}`,
+  description: `Browse the full ${site.name} catalog of business, design, marketing, data and productivity courses.`,
 };
 
 export default function ShopPage({
@@ -23,12 +23,12 @@ export default function ShopPage({
   return (
     <div className="container-page py-12 lg:py-16">
       <div className="max-w-xl">
-        <p className="eyebrow">Full Collection</p>
+        <p className="eyebrow">Full Catalog</p>
         <h1 className="section-heading mt-3">
-          {isValidCategory ? activeCategory : "Shop All"}
+          {isValidCategory ? activeCategory : "All Courses"}
         </h1>
         <p className="mt-4 text-base leading-relaxed text-ink/70">
-          Twenty pieces built for everyday wear. Prices shown convert
+          Twenty self-paced courses built for real work. Prices convert
           automatically between US Dollars and Naira using the toggle in the
           header.
         </p>
@@ -37,10 +37,10 @@ export default function ShopPage({
       <div className="mt-8 flex flex-wrap gap-2">
         <Link
           href="/shop"
-          className={`border px-4 py-2 text-xs font-bold uppercase tracking-wide transition-colors ${
+          className={`rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-wide transition-colors ${
             !isValidCategory
-              ? "border-raspberry bg-raspberry text-paper"
-              : "border-ink/20 text-ink/70 hover:border-raspberry hover:text-raspberry"
+              ? "border-indigo bg-indigo text-paper"
+              : "border-ink/15 text-ink/70 hover:border-indigo hover:text-indigo"
           }`}
         >
           All
@@ -49,10 +49,10 @@ export default function ShopPage({
           <Link
             key={category}
             href={`/shop?category=${encodeURIComponent(category)}`}
-            className={`border px-4 py-2 text-xs font-bold uppercase tracking-wide transition-colors ${
+            className={`rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-wide transition-colors ${
               activeCategory === category
-                ? "border-raspberry bg-raspberry text-paper"
-                : "border-ink/20 text-ink/70 hover:border-raspberry hover:text-raspberry"
+                ? "border-indigo bg-indigo text-paper"
+                : "border-ink/15 text-ink/70 hover:border-indigo hover:text-indigo"
             }`}
           >
             {category}

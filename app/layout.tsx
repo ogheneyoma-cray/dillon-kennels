@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo_Black, Public_Sans } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
@@ -7,22 +7,22 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
 
-const archivoBlack = Archivo_Black({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-archivo-black",
+  variable: "--font-space-grotesk",
   display: "swap",
-  weight: ["400"],
+  weight: ["500", "600", "700"],
 });
 
-const publicSans = Public_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-public-sans",
+  variable: "--font-inter",
   display: "swap",
   weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: `${site.name} | Womenswear with a point of view`,
+  title: `${site.name} | Skills you can start using today`,
   description: site.description,
 };
 
@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${archivoBlack.variable} ${publicSans.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
         <CurrencyProvider>
           <CartProvider>
