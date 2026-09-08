@@ -44,10 +44,10 @@ export default function ShippingPolicyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-ink">Prices in Cedis</h2>
+          <h2 className="font-display text-xl font-semibold text-ink">Prices in Naira</h2>
           <p className="mt-3 leading-relaxed">
             Prices on this site are held in US Dollars. If you're browsing
-            in Ghana Cedis, the figure shown is a conversion at the
+            in Nigerian Naira, the figure shown is a conversion at the
             demonstration rate used across the site, and the amount
             charged at checkout follows that same rate.
           </p>

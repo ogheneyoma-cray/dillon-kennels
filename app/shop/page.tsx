@@ -32,7 +32,7 @@ export default function ShopPage({
         <p className="mt-4 text-base leading-relaxed text-ink/70">
           Thirty ebooks across business, self-development, technology,
           health and fiction — each priced up front. Prices convert
-          automatically between US Dollars and Ghana Cedis using the toggle
+          automatically between US Dollars and Naira using the toggle
           in the header.
         </p>
       </div>

@@ -34,12 +34,12 @@ const GROUPS = [
       {
         question: "Are prices really shown up front?",
         answer:
-          "Yes — every ebook on the site is priced in full before you buy, in either US Dollars or Ghana Cedis. There are no hidden fees added at checkout.",
+          "Yes — every ebook on the site is priced in full before you buy, in either US Dollars or Naira. There are no hidden fees added at checkout.",
       },
       {
         question: "Which currencies can I pay in?",
         answer:
-          "Prices are set in US Dollars and converted to Ghana Cedis using the toggle in the header. The currency you have selected at checkout is the amount charged to your card.",
+          "Prices are set in US Dollars and converted to Naira using the toggle in the header. The currency you have selected at checkout is the amount charged to your card.",
       },
       {
         question: "Is my card information stored on your site?",

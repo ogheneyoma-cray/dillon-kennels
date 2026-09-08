@@ -28,7 +28,7 @@ export default function TermsPage() {
           <h2 className="font-display text-xl font-semibold text-ink">2. Products &amp; Pricing</h2>
           <p className="mt-3 leading-relaxed">
             All prices are listed in US Dollars ($) and also displayed in
-            Ghana Cedis (GH₵) for reference using a fixed conversion rate,
+            Nigerian Naira (₦) for reference using a fixed conversion rate,
             which may differ slightly from real-time exchange rates. We
             reserve the right to update pricing at any time without prior
             notice, though changes will never affect an order already
