@@ -45,7 +45,7 @@ const seeds: Seed[] = [
   {
     name: "Small Business Operations Playbook",
     instructor: "Derek Ashworth",
-    price: 34,
+    price: 410,
     rating: 5,
     category: "Business & Management",
     popular: true,
@@ -55,7 +55,7 @@ const seeds: Seed[] = [
   {
     name: "Leading Without Ego",
     instructor: "Monica Reyes",
-    price: 28,
+    price: 305,
     rating: 4,
     category: "Business & Management",
     description:
@@ -64,7 +64,7 @@ const seeds: Seed[] = [
   {
     name: "The Founder's Finance Crash Course",
     instructor: "Patrick Owusu",
-    price: 32,
+    price: 375,
     rating: 5,
     category: "Business & Management",
     description:
@@ -73,7 +73,7 @@ const seeds: Seed[] = [
   {
     name: "Negotiation for Everyday Deals",
     instructor: "Sarah Lindqvist",
-    price: 25,
+    price: 255,
     rating: 4,
     category: "Business & Management",
     description:
@@ -82,7 +82,7 @@ const seeds: Seed[] = [
   {
     name: "Building a Business That Runs Without You",
     instructor: "Ibrahim Sanni",
-    price: 37,
+    price: 465,
     rating: 5,
     category: "Business & Management",
     description:
@@ -93,7 +93,7 @@ const seeds: Seed[] = [
   {
     name: "Full-Stack Foundations",
     instructor: "Leah Buchanan",
-    price: 39,
+    price: 500,
     rating: 5,
     category: "Website Development",
     popular: true,
@@ -103,7 +103,7 @@ const seeds: Seed[] = [
   {
     name: "Responsive Design From Scratch",
     instructor: "Marcus Delgado",
-    price: 27,
+    price: 290,
     rating: 4,
     category: "Website Development",
     description:
@@ -112,7 +112,7 @@ const seeds: Seed[] = [
   {
     name: "APIs for Front-End Developers",
     instructor: "Tomiwa Adekunle",
-    price: 31,
+    price: 360,
     rating: 4,
     category: "Website Development",
     description:
@@ -121,7 +121,7 @@ const seeds: Seed[] = [
   {
     name: "Debugging Like a Senior Engineer",
     instructor: "Renata Kowalski",
-    price: 29,
+    price: 325,
     rating: 5,
     category: "Website Development",
     description:
@@ -130,7 +130,7 @@ const seeds: Seed[] = [
   {
     name: "Ship Your First Web App",
     instructor: "Colin Frasier",
-    price: 24,
+    price: 235,
     rating: 4,
     category: "Website Development",
     description:
@@ -141,7 +141,7 @@ const seeds: Seed[] = [
   {
     name: "Performance Marketing Fundamentals",
     instructor: "Yara Haddad",
-    price: 33,
+    price: 395,
     rating: 5,
     category: "Digital Marketing",
     popular: true,
@@ -151,7 +151,7 @@ const seeds: Seed[] = [
   {
     name: "The Organic Traffic Blueprint",
     instructor: "Femi Okonjo",
-    price: 26,
+    price: 270,
     rating: 4,
     category: "Digital Marketing",
     description:
@@ -160,7 +160,7 @@ const seeds: Seed[] = [
   {
     name: "Marketing Analytics for Non-Analysts",
     instructor: "Sasha Petrov",
-    price: 30,
+    price: 340,
     rating: 4,
     category: "Digital Marketing",
     description:
@@ -169,7 +169,7 @@ const seeds: Seed[] = [
   {
     name: "Building Campaigns That Convert",
     instructor: "Aisha Bello",
-    price: 28,
+    price: 305,
     rating: 5,
     category: "Digital Marketing",
     description:
@@ -178,7 +178,7 @@ const seeds: Seed[] = [
   {
     name: "Brand Positioning in a Noisy Market",
     instructor: "Diego Alvarez",
-    price: 32,
+    price: 375,
     rating: 4,
     category: "Digital Marketing",
     description:
@@ -189,7 +189,7 @@ const seeds: Seed[] = [
   {
     name: "Design Systems in Practice",
     instructor: "Naomi Chukwu",
-    price: 35,
+    price: 430,
     rating: 5,
     category: "Graphic Design & Visual Arts",
     popular: true,
@@ -199,7 +199,7 @@ const seeds: Seed[] = [
   {
     name: "Typography That Works",
     instructor: "Elliot Marsh",
-    price: 23,
+    price: 220,
     rating: 4,
     category: "Graphic Design & Visual Arts",
     description:
@@ -208,7 +208,7 @@ const seeds: Seed[] = [
   {
     name: "Digital Illustration Foundations",
     instructor: "Priya Nair",
-    price: 27,
+    price: 290,
     rating: 4,
     category: "Graphic Design & Visual Arts",
     description:
@@ -217,7 +217,7 @@ const seeds: Seed[] = [
   {
     name: "Color Theory for Working Designers",
     instructor: "Grace Umeh",
-    price: 22,
+    price: 200,
     rating: 5,
     category: "Graphic Design & Visual Arts",
     description:
@@ -226,7 +226,7 @@ const seeds: Seed[] = [
   {
     name: "From Sketch to Screen",
     instructor: "Hassan Idris",
-    price: 29,
+    price: 325,
     rating: 4,
     category: "Graphic Design & Visual Arts",
     description:
@@ -237,7 +237,7 @@ const seeds: Seed[] = [
   {
     name: "Data Analysis with Spreadsheets",
     instructor: "Ravi Chandran",
-    price: 30,
+    price: 340,
     rating: 4,
     category: "Data Science & Analytics",
     popular: true,
@@ -247,7 +247,7 @@ const seeds: Seed[] = [
   {
     name: "Statistics for Decision Makers",
     instructor: "Ines Coelho",
-    price: 34,
+    price: 410,
     rating: 5,
     category: "Data Science & Analytics",
     description:
@@ -256,7 +256,7 @@ const seeds: Seed[] = [
   {
     name: "Dashboards That Get Used",
     instructor: "Kwabena Mensah",
-    price: 28,
+    price: 305,
     rating: 4,
     category: "Data Science & Analytics",
     description:
@@ -265,7 +265,7 @@ const seeds: Seed[] = [
   {
     name: "SQL for Everyday Analysts",
     instructor: "Fatima Zahra",
-    price: 25,
+    price: 255,
     rating: 4,
     category: "Data Science & Analytics",
     description:
@@ -274,7 +274,7 @@ const seeds: Seed[] = [
   {
     name: "Introduction to Predictive Modeling",
     instructor: "Julian Voss",
-    price: 38,
+    price: 480,
     rating: 4,
     category: "Data Science & Analytics",
     description:
@@ -285,7 +285,7 @@ const seeds: Seed[] = [
   {
     name: "The Practical PM Toolkit",
     instructor: "Bianca Torres",
-    price: 31,
+    price: 360,
     rating: 5,
     category: "Project Management",
     popular: true,
@@ -295,7 +295,7 @@ const seeds: Seed[] = [
   {
     name: "Agile Without the Jargon",
     instructor: "Tunde Fashola",
-    price: 26,
+    price: 270,
     rating: 4,
     category: "Project Management",
     description:
@@ -304,7 +304,7 @@ const seeds: Seed[] = [
   {
     name: "Managing Remote Teams Well",
     instructor: "Nadia Kessler",
-    price: 29,
+    price: 325,
     rating: 4,
     category: "Project Management",
     description:
@@ -313,7 +313,7 @@ const seeds: Seed[] = [
   {
     name: "Risk Management for Small Teams",
     instructor: "Samuel Achebe",
-    price: 27,
+    price: 290,
     rating: 4,
     category: "Project Management",
     description:
@@ -322,7 +322,7 @@ const seeds: Seed[] = [
   {
     name: "From Chaos to Roadmap",
     instructor: "Layla Hassan",
-    price: 33,
+    price: 395,
     rating: 5,
     category: "Project Management",
     description:
