@@ -89,6 +89,7 @@ export const products: Product[] = [
     price: 36,
     category: "App & Dashboard Kits",
     inStock: true,
+    popular: true,
     techStack: "Next.js · Tailwind CSS · Responsive app shell",
     delivery: "Source ZIP + setup guide emailed within minutes of checkout.",
     image: "/products/saas-landing-app-shell-kit.png",
