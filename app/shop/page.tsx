@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: `Shop | ${site.name}`,
   description:
-    "Every ebook Nedupe Limited offers, from business and self-development to technology, health and fiction, priced up front in USD or NGN.",
+    "Every product Myevolt offers, from website templates to dashboard kits and growth tooling, priced up front in USD or NGN.",
 };
 
 export default function ShopPage({
@@ -27,13 +27,13 @@ export default function ShopPage({
       <div className="max-w-xl">
         <p className="eyebrow">Full Catalogue</p>
         <h1 className="section-heading mt-3">
-          {activeCategory ?? "All Ebooks"}
+          {activeCategory ?? "All Products"}
         </h1>
         <p className="mt-4 text-base leading-relaxed text-ink/70">
-          Thirty ebooks across business, self-development, technology,
-          health and fiction — each priced up front. Prices convert
-          automatically between US Dollars and Ghana Cedis using the toggle
-          in the header.
+          Seven products across website templates, app and dashboard kits,
+          and growth tooling — each priced up front. Prices convert
+          automatically between US Dollars and Naira using the toggle in
+          the header.
         </p>
       </div>
 
@@ -41,7 +41,7 @@ export default function ShopPage({
         <a
           href="/shop"
           className={`rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
-            !activeCategory ? "border-sky bg-sky text-white" : "border-ink/20 text-ink hover:border-sky hover:text-sky-dark"
+            !activeCategory ? "border-teal bg-teal text-ink" : "border-ink/20 text-ink hover:border-teal hover:text-teal-dark"
           }`}
         >
           All
@@ -52,8 +52,8 @@ export default function ShopPage({
             href={`/shop?category=${encodeURIComponent(category)}`}
             className={`rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
               activeCategory === category
-                ? "border-sky bg-sky text-white"
-                : "border-ink/20 text-ink hover:border-sky hover:text-sky-dark"
+                ? "border-teal bg-teal text-ink"
+                : "border-ink/20 text-ink hover:border-teal hover:text-teal-dark"
             }`}
           >
             {category}

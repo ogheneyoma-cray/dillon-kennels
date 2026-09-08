@@ -2,12 +2,20 @@
 
 import { useCurrency } from "@/context/CurrencyContext";
 
-export default function CurrencyToggle({ className = "" }: { className?: string }) {
+export default function CurrencyToggle({
+  className = "",
+  tone = "light",
+}: {
+  className?: string;
+  tone?: "light" | "dark";
+}) {
   const { currency, setCurrency } = useCurrency();
+  const border = tone === "dark" ? "border-white/20" : "border-ink/15";
+  const inactive = tone === "dark" ? "text-white/60 hover:text-white" : "text-ink/60 hover:text-ink";
 
   return (
     <div
-      className={`inline-flex items-center rounded-full border border-ink/15 text-xs font-bold uppercase tracking-wider ${className}`}
+      className={`inline-flex items-center rounded-full border ${border} text-xs font-bold uppercase tracking-wider ${className}`}
       role="group"
       aria-label="Select currency"
     >
@@ -15,7 +23,7 @@ export default function CurrencyToggle({ className = "" }: { className?: string 
         type="button"
         onClick={() => setCurrency("USD")}
         className={`min-h-[36px] rounded-full px-3 transition-colors ${
-          currency === "USD" ? "bg-sky text-white" : "bg-transparent text-ink/60 hover:text-ink"
+          currency === "USD" ? "bg-teal text-ink" : `bg-transparent ${inactive}`
         }`}
         aria-pressed={currency === "USD"}
       >
@@ -25,7 +33,7 @@ export default function CurrencyToggle({ className = "" }: { className?: string 
         type="button"
         onClick={() => setCurrency("NGN")}
         className={`min-h-[36px] rounded-full px-3 transition-colors ${
-          currency === "NGN" ? "bg-sky text-white" : "bg-transparent text-ink/60 hover:text-ink"
+          currency === "NGN" ? "bg-teal text-ink" : `bg-transparent ${inactive}`
         }`}
         aria-pressed={currency === "NGN"}
       >

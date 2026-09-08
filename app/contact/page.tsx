@@ -5,7 +5,7 @@ import { addressLines, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Contact Us | ${site.name}`,
-  description: "Get in touch with the Nedupe Limited team — office address, email, and support hours.",
+  description: "Get in touch with the Myevolt team — office address, email, and support hours.",
 };
 
 export default function ContactPage() {
@@ -14,9 +14,9 @@ export default function ContactPage() {
       <p className="eyebrow">Get in Touch</p>
       <h1 className="section-heading mt-3">Contact Us</h1>
       <p className="mt-4 max-w-xl text-ink/70">
-        A question about an order, a download that isn't opening, or
-        something you'd rather ask before buying — send a message or reach
-        out directly using the details below.
+        A question about scope, a build that isn't quite right, or something
+        you'd rather ask before ordering — send a message or reach out
+        directly using the details below.
       </p>
 
       <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_1fr]">
@@ -39,7 +39,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Email</dt>
                 <dd className="mt-1">
-                  <a href={`mailto:${site.email}`} className="hover:text-sky-dark">
+                  <a href={`mailto:${site.email}`} className="hover:text-teal-dark">
                     {site.email}
                   </a>
                 </dd>
@@ -47,7 +47,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Phone</dt>
                 <dd className="mt-1">
-                  <a href={`tel:${site.phone}`} className="hover:text-sky-dark">
+                  <a href={`tel:${site.phone}`} className="hover:text-teal-dark">
                     {site.phone}
                   </a>
                 </dd>
@@ -78,7 +78,7 @@ export default function ContactPage() {
       <section className="mt-20 border-t border-ink/10 pt-14 text-center">
         <h2 className="section-heading">Have a Quick Question?</h2>
         <p className="mx-auto mt-3 max-w-md text-ink/70">
-          Check the FAQ before writing in — most download, licensing and
+          Check the FAQ before writing in — most delivery, licensing and
           payment questions are already answered there.
         </p>
         <Link href="/faq" className="btn-secondary mt-6 inline-flex">

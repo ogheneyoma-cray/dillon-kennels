@@ -1,24 +1,37 @@
 import { site } from "@/lib/site";
 
 /**
- * Standalone mark: a rounded square in sky blue with a simple open-book
- * glyph cut out in white, and a small teal page-corner accent — reads
- * clearly at favicon size and carries no location or contact detail.
+ * Standalone mark: a rounded navy square with a glowing teal chevron pair
+ * (a nod to code brackets) and a single amber accent dot — matching the
+ * icon language used across the Canva product illustrations. Carries no
+ * location or contact detail, per brand guidance.
  */
 export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
   return (
     <svg viewBox="0 0 40 40" fill="none" aria-hidden="true" className={className}>
-      <rect width="40" height="40" rx="11" fill="#4FA3D1" />
+      <rect width="40" height="40" rx="11" fill="#0B0F19" />
       <path
-        d="M9 12.5c3.4-1.6 6.6-1.6 9.5 0v16c-2.9-1.6-6.1-1.6-9.5 0v-16Z"
-        fill="#FFFFFF"
+        d="M12 13l-5 7 5 7"
+        stroke="#2FE0C4"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
-        d="M31 12.5c-3.4-1.6-6.6-1.6-9.5 0v16c2.9-1.6 6.1-1.6 9.5 0v-16Z"
-        fill="#FFFFFF"
-        fillOpacity="0.88"
+        d="M22 10l-4 20"
+        stroke="#2FE0C4"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-      <circle cx="30.5" cy="10.5" r="2.6" fill="#E0A23B" />
+      <path
+        d="M28 13l5 7-5 7"
+        stroke="#2FE0C4"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="32.5" cy="9.5" r="2.4" fill="#FFB238" />
     </svg>
   );
 }
@@ -40,7 +53,7 @@ export default function Logo({
   tone?: "ink" | "cream";
 }) {
   const word = tone === "cream" ? "text-white" : "text-ink";
-  const label = tone === "cream" ? "text-white/60" : "text-ink/45";
+  const label = tone === "cream" ? "text-white/50" : "text-ink/45";
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
@@ -50,7 +63,7 @@ export default function Logo({
           {site.wordmark}
         </span>
         <span className={`mt-1 font-body text-[9px] font-bold uppercase tracking-widest2 ${label}`}>
-          Ebooks
+          Software &amp; Web
         </span>
       </span>
     </span>

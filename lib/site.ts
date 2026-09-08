@@ -3,26 +3,26 @@
  * than one place reads from here so there is exactly one line to change per
  * detail.
  *
- * Note: the street address is deliberately NOT surfaced in the logo or on
- * the home page — it appears only on the contact page and within the legal
- * pages, where it is required.
+ * Note: the street address is deliberately NOT surfaced in the logo, the
+ * header, the footer or on the home page — it appears only on the contact
+ * page and within the legal pages, where it is required. Social links are
+ * intentionally absent sitewide.
  */
 export const site = {
-  name: "Nedupe Limited",
-  wordmark: "Nedupe",
-  tagline: "Ebooks worth staying up for",
+  name: "Myevolt",
+  wordmark: "Myevolt",
+  tagline: "Software and web builds, shipped on a fixed price",
   description:
-    "Nedupe Limited is a digital bookstore — practical, well-edited ebooks across business, self-development, technology, health and fiction, delivered instantly as EPUB, PDF and MOBI.",
-  email: "care@nedupe.com",
+    "Myevolt is a software and web development studio — marketing sites, storefronts, dashboards and internal tools, scoped and priced up front, built by a small senior team and delivered as source-ready packages.",
+  email: "help@myevolt.com",
   phone: "234",
   address: {
-    line1: "Flat 2, Plot 612",
-    line2: "Kubwa Extension Layout, Gbazango",
-    line3: "Kubwa, Abuja Municipal Area Council (AMAC)",
-    line4: "Federal Capital Territory (FCT)",
+    line1: "1 Sadiatu Street",
+    line2: "Dopemu",
+    line3: "Agege L.G.A.",
+    line4: "Lagos State",
   },
-  addressOneLine:
-    "Flat 2, Plot 612, Kubwa Extension Layout, Gbazango, Kubwa, Abuja Municipal Area Council (AMAC), Federal Capital Territory (FCT)",
+  addressOneLine: "1 Sadiatu Street, Dopemu, Agege L.G.A., Lagos State",
 } as const;
 
 export const addressLines = [

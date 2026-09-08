@@ -3,7 +3,7 @@ import { addressLines, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Privacy Policy | ${site.name}`,
-  description: "How Nedupe Limited collects, uses, and protects your personal data.",
+  description: "How Myevolt collects, uses, and protects your personal data.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -11,29 +11,29 @@ export default function PrivacyPolicyPage() {
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Legal</p>
       <h1 className="section-heading mt-3">Privacy Policy</h1>
-      <p className="mt-2 text-sm text-ink/50">Last updated: August 2026</p>
+      <p className="mt-2 text-sm text-ink/50">Last updated: September 2026</p>
 
       <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
         <section>
           <h2 className="font-display text-xl font-semibold text-ink">Information We Collect</h2>
           <p className="mt-3 leading-relaxed">
-            When you buy an ebook, contact us, or browse our site, we may
+            When you buy a product, contact us, or browse our site, we may
             collect your name, email address, phone number and billing
-            address. Payment card details entered at checkout are used
-            solely to process your transaction through our hosted payment
-            partner and are not stored on our servers. We also collect
-            limited technical information, such as browser type and general
-            usage patterns, to help us improve the site.
+            address. Payment card details entered at checkout — Mastercard
+            or Visa only — are used solely to process your transaction and
+            are not stored on our servers. We also collect limited technical
+            information, such as browser type and general usage patterns, to
+            help us improve the site.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl font-semibold text-ink">How We Use Your Information</h2>
           <p className="mt-3 leading-relaxed">
-            We use the information you provide to deliver the ebook files
+            We use the information you provide to deliver the product files
             you've purchased, send order confirmations and download links,
             respond to support enquiries, and, where you've opted in, share
-            updates about new titles. We do not sell your personal
+            updates about new products. We do not sell your personal
             information to third parties under any circumstances.
           </p>
         </section>
@@ -52,10 +52,10 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2 className="font-display text-xl font-semibold text-ink">Sharing With Third Parties</h2>
           <p className="mt-3 leading-relaxed">
-            Payment information is processed through a secure third-party
-            payment processor and is never stored on our systems in full.
-            We do not share your personal details with anyone outside the
-            team that fulfils and supports your order.
+            Payment information is processed through a secure card payment
+            processor and is never stored on our systems in full. We do not
+            share your personal details with anyone outside the team that
+            fulfils and supports your order.
           </p>
         </section>
 
@@ -65,7 +65,7 @@ export default function PrivacyPolicyPage() {
             You have the right to request access to, correction of, or
             deletion of your personal information held by us. To make such
             a request, please contact us at{" "}
-            <a href={`mailto:${site.email}`} className="text-sky-dark underline underline-offset-4">
+            <a href={`mailto:${site.email}`} className="text-teal-dark underline underline-offset-4">
               {site.email}
             </a>{" "}
             and we will respond within a reasonable timeframe.
@@ -77,7 +77,7 @@ export default function PrivacyPolicyPage() {
           <p className="mt-3 leading-relaxed">
             If you have any questions about this Privacy Policy, please
             reach out to us at{" "}
-            <a href={`mailto:${site.email}`} className="text-sky-dark underline underline-offset-4">
+            <a href={`mailto:${site.email}`} className="text-teal-dark underline underline-offset-4">
               {site.email}
             </a>{" "}
             or write to us at {addressLines.join(", ")}.

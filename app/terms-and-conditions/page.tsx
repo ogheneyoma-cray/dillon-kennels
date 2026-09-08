@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Terms & Conditions | ${site.name}`,
-  description: "The terms and conditions governing use of the Nedupe Limited website and ebook purchases.",
+  description: "The terms and conditions governing use of the Myevolt website and product purchases.",
 };
 
 export default function TermsPage() {
@@ -11,7 +11,7 @@ export default function TermsPage() {
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Legal</p>
       <h1 className="section-heading mt-3">Terms &amp; Conditions</h1>
-      <p className="mt-2 text-sm text-ink/50">Last updated: August 2026</p>
+      <p className="mt-2 text-sm text-ink/50">Last updated: September 2026</p>
 
       <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
         <section>
@@ -20,7 +20,7 @@ export default function TermsPage() {
             By accessing or using the {site.name} website, you agree to be
             bound by these Terms &amp; Conditions. If you do not agree with
             any part of these terms, please do not use our site or purchase
-            an ebook from us.
+            a product from us.
           </p>
         </section>
 
@@ -28,7 +28,7 @@ export default function TermsPage() {
           <h2 className="font-display text-xl font-semibold text-ink">2. Products &amp; Pricing</h2>
           <p className="mt-3 leading-relaxed">
             All prices are listed in US Dollars ($) and also displayed in
-            Ghana Cedis (GH₵) for reference using a fixed conversion rate,
+            Nigerian Naira (₦) for reference using a fixed conversion rate,
             which may differ slightly from real-time exchange rates. We
             reserve the right to update pricing at any time without prior
             notice, though changes will never affect an order already
@@ -39,33 +39,33 @@ export default function TermsPage() {
         <section>
           <h2 className="font-display text-xl font-semibold text-ink">3. Orders &amp; Payment</h2>
           <p className="mt-3 leading-relaxed">
-            By placing an order, you confirm that the payment and contact
-            information you provide is accurate and that you are authorized
-            to use the payment method submitted. We reserve the right to
-            refuse or cancel any order at our discretion, including in
-            cases of suspected fraud, in which case a full refund will be
-            issued.
+            We accept payment by Mastercard and Visa only. By placing an
+            order, you confirm that the payment and contact information you
+            provide is accurate and that you are authorized to use the card
+            submitted. We reserve the right to refuse or cancel any order at
+            our discretion, including in cases of suspected fraud, in which
+            case a full refund will be issued.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl font-semibold text-ink">4. License to Use</h2>
           <p className="mt-3 leading-relaxed">
-            Purchasing an ebook grants you a non-transferable licence to
-            read it for personal use on your own devices. You may not
-            resell, redistribute, publicly share, or otherwise reproduce
-            the file, in whole or in part, without our prior written
-            consent.
+            Purchasing a product grants you a non-transferable licence to
+            use the source files in a single project — your own or a
+            client's. You may not resell, redistribute, publicly share, or
+            otherwise reproduce the product files themselves, in whole or
+            in part, without our prior written consent.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl font-semibold text-ink">5. Intellectual Property</h2>
           <p className="mt-3 leading-relaxed">
-            All content on this site, including text, cover art, and
-            design, is the property of {site.name} or its authors and may
-            not be reproduced, distributed, or used commercially without
-            prior written consent.
+            All content on this site, including text, illustrations, and
+            design, is the property of {site.name} and may not be
+            reproduced, distributed, or used commercially without prior
+            written consent.
           </p>
         </section>
 
@@ -74,7 +74,7 @@ export default function TermsPage() {
           <p className="mt-3 leading-relaxed">
             {site.name} is not liable for any indirect, incidental, or
             consequential damages arising from the use of our website or
-            ebooks. Our liability for any single order is limited to the
+            products. Our liability for any single order is limited to the
             amount paid for that order.
           </p>
         </section>
@@ -85,7 +85,7 @@ export default function TermsPage() {
             These Terms &amp; Conditions are governed by the laws of the
             Federal Republic of Nigeria. Any disputes arising from these
             terms will be subject to the exclusive jurisdiction of the
-            courts of the Federal Capital Territory, Abuja.
+            courts of Lagos State.
           </p>
         </section>
 

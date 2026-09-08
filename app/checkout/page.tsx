@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { formatMoney } from "@/lib/currency";
+import { MastercardMark, VisaMark } from "@/components/PaymentIcons";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `ND-${random}`;
+  return `MYE-${random}`;
 }
 
 export default function CheckoutPage() {
@@ -23,7 +24,7 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "nedupe-last-order",
+      "myevolt-last-order",
       JSON.stringify({
         orderNumber,
         total: formatMoney(cartTotal, currency),
@@ -40,10 +41,10 @@ export default function CheckoutPage() {
         <p className="eyebrow">Checkout</p>
         <h1 className="section-heading mt-3">Your cart is empty</h1>
         <p className="mt-4 max-w-sm text-ink/70">
-          Add an ebook to your cart before heading to checkout.
+          Add a product to your cart before heading to checkout.
         </p>
         <Link href="/shop" className="btn-primary mt-8">
-          Shop Ebooks
+          Browse Products
         </Link>
       </div>
     );
@@ -127,12 +128,19 @@ export default function CheckoutPage() {
           </fieldset>
 
           <fieldset>
-            <legend className="font-display text-xl font-semibold text-ink">
-              Payment Details
-            </legend>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <legend className="font-display text-xl font-semibold text-ink">
+                Payment Details
+              </legend>
+              <div className="flex items-center gap-2">
+                <MastercardMark />
+                <VisaMark />
+              </div>
+            </div>
             <p className="mt-2 text-xs text-ink/50">
-              Payment on this build is handled by a hosted payment partner —
-              card details entered below are not stored on this site.
+              We accept Mastercard and Visa only. Card details entered below
+              are used solely to process this order and are not stored on
+              our servers.
             </p>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div className="sm:col-span-2">
