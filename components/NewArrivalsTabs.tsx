@@ -26,7 +26,7 @@ export default function NewArrivalsTabs() {
           </button>
         ))}
       </div>
-      <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
+      <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
         {shown.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
