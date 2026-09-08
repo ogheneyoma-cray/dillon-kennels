@@ -27,7 +27,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
     const stored = window.localStorage.getItem(STORAGE_KEY) as
       | CurrencyCode
       | null;
-    if (stored === "GHS" || stored === "USD") {
+    if (stored === "NGN" || stored === "USD") {
       setCurrencyState(stored);
     }
   }, []);

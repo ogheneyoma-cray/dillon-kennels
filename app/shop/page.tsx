@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: `Shop | ${site.name}`,
   description:
-    "Every ebook Nedupe Limited offers, from business and self-development to technology, health and fiction, priced up front in USD or GHS.",
+    "Every ebook Nedupe Limited offers, from business and self-development to technology, health and fiction, priced up front in USD or NGN.",
 };
 
 export default function ShopPage({

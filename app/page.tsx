@@ -21,7 +21,7 @@ const PROMISES = [
     copy: "Every title ships as EPUB, PDF and, where noted, MOBI — pick whichever your reader or app prefers.",
   },
   {
-    title: "Priced in USD or GHS",
+    title: "Priced in USD or NGN",
     copy: "Toggle currency in the header any time; the price you see at checkout is the price you pay.",
   },
 ];
@@ -48,7 +48,7 @@ export default function HomePage() {
             <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft">
               Nedupe Limited curates practical, well-edited ebooks across
               business, self-development, technology, health and fiction —
-              every title delivered instantly, priced up front in USD or GHS.
+              every title delivered instantly, priced up front in USD or NGN.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link href="/shop" className="btn-primary">
