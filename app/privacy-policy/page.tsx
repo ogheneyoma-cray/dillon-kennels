@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Privacy Policy | ${site.name}`,
-  description: "How alcopip collects, uses, and protects your personal data.",
+  description: "How Acegga collects, uses, and protects your personal data.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -11,7 +11,7 @@ export default function PrivacyPolicyPage() {
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Legal</p>
       <h1 className="section-heading mt-3">Privacy Policy</h1>
-      <p className="mt-2 text-sm text-ink/50">Last updated: August 2026</p>
+      <p className="mt-2 text-sm text-ink/50">Last updated: September 2026</p>
 
       <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
         <section>
@@ -20,10 +20,11 @@ export default function PrivacyPolicyPage() {
             When you place an order, contact us, or browse our site, we may
             collect information including your name, email address, phone
             number, delivery address, and order history. Payment card
-            details entered at checkout are used solely to process your
-            transaction and are not stored on our servers. We also collect
-            limited technical information, such as browser type and general
-            usage patterns, to help us improve the site.
+            details entered at checkout — Mastercard or Visa only — are used
+            solely to process your transaction and are not stored on our
+            servers. We also collect limited technical information, such as
+            browser type and general usage patterns, to help us improve the
+            site.
           </p>
         </section>
 
@@ -45,7 +46,7 @@ export default function PrivacyPolicyPage() {
             your shopping cart and your preferred currency between visits.
             This data is stored on your device and is not transmitted to our
             servers. You can clear this data at any time by clearing your
-            browser's site data for alcopip.
+            browser's site data for Acegga.
           </p>
         </section>
 
@@ -55,8 +56,8 @@ export default function PrivacyPolicyPage() {
             We share limited order information — such as your name, address,
             and phone number — with logistics partners solely for the
             purpose of delivering your order. Payment information is
-            processed through secure third-party payment processors and is
-            never stored on our systems in full.
+            processed through a secure card payment processor and is never
+            stored on our systems in full.
           </p>
         </section>
 
@@ -74,7 +75,7 @@ export default function PrivacyPolicyPage() {
           <h2 className="font-display text-xl text-ink">Contact Us</h2>
           <p className="mt-3 leading-relaxed">
             If you have any questions about this Privacy Policy, please reach
-            out to us at {site.email} or {site.phone}, or write to us at{" "}
+            out to us at {site.email} or {site.phoneHref}, or write to us at{" "}
             {site.addressOneLine}.
           </p>
         </section>

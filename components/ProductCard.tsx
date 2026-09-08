@@ -33,7 +33,7 @@ export default function ProductCard({ product }: { product: Product }) {
       </Link>
       <div className="mt-4 flex flex-1 flex-col">
         <Link href={`/shop/${product.slug}`}>
-          <h3 className="font-display text-base font-bold leading-snug text-ink transition-colors group-hover:text-wine">
+          <h3 className="font-display text-base font-bold leading-snug text-ink transition-opacity hover:opacity-70">
             {product.name}
           </h3>
         </Link>
@@ -41,7 +41,7 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.author}
         </p>
         <StarRating rating={product.rating} className="mt-2" />
-        <p className="mt-2 text-sm font-bold text-wine">
+        <p className="mt-2 text-sm font-bold text-ink">
           {formatMoney(product.price, currency)}
         </p>
         <button

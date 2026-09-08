@@ -1,8 +1,8 @@
 /**
- * alcopip wordmark: a small bookmark-ribbon mark ahead of a two-weight
- * wordmark, "alco" set in ink, "pip" in wine italic — echoing the way the
- * Booklovers reference splits its own mark across two colors, without
- * reusing its glyphs. No location text lives here or on the home page.
+ * Acegga wordmark: a small open-book ribbon mark in bright yellow ahead of
+ * a bold navy wordmark — echoing the way the Bookworm reference pairs a
+ * navy nav with a yellow accent, without reusing its glyphs. No location
+ * text lives here or on the home page.
  */
 export default function Logo({
   className = "",
@@ -14,9 +14,7 @@ export default function Logo({
   tone?: "ink" | "cream";
 }) {
   const wordColor = tone === "cream" ? "text-cream" : "text-ink";
-  const accentColor = tone === "cream" ? "text-gold" : "text-wine";
-  const ribbonColor = tone === "cream" ? "text-gold" : "text-wine";
-  const bandColor = tone === "cream" ? "text-cream" : "text-ink";
+  const ribbonColor = tone === "cream" ? "text-gold" : "text-gold-dark";
 
   return (
     <span className={`inline-flex items-center gap-2 ${className}`}>
@@ -33,12 +31,11 @@ export default function Logo({
           fill="currentColor"
           className={ribbonColor}
         />
-        <path d="M2 2h22v6H2V2Z" fill="currentColor" className={bandColor} />
       </svg>
       <span
-        className={`font-display text-2xl leading-none tracking-tight sm:text-3xl ${wordColor} ${wordClassName}`}
+        className={`font-display text-2xl font-bold leading-none tracking-tight sm:text-3xl ${wordColor} ${wordClassName}`}
       >
-        alco<em className={`font-semibold italic ${accentColor}`}>pip</em>
+        Acegga
       </span>
     </span>
   );

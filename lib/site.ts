@@ -8,21 +8,21 @@
  * pages, where it is required. No social links appear anywhere on the site.
  */
 export const site = {
-  name: "alcopip",
-  legalName: "Alcopip Ltd",
-  wordmark: "alcopip",
-  tagline: "Stories worth shelving",
+  name: "Acegga",
+  legalName: "Acegga Ltd",
+  wordmark: "Acegga",
+  tagline: "Discover your next book",
   description:
-    "alcopip is an online bookstore stocking fiction, mystery, drama, cookery and lifestyle titles — around thirty books, priced up front in USD or NGN.",
-  email: "info@aclopip.com",
-  phone: "08078731670",
-  phoneHref: "+2348078731670",
+    "Acegga is a bookstore stocking fiction, romance, mystery, business and children's titles — around fifteen books, priced up front in USD or NGN.",
+  email: "contact@acegga.com",
+  phone: "234",
+  phoneHref: "+234",
   address: {
-    line1: "5, Gbenga Onyewusi Street",
-    line2: "Ajah",
-    line3: "Lagos State, Nigeria",
+    line1: "No. 3 Durumi New Extension",
+    line2: "Gonin Gora",
+    line3: "Chikun Local Government Area, Kaduna State",
   },
-  addressOneLine: "5, Gbenga Onyewusi Street, Ajah, Lagos State, Nigeria",
+  addressOneLine: "No. 3 Durumi New Extension, Gonin Gora, Chikun Local Government Area, Kaduna State",
 } as const;
 
 export const addressLines = [site.address.line1, site.address.line2, site.address.line3];

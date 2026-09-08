@@ -45,11 +45,11 @@ export default function ProductPage({
   return (
     <div className="container-page py-10 lg:py-16">
       <nav className="mb-8 text-xs uppercase tracking-wider text-ink/50">
-        <Link href="/" className="hover:text-wine">
+        <Link href="/" className="hover:text-ink/60">
           Home
         </Link>
         <span className="mx-2">/</span>
-        <Link href="/shop" className="hover:text-wine">
+        <Link href="/shop" className="hover:text-ink/60">
           Shop
         </Link>
         <span className="mx-2">/</span>
@@ -77,7 +77,7 @@ export default function ProductPage({
           <StarRating rating={product.rating} className="mt-3" />
           <ProductPrice
             priceUsd={product.price}
-            className="mt-4 block text-xl font-semibold text-wine"
+            className="mt-4 block text-xl font-bold text-ink"
           />
 
           <p className="mt-6 text-base leading-relaxed text-ink/80">
@@ -91,7 +91,7 @@ export default function ProductPage({
           <dl className="mt-8 space-y-2 border-t border-ink/10 pt-6 text-sm text-ink/70">
             <div className="flex justify-between">
               <dt>Availability</dt>
-              <dd className={product.inStock ? "text-moss" : "text-wine"}>
+              <dd className={product.inStock ? "text-moss" : "text-ink/60"}>
                 {product.inStock ? "In Stock" : "Sold Out"}
               </dd>
             </div>

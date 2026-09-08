@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 
 function ConfirmationContent() {
   const searchParams = useSearchParams();
-  const orderNumber = searchParams.get("order") ?? "ALC-000000";
+  const orderNumber = searchParams.get("order") ?? "ACG-000000";
 
   return (
     <div className="container-page flex flex-col items-center py-20 text-center lg:py-28">
@@ -34,7 +34,7 @@ function ConfirmationContent() {
         <p className="text-xs uppercase tracking-wider text-ink/50">
           Order Number
         </p>
-        <p className="mt-1 font-display text-2xl text-wine">{orderNumber}</p>
+        <p className="mt-1 font-display text-2xl text-ink">{orderNumber}</p>
       </div>
 
       <div className="mt-10 flex flex-wrap justify-center gap-4">

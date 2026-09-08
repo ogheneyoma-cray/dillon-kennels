@@ -1,11 +1,13 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Palette and type lifted from the Booklovers publishing-house reference: a
- * warm cream page, near-black ink for headings and nav, a single deep wine
- * red carrying every call to action and price tag, and a muted gold reserved
- * for star ratings and small badges. A quiet moss green marks in-stock /
- * success states — nowhere else.
+ * Palette and layout lifted from the Bookworm "Home v3" reference: a deep
+ * navy carrying every heading, nav and button, a bold sunflower yellow
+ * reserved for call-to-action backgrounds, badges and star ratings, and a
+ * soft blush pink used the way the reference uses its pale pink promo
+ * bands. Accent text (prices, eyebrows, links) stays navy rather than
+ * yellow so it keeps working on a white page — yellow is a background and
+ * icon color only.
  */
 const config: Config = {
   content: [
@@ -16,30 +18,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#F7EFE1",
+        ink: "#0B1F3A",
+        "ink-soft": "#13294F",
         paper: "#FFFFFF",
-        ink: "#241A16",
-        sand: "#EFE1C8",
-        wine: "#7C1F2E",
-        "wine-dark": "#59141F",
-        "wine-light": "#A83E4C",
-        gold: "#B9902F",
-        "gold-pale": "#F3E6C4",
-        moss: "#4B6B4F",
+        cream: "#FFF8F4",
+        blush: "#FDEEF0",
+        rose: "#D14D72",
+        gold: "#F7D046",
+        "gold-dark": "#E0B816",
+        moss: "#2F8F5B",
+        sand: "#EDEFF3",
       },
       fontFamily: {
-        display: ["var(--font-playfair)", "serif"],
-        body: ["var(--font-karla)", "sans-serif"],
+        display: ["var(--font-lora)", "serif"],
+        body: ["var(--font-nunito)", "sans-serif"],
       },
       letterSpacing: {
-        widest2: "0.2em",
+        widest2: "0.18em",
       },
       maxWidth: {
         content: "1360px",
       },
       boxShadow: {
-        tile: "0 6px 24px rgba(36, 26, 22, 0.1)",
-        lift: "0 20px 44px rgba(36, 26, 22, 0.18)",
+        tile: "0 6px 24px rgba(11, 31, 58, 0.1)",
+        lift: "0 20px 44px rgba(11, 31, 58, 0.2)",
       },
     },
   },

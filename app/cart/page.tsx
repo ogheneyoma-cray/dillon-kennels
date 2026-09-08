@@ -52,7 +52,7 @@ export default function CartPage() {
                   <div>
                     <Link
                       href={`/shop/${item.slug}`}
-                      className="font-display text-base leading-snug text-ink hover:text-wine sm:text-lg"
+                      className="font-display text-base leading-snug text-ink hover:text-ink/60 sm:text-lg"
                     >
                       {item.name}
                     </Link>
@@ -90,7 +90,7 @@ export default function CartPage() {
                   <button
                     type="button"
                     onClick={() => removeFromCart(item.id)}
-                    className="min-h-[44px] px-2 text-sm font-medium text-ink/60 underline underline-offset-4 hover:text-wine"
+                    className="min-h-[44px] px-2 text-sm font-medium text-ink/60 underline underline-offset-4 hover:text-ink/60"
                   >
                     Remove
                   </button>

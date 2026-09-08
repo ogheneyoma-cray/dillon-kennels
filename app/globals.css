@@ -11,10 +11,10 @@
     @apply bg-cream text-ink font-body;
     background-image: radial-gradient(
         circle at 100% 0%,
-        rgba(124, 31, 46, 0.05),
+        rgba(11, 31, 58, 0.05),
         transparent 45%
       ),
-      radial-gradient(circle at 0% 100%, rgba(185, 144, 47, 0.06), transparent 45%);
+      radial-gradient(circle at 0% 100%, rgba(247, 208, 70, 0.08), transparent 45%);
   }
 
   h1,
@@ -25,8 +25,8 @@
   }
 
   ::selection {
-    background-color: #7c1f2e;
-    color: #f7efe1;
+    background-color: #f7d046;
+    color: #0b1f3a;
   }
 }
 
@@ -36,23 +36,23 @@
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-widest2 text-wine;
+    @apply text-xs font-bold uppercase tracking-widest2 text-ink;
   }
 
   .btn-primary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 bg-ink px-7 py-3 text-sm font-semibold uppercase tracking-wider text-cream transition-colors duration-200 hover:bg-wine active:bg-wine-dark;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 bg-ink px-7 py-3 text-sm font-semibold uppercase tracking-wider text-cream transition-colors duration-200 hover:bg-gold hover:text-ink active:bg-gold-dark active:text-ink;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 border border-ink px-7 py-3 text-sm font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:border-wine hover:text-wine;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 border border-ink px-7 py-3 text-sm font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:bg-ink hover:text-cream;
   }
 
   .btn-ghost {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-ink underline decoration-wine decoration-2 underline-offset-4 transition-colors hover:text-wine;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-ink underline decoration-gold-dark decoration-2 underline-offset-4 transition-opacity hover:opacity-70;
   }
 
   .input-field {
-    @apply w-full min-h-[44px] border border-ink/20 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-wine focus:outline-none focus:ring-1 focus:ring-wine;
+    @apply w-full min-h-[44px] border border-ink/20 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-gold-dark focus:outline-none focus:ring-1 focus:ring-gold-dark;
   }
 
   .label-text {
@@ -68,6 +68,6 @@
   }
 
   .badge-ribbon {
-    @apply absolute left-0 top-3 bg-wine px-3 py-1 text-[10px] font-bold uppercase tracking-widest2 text-cream;
+    @apply absolute left-0 top-3 bg-gold px-3 py-1 text-[10px] font-bold uppercase tracking-widest2 text-ink;
   }
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Karla } from "next/font/google";
+import { Lora, Nunito } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
@@ -7,15 +7,15 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
 
-const playfair = Playfair_Display({
+const lora = Lora({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-lora",
   display: "swap",
 });
 
-const karla = Karla({
+const nunito = Nunito({
   subsets: ["latin"],
-  variable: "--font-karla",
+  variable: "--font-nunito",
   display: "swap",
 });
 
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${karla.variable}`}>
+    <html lang="en" className={`${lora.variable} ${nunito.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
         <CurrencyProvider>
           <CartProvider>

@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Terms & Conditions | ${site.name}`,
-  description: "The terms and conditions governing use of the alcopip website and orders.",
+  description: "The terms and conditions governing use of the Acegga website and orders.",
 };
 
 export default function TermsPage() {
@@ -11,13 +11,13 @@ export default function TermsPage() {
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Legal</p>
       <h1 className="section-heading mt-3">Terms & Conditions</h1>
-      <p className="mt-2 text-sm text-ink/50">Last updated: August 2026</p>
+      <p className="mt-2 text-sm text-ink/50">Last updated: September 2026</p>
 
       <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
         <section>
           <h2 className="font-display text-xl text-ink">1. Acceptance of Terms</h2>
           <p className="mt-3 leading-relaxed">
-            By accessing or using the alcopip website, you agree to be bound
+            By accessing or using the Acegga website, you agree to be bound
             by these Terms & Conditions. If you do not agree with any part of
             these terms, please do not use our site or place an order with
             us.
@@ -41,12 +41,12 @@ export default function TermsPage() {
         <section>
           <h2 className="font-display text-xl text-ink">3. Orders & Payment</h2>
           <p className="mt-3 leading-relaxed">
-            By placing an order, you confirm that the payment and delivery
-            information you provide is accurate and that you are authorized
-            to use the payment method submitted. We reserve the right to
-            refuse or cancel any order at our discretion, including in cases
-            of suspected fraud or unavailable stock, in which case a full
-            refund will be issued.
+            We accept payment by Mastercard and Visa only. By placing an
+            order, you confirm that the payment and delivery information you
+            provide is accurate and that you are authorized to use the card
+            submitted. We reserve the right to refuse or cancel any order at
+            our discretion, including in cases of suspected fraud or
+            unavailable stock, in which case a full refund will be issued.
           </p>
         </section>
 
@@ -63,7 +63,7 @@ export default function TermsPage() {
         <section>
           <h2 className="font-display text-xl text-ink">5. Limitation of Liability</h2>
           <p className="mt-3 leading-relaxed">
-            alcopip is not liable for any indirect, incidental, or
+            Acegga is not liable for any indirect, incidental, or
             consequential damages arising from the use of our website or
             products, including delivery delays caused by third-party
             logistics providers beyond our reasonable control.
@@ -75,7 +75,7 @@ export default function TermsPage() {
           <p className="mt-3 leading-relaxed">
             These Terms & Conditions are governed by the laws of the Federal
             Republic of Nigeria. Any disputes arising from these terms will
-            be subject to the exclusive jurisdiction of the courts of Lagos
+            be subject to the exclusive jurisdiction of the courts of Kaduna
             State.
           </p>
         </section>

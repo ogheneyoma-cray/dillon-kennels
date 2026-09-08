@@ -5,19 +5,19 @@ import { addressLines, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: `Contact Us | ${site.name}`,
   description:
-    "Get in touch with the alcopip team — store address, phone, email, and business hours.",
+    "Get in touch with the Acegga team — store address, phone, email, and business hours.",
 };
 
 const FAQS = [
   {
     question: "How long does delivery take within Nigeria?",
     answer:
-      "Orders within Lagos typically arrive within 1–3 business days. Deliveries to other states across Nigeria take 3–7 business days depending on location. You'll receive a tracking update by email once your order has shipped from our Ajah warehouse.",
+      "Orders within Kaduna State typically arrive within 1–3 business days. Deliveries to other states across Nigeria take 3–7 business days depending on location. You'll receive a tracking update by email once your order has shipped from our Gonin Gora store.",
   },
   {
     question: "Do you ship outside Nigeria?",
     answer:
-      "At this time, alcopip ships exclusively within Nigeria. We're working on international shipping options and recommend joining our mailing list or checking back on this page for updates on when international delivery becomes available.",
+      "At this time, Acegga ships exclusively within Nigeria. We're working on international shipping options and recommend joining our mailing list or checking back on this page for updates on when international delivery becomes available.",
   },
   {
     question: "What is your returns policy for damaged or wrong titles?",
@@ -33,6 +33,11 @@ const FAQS = [
     question: "Can I pay in Naira instead of Dollars?",
     answer:
       "Yes — every price on the site is shown in USD by default, but you can switch to NGN at any time using the currency toggle in the header. The total on your order and at checkout updates automatically to match your selection.",
+  },
+  {
+    question: "Which cards do you accept?",
+    answer:
+      "We accept Mastercard and Visa only. Card details entered at checkout are used solely to process your order and are never stored on our servers.",
   },
 ];
 
@@ -66,7 +71,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Email</dt>
                 <dd className="mt-1">
-                  <a href={`mailto:${site.email}`} className="hover:text-wine">
+                  <a href={`mailto:${site.email}`} className="hover:text-ink/60">
                     {site.email}
                   </a>
                 </dd>
@@ -74,7 +79,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Phone</dt>
                 <dd className="mt-1">
-                  <a href={`tel:${site.phoneHref}`} className="hover:text-wine">
+                  <a href={`tel:${site.phoneHref}`} className="hover:text-ink/60">
                     {site.phone}
                   </a>
                 </dd>
@@ -109,7 +114,7 @@ export default function ContactPage() {
             <details key={faq.question} className="group py-5">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg text-ink marker:content-none">
                 {faq.question}
-                <span className="shrink-0 text-xl text-wine transition-transform group-open:rotate-45">
+                <span className="shrink-0 text-xl text-gold-dark transition-transform group-open:rotate-45">
                   +
                 </span>
               </summary>

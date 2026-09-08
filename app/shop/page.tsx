@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: `Shop | ${site.name}`,
   description:
-    "Every title alcopip stocks, from fiction and mystery to drama, cookery and lifestyle, priced up front in USD or NGN.",
+    "Every title Acegga stocks, from fiction and romance to mystery, business and children's books, priced up front in USD or NGN.",
 };
 
 export default function ShopPage({
@@ -33,9 +33,10 @@ export default function ShopPage({
         <p className="eyebrow">Full Catalogue</p>
         <h1 className="section-heading mt-3">{activeCategory ?? "All Books"}</h1>
         <p className="mt-4 text-base leading-relaxed text-ink/70">
-          Thirty titles across fiction, mystery, drama, cookery and lifestyle
-          — each priced up front. Prices convert automatically between US
-          Dollars and Nigerian Naira using the toggle in the header.
+          Fifteen titles across fiction, romance, mystery, business and
+          children's books — each priced up front. Prices convert
+          automatically between US Dollars and Nigerian Naira using the
+          toggle in the header.
         </p>
         {query && (
           <p className="mt-3 text-sm text-ink/60">

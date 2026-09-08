@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { formatMoney } from "@/lib/currency";
+import { MastercardMark, VisaMark } from "@/components/PaymentIcons";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `ALC-${random}`;
+  return `ACG-${random}`;
 }
 
 export default function CheckoutPage() {
@@ -23,7 +24,7 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "alcopip-last-order",
+      "acegga-last-order",
       JSON.stringify({
         orderNumber,
         total: formatMoney(cartTotal, currency),
@@ -124,11 +125,19 @@ export default function CheckoutPage() {
           </fieldset>
 
           <fieldset>
-            <legend className="font-display text-xl text-ink">
-              Payment Details
-            </legend>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <legend className="font-display text-xl text-ink">
+                Payment Details
+              </legend>
+              <div className="flex items-center gap-2">
+                <MastercardMark />
+                <VisaMark />
+              </div>
+            </div>
             <p className="mt-2 text-xs text-ink/50">
-              Demo checkout — card details are not transmitted or stored.
+              We accept Mastercard and Visa only. Card details entered below
+              are used solely to process this order and are not stored on
+              our servers.
             </p>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div className="sm:col-span-2">
