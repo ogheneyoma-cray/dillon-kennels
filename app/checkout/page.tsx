@@ -10,7 +10,7 @@ import { MastercardMark, VisaMark } from "@/components/PaymentIcons";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `ACG-${random}`;
+  return `CBC-${random}`;
 }
 
 export default function CheckoutPage() {
@@ -24,7 +24,7 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "acegga-last-order",
+      "caribcore-last-order",
       JSON.stringify({
         orderNumber,
         total: formatMoney(cartTotal, currency),

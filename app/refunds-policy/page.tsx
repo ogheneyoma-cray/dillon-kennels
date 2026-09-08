@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Refunds Policy | ${site.name}`,
-  description: "Returns and refund timelines for Acegga orders.",
+  description: "Returns and refund timelines for Caribcore orders.",
 };
 
 export default function RefundsPolicyPage() {
@@ -18,28 +18,28 @@ export default function RefundsPolicyPage() {
           <h2 className="font-display text-xl text-ink">Return Window</h2>
           <p className="mt-3 leading-relaxed">
             We accept returns within 7 days of the delivery date shown on
-            your order confirmation, for books that arrive damaged,
+            your order confirmation, for items that arrive damaged,
             defective, or different from what you ordered. To be eligible,
-            the book must be returned in the condition it arrived in.
-            Discounted or clearance titles marked as final sale at the time
-            of purchase are not eligible for return.
+            the item must be returned unused and in the condition it
+            arrived in. Discounted or clearance items marked as final sale
+            at the time of purchase are not eligible for return.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl text-ink">How to Start a Return</h2>
           <p className="mt-3 leading-relaxed">
-            Email {site.email} with your order number and the reason for your
-            return within 7 days of delivery. Our team will confirm your
-            eligibility and provide instructions for returning the title,
-            including our store address at {site.addressOneLine}.
+            Email {site.email} with your order number and the reason for
+            your return within 7 days of delivery. Our team will confirm
+            your eligibility and provide instructions for returning the
+            item, including our store address at {site.addressOneLine}.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl text-ink">Refund Processing</h2>
           <p className="mt-3 leading-relaxed">
-            Once we receive and inspect your returned book, we will notify
+            Once we receive and inspect your returned item, we will notify
             you of the approval status of your refund. Approved refunds are
             processed back to the original Mastercard or Visa card used for
             the order within 5–10 business days, depending on your card
@@ -50,11 +50,11 @@ export default function RefundsPolicyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">Damaged, Missing or Incorrect Titles</h2>
+          <h2 className="font-display text-xl text-ink">Damaged, Missing or Incorrect Items</h2>
           <p className="mt-3 leading-relaxed">
             If your order arrives damaged, incomplete, or you receive the
-            wrong title, contact us within 48 hours of delivery with photos
-            of the book and its packaging. We will arrange a replacement or
+            wrong item, contact us within 48 hours of delivery with photos
+            of the item and its packaging. We will arrange a replacement or
             full refund, including any delivery costs, at no additional
             charge to you.
           </p>

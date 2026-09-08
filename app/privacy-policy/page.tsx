@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Privacy Policy | ${site.name}`,
-  description: "How Acegga collects, uses, and protects your personal data.",
+  description: "How Caribcore collects, uses, and protects your personal data.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -34,7 +34,7 @@ export default function PrivacyPolicyPage() {
             We use the information you provide to process and deliver your
             orders, respond to customer service inquiries, send order
             confirmations and delivery updates, and, where you've opted in,
-            share updates about new releases. We do not sell your personal
+            share updates about new arrivals. We do not sell your personal
             information to third parties under any circumstances.
           </p>
         </section>
@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
             your shopping cart and your preferred currency between visits.
             This data is stored on your device and is not transmitted to our
             servers. You can clear this data at any time by clearing your
-            browser's site data for Acegga.
+            browser's site data for Caribcore.
           </p>
         </section>
 

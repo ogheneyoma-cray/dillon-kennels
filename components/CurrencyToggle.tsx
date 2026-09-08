@@ -12,7 +12,7 @@ export default function CurrencyToggle({
   const { currency, setCurrency } = useCurrency();
   const border = tone === "dark" ? "border-cream/30" : "border-ink/20";
   const inactive = tone === "dark" ? "text-cream/70 hover:text-cream" : "text-ink/70 hover:text-ink";
-  const active = tone === "dark" ? "bg-gold text-ink" : "bg-ink text-cream";
+  const active = tone === "dark" ? "bg-teal text-white" : "bg-ink text-cream";
 
   return (
     <div

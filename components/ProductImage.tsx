@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 /**
- * A book jacket, served straight from /public rather than through
- * /_next/image, since these are static pre-rendered covers.
+ * A product photo, served straight from /public rather than through
+ * /_next/image, since these are static pre-sourced stock photos.
  */
-export default function BookCover({
+export default function ProductImage({
   src,
   alt,
   className = "",
@@ -23,7 +23,7 @@ export default function BookCover({
     <Image
       src={src}
       alt={alt}
-      width={600}
+      width={900}
       height={900}
       unoptimized
       priority={priority}

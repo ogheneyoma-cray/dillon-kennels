@@ -8,21 +8,21 @@
  * pages, where it is required. No social links appear anywhere on the site.
  */
 export const site = {
-  name: "Acegga",
-  legalName: "Acegga Ltd",
-  wordmark: "Acegga",
-  tagline: "Discover your next book",
+  name: "Caribcore",
+  legalName: "Caribcore Ltd",
+  wordmark: "Caribcore",
+  tagline: "Everyday household goods, styled right",
   description:
-    "Acegga is a bookstore stocking fiction, romance, mystery, business and children's titles — around fifteen books, priced up front in USD or NGN.",
-  email: "contact@acegga.com",
+    "Caribcore is a household goods store — kitchen, decor, bedding, storage and lighting essentials, around fifteen pieces, priced up front in USD or NGN.",
+  email: "support@caribcore.com",
   phone: "234",
   phoneHref: "+234",
   address: {
-    line1: "No. 3 Durumi New Extension",
-    line2: "Gonin Gora",
-    line3: "Chikun Local Government Area, Kaduna State",
+    line1: "37B Isiokpo Street",
+    line2: "D/Line",
+    line3: "Port Harcourt City LGA, Rivers State",
   },
-  addressOneLine: "No. 3 Durumi New Extension, Gonin Gora, Chikun Local Government Area, Kaduna State",
+  addressOneLine: "37B Isiokpo Street, D/Line, Port Harcourt City LGA, Rivers State",
 } as const;
 
 export const addressLines = [site.address.line1, site.address.line2, site.address.line3];

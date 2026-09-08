@@ -5,7 +5,7 @@ import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { formatMoney } from "@/lib/currency";
-import BookCover from "@/components/BookCover";
+import ProductImage from "@/components/ProductImage";
 import StarRating from "@/components/StarRating";
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -16,30 +16,29 @@ export default function ProductCard({ product }: { product: Product }) {
     <div className="group relative flex flex-col">
       <Link
         href={`/shop/${product.slug}`}
-        className="relative block aspect-[2/3] overflow-hidden bg-sand shadow-tile"
+        className="relative block aspect-square overflow-hidden rounded-lg bg-sand shadow-tile"
       >
-        <BookCover
+        <ProductImage
           src={product.image}
-          alt={`${product.name} cover`}
+          alt={product.name}
           sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
           className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
         />
-        {product.popular && <span className="badge-ribbon">Bestseller</span>}
+        {product.popular && <span className="badge-new">New</span>}
+        {product.onSale && !product.popular && <span className="badge-sale">Sale</span>}
         {!product.inStock && (
-          <span className="absolute right-0 top-3 bg-ink px-3 py-1 text-[10px] font-bold uppercase tracking-widest2 text-cream">
+          <span className="absolute left-3 top-3 rounded bg-ink px-3 py-1 text-[10px] font-bold uppercase tracking-widest2 text-cream">
             Sold Out
           </span>
         )}
       </Link>
       <div className="mt-4 flex flex-1 flex-col">
         <Link href={`/shop/${product.slug}`}>
-          <h3 className="font-display text-base font-bold leading-snug text-ink transition-opacity hover:opacity-70">
+          <h3 className="font-display text-base font-semibold leading-snug text-ink transition-colors group-hover:text-teal-dark">
             {product.name}
           </h3>
         </Link>
-        <p className="mt-1 text-xs uppercase tracking-wider text-ink/50">
-          {product.author}
-        </p>
+        <p className="mt-1 text-xs text-ink/50">{product.spec}</p>
         <StarRating rating={product.rating} className="mt-2" />
         <p className="mt-2 text-sm font-bold text-ink">
           {formatMoney(product.price, currency)}

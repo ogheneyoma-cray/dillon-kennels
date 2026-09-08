@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Terms & Conditions | ${site.name}`,
-  description: "The terms and conditions governing use of the Acegga website and orders.",
+  description: "The terms and conditions governing use of the Caribcore website and orders.",
 };
 
 export default function TermsPage() {
@@ -17,10 +17,10 @@ export default function TermsPage() {
         <section>
           <h2 className="font-display text-xl text-ink">1. Acceptance of Terms</h2>
           <p className="mt-3 leading-relaxed">
-            By accessing or using the Acegga website, you agree to be bound
-            by these Terms & Conditions. If you do not agree with any part of
-            these terms, please do not use our site or place an order with
-            us.
+            By accessing or using the Caribcore website, you agree to be
+            bound by these Terms & Conditions. If you do not agree with any
+            part of these terms, please do not use our site or place an
+            order with us.
           </p>
         </section>
 
@@ -32,9 +32,9 @@ export default function TermsPage() {
             which may differ slightly from real-time exchange rates. We
             reserve the right to update pricing at any time without prior
             notice, though changes will never affect orders already
-            confirmed. Cover artwork shown on the site is representative of
-            the edition sold and may vary slightly from the printing you
-            receive.
+            confirmed. Product photography shown on the site is
+            representative of the item sold and may vary slightly from the
+            unit you receive.
           </p>
         </section>
 
@@ -53,17 +53,17 @@ export default function TermsPage() {
         <section>
           <h2 className="font-display text-xl text-ink">4. Intellectual Property</h2>
           <p className="mt-3 leading-relaxed">
-            All content on this site, including cover artwork, text, logos,
-            and design, is the property of {site.legalName} or its
-            respective publishers, and may not be reproduced, distributed, or
-            used commercially without prior written consent.
+            All content on this site, including product photography, text,
+            logos, and design, is the property of {site.legalName} and may
+            not be reproduced, distributed, or used commercially without
+            prior written consent.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl text-ink">5. Limitation of Liability</h2>
           <p className="mt-3 leading-relaxed">
-            Acegga is not liable for any indirect, incidental, or
+            Caribcore is not liable for any indirect, incidental, or
             consequential damages arising from the use of our website or
             products, including delivery delays caused by third-party
             logistics providers beyond our reasonable control.
@@ -75,7 +75,7 @@ export default function TermsPage() {
           <p className="mt-3 leading-relaxed">
             These Terms & Conditions are governed by the laws of the Federal
             Republic of Nigeria. Any disputes arising from these terms will
-            be subject to the exclusive jurisdiction of the courts of Kaduna
+            be subject to the exclusive jurisdiction of the courts of Rivers
             State.
           </p>
         </section>

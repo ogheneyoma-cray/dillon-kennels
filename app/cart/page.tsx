@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { formatMoney } from "@/lib/currency";
-import BookCover from "@/components/BookCover";
+import ProductImage from "@/components/ProductImage";
 
 export default function CartPage() {
   const { items, updateQuantity, removeFromCart, cartTotal } = useCart();
@@ -37,13 +37,13 @@ export default function CartPage() {
             <li key={item.id} className="flex gap-4 py-6 sm:gap-6">
               <Link
                 href={`/shop/${item.slug}`}
-                className="relative w-20 shrink-0 overflow-hidden bg-sand sm:w-28"
+                className="relative w-20 shrink-0 overflow-hidden rounded-lg bg-sand sm:w-28"
               >
-                <BookCover
+                <ProductImage
                   src={item.image}
-                  alt={`${item.name} cover`}
+                  alt={item.name}
                   eager
-                  className="w-full"
+                  className="aspect-square w-full object-cover"
                 />
               </Link>
 
@@ -52,7 +52,7 @@ export default function CartPage() {
                   <div>
                     <Link
                       href={`/shop/${item.slug}`}
-                      className="font-display text-base leading-snug text-ink hover:text-ink/60 sm:text-lg"
+                      className="font-display text-base leading-snug text-ink hover:text-teal-dark sm:text-lg"
                     >
                       {item.name}
                     </Link>
@@ -90,7 +90,7 @@ export default function CartPage() {
                   <button
                     type="button"
                     onClick={() => removeFromCart(item.id)}
-                    className="min-h-[44px] px-2 text-sm font-medium text-ink/60 underline underline-offset-4 hover:text-ink/60"
+                    className="min-h-[44px] px-2 text-sm font-medium text-ink/60 underline underline-offset-4 hover:text-teal-dark"
                   >
                     Remove
                   </button>

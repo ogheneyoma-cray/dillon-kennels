@@ -5,24 +5,24 @@ import { addressLines, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: `Contact Us | ${site.name}`,
   description:
-    "Get in touch with the Acegga team — store address, phone, email, and business hours.",
+    "Get in touch with the Caribcore team — store address, phone, email, and business hours.",
 };
 
 const FAQS = [
   {
     question: "How long does delivery take within Nigeria?",
     answer:
-      "Orders within Kaduna State typically arrive within 1–3 business days. Deliveries to other states across Nigeria take 3–7 business days depending on location. You'll receive a tracking update by email once your order has shipped from our Gonin Gora store.",
+      "Orders within Rivers State typically arrive within 1–3 business days. Deliveries to other states across Nigeria take 3–7 business days depending on location. You'll receive a tracking update by email once your order has shipped from our Port Harcourt store.",
   },
   {
     question: "Do you ship outside Nigeria?",
     answer:
-      "At this time, Acegga ships exclusively within Nigeria. We're working on international shipping options and recommend joining our mailing list or checking back on this page for updates on when international delivery becomes available.",
+      "At this time, Caribcore ships exclusively within Nigeria. We're working on international shipping options and recommend joining our mailing list or checking back on this page for updates on when international delivery becomes available.",
   },
   {
-    question: "What is your returns policy for damaged or wrong titles?",
+    question: "What is your returns policy for damaged or wrong items?",
     answer:
-      "We accept returns within 7 days of delivery for books that arrive damaged, defective, or different from what you ordered. Please visit our Refunds Policy page for the full process, including how to initiate a return and expected timelines for refunds.",
+      "We accept returns within 7 days of delivery for items that arrive damaged, defective, or different from what you ordered. Please visit our Refunds Policy page for the full process, including how to initiate a return and expected timelines for refunds.",
   },
   {
     question: "Can I change or cancel my order after placing it?",
@@ -47,7 +47,7 @@ export default function ContactPage() {
       <p className="eyebrow">Get in Touch</p>
       <h1 className="section-heading mt-3">Contact Us</h1>
       <p className="mt-4 max-w-xl text-ink/70">
-        Have a question about an order, a title, or just want to say hello?
+        Have a question about an order, an item, or just want to say hello?
         Send us a message or reach out directly using the details below.
       </p>
 
@@ -71,7 +71,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Email</dt>
                 <dd className="mt-1">
-                  <a href={`mailto:${site.email}`} className="hover:text-ink/60">
+                  <a href={`mailto:${site.email}`} className="hover:text-teal-dark">
                     {site.email}
                   </a>
                 </dd>
@@ -79,7 +79,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Phone</dt>
                 <dd className="mt-1">
-                  <a href={`tel:${site.phoneHref}`} className="hover:text-ink/60">
+                  <a href={`tel:${site.phoneHref}`} className="hover:text-teal-dark">
                     {site.phone}
                   </a>
                 </dd>
@@ -114,7 +114,7 @@ export default function ContactPage() {
             <details key={faq.question} className="group py-5">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg text-ink marker:content-none">
                 {faq.question}
-                <span className="shrink-0 text-xl text-gold-dark transition-transform group-open:rotate-45">
+                <span className="shrink-0 text-xl text-teal-dark transition-transform group-open:rotate-45">
                   +
                 </span>
               </summary>

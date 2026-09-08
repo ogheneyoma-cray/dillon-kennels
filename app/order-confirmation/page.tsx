@@ -6,11 +6,11 @@ import { useSearchParams } from "next/navigation";
 
 function ConfirmationContent() {
   const searchParams = useSearchParams();
-  const orderNumber = searchParams.get("order") ?? "ACG-000000";
+  const orderNumber = searchParams.get("order") ?? "CBC-000000";
 
   return (
     <div className="container-page flex flex-col items-center py-20 text-center lg:py-28">
-      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-moss/15 text-moss">
+      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-teal/15 text-teal-dark">
         <svg
           width="30"
           height="30"

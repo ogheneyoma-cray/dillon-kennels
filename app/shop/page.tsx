@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: `Shop | ${site.name}`,
   description:
-    "Every title Acegga stocks, from fiction and romance to mystery, business and children's books, priced up front in USD or NGN.",
+    "Every item Caribcore stocks, from kitchen and decor to bedding, storage and lighting, priced up front in USD or NGN.",
 };
 
 export default function ShopPage({
@@ -21,9 +21,7 @@ export default function ShopPage({
 
   const shown = products.filter((product) => {
     const matchesCategory = activeCategory ? product.category === activeCategory : true;
-    const matchesQuery = query
-      ? product.name.toLowerCase().includes(query) || product.author.toLowerCase().includes(query)
-      : true;
+    const matchesQuery = query ? product.name.toLowerCase().includes(query) : true;
     return matchesCategory && matchesQuery;
   });
 
@@ -31,10 +29,10 @@ export default function ShopPage({
     <div className="container-page py-12 lg:py-16">
       <div className="max-w-xl">
         <p className="eyebrow">Full Catalogue</p>
-        <h1 className="section-heading mt-3">{activeCategory ?? "All Books"}</h1>
+        <h1 className="section-heading mt-3">{activeCategory ?? "All Products"}</h1>
         <p className="mt-4 text-base leading-relaxed text-ink/70">
-          Fifteen titles across fiction, romance, mystery, business and
-          children's books — each priced up front. Prices convert
+          Fifteen pieces across kitchen &amp; dining, decor, bedding &amp;
+          bath, storage and lighting — each priced up front. Prices convert
           automatically between US Dollars and Nigerian Naira using the
           toggle in the header.
         </p>
@@ -49,7 +47,7 @@ export default function ShopPage({
       <div className="mt-8 flex flex-wrap gap-2.5">
         <a
           href="/shop"
-          className={`border px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
+          className={`rounded-md border px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
             !activeCategory ? "border-ink bg-ink text-cream" : "border-ink/20 text-ink hover:border-ink"
           }`}
         >
@@ -59,7 +57,7 @@ export default function ShopPage({
           <a
             key={category}
             href={`/shop?category=${encodeURIComponent(category)}`}
-            className={`border px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
+            className={`rounded-md border px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
               activeCategory === category
                 ? "border-ink bg-ink text-cream"
                 : "border-ink/20 text-ink hover:border-ink"
@@ -77,7 +75,7 @@ export default function ShopPage({
           ))}
         </div>
       ) : (
-        <p className="mt-16 text-center text-ink/60">No books match that search.</p>
+        <p className="mt-16 text-center text-ink/60">No products match that search.</p>
       )}
     </div>
   );

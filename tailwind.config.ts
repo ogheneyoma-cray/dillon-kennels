@@ -1,13 +1,12 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Palette and layout lifted from the Bookworm "Home v3" reference: a deep
- * navy carrying every heading, nav and button, a bold sunflower yellow
- * reserved for call-to-action backgrounds, badges and star ratings, and a
- * soft blush pink used the way the reference uses its pale pink promo
- * bands. Accent text (prices, eyebrows, links) stays navy rather than
- * yellow so it keeps working on a white page — yellow is a background and
- * icon color only.
+ * Layout lifted from the Ejon reference: a dark utility bar, a search-led
+ * header, a secondary category/nav bar, split promo banners, a trust-badge
+ * strip and a discount-card "Special Offer" grid. The palette is its own —
+ * a Caribbean coastal mix (deep teal ink, turquoise, coral) rather than
+ * the reference's navy-and-red, and distinct from every other client
+ * branch on this repo.
  */
 const config: Config = {
   content: [
@@ -18,30 +17,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0B1F3A",
-        "ink-soft": "#13294F",
+        ink: "#14302C",
+        "ink-soft": "#1D3F39",
         paper: "#FFFFFF",
-        cream: "#FFF8F4",
-        blush: "#FDEEF0",
-        rose: "#D14D72",
-        gold: "#F7D046",
-        "gold-dark": "#E0B816",
-        moss: "#2F8F5B",
-        sand: "#EDEFF3",
+        cream: "#FFF8EF",
+        sand: "#F2E9D8",
+        teal: "#0EA5A0",
+        "teal-dark": "#0B7F7B",
+        coral: "#FF6B4A",
+        "coral-dark": "#E5522F",
+        gold: "#E8AC3D",
       },
       fontFamily: {
-        display: ["var(--font-lora)", "serif"],
-        body: ["var(--font-nunito)", "sans-serif"],
+        display: ["var(--font-poppins)", "sans-serif"],
+        body: ["var(--font-inter)", "sans-serif"],
       },
       letterSpacing: {
-        widest2: "0.18em",
+        widest2: "0.16em",
       },
       maxWidth: {
         content: "1360px",
       },
       boxShadow: {
-        tile: "0 6px 24px rgba(11, 31, 58, 0.1)",
-        lift: "0 20px 44px rgba(11, 31, 58, 0.2)",
+        tile: "0 6px 22px rgba(20, 48, 44, 0.1)",
+        lift: "0 20px 40px rgba(20, 48, 44, 0.18)",
       },
     },
   },

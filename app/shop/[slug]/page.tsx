@@ -5,7 +5,7 @@ import { getProductBySlug, products } from "@/data/products";
 import ProductDetailActions from "@/components/ProductDetailActions";
 import ProductPrice from "@/components/ProductPrice";
 import ProductCard from "@/components/ProductCard";
-import BookCover from "@/components/BookCover";
+import ProductImage from "@/components/ProductImage";
 import StarRating from "@/components/StarRating";
 import { site } from "@/lib/site";
 
@@ -20,7 +20,7 @@ export function generateMetadata({
 }): Metadata {
   const product = getProductBySlug(params.slug);
   if (!product) {
-    return { title: `Book Not Found | ${site.name}` };
+    return { title: `Product Not Found | ${site.name}` };
   }
   return {
     title: `${product.name} | ${site.name}`,
@@ -56,13 +56,13 @@ export default function ProductPage({
         <span className="text-ink/80">{product.name}</span>
       </nav>
 
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,360px)_1fr] lg:gap-16">
-        <div className="mx-auto w-full max-w-xs lg:max-w-none">
-          <BookCover
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-16">
+        <div className="mx-auto w-full max-w-sm overflow-hidden rounded-lg lg:max-w-none">
+          <ProductImage
             src={product.image}
-            alt={`${product.name} cover`}
+            alt={product.name}
             priority
-            className="shadow-lift w-full"
+            className="shadow-lift aspect-square w-full object-cover"
           />
         </div>
 
@@ -71,9 +71,7 @@ export default function ProductPage({
           <h1 className="mt-3 font-display text-3xl leading-tight text-ink sm:text-4xl">
             {product.name}
           </h1>
-          <p className="mt-2 text-sm uppercase tracking-wider text-ink/50">
-            by {product.author}
-          </p>
+          <p className="mt-2 text-sm text-ink/50">{product.spec}</p>
           <StarRating rating={product.rating} className="mt-3" />
           <ProductPrice
             priceUsd={product.price}
@@ -91,7 +89,7 @@ export default function ProductPage({
           <dl className="mt-8 space-y-2 border-t border-ink/10 pt-6 text-sm text-ink/70">
             <div className="flex justify-between">
               <dt>Availability</dt>
-              <dd className={product.inStock ? "text-moss" : "text-ink/60"}>
+              <dd className={product.inStock ? "text-teal-dark" : "text-ink/60"}>
                 {product.inStock ? "In Stock" : "Sold Out"}
               </dd>
             </div>
