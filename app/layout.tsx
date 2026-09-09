@@ -22,7 +22,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: `${site.wordmark} | ${site.tagline}`,
   description: site.description,
-  icons: { icon: "/icon.svg" },
+  icons: { icon: "data:," },
 };
 
 export default function RootLayout({
