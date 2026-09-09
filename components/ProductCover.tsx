@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 /**
- * A course cover, filling its parent's aspect-ratio box. Callers control
+ * A product preview image, filling its parent's aspect-ratio box. Callers control
  * the box (aspect ratio, rounding) and pass `sizes` for responsive grids.
  */
 export default function ProductCover({

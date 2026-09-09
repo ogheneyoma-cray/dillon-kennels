@@ -13,8 +13,8 @@ export default function NewsletterForm() {
 
   if (submitted) {
     return (
-      <p className="text-sm font-semibold text-lime">
-        You&apos;re on the list — watch your inbox for new courses.
+      <p className="text-sm font-semibold text-fuchsia">
+        You&apos;re on the list — watch your inbox for new releases.
       </p>
     );
   }
@@ -33,7 +33,7 @@ export default function NewsletterForm() {
       />
       <button
         type="submit"
-        className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-lime px-7 text-sm font-semibold text-navy transition-colors hover:bg-lime-dark hover:text-paper"
+        className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-fuchsia px-7 text-sm font-semibold text-paper transition-colors hover:bg-fuchsia-dark"
       >
         Subscribe
       </button>

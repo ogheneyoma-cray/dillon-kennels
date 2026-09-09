@@ -16,7 +16,7 @@ export default function CurrencyToggle({ className = "" }: { className?: string 
         onClick={() => setCurrency("NGN")}
         className={`min-h-[32px] rounded-full px-3 transition-colors ${
           currency === "NGN"
-            ? "bg-navy text-paper"
+            ? "bg-steel text-paper"
             : "bg-transparent text-ink-soft hover:text-ink"
         }`}
         aria-pressed={currency === "NGN"}
@@ -28,7 +28,7 @@ export default function CurrencyToggle({ className = "" }: { className?: string 
         onClick={() => setCurrency("USD")}
         className={`min-h-[32px] rounded-full px-3 transition-colors ${
           currency === "USD"
-            ? "bg-navy text-paper"
+            ? "bg-steel text-paper"
             : "bg-transparent text-ink-soft hover:text-ink"
         }`}
         aria-pressed={currency === "USD"}

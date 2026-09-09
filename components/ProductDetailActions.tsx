@@ -29,7 +29,7 @@ export default function ProductDetailActions({ product }: { product: Product }) 
             type="button"
             onClick={decrease}
             aria-label="Decrease quantity"
-            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-blush disabled:opacity-30"
+            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-silver-pale disabled:opacity-30"
             disabled={quantity <= 1}
           >
             −
@@ -41,7 +41,7 @@ export default function ProductDetailActions({ product }: { product: Product }) 
             type="button"
             onClick={increase}
             aria-label="Increase quantity"
-            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-blush"
+            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-silver-pale"
           >
             +
           </button>

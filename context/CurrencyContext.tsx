@@ -18,7 +18,7 @@ const CurrencyContext = createContext<CurrencyContextValue | undefined>(
   undefined
 );
 
-const STORAGE_KEY = "webreid-currency";
+const STORAGE_KEY = "silverpoodles-currency";
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
   const [currency, setCurrencyState] = useState<CurrencyCode>("USD");

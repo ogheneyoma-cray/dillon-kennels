@@ -9,7 +9,7 @@ import { formatMoney } from "@/lib/currency";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `WBR-${random}`;
+  return `SLV-${random}`;
 }
 
 export default function CheckoutPage() {
@@ -23,7 +23,7 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "webreid-last-order",
+      "silverpoodles-last-order",
       JSON.stringify({
         orderNumber,
         total: formatMoney(cartTotal, currency),
@@ -40,7 +40,7 @@ export default function CheckoutPage() {
         <p className="eyebrow">Checkout</p>
         <h1 className="section-heading mt-3">Your cart is empty</h1>
         <p className="mt-4 max-w-sm text-ink-soft">
-          Add a course to your cart before heading to checkout.
+          Add a product to your cart before heading to checkout.
         </p>
         <Link href="/shop" className="btn-primary mt-8">
           Shop Now
@@ -58,13 +58,13 @@ export default function CheckoutPage() {
         onSubmit={handleSubmit}
         className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_360px]"
       >
-        <div className="space-y-10">
-          <fieldset>
-            <legend className="font-display text-xl text-ink">
+        <div className="space-y-6">
+          <fieldset className="bento-tile">
+            <legend className="font-display text-xl font-bold text-ink">
               Contact Details
             </legend>
             <p className="mt-2 text-xs text-ink-soft">
-              Course access is granted to this email immediately after payment.
+              Download links are sent to this email immediately after payment.
             </p>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
@@ -78,7 +78,7 @@ export default function CheckoutPage() {
                   required
                   autoComplete="name"
                   className="input-field"
-                  placeholder="Adaeze Okonkwo"
+                  placeholder="Ngozi Adeyemi"
                 />
               </div>
               <div>
@@ -92,18 +92,34 @@ export default function CheckoutPage() {
                   required
                   autoComplete="email"
                   className="input-field"
-                  placeholder="you@example.com"
+                  placeholder="ngozi@example.com"
                 />
               </div>
             </div>
           </fieldset>
 
-          <fieldset>
-            <legend className="font-display text-xl text-ink">
-              Payment Details
-            </legend>
+          <fieldset className="bento-tile">
+            <div className="flex items-center justify-between gap-4">
+              <legend className="font-display text-xl font-bold text-ink">
+                Payment Details
+              </legend>
+              <div className="flex items-center gap-2">
+                <span className="flex h-7 w-11 items-center justify-center rounded-md border border-line bg-paper">
+                  <svg width="26" height="16" viewBox="0 0 26 16" aria-hidden="true">
+                    <circle cx="9" cy="8" r="8" fill="#EB001B" />
+                    <circle cx="17" cy="8" r="8" fill="#F79E1B" />
+                    <path d="M13 2.2a8 8 0 0 1 0 11.6 8 8 0 0 1 0-11.6Z" fill="#FF5F00" />
+                  </svg>
+                </span>
+                <span className="flex h-7 w-11 items-center justify-center rounded-md border border-line bg-paper text-[11px] font-black italic tracking-tight text-[#1A1F71]">
+                  VISA
+                </span>
+              </div>
+            </div>
             <p className="mt-2 text-xs text-ink-soft">
-              Demo checkout — card details are not transmitted or stored.
+              We accept Mastercard and Visa only. Card details are used
+              solely to process this payment and are never stored on our
+              servers.
             </p>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div className="sm:col-span-2">
@@ -116,8 +132,8 @@ export default function CheckoutPage() {
                   type="text"
                   required
                   autoComplete="cc-name"
-                  className="input-field"
-                  placeholder="Adaeze Okonkwo"
+                  className="input-field uppercase placeholder:normal-case"
+                  placeholder="NGOZI ADEYEMI"
                 />
               </div>
               <div className="sm:col-span-2">
@@ -134,7 +150,7 @@ export default function CheckoutPage() {
                   pattern="[0-9\s]{13,19}"
                   maxLength={19}
                   className="input-field"
-                  placeholder="1234 5678 9012 3456"
+                  placeholder="5399 8312 0044 7712"
                 />
               </div>
               <div>
@@ -147,7 +163,7 @@ export default function CheckoutPage() {
                   type="text"
                   required
                   autoComplete="cc-exp"
-                  placeholder="MM/YY"
+                  placeholder="09/29"
                   pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
                   className="input-field"
                 />
@@ -166,15 +182,15 @@ export default function CheckoutPage() {
                   maxLength={4}
                   pattern="[0-9]{3,4}"
                   className="input-field"
-                  placeholder="123"
+                  placeholder="•••"
                 />
               </div>
             </div>
           </fieldset>
         </div>
 
-        <aside className="h-fit rounded-2xl border border-line bg-paper p-6">
-          <h2 className="font-display text-xl text-ink">Order Summary</h2>
+        <aside className="bento-tile h-fit">
+          <h2 className="font-display text-xl font-bold text-ink">Order Summary</h2>
           <ul className="mt-5 space-y-3 border-b border-line pb-5">
             {items.map((item) => (
               <li key={item.id} className="flex justify-between text-sm">

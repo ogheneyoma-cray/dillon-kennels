@@ -8,21 +8,21 @@
  * pages, where it is required. No social links appear anywhere on the site.
  */
 export const site = {
-  name: "Webreid",
-  legalName: "Webreid Ltd",
-  wordmark: "Webreid",
-  tagline: "Expert-led courses for real-world careers",
+  name: "Silverpoodles",
+  legalName: "Silverpoodles Ltd",
+  wordmark: "Silverpoodles",
+  tagline: "Software and web dev, precision built",
   description:
-    "Webreid is an online store stocking self-paced digital courses on business, web development, digital marketing, design, data and project management — around thirty courses, priced up front in USD or NGN.",
-  email: "support@webreid.com",
-  phone: "07015042270",
-  phoneHref: "+2347015042270",
+    "Silverpoodles is a digital marketplace for software and web development products — UI kits, boilerplates, admin panels and utility plugins — priced up front in USD or NGN.",
+  email: "info@silverpoodles.com",
+  phone: "09121031520",
+  phoneHref: "+2349121031520",
   address: {
-    line1: "9, Honourable Precious Street",
-    line2: "Rumuodara",
-    line3: "Port Harcourt, Rivers State, Nigeria",
+    line1: "3, Remi Senaike Close",
+    line2: "Ifako-Ijaiye",
+    line3: "Lagos State, Nigeria",
   },
-  addressOneLine: "9, Honourable Precious Street, Rumuodara, Port Harcourt, Rivers State, Nigeria",
+  addressOneLine: "3, Remi Senaike Close, Ifako-Ijaiye, Lagos State, Nigeria",
 } as const;
 
 export const addressLines = [site.address.line1, site.address.line2, site.address.line3];
