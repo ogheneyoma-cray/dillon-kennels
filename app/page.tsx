@@ -10,24 +10,24 @@ import ProductPrice from "@/components/ProductPrice";
 import { site } from "@/lib/site";
 
 const STATS = [
-  { value: "30+", label: "Courses Available" },
-  { value: "20+", label: "Expert Instructors" },
-  { value: "6", label: "Course Categories" },
-  { value: "4.8", label: "Average Course Rating" },
+  { value: "5", label: "Core IT Services" },
+  { value: "48h", label: "Typical Response Time" },
+  { value: "5", label: "Service Categories" },
+  { value: "4.8", label: "Average Client Rating" },
 ];
 
 const FEATURES = [
   {
-    title: "Instant Access",
-    body: "No shipping, no waiting — your course unlocks the moment payment clears.",
+    title: "Fast Turnaround",
+    body: "Most engagements kick off within one business day of your payment clearing — no lengthy sales calls first.",
   },
   {
     title: "USD or NGN Pricing",
     body: "Switch currencies from the header and every price on the site updates instantly.",
   },
   {
-    title: "Taught by Practitioners",
-    body: "Every course is taught by someone who does the work daily, not just studies it.",
+    title: "Handled by Specialists",
+    body: "Every service is delivered by a dedicated technician on our team, not outsourced to a stranger.",
   },
 ];
 
@@ -38,55 +38,59 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section
-        className="relative overflow-hidden bg-magenta"
-        style={{
-          backgroundImage:
-            "linear-gradient(125deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.05) 35%, transparent 55%)",
-        }}
-      >
-        <div className="container-page grid grid-cols-1 items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
+      <section className="relative overflow-hidden bg-dusk">
+        <div
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 15% 20%, rgba(47,111,237,0.35), transparent 45%), radial-gradient(circle at 85% 75%, rgba(245,185,66,0.25), transparent 40%)",
+          }}
+        />
+        <div className="container-page relative grid grid-cols-1 items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
           <div>
-            <h1 className="font-display text-4xl font-semibold leading-[1.05] text-paper sm:text-5xl lg:text-[3.3rem]">
-              Master New Skills With Industry-Leading Courses
+            <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest2 text-sunbeam before:h-1.5 before:w-1.5 before:rounded-full before:bg-sunbeam">
+              IT Services, Priced Up Front
+            </p>
+            <h1 className="mt-4 font-display text-4xl font-semibold leading-[1.05] text-paper sm:text-5xl lg:text-[3.3rem]">
+              Practical IT Support for Growing Businesses
             </h1>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-paper/85">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-paper/75">
               {site.description}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link href="/shop" className="btn-white">
-                Shop the Catalogue
+                Browse Services
               </Link>
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-paper underline decoration-lime decoration-2 underline-offset-4"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-paper underline decoration-sunbeam decoration-2 underline-offset-4"
               >
-                See All Courses →
+                See What We Offer →
               </Link>
             </div>
           </div>
 
           <div className="relative flex items-center justify-center py-6">
-            <div className="relative w-48 sm:w-56">
+            <div className="relative w-full max-w-sm">
               {hero && (
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lift">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lift">
                   <ProductCover
                     src={hero.image}
-                    alt={`${hero.name} cover`}
+                    alt={`${hero.name} preview`}
                     priority
                     className="h-full w-full object-cover"
                   />
                 </div>
               )}
               {hero && (
-                <div className="absolute -bottom-8 -left-10 rounded-2xl bg-navy px-5 py-4 shadow-lift sm:-left-16">
+                <div className="absolute -bottom-8 -left-6 rounded-2xl bg-paper px-5 py-4 shadow-lift sm:-left-10">
                   <div className="flex items-center gap-1.5">
-                    <StarRating rating={hero.rating} className="text-lime" />
+                    <StarRating rating={hero.rating} className="text-sunbeam-dark" />
                   </div>
-                  <p className="mt-2 font-display text-lg font-bold text-paper">
+                  <p className="mt-2 font-display text-lg font-bold text-dusk">
                     <ProductPrice priceUsd={hero.price} />
                   </p>
-                  <p className="text-[10px] uppercase tracking-wider text-paper/60">
+                  <p className="text-[10px] uppercase tracking-wider text-ink-soft">
                     {hero.category}
                   </p>
                 </div>
@@ -101,14 +105,14 @@ export default function HomePage() {
         <div className="container-page text-center">
           <p className="eyebrow justify-center">Overview</p>
           <h2 className="section-heading mt-3">
-            Courses Designed For Your Success
+            IT Services Built Around Your Business
           </h2>
           <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-4">
             {STATS.map((stat) => (
               <div key={stat.label}>
-                <p className="font-display text-4xl font-bold text-navy">
+                <p className="font-display text-4xl font-bold text-dusk">
                   {stat.value}
-                  <span className="text-lime">+</span>
+                  <span className="text-sunbeam">+</span>
                 </p>
                 <p className="mt-2 text-sm text-ink-soft">{stat.label}</p>
               </div>
@@ -118,11 +122,11 @@ export default function HomePage() {
       </section>
 
       {/* Category grid */}
-      <section className="bg-navy py-16 lg:py-20">
+      <section className="bg-dusk py-16 lg:py-20">
         <div className="container-page text-center">
-          <p className="eyebrow justify-center text-lime">Course Categories</p>
+          <p className="eyebrow justify-center text-sunbeam">Service Categories</p>
           <h2 className="mt-3 font-display text-3xl font-semibold text-paper sm:text-4xl">
-            Navigate Our Course Library By Subject
+            Find the Right Service By Category
           </h2>
           <div className="mt-12 text-left">
             <CategoryIconGrid categories={categories} />
@@ -134,9 +138,9 @@ export default function HomePage() {
       <section className="py-16 lg:py-20">
         <div className="container-page">
           <div className="text-center">
-            <p className="eyebrow justify-center">Featured Courses</p>
+            <p className="eyebrow justify-center">Our Services</p>
             <h2 className="section-heading mt-3">
-              Top-Rated Courses Chosen Daily
+              Browse By Category
             </h2>
           </div>
           <div className="mt-10">
@@ -144,18 +148,18 @@ export default function HomePage() {
           </div>
           <div className="mt-12 flex justify-center">
             <Link href="/shop" className="btn-primary">
-              Browse All Courses
+              View All Services
             </Link>
           </div>
         </div>
       </section>
 
       {/* Why us */}
-      <section className="bg-blush py-16 lg:py-20">
+      <section className="bg-mist py-16 lg:py-20">
         <div className="container-page">
           <div className="text-center">
             <p className="eyebrow justify-center">Why {site.wordmark}</p>
-            <h2 className="section-heading mt-3">Built for Doing, Not Just Watching</h2>
+            <h2 className="section-heading mt-3">Built for Results, Not Just Reports</h2>
           </div>
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
             {FEATURES.map((feature) => (
@@ -174,11 +178,11 @@ export default function HomePage() {
           <div className="container-page">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="eyebrow">Learner Favorites</p>
-                <h2 className="section-heading mt-3">Most Recommended</h2>
+                <p className="eyebrow">Client Favorites</p>
+                <h2 className="section-heading mt-3">Most Requested</h2>
               </div>
               <Link href="/shop" className="btn-ghost hidden sm:inline-flex">
-                View Full Catalogue →
+                View Full Range →
               </Link>
             </div>
             <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
@@ -191,14 +195,14 @@ export default function HomePage() {
       )}
 
       {/* Newsletter band */}
-      <section className="bg-navy text-paper">
+      <section className="bg-dusk text-paper">
         <div className="container-page py-14 text-center">
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">
-            Get New Courses First
+            Get IT Tips & Offers First
           </h2>
           <p className="mx-auto mt-3 max-w-md text-sm text-paper/75">
-            New releases and the occasional discount — no spam, unsubscribe
-            any time.
+            Occasional updates on new services and discounts — no spam,
+            unsubscribe any time.
           </p>
           <div className="mx-auto mt-8 max-w-lg">
             <NewsletterForm />

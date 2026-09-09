@@ -8,21 +8,21 @@
  * pages, where it is required. No social links appear anywhere on the site.
  */
 export const site = {
-  name: "Webreid",
-  legalName: "Webreid Ltd",
-  wordmark: "Webreid",
-  tagline: "Expert-led courses for real-world careers",
+  name: "Shams Light",
+  legalName: "Shams Light IT Services",
+  wordmark: "Shams Light",
+  tagline: "IT services that keep your business running",
   description:
-    "Webreid is an online store stocking self-paced digital courses on business, web development, digital marketing, design, data and project management — around thirty courses, priced up front in USD or NGN.",
-  email: "support@webreid.com",
-  phone: "07015042270",
-  phoneHref: "+2347015042270",
+    "Shams Light is an online store for practical IT services — website builds, cybersecurity checks, cloud migration, helpdesk support and data backup — priced up front in USD or NGN.",
+  email: "supportteam@shamslight.com",
+  phone: "09111579098",
+  phoneHref: "+2349111579098",
   address: {
-    line1: "9, Honourable Precious Street",
-    line2: "Rumuodara",
-    line3: "Port Harcourt, Rivers State, Nigeria",
+    line1: "27, Asipa",
+    line2: "Odo-Ona Elewe",
+    line3: "Oluyole L.G.A, Oyo State, Nigeria",
   },
-  addressOneLine: "9, Honourable Precious Street, Rumuodara, Port Harcourt, Rivers State, Nigeria",
+  addressOneLine: "27, Asipa, Odo-Ona Elewe, Oluyole L.G.A, Oyo State, Nigeria",
 } as const;
 
 export const addressLines = [site.address.line1, site.address.line2, site.address.line3];

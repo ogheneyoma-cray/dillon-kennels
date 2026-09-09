@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Privacy Policy | ${site.name}`,
-  description: "How Webreid collects, uses, and protects your personal data.",
+  description: "How Shams Light collects, uses, and protects your personal data.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -17,8 +17,8 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2 className="font-display text-xl text-ink">What We Collect</h2>
           <p className="mt-3 leading-relaxed">
-            When you enroll in a course, contact us, or browse the site, we
-            may collect your name, email address, phone number and order
+            When you order a service, contact us, or browse the site, we may
+            collect your name, email address, phone number and order
             history. Card details entered at checkout are used solely to
             process your payment and are never stored on our servers. We
             also collect limited technical data, such as browser type and
@@ -29,11 +29,11 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2 className="font-display text-xl text-ink">How We Use It</h2>
           <p className="mt-3 leading-relaxed">
-            We use your information to process orders and grant access to
-            the courses you purchase, respond to support requests, send
-            order confirmations and login details, and, where you&apos;ve opted
-            in, share updates about new courses. We do not sell your
-            personal information to anyone.
+            We use your information to process orders and schedule the
+            services you purchase, respond to support requests, send order
+            confirmations, and, where you&apos;ve opted in, share updates about
+            new services. We do not sell your personal information to
+            anyone.
           </p>
         </section>
 
@@ -43,7 +43,7 @@ export default function PrivacyPolicyPage() {
             The site uses browser local storage to remember your cart
             contents and preferred currency between visits. This stays on
             your device and is never sent to our servers — you can clear it
-            any time by clearing your browser&apos;s site data for webreid.com.
+            any time by clearing your browser&apos;s site data for shamslight.com.
           </p>
         </section>
 

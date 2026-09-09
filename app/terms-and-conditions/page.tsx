@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Terms & Conditions | ${site.name}`,
-  description: "The terms and conditions governing use of the Webreid website and orders.",
+  description: "The terms and conditions governing use of the Shams Light website and orders.",
 };
 
 export default function TermsPage() {
@@ -11,7 +11,7 @@ export default function TermsPage() {
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Legal</p>
       <h1 className="section-heading mt-3">Terms & Conditions</h1>
-      <p className="mt-2 text-sm text-ink-soft">Last updated: August 2026</p>
+      <p className="mt-2 text-sm text-ink-soft">Last updated: September 2026</p>
 
       <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
         <section>
@@ -25,15 +25,15 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">2. Courses & Pricing</h2>
+          <h2 className="font-display text-xl text-ink">2. Services & Pricing</h2>
           <p className="mt-3 leading-relaxed">
             All prices are listed in US Dollars ($) and also shown in
             Nigerian Naira (₦) for reference, using a fixed conversion rate
             that may differ slightly from real-time exchange rates. We
             reserve the right to update pricing at any time, though changes
-            never affect orders already confirmed. Course content is
-            periodically updated by instructors and may differ slightly
-            from the version shown at the time of purchase.
+            never affect orders already confirmed. Service scope is
+            described on each service page and confirmed with you before
+            work begins.
           </p>
         </section>
 
@@ -42,7 +42,7 @@ export default function TermsPage() {
           <p className="mt-3 leading-relaxed">
             By placing an order, you confirm that the payment information
             you provide is accurate and that you are authorized to use the
-            payment method submitted. Payments are accepted by card only. We
+            payment method submitted. We accept Mastercard and Visa only. We
             reserve the right to refuse or cancel any order at our
             discretion, including in cases of suspected fraud, in which case
             a full refund will be issued.
@@ -52,11 +52,12 @@ export default function TermsPage() {
         <section>
           <h2 className="font-display text-xl text-ink">4. Intellectual Property</h2>
           <p className="mt-3 leading-relaxed">
-            All content on this site, including course videos, materials,
-            text, logos and design, is the property of {site.legalName} or
-            its respective instructors and may not be reproduced,
-            redistributed, or resold without prior written consent. Course
-            access is granted for personal, non-commercial use only.
+            All content on this site, including text, logos and design, is
+            the property of {site.legalName} and may not be reproduced,
+            redistributed, or resold without prior written consent.
+            Deliverables produced for you as part of a purchased service
+            become yours to use once payment is complete, unless otherwise
+            agreed in writing.
           </p>
         </section>
 
@@ -65,8 +66,8 @@ export default function TermsPage() {
           <p className="mt-3 leading-relaxed">
             {site.wordmark} is not liable for any indirect, incidental or
             consequential damages arising from the use of our website or
-            courses, including outcomes or results you achieve — or don&apos;t
-            achieve — from applying course material.
+            services, including issues caused by third-party systems,
+            software or hosting providers outside our control.
           </p>
         </section>
 
@@ -75,7 +76,7 @@ export default function TermsPage() {
           <p className="mt-3 leading-relaxed">
             These Terms & Conditions are governed by the laws of the Federal
             Republic of Nigeria. Any disputes arising from these terms will
-            be subject to the exclusive jurisdiction of the courts of Rivers
+            be subject to the exclusive jurisdiction of the courts of Oyo
             State.
           </p>
         </section>

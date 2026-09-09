@@ -19,7 +19,7 @@
   }
 
   ::selection {
-    background-color: #a8408a;
+    background-color: #2f6fed;
     color: #ffffff;
   }
 }
@@ -30,27 +30,27 @@
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest2 text-magenta before:h-1.5 before:w-1.5 before:rounded-full before:bg-magenta;
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest2 text-signal before:h-1.5 before:w-1.5 before:rounded-full before:bg-signal;
   }
 
   .btn-primary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-navy px-7 py-3 text-sm font-semibold text-paper transition-colors duration-200 hover:bg-navy-soft;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-signal px-7 py-3 text-sm font-semibold text-paper transition-colors duration-200 hover:bg-signal-dark;
   }
 
   .btn-white {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-paper px-7 py-3 text-sm font-semibold text-magenta transition-colors duration-200 hover:bg-blush;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-paper px-7 py-3 text-sm font-semibold text-dusk transition-colors duration-200 hover:bg-mist;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-ink/15 bg-paper px-7 py-3 text-sm font-semibold text-ink transition-colors duration-200 hover:border-magenta hover:text-magenta;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-ink/15 bg-paper px-7 py-3 text-sm font-semibold text-ink transition-colors duration-200 hover:border-signal hover:text-signal;
   }
 
   .btn-ghost {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-ink underline decoration-lime decoration-2 underline-offset-4 transition-colors hover:text-magenta;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-ink underline decoration-sunbeam decoration-2 underline-offset-4 transition-colors hover:text-signal;
   }
 
   .input-field {
-    @apply w-full min-h-[44px] rounded-lg border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-magenta focus:outline-none focus:ring-1 focus:ring-magenta;
+    @apply w-full min-h-[44px] rounded-lg border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-signal focus:outline-none focus:ring-1 focus:ring-signal;
   }
 
   .label-text {
@@ -62,10 +62,10 @@
   }
 
   .star-row {
-    @apply flex items-center gap-0.5 text-lime-dark;
+    @apply flex items-center gap-0.5 text-sunbeam-dark;
   }
 
   .badge-ribbon {
-    @apply absolute left-0 top-3 rounded-r-full bg-navy px-3 py-1 text-[10px] font-bold uppercase tracking-widest2 text-paper;
+    @apply absolute left-0 top-3 rounded-r-md bg-dusk px-3 py-1 text-[10px] font-bold uppercase tracking-widest2 text-paper;
   }
 }

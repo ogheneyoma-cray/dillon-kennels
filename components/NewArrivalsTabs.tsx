@@ -18,8 +18,8 @@ export default function NewArrivalsTabs() {
             onClick={() => setActive(category)}
             className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
               active === category
-                ? "bg-navy text-paper"
-                : "bg-blush text-ink-soft hover:text-ink"
+                ? "bg-dusk text-paper"
+                : "bg-mist text-ink-soft hover:text-ink"
             }`}
           >
             {category}

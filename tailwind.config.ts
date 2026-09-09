@@ -1,11 +1,13 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Palette and layout language lifted from the Coursely reference: a vivid
- * magenta hero with a diagonal light-ray gradient, a deep navy for
- * secondary panels/buttons/footer, and a lime-green accent reserved for
- * "+" marks, badges and small highlights. No lavender, no wine, no camel —
- * this magenta/navy/lime trio is this brand's alone among the storefronts.
+ * Original palette for Shams Light: a near-black graphite base ("dusk")
+ * carrying the header, footer and dark bands, a bright electric-blue
+ * ("signal") for every primary action and link, and a warm sunbeam gold
+ * ("sunbeam") reserved for the wordmark accent, ratings and small badges —
+ * a nod to "Shams" (sun). No magenta, no navy-plus-lime, no teal/coral, no
+ * cream/wine, no lavender — this graphite/electric-blue/sunbeam-gold trio
+ * is this brand's alone among the storefronts.
  */
 const config: Config = {
   content: [
@@ -16,23 +18,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        magenta: "#A8408A",
-        "magenta-dark": "#7D2E68",
-        "magenta-light": "#C063A5",
-        "magenta-pale": "#FBEEF7",
-        navy: "#1B1A3B",
-        "navy-soft": "#4B4A6E",
-        lime: "#8FBF3F",
-        "lime-dark": "#6B9A2A",
-        blush: "#F8E9F2",
+        dusk: "#0E1420",
+        "dusk-soft": "#1B2436",
+        signal: "#2F6FED",
+        "signal-dark": "#1E52C2",
+        "signal-pale": "#E8F0FE",
+        sunbeam: "#F5B942",
+        "sunbeam-dark": "#D69A1F",
         paper: "#FFFFFF",
-        ink: "#1B1A3B",
-        "ink-soft": "#615F80",
-        line: "#E7E3EE",
+        ink: "#101521",
+        "ink-soft": "#5B6478",
+        mist: "#F3F5FA",
+        line: "#E4E8F1",
       },
       fontFamily: {
-        display: ["var(--font-fredoka)", "sans-serif"],
-        body: ["var(--font-rubik)", "sans-serif"],
+        display: ["var(--font-space-grotesk)", "sans-serif"],
+        body: ["var(--font-inter)", "sans-serif"],
       },
       letterSpacing: {
         widest2: "0.16em",
@@ -41,8 +42,8 @@ const config: Config = {
         content: "1360px",
       },
       boxShadow: {
-        tile: "0 10px 30px rgba(27, 26, 59, 0.08)",
-        lift: "0 20px 45px rgba(27, 26, 59, 0.18)",
+        tile: "0 10px 30px rgba(14, 20, 32, 0.08)",
+        lift: "0 20px 45px rgba(14, 20, 32, 0.18)",
       },
     },
   },

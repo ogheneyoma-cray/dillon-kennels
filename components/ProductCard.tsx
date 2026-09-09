@@ -13,10 +13,10 @@ export default function ProductCard({ product }: { product: Product }) {
   const { currency } = useCurrency();
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl bg-blush shadow-tile">
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl bg-mist shadow-tile">
       <Link
         href={`/shop/${product.slug}`}
-        className="relative block aspect-[4/5] overflow-hidden bg-blush"
+        className="relative block aspect-[4/5] overflow-hidden bg-mist"
       >
         <ProductCover
           src={product.image}
@@ -32,7 +32,7 @@ export default function ProductCard({ product }: { product: Product }) {
           <span className="text-xs text-ink-soft">({product.rating}.0)</span>
         </div>
         <Link href={`/shop/${product.slug}`}>
-          <h3 className="mt-2 font-display text-base font-semibold leading-snug text-ink transition-colors group-hover:text-magenta">
+          <h3 className="mt-2 font-display text-base font-semibold leading-snug text-ink transition-colors group-hover:text-signal">
             {product.name}
           </h3>
         </Link>
@@ -40,13 +40,13 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.instructor}
         </p>
         <div className="mt-4 flex items-center justify-between">
-          <span className="font-display text-lg font-bold text-navy">
+          <span className="font-display text-lg font-bold text-dusk">
             {formatMoney(product.price, currency)}
           </span>
           <button
             type="button"
             onClick={() => addToCart(product, 1)}
-            className="inline-flex min-h-[38px] items-center justify-center rounded-full bg-navy px-4 text-xs font-semibold text-paper transition-colors hover:bg-navy-soft"
+            className="inline-flex min-h-[38px] items-center justify-center rounded-full bg-dusk px-4 text-xs font-semibold text-paper transition-colors hover:bg-dusk-soft"
           >
             Add to Cart
           </button>

@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `FAQ | ${site.name}`,
-  description: "Answers to common questions about Webreid courses, access, pricing and refunds.",
+  description: "Answers to common questions about Shams Light IT services, scheduling, pricing and refunds.",
 };
 
 const FAQ_GROUPS = [
@@ -12,39 +12,39 @@ const FAQ_GROUPS = [
     heading: "Getting Started",
     items: [
       {
-        question: "How quickly do I get access after paying?",
+        question: "What happens right after I pay?",
         answer:
-          "Access is granted immediately after payment is confirmed. You'll receive an email with your login details and a link to your course dashboard within a few minutes — check your spam folder if it doesn't arrive.",
+          "Our team reaches out to the email you provide at checkout within one business day to schedule your service and confirm any details we need from you.",
       },
       {
-        question: "Do I need any prior experience to start?",
+        question: "Do you work with businesses outside Nigeria?",
         answer:
-          "It depends on the course. Each course page lists a level under its details — most of the catalogue is built for beginners, and a handful of advanced titles assume some existing familiarity with the topic.",
+          "Most of our services are delivered remotely, so we can support clients anywhere as long as scheduling can be arranged around a compatible time zone.",
       },
       {
-        question: "What do I need to take a course?",
+        question: "What do I need to get started?",
         answer:
-          "Just a device with a browser and a stable internet connection. Courses are self-paced videos with downloadable materials, so there's nothing to install.",
+          "Just a device with an internet connection and, depending on the service, access to the relevant accounts or systems. We'll tell you exactly what's needed when we confirm your booking.",
       },
     ],
   },
   {
-    heading: "Access & Courses",
+    heading: "Services & Delivery",
     items: [
       {
-        question: "How long do I have access to a course?",
+        question: "Are these one-time services or subscriptions?",
         answer:
-          "Every course purchase includes lifetime access, so you can revisit the material whenever you need to, at your own pace, with no expiry date.",
+          "Every service on the site is a one-time engagement — you pay once, we deliver the work. Ongoing support like the monthly helpdesk plan simply renews if you choose to purchase it again.",
       },
       {
-        question: "Can I access a course on my phone?",
+        question: "How long does a typical service take?",
         answer:
-          "Yes — your course dashboard works on any modern browser, whether you're on a laptop, tablet, or phone.",
+          "Turnaround varies by service and is confirmed with you when we schedule the work — most engagements are completed within a few business days of kickoff.",
       },
       {
-        question: "Do I get a certificate when I finish?",
+        question: "Can I request changes after the work is delivered?",
         answer:
-          "Yes, each course includes a completion certificate you can download from your course dashboard once you've finished all lessons.",
+          "Yes, most services include a round of revisions. Details are listed on each service page, and our team will confirm scope with you before starting.",
       },
     ],
   },
@@ -57,14 +57,14 @@ const FAQ_GROUPS = [
           "Yes — every price on the site is shown in USD by default, but you can switch to NGN at any time using the currency toggle in the header. The total on your order and at checkout updates automatically to match your selection.",
       },
       {
-        question: "What is your refund policy?",
+        question: "What payment methods do you accept?",
         answer:
-          "We accept refund requests within 7 days of purchase if a course hasn't met your expectations. Visit our Refunds Policy page for the full process and eligibility details.",
+          "We accept Mastercard and Visa cards only, entered securely at checkout.",
       },
       {
-        question: "Can I change or cancel my order after placing it?",
+        question: "What is your refund policy?",
         answer:
-          "We can accommodate changes or cancellations within 2 hours of the order being placed, before access is provisioned. Contact our support team immediately by phone or email if you need to make a change.",
+          "We accept refund requests within 7 days of purchase if work hasn't yet started. Visit our Refunds Policy page for the full process and eligibility details.",
       },
     ],
   },
@@ -77,7 +77,7 @@ export default function FaqPage() {
       <h1 className="section-heading mt-3">Frequently Asked Questions</h1>
       <p className="mt-4 max-w-xl text-ink-soft">
         Can&apos;t find what you&apos;re looking for? Reach out on the{" "}
-        <Link href="/contact" className="text-magenta underline decoration-lime decoration-2 underline-offset-4">
+        <Link href="/contact" className="text-signal underline decoration-sunbeam decoration-2 underline-offset-4">
           contact page
         </Link>{" "}
         and our team will get back to you within one business day.
@@ -92,7 +92,7 @@ export default function FaqPage() {
                 <details key={item.question} className="group py-5">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg text-ink marker:content-none">
                     {item.question}
-                    <span className="shrink-0 text-xl text-magenta transition-transform group-open:rotate-45">
+                    <span className="shrink-0 text-xl text-signal transition-transform group-open:rotate-45">
                       +
                     </span>
                   </summary>
