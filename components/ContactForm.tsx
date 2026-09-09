@@ -13,7 +13,7 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl border border-lime/30 bg-blush p-6">
+      <div className="rounded-xl border border-term/30 bg-mist p-6">
         <p className="font-display text-xl text-ink">Message sent</p>
         <p className="mt-2 text-sm text-ink/70">
           Thanks for reaching out — our support team will reply to your email

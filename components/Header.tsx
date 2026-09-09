@@ -8,10 +8,9 @@ import CurrencyToggle from "@/components/CurrencyToggle";
 import Logo from "@/components/Logo";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/shop", label: "Shop" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "home" },
+  { href: "/shop", label: "store" },
+  { href: "/contact", label: "contact" },
 ];
 
 export default function Header() {
@@ -20,21 +19,23 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-void bg-paper">
       <div className="container-page flex h-20 items-center justify-between">
         <Link href="/" onClick={() => setMenuOpen(false)}>
           <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav className="hidden items-center gap-1 rounded-md border border-line bg-mist px-1.5 py-1.5 md:flex">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-semibold transition-colors ${
-                  active ? "text-magenta" : "text-ink hover:text-magenta"
+                className={`rounded px-3 py-1.5 font-display text-sm transition-colors ${
+                  active
+                    ? "bg-void text-term"
+                    : "text-ink-soft hover:bg-void/5 hover:text-ink"
                 }`}
               >
                 {link.label}
@@ -68,13 +69,13 @@ export default function Header() {
               <circle cx="17" cy="21" r="1.3" fill="currentColor" stroke="none" />
             </svg>
             {cartCount > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-magenta text-[10px] font-bold text-paper">
+              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-term font-display text-[10px] font-bold text-void">
                 {cartCount > 9 ? "9+" : cartCount}
               </span>
             )}
           </Link>
           <Link href="/shop" className="btn-primary hidden sm:inline-flex">
-            Get Started
+            npm install
           </Link>
           <button
             type="button"
@@ -112,7 +113,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="flex min-h-[44px] items-center border-b border-line text-sm font-semibold text-ink last:border-b-0"
+                className="flex min-h-[44px] items-center border-b border-line font-display text-sm text-ink last:border-b-0"
               >
                 {link.label}
               </Link>

@@ -8,21 +8,21 @@
  * pages, where it is required. No social links appear anywhere on the site.
  */
 export const site = {
-  name: "Webreid",
-  legalName: "Webreid Ltd",
-  wordmark: "Webreid",
-  tagline: "Expert-led courses for real-world careers",
+  name: "Aims I-Tech",
+  legalName: "Aims I-Tech Solutions",
+  wordmark: "Aims I-Tech",
+  tagline: "Software and web dev, ready to ship",
   description:
-    "Webreid is an online store stocking self-paced digital courses on business, web development, digital marketing, design, data and project management — around thirty courses, priced up front in USD or NGN.",
-  email: "support@webreid.com",
-  phone: "07015042270",
-  phoneHref: "+2347015042270",
+    "Aims I-Tech is a digital marketplace for ready-to-ship software — web templates, UI kits, starter codebases, plugins and mobile app templates — priced up front in USD or NGN.",
+  email: "support@aimsitech.com",
+  phone: "09048764725",
+  phoneHref: "+2349048764725",
   address: {
-    line1: "9, Honourable Precious Street",
-    line2: "Rumuodara",
-    line3: "Port Harcourt, Rivers State, Nigeria",
+    line1: "7, John Soares Street",
+    line2: "Elemoro",
+    line3: "Ibeju-Lekki, Lagos State, Nigeria",
   },
-  addressOneLine: "9, Honourable Precious Street, Rumuodara, Port Harcourt, Rivers State, Nigeria",
+  addressOneLine: "7, John Soares Street, Elemoro, Ibeju-Lekki, Lagos State, Nigeria",
 } as const;
 
 export const addressLines = [site.address.line1, site.address.line2, site.address.line3];

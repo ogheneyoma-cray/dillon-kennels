@@ -20,7 +20,7 @@ export function generateMetadata({
 }): Metadata {
   const product = getProductBySlug(params.slug);
   if (!product) {
-    return { title: `Course Not Found | ${site.name}` };
+    return { title: `Product Not Found | ${site.name}` };
   }
   return {
     title: `${product.name} | ${site.name}`,
@@ -45,11 +45,11 @@ export default function ProductPage({
   return (
     <div className="container-page py-10 lg:py-16">
       <nav className="mb-8 text-xs uppercase tracking-wider text-ink-soft">
-        <Link href="/" className="hover:text-magenta">
+        <Link href="/" className="hover:text-term">
           Home
         </Link>
         <span className="mx-2">/</span>
-        <Link href="/shop" className="hover:text-magenta">
+        <Link href="/shop" className="hover:text-term">
           Shop
         </Link>
         <span className="mx-2">/</span>
@@ -57,14 +57,25 @@ export default function ProductPage({
       </nav>
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,360px)_1fr] lg:gap-16">
-        <div className="mx-auto w-full max-w-xs lg:max-w-none">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-blush shadow-lift">
-            <ProductCover
-              src={product.image}
-              alt={`${product.name} cover`}
-              priority
-              className="h-full w-full object-cover"
-            />
+        <div className="mx-auto w-full max-w-sm lg:max-w-none">
+          <div className="overflow-hidden rounded-xl border border-line shadow-lift">
+            <div className="window-chrome">
+              <span className="window-dot bg-[#FF5F57]" />
+              <span className="window-dot bg-[#FEBC2E]" />
+              <span className="window-dot bg-[#28C840]" />
+              <span className="ml-2 truncate font-display text-[11px] text-ink-soft">
+                {product.slug}.tsx
+              </span>
+            </div>
+            <div className="relative aspect-[16/10] w-full border-x border-line bg-mist">
+              <ProductCover
+                src={product.image}
+                alt={`${product.name} preview`}
+                priority
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="h-3 rounded-b-xl border border-t-0 border-line bg-paper" />
           </div>
         </div>
 
@@ -74,12 +85,12 @@ export default function ProductPage({
             {product.name}
           </h1>
           <p className="mt-2 text-sm uppercase tracking-wider text-ink-soft">
-            by {product.instructor}
+            {product.instructor}
           </p>
           <StarRating rating={product.rating} className="mt-3" />
           <ProductPrice
             priceUsd={product.price}
-            className="mt-4 block text-xl font-semibold text-magenta"
+            className="mt-4 block text-xl font-semibold text-term"
           />
 
           <p className="mt-6 text-base leading-relaxed text-ink/80">
@@ -96,12 +107,12 @@ export default function ProductPage({
               <dd>{product.category}</dd>
             </div>
             <div className="flex justify-between">
-              <dt>Level</dt>
-              <dd>Beginner Friendly</dd>
+              <dt>License</dt>
+              <dd>Single project, unlimited use</dd>
             </div>
             <div className="flex justify-between">
-              <dt>Format</dt>
-              <dd>Self-paced video course, instant access</dd>
+              <dt>Delivery</dt>
+              <dd>Instant download, source files included</dd>
             </div>
           </dl>
         </div>

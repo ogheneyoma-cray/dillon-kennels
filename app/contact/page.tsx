@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 import { addressLines, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Contact Us | ${site.name}`,
   description:
-    "Get in touch with the Webreid team — store address, phone, email, and business hours.",
+    "Get in touch with the Aims I-Tech team — address, phone, email, and business hours.",
 };
 
 export default function ContactPage() {
@@ -15,7 +14,7 @@ export default function ContactPage() {
       <p className="eyebrow">Get in Touch</p>
       <h1 className="section-heading mt-3">Contact Us</h1>
       <p className="mt-4 max-w-xl text-ink-soft">
-        Have a question about an order, a course, or just want to say hello?
+        Have a question about an order, a product, or just want to say hello?
         Send us a message or reach out directly using the details below.
       </p>
 
@@ -23,7 +22,7 @@ export default function ContactPage() {
         <ContactForm />
 
         <aside className="space-y-8">
-          <div className="rounded-2xl border border-line bg-paper p-6">
+          <div className="rounded-xl border border-line bg-paper p-6">
             <h2 className="font-display text-xl text-ink">Store Details</h2>
             <dl className="mt-5 space-y-4 text-sm text-ink/80">
               <div>
@@ -39,7 +38,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Email</dt>
                 <dd className="mt-1">
-                  <a href={`mailto:${site.email}`} className="hover:text-magenta">
+                  <a href={`mailto:${site.email}`} className="hover:text-term">
                     {site.email}
                   </a>
                 </dd>
@@ -47,7 +46,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Phone</dt>
                 <dd className="mt-1">
-                  <a href={`tel:${site.phoneHref}`} className="hover:text-magenta">
+                  <a href={`tel:${site.phoneHref}`} className="hover:text-term">
                     {site.phone}
                   </a>
                 </dd>
@@ -55,7 +54,7 @@ export default function ContactPage() {
             </dl>
           </div>
 
-          <div className="rounded-2xl border border-line bg-paper p-6">
+          <div className="rounded-xl border border-line bg-paper p-6">
             <h2 className="font-display text-xl text-ink">Business Hours</h2>
             <dl className="mt-5 space-y-2 text-sm text-ink/80">
               <div className="flex justify-between">
@@ -71,15 +70,6 @@ export default function ContactPage() {
                 <dd>Closed</dd>
               </div>
             </dl>
-          </div>
-
-          <div className="rounded-2xl bg-blush p-6">
-            <p className="text-sm text-ink-soft">
-              Looking for quick answers instead?
-            </p>
-            <Link href="/faq" className="btn-ghost mt-2 inline-flex">
-              Visit the FAQ page →
-            </Link>
           </div>
         </aside>
       </div>

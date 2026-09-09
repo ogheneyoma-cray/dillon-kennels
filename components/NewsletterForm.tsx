@@ -13,8 +13,8 @@ export default function NewsletterForm() {
 
   if (submitted) {
     return (
-      <p className="text-sm font-semibold text-lime">
-        You&apos;re on the list — watch your inbox for new courses.
+      <p className="font-display text-sm font-semibold text-term">
+        ✓ subscribed — watch your inbox.
       </p>
     );
   }
@@ -22,20 +22,21 @@ export default function NewsletterForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-3 sm:flex-row sm:items-center"
+      className="flex items-center gap-2 rounded-md border border-paper/20 bg-void-soft p-1.5"
     >
+      <span className="pl-2 font-display text-sm text-term">$</span>
       <input
         type="email"
         required
-        placeholder="Enter your email address"
+        placeholder="you@example.com"
         aria-label="Email address"
-        className="min-h-[48px] w-full flex-1 rounded-full border border-paper/30 bg-transparent px-5 text-sm text-paper placeholder:text-paper/50 focus:border-paper focus:outline-none sm:min-w-[300px]"
+        className="min-h-[40px] w-full flex-1 bg-transparent font-display text-sm text-paper placeholder:text-paper/40 focus:outline-none"
       />
       <button
         type="submit"
-        className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-lime px-7 text-sm font-semibold text-navy transition-colors hover:bg-lime-dark hover:text-paper"
+        className="inline-flex min-h-[40px] items-center justify-center rounded bg-term px-4 font-display text-xs font-bold text-void transition-colors hover:bg-term-dark"
       >
-        Subscribe
+        subscribe
       </button>
     </form>
   );

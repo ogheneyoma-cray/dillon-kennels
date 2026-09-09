@@ -1,11 +1,13 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Palette and layout language lifted from the Coursely reference: a vivid
- * magenta hero with a diagonal light-ray gradient, a deep navy for
- * secondary panels/buttons/footer, and a lime-green accent reserved for
- * "+" marks, badges and small highlights. No lavender, no wine, no camel —
- * this magenta/navy/lime trio is this brand's alone among the storefronts.
+ * Original palette for this build: true black and white carrying every
+ * surface, with a single neon "terminal green" as the only accent colour —
+ * no second hue anywhere on the site. Paired with a monospace display face
+ * (developer/terminal identity) and a code-editor-window motif in the hero
+ * and product cards. No blue, no gold, no magenta/navy, no lavender — this
+ * black/white/neon-green single-accent system, plus the terminal-window
+ * layout language, is this brand's alone among the storefronts.
  */
 const config: Config = {
   content: [
@@ -16,23 +18,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        magenta: "#A8408A",
-        "magenta-dark": "#7D2E68",
-        "magenta-light": "#C063A5",
-        "magenta-pale": "#FBEEF7",
-        navy: "#1B1A3B",
-        "navy-soft": "#4B4A6E",
-        lime: "#8FBF3F",
-        "lime-dark": "#6B9A2A",
-        blush: "#F8E9F2",
+        void: "#0A0B0D",
+        "void-soft": "#16181C",
+        term: "#22E584",
+        "term-dark": "#17B568",
+        "term-pale": "#E8FCF1",
         paper: "#FFFFFF",
-        ink: "#1B1A3B",
-        "ink-soft": "#615F80",
-        line: "#E7E3EE",
+        ink: "#0F1113",
+        "ink-soft": "#5C6269",
+        mist: "#F4F5F7",
+        line: "#E4E6EA",
       },
       fontFamily: {
-        display: ["var(--font-fredoka)", "sans-serif"],
-        body: ["var(--font-rubik)", "sans-serif"],
+        display: ["var(--font-jetbrains)", "monospace"],
+        body: ["var(--font-jakarta)", "sans-serif"],
       },
       letterSpacing: {
         widest2: "0.16em",
@@ -41,8 +40,14 @@ const config: Config = {
         content: "1360px",
       },
       boxShadow: {
-        tile: "0 10px 30px rgba(27, 26, 59, 0.08)",
-        lift: "0 20px 45px rgba(27, 26, 59, 0.18)",
+        tile: "0 10px 30px rgba(10, 11, 13, 0.08)",
+        lift: "0 20px 45px rgba(10, 11, 13, 0.2)",
+      },
+      backgroundImage: {
+        "dot-grid": "radial-gradient(rgba(255,255,255,0.14) 1px, transparent 1px)",
+      },
+      backgroundSize: {
+        dots: "22px 22px",
       },
     },
   },

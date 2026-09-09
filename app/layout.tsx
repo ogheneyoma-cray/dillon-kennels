@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fredoka, Rubik } from "next/font/google";
+import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
@@ -7,22 +7,23 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
 
-const fredoka = Fredoka({
+const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-fredoka",
+  variable: "--font-jetbrains",
   display: "swap",
+  weight: ["400", "500", "700"],
 });
 
-const rubik = Rubik({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-rubik",
+  variable: "--font-jakarta",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: `${site.wordmark} | ${site.tagline}`,
   description: site.description,
-  icons: { icon: "/icon.svg" },
+  icons: { icon: "data:," },
 };
 
 export default function RootLayout({
@@ -31,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fredoka.variable} ${rubik.variable}`}>
+    <html lang="en" className={`${jetbrains.variable} ${jakarta.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
         <CurrencyProvider>
           <CartProvider>

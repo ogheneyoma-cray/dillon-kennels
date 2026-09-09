@@ -1,10 +1,9 @@
 export type Category =
-  | "Business & Management"
-  | "Website Development"
-  | "Digital Marketing"
-  | "Graphic Design & Visual Arts"
-  | "Data Science & Analytics"
-  | "Project Management";
+  | "Web Templates"
+  | "UI Kits"
+  | "Boilerplates & Starters"
+  | "Plugins & Extensions"
+  | "Mobile App Templates";
 
 export interface Product {
   id: number;
@@ -21,12 +20,11 @@ export interface Product {
 }
 
 export const categories: Category[] = [
-  "Business & Management",
-  "Website Development",
-  "Digital Marketing",
-  "Graphic Design & Visual Arts",
-  "Data Science & Analytics",
-  "Project Management",
+  "Web Templates",
+  "UI Kits",
+  "Boilerplates & Starters",
+  "Plugins & Extensions",
+  "Mobile App Templates",
 ];
 
 interface Seed {
@@ -36,297 +34,124 @@ interface Seed {
   rating: number;
   category: Category;
   description: string;
+  image: string;
   popular?: boolean;
   inStock?: boolean;
 }
 
 const seeds: Seed[] = [
-  // ------------------------------------------------------- Business & Management
   {
-    name: "Small Business Operations Playbook",
-    instructor: "Derek Ashworth",
-    price: 410,
+    name: "SaaS Landing Page Template",
+    instructor: "Built by the Aims I-Tech Studio",
+    price: 29,
     rating: 5,
-    category: "Business & Management",
+    category: "Web Templates",
     popular: true,
+    image:
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80",
     description:
-      "A practical operating system for running a small business day to day — inventory, cash flow, staffing and the recurring decisions that eat up a founder's week. Ashworth built this course from fifteen years of operating three different small businesses, not from a textbook.",
+      "A conversion-focused landing page built with semantic HTML and Tailwind CSS — pricing table, feature grid, testimonials and a sticky CTA header included. Fully responsive and easy to reskin.",
   },
   {
-    name: "Leading Without Ego",
-    instructor: "Monica Reyes",
-    price: 305,
+    name: "Agency Portfolio Template",
+    instructor: "Built by the Aims I-Tech Studio",
+    price: 25,
     rating: 4,
-    category: "Business & Management",
+    category: "Web Templates",
+    image:
+      "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=900&q=80",
     description:
-      "A management course built around one idea: the best managers make themselves less necessary over time, not more. Reyes covers delegation, giving feedback that actually lands, and stepping back without disengaging.",
+      "A clean multi-page portfolio site for agencies and freelancers — case study layout, team grid and a working contact form markup, ready to hook up to your backend of choice.",
   },
   {
-    name: "The Founder's Finance Crash Course",
-    instructor: "Patrick Owusu",
-    price: 375,
+    name: "Dashboard UI Kit",
+    instructor: "Built by the Aims I-Tech Studio",
+    price: 39,
     rating: 5,
-    category: "Business & Management",
-    description:
-      "Everything a first-time founder needs to read their own numbers — cash flow, runway, margins and the handful of ratios that actually predict trouble before it hits. Owusu, a former startup CFO, keeps the accounting jargon to a minimum.",
-  },
-  {
-    name: "Negotiation for Everyday Deals",
-    instructor: "Sarah Lindqvist",
-    price: 255,
-    rating: 4,
-    category: "Business & Management",
-    description:
-      "A negotiation course for the deals that actually come up at work — vendor contracts, salary conversations, scope changes — rather than boardroom theatrics. Lindqvist teaches a small set of tactics that work even when you have little leverage.",
-  },
-  {
-    name: "Building a Business That Runs Without You",
-    instructor: "Ibrahim Sanni",
-    price: 465,
-    rating: 5,
-    category: "Business & Management",
-    description:
-      "A systemization course for owner-operators ready to step back from daily operations — documenting processes, hiring for ownership, and building the reporting that lets you trust the business without watching it constantly.",
-  },
-
-  // --------------------------------------------------------- Website Development
-  {
-    name: "Full-Stack Foundations",
-    instructor: "Leah Buchanan",
-    price: 500,
-    rating: 5,
-    category: "Website Development",
+    category: "UI Kits",
     popular: true,
+    image:
+      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80",
     description:
-      "A from-scratch introduction to building a complete web application — front end, back end and database — for people who can already write basic HTML and JavaScript. Buchanan builds one real project across the whole course instead of disconnected exercises.",
+      "Over sixty components for building admin dashboards — charts, tables, forms, modals and navigation shells — delivered as a Figma file plus a matching React component library.",
   },
   {
-    name: "Responsive Design From Scratch",
-    instructor: "Marcus Delgado",
-    price: 290,
+    name: "E-commerce UI Kit",
+    instructor: "Built by the Aims I-Tech Studio",
+    price: 34,
     rating: 4,
-    category: "Website Development",
+    category: "UI Kits",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80",
     description:
-      "A hands-on course in building layouts that hold up across phones, tablets and desktops using modern CSS, without relying on a framework to hide what's actually happening. Delgado rebuilds three real sites live across the lessons.",
+      "Every screen a storefront needs — product grid, cart drawer, checkout flow and order tracking — as reusable, themeable components for a faster build.",
   },
   {
-    name: "APIs for Front-End Developers",
-    instructor: "Tomiwa Adekunle",
-    price: 360,
-    rating: 4,
-    category: "Website Development",
-    description:
-      "A practical guide to consuming and reasoning about REST APIs from the front end — authentication, error states, caching and the mistakes that cause the most production bugs. Adekunle draws every example from real public APIs.",
-  },
-  {
-    name: "Debugging Like a Senior Engineer",
-    instructor: "Renata Kowalski",
-    price: 325,
+    name: "Next.js SaaS Starter Kit",
+    instructor: "Built by the Aims I-Tech Studio",
+    price: 39,
     rating: 5,
-    category: "Website Development",
-    description:
-      "Less a tools course than a thinking course — how experienced engineers narrow down a bug instead of guessing. Kowalski walks through real debugging sessions end to end, including the dead ends.",
-  },
-  {
-    name: "Ship Your First Web App",
-    instructor: "Colin Frasier",
-    price: 235,
-    rating: 4,
-    category: "Website Development",
-    description:
-      "A beginner-friendly course focused entirely on getting a simple web app built and deployed, on the theory that shipping something small teaches more than tutorials ever will. Frasier keeps the scope deliberately tight.",
-  },
-
-  // ---------------------------------------------------------- Digital Marketing
-  {
-    name: "Performance Marketing Fundamentals",
-    instructor: "Yara Haddad",
-    price: 395,
-    rating: 5,
-    category: "Digital Marketing",
+    category: "Boilerplates & Starters",
     popular: true,
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80",
     description:
-      "A grounding in paid acquisition across search and social — targeting, budgets, and reading results honestly instead of chasing vanity metrics. Haddad has managed ad budgets for both scrappy startups and larger retail brands.",
+      "A production-ready Next.js codebase with auth, billing hooks, a settings dashboard and a marketing site already wired together, so you start building your product on day one instead of scaffolding.",
   },
   {
-    name: "The Organic Traffic Blueprint",
-    instructor: "Femi Okonjo",
-    price: 270,
+    name: "Node REST API Boilerplate",
+    instructor: "Built by the Aims I-Tech Studio",
+    price: 27,
     rating: 4,
-    category: "Digital Marketing",
+    category: "Boilerplates & Starters",
+    image:
+      "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=900&q=80",
     description:
-      "A step-by-step approach to growing search and referral traffic without a paid budget, covering content, technical basics and the slow compounding work that actually moves the needle over months.",
+      "A structured Node.js and Express API starter with authentication, request validation, error handling and test scaffolding already configured, following current best practices.",
   },
   {
-    name: "Marketing Analytics for Non-Analysts",
-    instructor: "Sasha Petrov",
-    price: 340,
+    name: "WordPress SEO Toolkit Plugin",
+    instructor: "Built by the Aims I-Tech Studio",
+    price: 22,
     rating: 4,
-    category: "Digital Marketing",
+    category: "Plugins & Extensions",
+    image:
+      "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=900&q=80",
     description:
-      "A practical analytics course for marketers who aren't data people, focused on the handful of numbers worth checking weekly and how to explain them to a boss who wants a straight answer.",
+      "A lightweight WordPress plugin covering meta tags, sitemap generation and basic schema markup — no bloat, no upsells, just the SEO fundamentals done right.",
   },
   {
-    name: "Building Campaigns That Convert",
-    instructor: "Aisha Bello",
-    price: 305,
+    name: "VS Code Productivity Pack",
+    instructor: "Built by the Aims I-Tech Studio",
+    price: 20,
+    rating: 4,
+    category: "Plugins & Extensions",
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+    description:
+      "A curated bundle of VS Code snippets, keybindings and workspace settings tuned for fast full-stack development, plus a short guide for tailoring it to your own stack.",
+  },
+  {
+    name: "React Native Fitness App Template",
+    instructor: "Built by the Aims I-Tech Studio",
+    price: 35,
     rating: 5,
-    category: "Digital Marketing",
+    category: "Mobile App Templates",
+    image:
+      "https://images.unsplash.com/photo-1556075798-4825dfaaf498?auto=format&fit=crop&w=900&q=80",
     description:
-      "A campaign-planning course covering offer, audience and creative together rather than in isolation, with real campaign breakdowns showing what worked and what quietly didn't.",
+      "A complete React Native fitness app — onboarding, workout tracking, progress charts and profile screens — styled and ready to connect to your own API.",
   },
   {
-    name: "Brand Positioning in a Noisy Market",
-    instructor: "Diego Alvarez",
-    price: 375,
+    name: "Flutter E-commerce App Template",
+    instructor: "Built by the Aims I-Tech Studio",
+    price: 32,
     rating: 4,
-    category: "Digital Marketing",
+    category: "Mobile App Templates",
+    image:
+      "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?auto=format&fit=crop&w=900&q=80",
     description:
-      "A course on carving out a distinct market position when every competitor sounds the same, built around a repeatable positioning exercise Alvarez has run with over forty brands.",
-  },
-
-  // ------------------------------------------------- Graphic Design & Visual Arts
-  {
-    name: "Design Systems in Practice",
-    instructor: "Naomi Chukwu",
-    price: 430,
-    rating: 5,
-    category: "Graphic Design & Visual Arts",
-    popular: true,
-    description:
-      "A practical guide to building and maintaining a design system that a whole team actually uses — components, tokens and the governance that keeps it from drifting apart within a year.",
-  },
-  {
-    name: "Typography That Works",
-    instructor: "Elliot Marsh",
-    price: 220,
-    rating: 4,
-    category: "Graphic Design & Visual Arts",
-    description:
-      "A focused course on choosing and pairing typefaces, setting hierarchy, and fixing the small spacing decisions that separate amateur layouts from professional ones.",
-  },
-  {
-    name: "Digital Illustration Foundations",
-    instructor: "Priya Nair",
-    price: 290,
-    rating: 4,
-    category: "Graphic Design & Visual Arts",
-    description:
-      "An introduction to digital illustration covering line, shape and color fundamentals, built for people coming from traditional drawing who want to work confidently in digital tools.",
-  },
-  {
-    name: "Color Theory for Working Designers",
-    instructor: "Grace Umeh",
-    price: 200,
-    rating: 5,
-    category: "Graphic Design & Visual Arts",
-    description:
-      "A practical color course focused on making confident palette decisions on deadline, rather than memorizing the color wheel in the abstract. Umeh includes a repeatable palette-building method used across her own client work.",
-  },
-  {
-    name: "From Sketch to Screen",
-    instructor: "Hassan Idris",
-    price: 325,
-    rating: 4,
-    category: "Graphic Design & Visual Arts",
-    description:
-      "A workflow course on taking a design from rough sketch through to a polished, presentable screen mockup, covering the in-between steps most tutorials skip entirely.",
-  },
-
-  // --------------------------------------------------------- Data Science & Analytics
-  {
-    name: "Data Analysis with Spreadsheets",
-    instructor: "Ravi Chandran",
-    price: 340,
-    rating: 4,
-    category: "Data Science & Analytics",
-    popular: true,
-    description:
-      "A course proving you don't need Python to analyze data well — advanced formulas, pivot tables and clean reporting built entirely in spreadsheets most teams already have.",
-  },
-  {
-    name: "Statistics for Decision Makers",
-    instructor: "Ines Coelho",
-    price: 410,
-    rating: 5,
-    category: "Data Science & Analytics",
-    description:
-      "A statistics course for people who need to make and defend decisions with data, not pass an exam — sample size, significance, and spotting a misleading chart on sight.",
-  },
-  {
-    name: "Dashboards That Get Used",
-    instructor: "Kwabena Mensah",
-    price: 305,
-    rating: 4,
-    category: "Data Science & Analytics",
-    description:
-      "A design-first approach to building dashboards people actually open, instead of ones that get built once and forgotten. Mensah shares real before-and-after dashboard redesigns.",
-  },
-  {
-    name: "SQL for Everyday Analysts",
-    instructor: "Fatima Zahra",
-    price: 255,
-    rating: 4,
-    category: "Data Science & Analytics",
-    description:
-      "A practical SQL course covering the queries analysts actually write day to day — joins, aggregates and window functions — skipping the database-administration material most SQL courses pad in.",
-  },
-  {
-    name: "Introduction to Predictive Modeling",
-    instructor: "Julian Voss",
-    price: 480,
-    rating: 4,
-    category: "Data Science & Analytics",
-    description:
-      "A first course in predictive modeling that prioritizes intuition over math notation, building toward a working model while explaining what each step is actually doing and why.",
-  },
-
-  // ---------------------------------------------------------- Project Management
-  {
-    name: "The Practical PM Toolkit",
-    instructor: "Bianca Torres",
-    price: 360,
-    rating: 5,
-    category: "Project Management",
-    popular: true,
-    description:
-      "A no-certification, no-jargon project management course covering the templates and habits Torres actually uses to run projects — status updates, scope changes and the meetings worth having.",
-  },
-  {
-    name: "Agile Without the Jargon",
-    instructor: "Tunde Fashola",
-    price: 270,
-    rating: 4,
-    category: "Project Management",
-    description:
-      "A plain-language introduction to agile practices for teams that want the useful parts — short cycles, honest standups, visible work — without adopting an entire framework wholesale.",
-  },
-  {
-    name: "Managing Remote Teams Well",
-    instructor: "Nadia Kessler",
-    price: 325,
-    rating: 4,
-    category: "Project Management",
-    description:
-      "A course on the specific challenges of managing people you rarely see in person — async communication, trust-building and knowing when a video call actually beats a written update.",
-  },
-  {
-    name: "Risk Management for Small Teams",
-    instructor: "Samuel Achebe",
-    price: 290,
-    rating: 4,
-    category: "Project Management",
-    description:
-      "A lightweight risk-management course sized for small teams without a dedicated PMO — spotting risks early, deciding which ones are worth tracking, and not drowning the project in process.",
-  },
-  {
-    name: "From Chaos to Roadmap",
-    instructor: "Layla Hassan",
-    price: 395,
-    rating: 5,
-    category: "Project Management",
-    description:
-      "A course on turning a messy backlog of requests into a roadmap stakeholders actually trust, covering prioritization frameworks that hold up under pressure from the loudest voice in the room.",
+      "A Flutter storefront app with product browsing, cart, checkout and order history screens, built with a clean state-management pattern that's easy to extend.",
   },
 ];
 
@@ -345,7 +170,7 @@ export const products: Product[] = seeds.map((seed, index) => {
     price: seed.price,
     rating: seed.rating,
     description: seed.description,
-    image: `/products/${slug}.png`,
+    image: seed.image,
     category: seed.category,
     inStock: seed.inStock ?? true,
     popular: seed.popular,

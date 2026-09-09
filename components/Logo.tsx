@@ -1,8 +1,8 @@
 /**
- * Webreid wordmark: a rounded navy badge holding a chevron "W" built from
- * two overlapping strokes in magenta and lime — distinct from every other
- * brand's glyph — beside the "Webreid" wordmark in navy with a single
- * magenta dot accent. No location text lives here or on the home page.
+ * Aims I-Tech wordmark: a black rounded terminal-tile holding a bracket
+ * glyph "< / >" in neon terminal-green, beside the "Aims I-Tech" wordmark
+ * set in the monospace display face with a blinking-cursor dot. No
+ * location text lives here or on the home page.
  */
 export default function Logo({
   className = "",
@@ -13,9 +13,9 @@ export default function Logo({
   wordClassName?: string;
   tone?: "ink" | "paper";
 }) {
-  const wordColor = tone === "paper" ? "text-paper" : "text-navy";
-  const badgeFill = tone === "paper" ? "#FFFFFF" : "#1B1A3B";
-  const dotColor = tone === "paper" ? "#8FBF3F" : "#A8408A";
+  const wordColor = tone === "paper" ? "text-paper" : "text-ink";
+  const tileFill = tone === "paper" ? "#FFFFFF" : "#0A0B0D";
+  const glyphColor = tone === "paper" ? "#0A0B0D" : "#22E584";
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
@@ -27,26 +27,20 @@ export default function Logo({
         aria-hidden="true"
         className="shrink-0"
       >
-        <rect width="34" height="34" rx="10" fill={badgeFill} />
+        <rect width="34" height="34" rx="8" fill={tileFill} />
         <path
-          d="M7 10l4.2 14 3.3-9.5L17.8 24 22 10"
-          stroke="#A8408A"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M22 10l5 14"
-          stroke="#8FBF3F"
+          d="M13.5 11 8.5 17l5 6M20.5 11l5 6-5 6"
+          stroke={glyphColor}
           strokeWidth="2.4"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
       </svg>
       <span
-        className={`font-display text-2xl font-semibold leading-none tracking-tight sm:text-[1.7rem] ${wordColor} ${wordClassName}`}
+        className={`font-display text-xl font-bold leading-none tracking-tight sm:text-[1.35rem] ${wordColor} ${wordClassName}`}
       >
-        Webreid<span style={{ color: dotColor }}>.</span>
+        Aims I-<span style={{ color: "#22E584" }}>Tech</span>
+        <span className="animate-pulse" style={{ color: "#22E584" }}>_</span>
       </span>
     </span>
   );
