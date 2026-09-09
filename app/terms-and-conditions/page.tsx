@@ -3,92 +3,54 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Terms & Conditions | ${site.name}`,
-  description: "The terms and conditions governing use of the Webreid website and orders.",
+  description: "The terms and conditions governing use of the Lawin Store website and orders.",
 };
+
+const SECTIONS = [
+  {
+    heading: "1. Acceptance of Terms",
+    body: `By accessing or using the ${site.wordmark} website, you agree to be bound by these Terms & Conditions. If you do not agree with any part of these terms, please do not use our site or place an order with us.`,
+  },
+  {
+    heading: "2. Products & Pricing",
+    body: "All prices are listed in US Dollars ($) and also shown in Nigerian Naira (₦) for reference, using a fixed conversion rate that may differ slightly from real-time exchange rates. We reserve the right to update pricing at any time, though changes never affect orders already confirmed. Product contents are occasionally updated and may differ slightly from the version shown at the time of purchase.",
+  },
+  {
+    heading: "3. Orders & Payment",
+    body: "By placing an order, you confirm that the payment information you provide is accurate and that you are authorized to use the payment method submitted. We accept Mastercard and Visa only. We reserve the right to refuse or cancel any order at our discretion, including in cases of suspected fraud, in which case a full refund will be issued.",
+  },
+  {
+    heading: "4. Intellectual Property & License",
+    body: `Purchasing a product grants you a non-exclusive license to use it on a single site. You may not resell, redistribute or relicense the source files themselves, whether modified or unmodified. All site content, including text, logos and design, remains the property of ${site.legalName}.`,
+  },
+  {
+    heading: "5. Limitation of Liability",
+    body: `${site.wordmark} is not liable for any indirect, incidental or consequential damages arising from the use of our website or products, including issues caused by third-party platforms, browsers or hosting environments outside our control.`,
+  },
+  {
+    heading: "6. Governing Law",
+    body: "These Terms & Conditions are governed by the laws of the Federal Republic of Nigeria. Any disputes arising from these terms will be subject to the exclusive jurisdiction of the courts of Lagos State.",
+  },
+  {
+    heading: "7. Changes to These Terms",
+    body: "We may update these Terms & Conditions from time to time. Changes will be posted on this page with an updated revision date. Continued use of the site after changes are posted constitutes acceptance of the revised terms.",
+  },
+];
 
 export default function TermsPage() {
   return (
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Legal</p>
       <h1 className="section-heading mt-3">Terms & Conditions</h1>
-      <p className="mt-2 text-sm text-ink-soft">Last updated: August 2026</p>
+      <p className="mt-2 text-sm text-ink-soft">Last updated: September 2026</p>
 
-      <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
-        <section>
-          <h2 className="font-display text-xl text-ink">1. Acceptance of Terms</h2>
-          <p className="mt-3 leading-relaxed">
-            By accessing or using the {site.wordmark} website, you agree to
-            be bound by these Terms & Conditions. If you do not agree with
-            any part of these terms, please do not use our site or place an
-            order with us.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-display text-xl text-ink">2. Courses & Pricing</h2>
-          <p className="mt-3 leading-relaxed">
-            All prices are listed in US Dollars ($) and also shown in
-            Nigerian Naira (₦) for reference, using a fixed conversion rate
-            that may differ slightly from real-time exchange rates. We
-            reserve the right to update pricing at any time, though changes
-            never affect orders already confirmed. Course content is
-            periodically updated by instructors and may differ slightly
-            from the version shown at the time of purchase.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-display text-xl text-ink">3. Orders & Payment</h2>
-          <p className="mt-3 leading-relaxed">
-            By placing an order, you confirm that the payment information
-            you provide is accurate and that you are authorized to use the
-            payment method submitted. Payments are accepted by card only. We
-            reserve the right to refuse or cancel any order at our
-            discretion, including in cases of suspected fraud, in which case
-            a full refund will be issued.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-display text-xl text-ink">4. Intellectual Property</h2>
-          <p className="mt-3 leading-relaxed">
-            All content on this site, including course videos, materials,
-            text, logos and design, is the property of {site.legalName} or
-            its respective instructors and may not be reproduced,
-            redistributed, or resold without prior written consent. Course
-            access is granted for personal, non-commercial use only.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-display text-xl text-ink">5. Limitation of Liability</h2>
-          <p className="mt-3 leading-relaxed">
-            {site.wordmark} is not liable for any indirect, incidental or
-            consequential damages arising from the use of our website or
-            courses, including outcomes or results you achieve — or don&apos;t
-            achieve — from applying course material.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-display text-xl text-ink">6. Governing Law</h2>
-          <p className="mt-3 leading-relaxed">
-            These Terms & Conditions are governed by the laws of the Federal
-            Republic of Nigeria. Any disputes arising from these terms will
-            be subject to the exclusive jurisdiction of the courts of Rivers
-            State.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-display text-xl text-ink">7. Changes to These Terms</h2>
-          <p className="mt-3 leading-relaxed">
-            We may update these Terms & Conditions from time to time.
-            Changes will be posted on this page with an updated revision
-            date. Continued use of the site after changes are posted
-            constitutes acceptance of the revised terms.
-          </p>
-        </section>
+      <div className="mt-10 grid max-w-3xl grid-cols-1 gap-4">
+        {SECTIONS.map((section) => (
+          <section key={section.heading} className="rounded-xl border border-line bg-paper p-6">
+            <h2 className="font-display text-lg font-bold text-berry">{section.heading}</h2>
+            <p className="mt-2 leading-relaxed text-ink/80">{section.body}</p>
+          </section>
+        ))}
       </div>
     </div>
   );

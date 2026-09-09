@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: `Shop | ${site.name}`,
   description:
-    "Every course Webreid stocks, from business and web development to digital marketing, design, data and project management, priced up front in USD or NGN.",
+    "Every theme and plugin Lawin Store stocks, from landing pages and e-commerce themes to admin dashboards and utility plugins, priced up front in USD or NGN.",
 };
 
 export default function ShopPage({
@@ -29,56 +29,67 @@ export default function ShopPage({
 
   return (
     <div className="container-page py-12 lg:py-16">
-      <div className="max-w-xl">
-        <p className="eyebrow">Full Catalogue</p>
-        <h1 className="section-heading mt-3">{activeCategory ?? "All Courses"}</h1>
-        <p className="mt-4 text-base leading-relaxed text-ink-soft">
-          Thirty courses across business, web development, digital marketing,
-          design, data and project management — each priced up front. Prices
-          convert automatically between US Dollars and Nigerian Naira using
-          the toggle in the header.
+      <p className="eyebrow">Full Store</p>
+      <h1 className="section-heading mt-3">{activeCategory ?? "All Products"}</h1>
+      {query && (
+        <p className="mt-3 text-sm text-ink-soft">
+          Showing results for{" "}
+          <span className="font-semibold text-ink">&ldquo;{searchParams.q}&rdquo;</span>
         </p>
-        {query && (
-          <p className="mt-3 text-sm text-ink-soft">
-            Showing results for{" "}
-            <span className="font-semibold text-ink">&ldquo;{searchParams.q}&rdquo;</span>
-          </p>
-        )}
-      </div>
-
-      <div className="mt-8 flex flex-wrap gap-2.5">
-        <a
-          href="/shop"
-          className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
-            !activeCategory ? "bg-navy text-paper" : "bg-blush text-ink-soft hover:text-ink"
-          }`}
-        >
-          All
-        </a>
-        {categories.map((category) => (
-          <a
-            key={category}
-            href={`/shop?category=${encodeURIComponent(category)}`}
-            className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
-              activeCategory === category
-                ? "bg-navy text-paper"
-                : "bg-blush text-ink-soft hover:text-ink"
-            }`}
-          >
-            {category}
-          </a>
-        ))}
-      </div>
-
-      {shown.length > 0 ? (
-        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
-          {shown.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      ) : (
-        <p className="mt-16 text-center text-ink-soft">No courses match that search.</p>
       )}
+
+      <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[220px_1fr]">
+        {/* Sidebar category rail */}
+        <aside className="lg:sticky lg:top-28 lg:h-fit">
+          <p className="text-xs font-bold uppercase tracking-widest2 text-ink-soft">
+            Categories
+          </p>
+          <nav className="mt-4 flex flex-row flex-wrap gap-2 lg:flex-col lg:gap-1">
+            <a
+              href="/shop"
+              className={`rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors ${
+                !activeCategory
+                  ? "bg-berry text-paper"
+                  : "text-ink-soft hover:bg-sand hover:text-ink"
+              }`}
+            >
+              All Products
+            </a>
+            {categories.map((category) => (
+              <a
+                key={category}
+                href={`/shop?category=${encodeURIComponent(category)}`}
+                className={`rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors ${
+                  activeCategory === category
+                    ? "bg-berry text-paper"
+                    : "text-ink-soft hover:bg-sand hover:text-ink"
+                }`}
+              >
+                {category}
+              </a>
+            ))}
+          </nav>
+          <div className="mt-8 hidden rounded-xl border border-line bg-sand p-5 lg:block">
+            <p className="font-display text-sm font-bold text-ink">Priced in USD or NGN</p>
+            <p className="mt-1.5 text-xs leading-relaxed text-ink-soft">
+              Switch currency any time using the toggle in the header.
+            </p>
+          </div>
+        </aside>
+
+        {/* Product grid */}
+        <div>
+          {shown.length > 0 ? (
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {shown.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          ) : (
+            <p className="py-16 text-center text-ink-soft">No products match that search.</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

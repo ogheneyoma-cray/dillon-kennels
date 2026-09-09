@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fredoka, Rubik } from "next/font/google";
+import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
@@ -7,22 +7,22 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
 
-const fredoka = Fredoka({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-fredoka",
+  variable: "--font-bricolage",
   display: "swap",
 });
 
-const rubik = Rubik({
+const figtree = Figtree({
   subsets: ["latin"],
-  variable: "--font-rubik",
+  variable: "--font-figtree",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: `${site.wordmark} | ${site.tagline}`,
   description: site.description,
-  icons: { icon: "/icon.svg" },
+  icons: { icon: "data:," },
 };
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fredoka.variable} ${rubik.variable}`}>
+    <html lang="en" className={`${bricolage.variable} ${figtree.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
         <CurrencyProvider>
           <CartProvider>

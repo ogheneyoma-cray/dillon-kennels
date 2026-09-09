@@ -8,21 +8,21 @@
  * pages, where it is required. No social links appear anywhere on the site.
  */
 export const site = {
-  name: "Webreid",
-  legalName: "Webreid Ltd",
-  wordmark: "Webreid",
-  tagline: "Expert-led courses for real-world careers",
+  name: "Lawin Store",
+  legalName: "Lawin Store Ltd",
+  wordmark: "Lawin Store",
+  tagline: "Themes and plugins that just work",
   description:
-    "Webreid is an online store stocking self-paced digital courses on business, web development, digital marketing, design, data and project management — around thirty courses, priced up front in USD or NGN.",
-  email: "support@webreid.com",
-  phone: "07015042270",
-  phoneHref: "+2347015042270",
+    "Lawin Store is a marketplace for premium website themes and plugins — landing pages, e-commerce themes, admin dashboards and utility plugins — priced up front in USD or NGN.",
+  email: "support@lawinstore.com",
+  phone: "08024384755",
+  phoneHref: "+2348024384755",
   address: {
-    line1: "9, Honourable Precious Street",
-    line2: "Rumuodara",
-    line3: "Port Harcourt, Rivers State, Nigeria",
+    line1: "1/3 Liasu Ajakaiye Street",
+    line2: "Iba Estate",
+    line3: "Ojo, Lagos State, Nigeria",
   },
-  addressOneLine: "9, Honourable Precious Street, Rumuodara, Port Harcourt, Rivers State, Nigeria",
+  addressOneLine: "1/3 Liasu Ajakaiye Street, Iba Estate, Ojo, Lagos State, Nigeria",
 } as const;
 
 export const addressLines = [site.address.line1, site.address.line2, site.address.line3];

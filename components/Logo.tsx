@@ -1,8 +1,9 @@
 /**
- * Webreid wordmark: a rounded navy badge holding a chevron "W" built from
- * two overlapping strokes in magenta and lime — distinct from every other
- * brand's glyph — beside the "Webreid" wordmark in navy with a single
- * magenta dot accent. No location text lives here or on the home page.
+ * Lawin Store wordmark: a berry rounded-square badge holding a stacked "L"
+ * monogram built from two offset bars in white and peach — reads like a
+ * browser-window corner fold, nodding to themes/templates — beside the
+ * "Lawin Store" wordmark in ink with a peach dot accent. No location text
+ * lives here or on the home page.
  */
 export default function Logo({
   className = "",
@@ -13,9 +14,10 @@ export default function Logo({
   wordClassName?: string;
   tone?: "ink" | "paper";
 }) {
-  const wordColor = tone === "paper" ? "text-paper" : "text-navy";
-  const badgeFill = tone === "paper" ? "#FFFFFF" : "#1B1A3B";
-  const dotColor = tone === "paper" ? "#8FBF3F" : "#A8408A";
+  const wordColor = tone === "paper" ? "text-paper" : "text-ink";
+  const badgeFill = tone === "paper" ? "#FFFFFF" : "#7A1F4B";
+  const barColor = tone === "paper" ? "#7A1F4B" : "#FFFFFF";
+  const dotColor = "#FF9466";
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
@@ -28,25 +30,14 @@ export default function Logo({
         className="shrink-0"
       >
         <rect width="34" height="34" rx="10" fill={badgeFill} />
-        <path
-          d="M7 10l4.2 14 3.3-9.5L17.8 24 22 10"
-          stroke="#A8408A"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M22 10l5 14"
-          stroke="#8FBF3F"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+        <rect x="10" y="8" width="4.5" height="18" rx="2" fill={barColor} />
+        <rect x="10" y="21.5" width="14" height="4.5" rx="2" fill={barColor} />
+        <circle cx="24.5" cy="9.5" r="2.6" fill={dotColor} />
       </svg>
       <span
-        className={`font-display text-2xl font-semibold leading-none tracking-tight sm:text-[1.7rem] ${wordColor} ${wordClassName}`}
+        className={`font-display text-2xl font-bold leading-none tracking-tight sm:text-[1.6rem] ${wordColor} ${wordClassName}`}
       >
-        Webreid<span style={{ color: dotColor }}>.</span>
+        Lawin <span style={{ color: dotColor }}>Store</span>
       </span>
     </span>
   );

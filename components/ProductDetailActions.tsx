@@ -24,12 +24,12 @@ export default function ProductDetailActions({ product }: { product: Product }) 
     <div>
       <div className="flex items-center gap-4">
         <span className="label-text mb-0">Quantity</span>
-        <div className="flex items-center rounded-full border border-ink/15">
+        <div className="flex items-center rounded-lg border border-ink/15">
           <button
             type="button"
             onClick={decrease}
             aria-label="Decrease quantity"
-            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-blush disabled:opacity-30"
+            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-sand disabled:opacity-30"
             disabled={quantity <= 1}
           >
             −
@@ -41,7 +41,7 @@ export default function ProductDetailActions({ product }: { product: Product }) 
             type="button"
             onClick={increase}
             aria-label="Increase quantity"
-            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-blush"
+            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-sand"
           >
             +
           </button>

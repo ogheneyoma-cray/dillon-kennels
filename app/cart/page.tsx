@@ -16,8 +16,8 @@ export default function CartPage() {
         <p className="eyebrow">Your Cart</p>
         <h1 className="section-heading mt-3">It&apos;s looking empty in here</h1>
         <p className="mt-4 max-w-sm text-ink-soft">
-          You haven&apos;t added any courses to your cart yet. Explore the
-          catalogue and find something to learn.
+          You haven&apos;t added any products to your cart yet. Explore the
+          store and find your next theme or plugin.
         </p>
         <Link href="/shop" className="btn-primary mt-8">
           Shop Now
@@ -37,7 +37,7 @@ export default function CartPage() {
             <li key={item.id} className="flex gap-4 py-6 sm:gap-6">
               <Link
                 href={`/shop/${item.slug}`}
-                className="relative aspect-[4/5] w-20 shrink-0 overflow-hidden rounded-xl bg-blush sm:w-28"
+                className="relative aspect-[4/5] w-20 shrink-0 overflow-hidden rounded-xl bg-sand sm:w-28"
               >
                 <ProductCover
                   src={item.image}
@@ -51,7 +51,7 @@ export default function CartPage() {
                   <div>
                     <Link
                       href={`/shop/${item.slug}`}
-                      className="font-display text-base leading-snug text-ink hover:text-magenta sm:text-lg"
+                      className="font-display text-base leading-snug text-ink hover:text-berry sm:text-lg"
                     >
                       {item.name}
                     </Link>
@@ -65,12 +65,12 @@ export default function CartPage() {
                 </div>
 
                 <div className="mt-4 flex items-center justify-between">
-                  <div className="flex items-center rounded-full border border-ink/15">
+                  <div className="flex items-center rounded-lg border border-ink/15">
                     <button
                       type="button"
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
                       aria-label={`Decrease quantity of ${item.name}`}
-                      className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-blush"
+                      className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-sand"
                     >
                       −
                     </button>
@@ -81,7 +81,7 @@ export default function CartPage() {
                       type="button"
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
                       aria-label={`Increase quantity of ${item.name}`}
-                      className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-blush"
+                      className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-sand"
                     >
                       +
                     </button>
@@ -89,7 +89,7 @@ export default function CartPage() {
                   <button
                     type="button"
                     onClick={() => removeFromCart(item.id)}
-                    className="min-h-[44px] px-2 text-sm font-medium text-ink-soft underline underline-offset-4 hover:text-magenta"
+                    className="min-h-[44px] px-2 text-sm font-medium text-ink-soft underline underline-offset-4 hover:text-berry"
                   >
                     Remove
                   </button>
@@ -99,7 +99,7 @@ export default function CartPage() {
           ))}
         </ul>
 
-        <aside className="h-fit rounded-2xl border border-line bg-paper p-6">
+        <aside className="h-fit rounded-xl border border-line bg-paper p-6">
           <h2 className="font-display text-xl text-ink">Order Summary</h2>
           <div className="mt-5 space-y-3 text-sm">
             <div className="flex justify-between text-ink-soft">
@@ -107,8 +107,8 @@ export default function CartPage() {
               <span>{formatMoney(cartTotal, currency)}</span>
             </div>
             <div className="flex justify-between text-ink-soft">
-              <span>Access</span>
-              <span>Instant, after payment</span>
+              <span>Delivery</span>
+              <span>Instant download, after payment</span>
             </div>
           </div>
           <div className="mt-5 flex justify-between border-t border-line pt-5 font-display text-lg text-ink">
