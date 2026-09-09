@@ -1,187 +1,111 @@
 import Link from "next/link";
-import { categories, getFeaturedProducts } from "@/data/products";
+import { categories, getFeaturedProducts, products } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
-import ProductCover from "@/components/ProductCover";
-import NewArrivalsTabs from "@/components/NewArrivalsTabs";
 import NewsletterForm from "@/components/NewsletterForm";
-import CategoryIconGrid from "@/components/CategoryIconGrid";
-import StarRating from "@/components/StarRating";
-import ProductPrice from "@/components/ProductPrice";
 import { site } from "@/lib/site";
-
-const STATS = [
-  { value: "30+", label: "Courses Available" },
-  { value: "20+", label: "Expert Instructors" },
-  { value: "6", label: "Course Categories" },
-  { value: "4.8", label: "Average Course Rating" },
-];
-
-const FEATURES = [
-  {
-    title: "Instant Access",
-    body: "No shipping, no waiting — your course unlocks the moment payment clears.",
-  },
-  {
-    title: "USD or NGN Pricing",
-    body: "Switch currencies from the header and every price on the site updates instantly.",
-  },
-  {
-    title: "Taught by Practitioners",
-    body: "Every course is taught by someone who does the work daily, not just studies it.",
-  },
-];
 
 export default function HomePage() {
   const featured = getFeaturedProducts();
-  const hero = featured[0];
+  const board = products.slice(0, 6);
 
   return (
     <div>
-      {/* Hero */}
-      <section
-        className="relative overflow-hidden bg-magenta"
-        style={{
-          backgroundImage:
-            "linear-gradient(125deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.05) 35%, transparent 55%)",
-        }}
-      >
-        <div className="container-page grid grid-cols-1 items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
-          <div>
-            <h1 className="font-display text-4xl font-semibold leading-[1.05] text-paper sm:text-5xl lg:text-[3.3rem]">
-              Master New Skills With Industry-Leading Courses
-            </h1>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-paper/85">
-              {site.description}
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/shop" className="btn-white">
-                Shop the Catalogue
-              </Link>
-              <Link
-                href="/shop"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-paper underline decoration-lime decoration-2 underline-offset-4"
-              >
-                See All Courses →
-              </Link>
-            </div>
-          </div>
-
-          <div className="relative flex items-center justify-center py-6">
-            <div className="relative w-48 sm:w-56">
-              {hero && (
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lift">
-                  <ProductCover
-                    src={hero.image}
-                    alt={`${hero.name} cover`}
-                    priority
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              )}
-              {hero && (
-                <div className="absolute -bottom-8 -left-10 rounded-2xl bg-navy px-5 py-4 shadow-lift sm:-left-16">
-                  <div className="flex items-center gap-1.5">
-                    <StarRating rating={hero.rating} className="text-lime" />
-                  </div>
-                  <p className="mt-2 font-display text-lg font-bold text-paper">
-                    <ProductPrice priceUsd={hero.price} />
-                  </p>
-                  <p className="text-[10px] uppercase tracking-wider text-paper/60">
-                    {hero.category}
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats overview */}
-      <section className="bg-paper py-16 lg:py-20">
-        <div className="container-page text-center">
-          <p className="eyebrow justify-center">Overview</p>
-          <h2 className="section-heading mt-3">
-            Courses Designed For Your Success
-          </h2>
-          <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-4">
-            {STATS.map((stat) => (
-              <div key={stat.label}>
-                <p className="font-display text-4xl font-bold text-navy">
-                  {stat.value}
-                  <span className="text-lime">+</span>
-                </p>
-                <p className="mt-2 text-sm text-ink-soft">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Category grid */}
-      <section className="bg-navy py-16 lg:py-20">
-        <div className="container-page text-center">
-          <p className="eyebrow justify-center text-lime">Course Categories</p>
-          <h2 className="mt-3 font-display text-3xl font-semibold text-paper sm:text-4xl">
-            Navigate Our Course Library By Subject
-          </h2>
-          <div className="mt-12 text-left">
-            <CategoryIconGrid categories={categories} />
-          </div>
-        </div>
-      </section>
-
-      {/* Bestsellers, tabbed by category */}
-      <section className="py-16 lg:py-20">
-        <div className="container-page">
-          <div className="text-center">
-            <p className="eyebrow justify-center">Featured Courses</p>
-            <h2 className="section-heading mt-3">
-              Top-Rated Courses Chosen Daily
-            </h2>
-          </div>
-          <div className="mt-10">
-            <NewArrivalsTabs />
-          </div>
-          <div className="mt-12 flex justify-center">
+      {/* Hero: a departure board of services, not a split hero */}
+      <section className="bg-gate">
+        <div className="container-page py-14 text-center lg:py-20">
+          <p className="font-display text-xs uppercase tracking-widest2 text-beacon">
+            {site.tagline}
+          </p>
+          <h1 className="mx-auto mt-4 max-w-2xl font-display text-3xl font-bold leading-[1.15] text-paper sm:text-4xl lg:text-5xl">
+            IT services for businesses ready to depart on time
+          </h1>
+          <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-paper/65">
+            {site.description}
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link href="/shop" className="btn-primary">
-              Browse All Courses
+              View Departures
+            </Link>
+            <Link href="/about" className="btn-white">
+              About Us
             </Link>
           </div>
         </div>
-      </section>
 
-      {/* Why us */}
-      <section className="bg-blush py-16 lg:py-20">
-        <div className="container-page">
-          <div className="text-center">
-            <p className="eyebrow justify-center">Why {site.wordmark}</p>
-            <h2 className="section-heading mt-3">Built for Doing, Not Just Watching</h2>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
-            {FEATURES.map((feature) => (
-              <div key={feature.title} className="rounded-2xl bg-paper p-6 shadow-tile">
-                <p className="font-display text-lg font-semibold text-ink">{feature.title}</p>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{feature.body}</p>
-              </div>
+        <div className="container-page pb-14 lg:pb-20">
+          <div className="overflow-hidden rounded-lg border border-gate-soft">
+            <div className="flex items-center gap-3 border-b border-gate-soft bg-gate-soft/40 px-4 py-2.5 font-display text-[11px] uppercase tracking-widest2 text-paper/50">
+              <span className="w-14 shrink-0 sm:w-20">Code</span>
+              <span className="min-w-0 flex-1">Service</span>
+              <span className="hidden w-40 shrink-0 sm:block">Category</span>
+              <span className="w-16 shrink-0 text-right">Price</span>
+              <span className="w-20 shrink-0 text-right">Status</span>
+            </div>
+            {board.map((item, i) => (
+              <Link
+                key={item.id}
+                href={`/shop/${item.slug}`}
+                className="group flex items-center gap-3 border-b border-gate-soft/60 px-4 py-3 font-display text-sm transition-colors last:border-b-0 hover:bg-gate-soft/40"
+              >
+                <span className="w-14 shrink-0 text-beacon sm:w-20">
+                  CT{String(i + 101)}
+                </span>
+                <span className="min-w-0 flex-1 truncate text-paper/90 group-hover:text-paper">
+                  {item.name}
+                </span>
+                <span className="hidden w-40 shrink-0 truncate text-xs text-paper/50 sm:block">
+                  {item.category}
+                </span>
+                <span className="w-16 shrink-0 text-right text-paper/80">${item.price}</span>
+                <span className="w-20 shrink-0 text-right text-xs font-bold uppercase tracking-widest2 text-radar">
+                  Open
+                </span>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured products */}
+      {/* Categories as terminal gates */}
+      <section className="py-16 lg:py-20">
+        <div className="container-page">
+          <p className="eyebrow">Terminal Map</p>
+          <h2 className="section-heading mt-3">Choose Your Gate</h2>
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {categories.map((category, i) => {
+              const count = products.filter((p) => p.category === category).length;
+              return (
+                <Link
+                  key={category}
+                  href={`/shop?category=${encodeURIComponent(category)}`}
+                  className="group rounded-lg border border-line bg-paper p-5 transition-colors hover:border-beacon-dark"
+                >
+                  <p className="font-display text-xs text-ink-soft">GATE {i + 1}</p>
+                  <p className="mt-2 font-display text-base font-bold text-ink group-hover:text-beacon-dark">
+                    {category}
+                  </p>
+                  <p className="mt-1 text-xs text-ink-soft">{count} services</p>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured products as boarding passes */}
       {featured.length > 0 && (
-        <section className="py-16 lg:py-20">
+        <section className="bg-mist py-16 lg:py-20">
           <div className="container-page">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="eyebrow">Learner Favorites</p>
-                <h2 className="section-heading mt-3">Most Recommended</h2>
+                <p className="eyebrow">Priority Boarding</p>
+                <h2 className="section-heading mt-3">Most Booked Services</h2>
               </div>
               <Link href="/shop" className="btn-ghost hidden sm:inline-flex">
-                View Full Catalogue →
+                View All Departures →
               </Link>
             </div>
-            <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
               {featured.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -191,13 +115,13 @@ export default function HomePage() {
       )}
 
       {/* Newsletter band */}
-      <section className="bg-navy text-paper">
+      <section className="bg-gate text-paper">
         <div className="container-page py-14 text-center">
-          <h2 className="font-display text-3xl font-semibold sm:text-4xl">
-            Get New Courses First
+          <h2 className="font-display text-2xl font-bold sm:text-3xl">
+            Boarding Announcements
           </h2>
-          <p className="mx-auto mt-3 max-w-md text-sm text-paper/75">
-            New releases and the occasional discount — no spam, unsubscribe
+          <p className="mx-auto mt-3 max-w-md text-sm text-paper/65">
+            New services and the occasional discount — no spam, unsubscribe
             any time.
           </p>
           <div className="mx-auto mt-8 max-w-lg">

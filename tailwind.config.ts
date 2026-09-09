@@ -1,11 +1,14 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Palette and layout language lifted from the Coursely reference: a vivid
- * magenta hero with a diagonal light-ray gradient, a deep navy for
- * secondary panels/buttons/footer, and a lime-green accent reserved for
- * "+" marks, badges and small highlights. No lavender, no wine, no camel —
- * this magenta/navy/lime trio is this brand's alone among the storefronts.
+ * Original palette for Cyber Travellers: a departure-board identity — a
+ * deep petrol-teal-black ("gate") carrying the header, footer and board
+ * surfaces, a glowing amber ("beacon") for every primary action, price and
+ * "boarding" status, and a cool mint ("radar") reserved for secondary
+ * highlights and confirmation states. No navy, no violet/lavender, no
+ * wine/rose, no gold-on-cream, no black-plus-neon-green, no silver/fuchsia
+ * — this petrol/amber/mint trio, paired with the flip-board and boarding-
+ * pass layout below, is this brand's alone among the storefronts.
  */
 const config: Config = {
   content: [
@@ -16,23 +19,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        magenta: "#A8408A",
-        "magenta-dark": "#7D2E68",
-        "magenta-light": "#C063A5",
-        "magenta-pale": "#FBEEF7",
-        navy: "#1B1A3B",
-        "navy-soft": "#4B4A6E",
-        lime: "#8FBF3F",
-        "lime-dark": "#6B9A2A",
-        blush: "#F8E9F2",
+        gate: "#0D1F1E",
+        "gate-soft": "#173634",
+        beacon: "#FFA630",
+        "beacon-dark": "#DB8412",
+        "beacon-pale": "#FFF1DE",
+        radar: "#4DE8C2",
+        "radar-dark": "#22B896",
         paper: "#FFFFFF",
-        ink: "#1B1A3B",
-        "ink-soft": "#615F80",
-        line: "#E7E3EE",
+        ink: "#101817",
+        "ink-soft": "#5E6C6A",
+        line: "#E1E8E6",
+        mist: "#F2F6F5",
       },
       fontFamily: {
-        display: ["var(--font-fredoka)", "sans-serif"],
-        body: ["var(--font-rubik)", "sans-serif"],
+        display: ["var(--font-space-mono)", "monospace"],
+        body: ["var(--font-mulish)", "sans-serif"],
       },
       letterSpacing: {
         widest2: "0.16em",
@@ -41,8 +43,8 @@ const config: Config = {
         content: "1360px",
       },
       boxShadow: {
-        tile: "0 10px 30px rgba(27, 26, 59, 0.08)",
-        lift: "0 20px 45px rgba(27, 26, 59, 0.18)",
+        tile: "0 10px 30px rgba(13, 31, 30, 0.08)",
+        lift: "0 20px 45px rgba(13, 31, 30, 0.2)",
       },
     },
   },

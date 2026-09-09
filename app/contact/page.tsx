@@ -6,7 +6,7 @@ import { addressLines, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: `Contact Us | ${site.name}`,
   description:
-    "Get in touch with the Webreid team — store address, phone, email, and business hours.",
+    "Get in touch with the Cyber Travellers team — address, phone, email, and business hours.",
 };
 
 export default function ContactPage() {
@@ -15,8 +15,9 @@ export default function ContactPage() {
       <p className="eyebrow">Get in Touch</p>
       <h1 className="section-heading mt-3">Contact Us</h1>
       <p className="mt-4 max-w-xl text-ink-soft">
-        Have a question about an order, a course, or just want to say hello?
-        Send us a message or reach out directly using the details below.
+        Have a question about a booking, a service, or just want to say
+        hello? Send us a message or reach out directly using the details
+        below.
       </p>
 
       <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_1fr]">
@@ -39,7 +40,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Email</dt>
                 <dd className="mt-1">
-                  <a href={`mailto:${site.email}`} className="hover:text-magenta">
+                  <a href={`mailto:${site.email}`} className="hover:text-beacon">
                     {site.email}
                   </a>
                 </dd>
@@ -47,7 +48,7 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Phone</dt>
                 <dd className="mt-1">
-                  <a href={`tel:${site.phoneHref}`} className="hover:text-magenta">
+                  <a href={`tel:${site.phoneHref}`} className="hover:text-beacon">
                     {site.phone}
                   </a>
                 </dd>
@@ -73,7 +74,7 @@ export default function ContactPage() {
             </dl>
           </div>
 
-          <div className="rounded-2xl bg-blush p-6">
+          <div className="rounded-2xl bg-mist p-6">
             <p className="text-sm text-ink-soft">
               Looking for quick answers instead?
             </p>

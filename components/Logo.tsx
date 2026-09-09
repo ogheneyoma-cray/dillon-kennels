@@ -1,8 +1,8 @@
 /**
- * Webreid wordmark: a rounded navy badge holding a chevron "W" built from
- * two overlapping strokes in magenta and lime — distinct from every other
- * brand's glyph — beside the "Webreid" wordmark in navy with a single
- * magenta dot accent. No location text lives here or on the home page.
+ * Cyber Travellers wordmark: a petrol-gate rounded-square badge holding an
+ * amber flight-path glyph (a departing plane trail), beside the "Cyber
+ * Travellers" wordmark set in the monospace display face with a mint dot
+ * accent. No location text lives here or on the home page.
  */
 export default function Logo({
   className = "",
@@ -13,9 +13,10 @@ export default function Logo({
   wordClassName?: string;
   tone?: "ink" | "paper";
 }) {
-  const wordColor = tone === "paper" ? "text-paper" : "text-navy";
-  const badgeFill = tone === "paper" ? "#FFFFFF" : "#1B1A3B";
-  const dotColor = tone === "paper" ? "#8FBF3F" : "#A8408A";
+  const wordColor = tone === "paper" ? "text-paper" : "text-ink";
+  const badgeFill = tone === "paper" ? "#FFFFFF" : "#0D1F1E";
+  const glyphColor = tone === "paper" ? "#0D1F1E" : "#FFA630";
+  const dotColor = "#4DE8C2";
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
@@ -27,26 +28,26 @@ export default function Logo({
         aria-hidden="true"
         className="shrink-0"
       >
-        <rect width="34" height="34" rx="10" fill={badgeFill} />
+        <rect width="34" height="34" rx="9" fill={badgeFill} />
         <path
-          d="M7 10l4.2 14 3.3-9.5L17.8 24 22 10"
-          stroke="#A8408A"
-          strokeWidth="2.4"
+          d="M8 20 L26 12 L24 18 L28 17.5"
+          stroke={glyphColor}
+          strokeWidth="2.2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
-          d="M22 10l5 14"
-          stroke="#8FBF3F"
-          strokeWidth="2.4"
+          d="M8 20 L14 16"
+          stroke={dotColor}
+          strokeWidth="2.2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          strokeDasharray="1 3.2"
         />
       </svg>
       <span
-        className={`font-display text-2xl font-semibold leading-none tracking-tight sm:text-[1.7rem] ${wordColor} ${wordClassName}`}
+        className={`font-display text-lg font-bold leading-none tracking-tight sm:text-xl ${wordColor} ${wordClassName}`}
       >
-        Webreid<span style={{ color: dotColor }}>.</span>
+        Cyber<span style={{ color: dotColor }}>Travellers</span>
       </span>
     </span>
   );

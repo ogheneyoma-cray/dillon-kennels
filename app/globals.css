@@ -19,8 +19,8 @@
   }
 
   ::selection {
-    background-color: #a8408a;
-    color: #ffffff;
+    background-color: #ffa630;
+    color: #0d1f1e;
   }
 }
 
@@ -30,27 +30,27 @@
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest2 text-magenta before:h-1.5 before:w-1.5 before:rounded-full before:bg-magenta;
+    @apply inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest2 text-beacon-dark before:h-1.5 before:w-1.5 before:rounded-full before:bg-beacon-dark;
   }
 
   .btn-primary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-navy px-7 py-3 text-sm font-semibold text-paper transition-colors duration-200 hover:bg-navy-soft;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md bg-beacon px-7 py-3 font-display text-sm font-bold text-gate transition-colors duration-200 hover:bg-beacon-dark;
   }
 
   .btn-white {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-paper px-7 py-3 text-sm font-semibold text-magenta transition-colors duration-200 hover:bg-blush;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md bg-paper px-7 py-3 font-display text-sm font-bold text-gate transition-colors duration-200 hover:bg-mist;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-ink/15 bg-paper px-7 py-3 text-sm font-semibold text-ink transition-colors duration-200 hover:border-magenta hover:text-magenta;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md border border-ink/15 bg-paper px-7 py-3 font-display text-sm font-bold text-ink transition-colors duration-200 hover:border-beacon-dark hover:text-beacon-dark;
   }
 
   .btn-ghost {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-ink underline decoration-lime decoration-2 underline-offset-4 transition-colors hover:text-magenta;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 font-display text-sm font-medium text-ink underline decoration-beacon decoration-2 underline-offset-4 transition-colors hover:text-beacon-dark;
   }
 
   .input-field {
-    @apply w-full min-h-[44px] rounded-lg border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-magenta focus:outline-none focus:ring-1 focus:ring-magenta;
+    @apply w-full min-h-[44px] rounded-md border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-beacon-dark focus:outline-none focus:ring-1 focus:ring-beacon-dark;
   }
 
   .label-text {
@@ -58,14 +58,22 @@
   }
 
   .section-heading {
-    @apply font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl;
+    @apply font-display text-3xl font-bold leading-tight text-ink sm:text-4xl;
   }
 
   .star-row {
-    @apply flex items-center gap-0.5 text-lime-dark;
+    @apply flex items-center gap-0.5 text-beacon-dark;
   }
 
   .badge-ribbon {
-    @apply absolute left-0 top-3 rounded-r-full bg-navy px-3 py-1 text-[10px] font-bold uppercase tracking-widest2 text-paper;
+    @apply absolute left-0 top-3 rounded-r-md bg-gate px-3 py-1 text-[10px] font-bold uppercase tracking-widest2 text-radar;
+  }
+
+  .boarding-pass {
+    @apply relative overflow-hidden rounded-xl border border-line bg-paper shadow-tile;
+  }
+
+  .board-row {
+    @apply grid grid-cols-[auto_1fr_auto] items-center gap-4 border-b border-gate-soft/60 px-4 py-3 font-display text-sm text-radar last:border-b-0;
   }
 }

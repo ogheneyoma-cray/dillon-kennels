@@ -9,7 +9,8 @@ import Logo from "@/components/Logo";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/shop", label: "Shop" },
+  { href: "/shop", label: "Services" },
+  { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
@@ -20,21 +21,23 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
+    <header className="sticky top-0 z-50 bg-gate">
       <div className="container-page flex h-20 items-center justify-between">
         <Link href="/" onClick={() => setMenuOpen(false)}>
-          <Logo />
+          <Logo tone="paper" />
         </Link>
 
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav className="hidden items-center gap-1 md:flex">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-semibold transition-colors ${
-                  active ? "text-magenta" : "text-ink hover:text-magenta"
+                className={`border-b-2 px-3 py-1.5 font-display text-sm transition-colors ${
+                  active
+                    ? "border-beacon text-beacon"
+                    : "border-transparent text-radar/80 hover:text-radar"
                 }`}
               >
                 {link.label}
@@ -57,7 +60,7 @@ export default function Header() {
               fill="none"
               stroke="currentColor"
               strokeWidth="1.6"
-              className="text-ink"
+              className="text-paper"
             >
               <path
                 d="M4 6h2l1.6 10.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L20.5 9H7"
@@ -68,13 +71,13 @@ export default function Header() {
               <circle cx="17" cy="21" r="1.3" fill="currentColor" stroke="none" />
             </svg>
             {cartCount > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-magenta text-[10px] font-bold text-paper">
+              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-beacon font-display text-[10px] font-bold text-gate">
                 {cartCount > 9 ? "9+" : cartCount}
               </span>
             )}
           </Link>
           <Link href="/shop" className="btn-primary hidden sm:inline-flex">
-            Get Started
+            Book a Service
           </Link>
           <button
             type="button"
@@ -85,17 +88,17 @@ export default function Header() {
           >
             <div className="flex flex-col gap-[5px]">
               <span
-                className={`h-[2px] w-6 bg-ink transition-transform ${
+                className={`h-[2px] w-6 bg-paper transition-transform ${
                   menuOpen ? "translate-y-[7px] rotate-45" : ""
                 }`}
               />
               <span
-                className={`h-[2px] w-6 bg-ink transition-opacity ${
+                className={`h-[2px] w-6 bg-paper transition-opacity ${
                   menuOpen ? "opacity-0" : "opacity-100"
                 }`}
               />
               <span
-                className={`h-[2px] w-6 bg-ink transition-transform ${
+                className={`h-[2px] w-6 bg-paper transition-transform ${
                   menuOpen ? "-translate-y-[7px] -rotate-45" : ""
                 }`}
               />
@@ -105,14 +108,14 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-line bg-paper md:hidden">
+        <nav className="border-t border-gate-soft bg-gate md:hidden">
           <div className="container-page flex flex-col py-2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="flex min-h-[44px] items-center border-b border-line text-sm font-semibold text-ink last:border-b-0"
+                className="flex min-h-[44px] items-center border-b border-gate-soft font-display text-sm text-radar last:border-b-0"
               >
                 {link.label}
               </Link>
