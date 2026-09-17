@@ -2,19 +2,13 @@ import Link from "next/link";
 import Logo from "@/components/Logo";
 import { site } from "@/lib/site";
 
-const PRODUCT_LINKS = [
-  { href: "/shop", label: "All Products" },
+const ALL_LINKS = [
+  { href: "/shop", label: "Shop" },
+  { href: "/about", label: "About" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
   { href: "/cart", label: "Cart" },
   { href: "/checkout", label: "Checkout" },
-];
-
-const COMPANY_LINKS = [
-  { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact" },
-  { href: "/faq", label: "FAQ" },
-];
-
-const LEGAL_LINKS = [
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
   { href: "/shipping-policy", label: "Delivery Policy" },
@@ -49,77 +43,35 @@ export default function Footer() {
 
   return (
     <footer className="bg-indigo text-white">
-      <div className="container-page py-14">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-2">
-            <Logo tone="white" />
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
-              {site.description}
-            </p>
-            <div className="mt-5 flex items-center gap-2">
-              <MastercardMark />
-              <VisaMark />
-            </div>
-          </div>
+      {/* Centered layout — logo, links in a wrapped row, then meta */}
+      <div className="container-page flex flex-col items-center py-14 text-center">
+        <Logo tone="white" />
+        <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-white/50">
+          {site.description}
+        </p>
 
-          <div>
-            <p className="font-display text-xs font-semibold uppercase tracking-widest2 text-gold">
-              Products
-            </p>
-            <ul className="mt-4 space-y-2.5">
-              {PRODUCT_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/70 transition-colors hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* All links in a single wrapped row */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          {ALL_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm text-white/60 transition-colors hover:text-gold"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
 
-          <div>
-            <p className="font-display text-xs font-semibold uppercase tracking-widest2 text-gold">
-              Company
-            </p>
-            <ul className="mt-4 space-y-2.5">
-              {COMPANY_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/70 transition-colors hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="font-display text-xs font-semibold uppercase tracking-widest2 text-gold">
-              Legal
-            </p>
-            <ul className="mt-4 space-y-2.5">
-              {LEGAL_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/70 transition-colors hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Payment badges */}
+        <div className="mt-8 flex items-center gap-3">
+          <MastercardMark />
+          <VisaMark />
         </div>
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-page flex flex-col gap-3 py-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-page flex flex-col items-center gap-3 py-6 text-xs text-white/35 sm:flex-row sm:justify-between">
           <p>&copy; {year} {site.legalName}. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <a href={`mailto:${site.email}`} className="hover:text-white">
