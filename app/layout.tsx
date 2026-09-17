@@ -1,28 +1,28 @@
 import type { Metadata } from "next";
-import { Fraunces, Work_Sans } from "next/font/google";
+import { Space_Grotesk, Manrope } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { site } from "@/lib/site";
 
-const fraunces = Fraunces({
+const grotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-grotesk",
   display: "swap",
-  axes: ["opsz", "SOFT", "WONK"],
 });
 
-const workSans = Work_Sans({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-work-sans",
+  variable: "--font-manrope",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Dillon Kennels | Fashion Rooted in Heritage",
-  description:
-    "Dillon Kennels is a Lagos-based fashion house crafting clothing, footwear, and accessories that blend West African textile heritage with contemporary tailoring.",
+  title: `${site.wordmark} | ${site.tagline}`,
+  description: site.description,
+  icons: { icon: "data:," },
 };
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${workSans.variable}`}>
+    <html lang="en" className={`${grotesk.variable} ${manrope.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
         <CurrencyProvider>
           <CartProvider>

@@ -5,10 +5,13 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import CurrencyToggle from "@/components/CurrencyToggle";
+import Logo from "@/components/Logo";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/shop", label: "Shop" },
+  { href: "/shop", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -18,28 +21,23 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/95 backdrop-blur">
-      <div className="border-b border-ink/10 bg-ink py-2 text-center text-[11px] font-medium uppercase tracking-widest2 text-cream">
-        Free Lagos delivery on orders over ₦75,000
-      </div>
-      <div className="container-page flex h-20 items-center justify-between">
-        <Link
-          href="/"
-          className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
-          onClick={() => setMenuOpen(false)}
-        >
-          Dillon Kennels
+    <header className="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur">
+      <div className="container-page flex h-[72px] items-center justify-between gap-4 py-3">
+        <Link href="/" onClick={() => setMenuOpen(false)}>
+          <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-10 md:flex">
+        <nav className="hidden items-center gap-1 rounded-full border border-line bg-fog p-1 md:flex">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-semibold uppercase tracking-wider transition-colors ${
-                  active ? "text-rust" : "text-ink hover:text-rust"
+                className={`rounded-full px-4 py-2 font-display text-[13px] font-bold transition-colors ${
+                  active
+                    ? "bg-cobalt text-white"
+                    : "text-ink-soft hover:text-ink"
                 }`}
               >
                 {link.label}
@@ -48,20 +46,20 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-3">
           <CurrencyToggle className="hidden sm:inline-flex" />
           <Link
             href="/cart"
             aria-label="View cart"
-            className="relative flex min-h-[44px] min-w-[44px] items-center justify-center"
+            className="relative flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-line"
           >
             <svg
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1.6"
+              strokeWidth="1.8"
               className="text-ink"
             >
               <path
@@ -73,7 +71,7 @@ export default function Header() {
               <circle cx="17" cy="21" r="1.3" fill="currentColor" stroke="none" />
             </svg>
             {cartCount > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-rust text-[10px] font-bold text-cream">
+              <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-flare font-display text-[10px] font-bold text-white">
                 {cartCount > 9 ? "9+" : cartCount}
               </span>
             )}
@@ -107,19 +105,19 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-ink/10 bg-paper md:hidden">
+        <nav className="border-t border-line bg-paper md:hidden">
           <div className="container-page flex flex-col py-2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="flex min-h-[44px] items-center border-b border-ink/5 text-sm font-semibold uppercase tracking-wider text-ink last:border-b-0"
+                className="flex min-h-[48px] items-center font-display text-sm font-bold text-ink"
               >
                 {link.label}
               </Link>
             ))}
-            <div className="py-3">
+            <div className="border-t border-line py-3">
               <CurrencyToggle />
             </div>
           </div>

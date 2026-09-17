@@ -7,33 +7,33 @@ export default function CurrencyToggle({ className = "" }: { className?: string 
 
   return (
     <div
-      className={`inline-flex items-center border border-ink/20 text-xs font-semibold uppercase tracking-wider ${className}`}
+      className={`inline-flex items-center rounded-full bg-fog p-1 text-xs font-bold ${className}`}
       role="group"
       aria-label="Select currency"
     >
       <button
         type="button"
-        onClick={() => setCurrency("NGN")}
-        className={`min-h-[36px] px-3 transition-colors ${
-          currency === "NGN"
-            ? "bg-ink text-cream"
-            : "bg-transparent text-ink/70 hover:text-ink"
-        }`}
-        aria-pressed={currency === "NGN"}
-      >
-        NGN
-      </button>
-      <button
-        type="button"
         onClick={() => setCurrency("USD")}
-        className={`min-h-[36px] px-3 transition-colors ${
+        className={`min-h-[32px] rounded-full px-3.5 transition-all ${
           currency === "USD"
-            ? "bg-ink text-cream"
-            : "bg-transparent text-ink/70 hover:text-ink"
+            ? "bg-cobalt text-white shadow-sm"
+            : "text-ink-soft hover:text-ink"
         }`}
         aria-pressed={currency === "USD"}
       >
         USD
+      </button>
+      <button
+        type="button"
+        onClick={() => setCurrency("NGN")}
+        className={`min-h-[32px] rounded-full px-3.5 transition-all ${
+          currency === "NGN"
+            ? "bg-cobalt text-white shadow-sm"
+            : "text-ink-soft hover:text-ink"
+        }`}
+        aria-pressed={currency === "NGN"}
+      >
+        NGN
       </button>
     </div>
   );
