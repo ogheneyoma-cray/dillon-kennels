@@ -1,149 +1,135 @@
-import Image from "next/image";
 import Link from "next/link";
-import { getFeaturedProducts } from "@/data/products";
+import { categories, getFeaturedProducts, products } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import NewsletterForm from "@/components/NewsletterForm";
+import { site } from "@/lib/site";
 
 export default function HomePage() {
   const featured = getFeaturedProducts();
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-ink/10">
-        <div className="container-page grid grid-cols-1 items-center gap-10 py-14 lg:grid-cols-2 lg:py-24">
-          <div className="order-2 lg:order-1">
-            <h1 className="font-display text-4xl leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
-              Dillon Kennels
-            </h1>
-            <p className="mt-5 max-w-md font-display text-xl italic text-ink/70 sm:text-2xl">
-              Heritage weaves, modern silhouettes, everyday wear.
-            </p>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-ink/70">
-              Clothing, footwear, and accessories designed in Lagos and
-              crafted with West African textile traditions at their core —
-              built to be worn on repeat, not just once.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/shop" className="btn-primary">
-                Shop Now
-              </Link>
-              <Link href="/contact" className="btn-ghost">
-                Get in Touch
-              </Link>
-            </div>
-          </div>
-          <div className="order-1 grid grid-cols-2 gap-4 lg:order-2">
-            <div className="relative aspect-[3/4] translate-y-6 overflow-hidden bg-sand">
-              <Image
-                src="/products/hero-menswear.jpg"
-                alt="Model wearing a Dillon Kennels heritage wrap shirt"
-                fill
-                priority
-                sizes="(min-width: 1024px) 25vw, 45vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="relative aspect-[3/4] overflow-hidden bg-sand">
-              <Image
-                src="/products/hero-womenswear.jpg"
-                alt="Model wearing Dillon Kennels footwear and accessories"
-                fill
-                priority
-                sizes="(min-width: 1024px) 25vw, 45vw"
-                className="object-cover"
-              />
-            </div>
+      {/* Hero — gradient banner with centered content */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-indigo via-indigo-light to-violet">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-gold blur-[120px]" />
+          <div className="absolute -bottom-20 -left-20 h-80 w-80 rounded-full bg-violet blur-[100px]" />
+        </div>
+        <div className="container-page relative py-20 text-center lg:py-32">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold text-gold backdrop-blur-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+            {site.tagline}
+          </span>
+          <h1 className="mx-auto mt-6 max-w-3xl font-display text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
+            Build stunning websites with premium digital tools
+          </h1>
+          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/70">
+            {site.description}
+          </p>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/shop"
+              className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gold px-8 py-3 font-display text-sm font-bold text-indigo transition-all hover:bg-gold-dark hover:shadow-lg"
+            >
+              Browse Products
+            </Link>
+            <Link
+              href="/about"
+              className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border-2 border-white/30 px-8 py-3 font-display text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
+            >
+              About Us
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Brand intro */}
-      <section className="border-b border-ink/10 bg-paper">
-        <div className="container-page grid grid-cols-1 gap-10 py-16 lg:grid-cols-[1fr_1.4fr] lg:py-20">
-          <div>
-            <p className="eyebrow">Our Story</p>
-            <h2 className="section-heading mt-3">
-              Rooted in craft, built for daily life
-            </h2>
-          </div>
-          <div className="space-y-4 text-base leading-relaxed text-ink/80">
-            <p>
-              Dillon Kennels began on the workshop floors of Lagos, where the
-              rhythm of hand looms and the sharp smell of indigo dye have
-              shaped fashion for generations. We started the label with a
-              simple frustration: the clothing that carried our textile
-              heritage — aso-oke weaves, adire resist-dyeing, batik, Ankara
-              wax prints — rarely showed up in wardrobes built for the
-              everyday. It was reserved for weddings, for owambe, for
-              once-a-year occasions. We wanted to change that. Every piece in
-              our collection starts with a material or technique rooted in
-              West African craft, then gets reworked through a contemporary
-              tailoring lens so it fits naturally into a Tuesday commute, a
-              weekend market run, or a Friday dinner out.
-            </p>
-            <p>
-              We work directly with small ateliers and individual artisans
-              across Lagos and the wider South-West, from the narrow-strip
-              weavers of Iseyin to the raffia weavers who hand-construct our
-              bags. That relationship means slower production runs, genuine
-              price transparency, and pieces that carry real variation from
-              one to the next — because they were made by hands, not
-              machines alone. Every product on this site, from our tailored
-              blazers to our woven belts, is built to be worn hard and worn
-              often, backed by fabric choices and construction details we're
-              proud to stand behind. This is fashion that respects where it
-              came from and where you're actually going to wear it.
-            </p>
+      {/* Category pills */}
+      <section className="py-16 lg:py-20">
+        <div className="container-page">
+          <p className="eyebrow">Categories</p>
+          <h2 className="section-heading mt-3">Browse by Type</h2>
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            {categories.map((category) => {
+              const count = products.filter((p) => p.category === category).length;
+              return (
+                <Link
+                  key={category}
+                  href={`/shop?category=${encodeURIComponent(category)}`}
+                  className="group rounded-2xl border border-line bg-white p-6 text-center shadow-tile transition-all hover:border-violet hover:shadow-glow"
+                >
+                  <p className="font-display text-base font-bold text-ink group-hover:text-violet">
+                    {category}
+                  </p>
+                  <p className="mt-1 text-sm text-ink-soft">{count} products</p>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Featured products */}
-      <section className="container-page py-16 lg:py-20">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="eyebrow">The Edit</p>
-            <h2 className="section-heading mt-3">Featured Pieces</h2>
+      {featured.length > 0 && (
+        <section className="bg-white py-16 lg:py-20">
+          <div className="container-page">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="eyebrow">Top Rated</p>
+                <h2 className="section-heading mt-3">Most Popular Products</h2>
+              </div>
+              <Link href="/shop" className="btn-ghost hidden sm:inline-flex">
+                View All Products →
+              </Link>
+            </div>
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {featured.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
           </div>
-          <Link href="/shop" className="btn-ghost hidden sm:inline-flex">
-            View Full Shop →
-          </Link>
-        </div>
+        </section>
+      )}
 
-        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
-          {featured.map((product) => (
-            <ProductCard key={product.id} product={product} />
+      {/* Value props */}
+      <section className="py-16 lg:py-20">
+        <div className="container-page grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {[
+            {
+              title: "Instant Download",
+              desc: "All products are delivered digitally — download immediately after purchase.",
+            },
+            {
+              title: "Quality Assured",
+              desc: "Every theme and plugin is tested for performance, security and compatibility.",
+            },
+            {
+              title: "USD & NGN Pricing",
+              desc: "Switch currencies with one click using the toggle in the header.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-2xl border border-line bg-white p-6 shadow-tile"
+            >
+              <p className="font-display text-lg font-bold text-ink">{item.title}</p>
+              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.desc}</p>
+            </div>
           ))}
-        </div>
-
-        <div className="mt-10 flex justify-center sm:hidden">
-          <Link href="/shop" className="btn-secondary w-full">
-            View Full Shop
-          </Link>
         </div>
       </section>
 
-      {/* Promo strip */}
-      <section className="bg-rust text-cream">
-        <div className="container-page grid grid-cols-1 gap-8 py-14 text-center sm:grid-cols-3 sm:text-left">
-          <div>
-            <p className="font-display text-xl">Handwoven Materials</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Aso-oke, adire, batik, and raffia sourced directly from
-              artisans.
-            </p>
-          </div>
-          <div>
-            <p className="font-display text-xl">Lagos Delivery</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Free delivery within Lagos on orders over ₦75,000.
-            </p>
-          </div>
-          <div>
-            <p className="font-display text-xl">Made to Last</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Constructed for daily wear, not just special occasions.
-            </p>
+      {/* Newsletter */}
+      <section className="bg-indigo text-white">
+        <div className="container-page py-14 text-center">
+          <h2 className="font-display text-2xl font-bold sm:text-3xl">
+            Stay Updated
+          </h2>
+          <p className="mx-auto mt-3 max-w-md text-sm text-white/60">
+            New products and occasional discounts — no spam, unsubscribe any
+            time.
+          </p>
+          <div className="mx-auto mt-8 max-w-lg">
+            <NewsletterForm />
           </div>
         </div>
       </section>

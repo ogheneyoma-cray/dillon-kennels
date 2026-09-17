@@ -6,6 +6,8 @@ import { getProductBySlug, products } from "@/data/products";
 import ProductDetailActions from "@/components/ProductDetailActions";
 import ProductPrice from "@/components/ProductPrice";
 import ProductCard from "@/components/ProductCard";
+import StarRating from "@/components/StarRating";
+import { site } from "@/lib/site";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
@@ -18,10 +20,10 @@ export function generateMetadata({
 }): Metadata {
   const product = getProductBySlug(params.slug);
   if (!product) {
-    return { title: "Product Not Found | Dillon Kennels" };
+    return { title: `Product Not Found | ${site.name}` };
   }
   return {
-    title: `${product.name} | Dillon Kennels`,
+    title: `${product.name} | ${site.name}`,
     description: product.description.slice(0, 155),
   };
 }
@@ -42,12 +44,12 @@ export default function ProductPage({
 
   return (
     <div className="container-page py-10 lg:py-16">
-      <nav className="mb-8 text-xs uppercase tracking-wider text-ink/50">
-        <Link href="/" className="hover:text-rust">
+      <nav className="mb-8 text-xs uppercase tracking-wider text-ink-soft">
+        <Link href="/" className="hover:text-violet">
           Home
         </Link>
         <span className="mx-2">/</span>
-        <Link href="/shop" className="hover:text-rust">
+        <Link href="/shop" className="hover:text-violet">
           Shop
         </Link>
         <span className="mx-2">/</span>
@@ -55,7 +57,7 @@ export default function ProductPage({
       </nav>
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="relative aspect-[4/5] overflow-hidden bg-sand">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-lavender shadow-tile">
           <Image
             src={product.image}
             alt={product.name}
@@ -68,45 +70,44 @@ export default function ProductPage({
 
         <div>
           <p className="eyebrow">{product.category}</p>
-          <h1 className="mt-3 font-display text-3xl leading-tight text-ink sm:text-4xl">
+          <h1 className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
             {product.name}
           </h1>
+          <StarRating rating={product.rating} className="mt-3" />
           <ProductPrice
             priceUsd={product.price}
-            className="mt-3 block text-xl font-semibold text-rust"
+            className="mt-4 block font-display text-2xl font-bold text-violet"
           />
 
-          <p className="mt-6 text-base leading-relaxed text-ink/80">
+          <p className="mt-6 text-base leading-relaxed text-ink-soft">
             {product.description}
           </p>
 
-          <div className="mt-8 border-t border-ink/10 pt-8">
+          <div className="mt-8 border-t border-line pt-8">
             <ProductDetailActions product={product} />
           </div>
 
-          <dl className="mt-8 space-y-2 border-t border-ink/10 pt-6 text-sm text-ink/70">
-            <div className="flex justify-between">
-              <dt>Availability</dt>
-              <dd className={product.inStock ? "text-olive" : "text-rust"}>
-                {product.inStock ? "In Stock" : "Sold Out"}
-              </dd>
-            </div>
+          <dl className="mt-8 space-y-2 rounded-xl border border-line bg-white p-5 text-sm text-ink-soft">
             <div className="flex justify-between">
               <dt>Category</dt>
-              <dd>{product.category}</dd>
+              <dd className="text-ink">{product.category}</dd>
             </div>
             <div className="flex justify-between">
               <dt>Delivery</dt>
-              <dd>3–7 business days across Nigeria</dd>
+              <dd className="text-ink">Instant digital download</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt>License</dt>
+              <dd className="text-ink">Single-site, lifetime updates</dd>
             </div>
           </dl>
         </div>
       </div>
 
       {related.length > 0 && (
-        <section className="mt-20 border-t border-ink/10 pt-14">
+        <section className="mt-20 border-t border-line pt-14">
           <h2 className="section-heading">You May Also Like</h2>
-          <div className="mt-8 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}

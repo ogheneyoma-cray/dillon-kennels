@@ -6,11 +6,11 @@ import { useSearchParams } from "next/navigation";
 
 function ConfirmationContent() {
   const searchParams = useSearchParams();
-  const orderNumber = searchParams.get("order") ?? "DK-000000";
+  const orderNumber = searchParams.get("order") ?? "RA-000000";
 
   return (
     <div className="container-page flex flex-col items-center py-20 text-center lg:py-28">
-      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-olive/15 text-olive">
+      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-violet-pale text-violet">
         <svg
           width="30"
           height="30"
@@ -24,17 +24,17 @@ function ConfirmationContent() {
       </div>
 
       <p className="eyebrow mt-6">Order Confirmed</p>
-      <h1 className="section-heading mt-3">Thank you for your order</h1>
-      <p className="mt-4 max-w-md text-ink/70">
-        We've received your order and we're getting it ready. A confirmation
-        email with your order details has been sent to your inbox.
+      <h1 className="section-heading mt-3">Thank you for your purchase</h1>
+      <p className="mt-4 max-w-md text-ink-soft">
+        Your download links and license keys have been sent to your email.
+        Check your inbox for the confirmation.
       </p>
 
-      <div className="mt-8 border border-ink/10 bg-paper px-8 py-5">
-        <p className="text-xs uppercase tracking-wider text-ink/50">
+      <div className="mt-8 rounded-2xl border border-line bg-white px-8 py-5 shadow-tile">
+        <p className="text-xs uppercase tracking-wider text-ink-soft">
           Order Number
         </p>
-        <p className="mt-1 font-display text-2xl text-rust">{orderNumber}</p>
+        <p className="mt-1 font-display text-2xl font-bold text-violet">{orderNumber}</p>
       </div>
 
       <div className="mt-10 flex flex-wrap justify-center gap-4">
