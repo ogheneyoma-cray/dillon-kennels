@@ -1,150 +1,161 @@
-import Image from "next/image";
 import Link from "next/link";
-import { getFeaturedProducts } from "@/data/products";
+import { categories, getFeaturedProducts } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import { site } from "@/lib/site";
+
+const CAPABILITIES = ["Fast Turnaround", "Fixed Pricing", "Vetted Engineers", "USD & NGN"];
+
+const PROCESS = [
+  { step: "01", title: "Pick a Service", body: "Browse the catalog and choose the fix or setup you need." },
+  { step: "02", title: "Pay Securely", body: "Checkout with Mastercard or Visa — priced in USD or NGN." },
+  { step: "03", title: "We Get to Work", body: "An engineer is assigned and reaches out within one business day." },
+  { step: "04", title: "Confirm & Done", body: "We verify the fix with you before closing out the ticket." },
+];
 
 export default function HomePage() {
   const featured = getFeaturedProducts();
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-ink/10">
-        <div className="container-page grid grid-cols-1 items-center gap-10 py-14 lg:grid-cols-2 lg:py-24">
-          <div className="order-2 lg:order-1">
-            <h1 className="font-display text-4xl leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
-              Dillon Kennels
+      {/* Hero — full-bleed ink block, no imagery, rotated ticket cards */}
+      <section className="relative overflow-hidden border-b-2 border-ink bg-ink py-16 lg:py-24">
+        <div className="container-page grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <span className="inline-flex items-center gap-2 border-2 border-optic px-4 py-1.5 font-display text-xs font-bold uppercase tracking-widest2 text-optic">
+              {site.tagline}
+            </span>
+            <h1 className="mt-6 max-w-xl font-display text-4xl font-extrabold uppercase leading-[1.02] text-white sm:text-5xl">
+              IT problems, <span className="text-optic">fixed on schedule</span>
             </h1>
-            <p className="mt-5 max-w-md font-display text-xl italic text-ink/70 sm:text-2xl">
-              Heritage weaves, modern silhouettes, everyday wear.
+            <p className="mt-6 max-w-md text-base leading-relaxed text-white/60">
+              {site.description}
             </p>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-ink/70">
-              Clothing, footwear, and accessories designed in Lagos and
-              crafted with West African textile traditions at their core —
-              built to be worn on repeat, not just once.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link href="/shop" className="btn-primary">
-                Shop Now
+                Browse Services
               </Link>
-              <Link href="/contact" className="btn-ghost">
-                Get in Touch
+              <Link href="/faq" className="btn-secondary border-white text-white hover:bg-white hover:text-ink">
+                Read FAQs
               </Link>
             </div>
           </div>
-          <div className="order-1 grid grid-cols-2 gap-4 lg:order-2">
-            <div className="relative aspect-[3/4] translate-y-6 overflow-hidden bg-sand">
-              <Image
-                src="/products/hero-menswear.jpg"
-                alt="Model wearing a Dillon Kennels heritage wrap shirt"
-                fill
-                priority
-                sizes="(min-width: 1024px) 25vw, 45vw"
-                className="object-cover"
-              />
+
+          {/* rotated stacked ticket cards */}
+          <div className="relative hidden h-80 lg:block">
+            <div className="absolute right-6 top-4 w-64 -rotate-6 border-2 border-ink bg-optic p-5 shadow-lift">
+              <p className="font-display text-xs font-bold uppercase tracking-widest2 text-ink/70">Ticket #SO-2201</p>
+              <p className="mt-2 font-display text-lg font-extrabold text-ink">Network Setup</p>
+              <p className="mt-1 text-xs font-semibold text-ink/70">Status: Resolved</p>
             </div>
-            <div className="relative aspect-[3/4] overflow-hidden bg-sand">
-              <Image
-                src="/products/hero-womenswear.jpg"
-                alt="Model wearing Dillon Kennels footwear and accessories"
-                fill
-                priority
-                sizes="(min-width: 1024px) 25vw, 45vw"
-                className="object-cover"
-              />
+            <div className="absolute left-4 top-24 w-64 rotate-3 border-2 border-ink bg-white p-5 shadow-lift">
+              <p className="font-display text-xs font-bold uppercase tracking-widest2 text-ink-soft">Ticket #SO-2198</p>
+              <p className="mt-2 font-display text-lg font-extrabold text-ink">Security Check</p>
+              <p className="mt-1 text-xs font-semibold text-ink-soft">Status: In Progress</p>
+            </div>
+            <div className="absolute right-2 top-48 w-64 -rotate-2 border-2 border-ink bg-white p-5 shadow-lift">
+              <p className="font-display text-xs font-bold uppercase tracking-widest2 text-ink-soft">Ticket #SO-2195</p>
+              <p className="mt-2 font-display text-lg font-extrabold text-ink">Cloud Backup</p>
+              <p className="mt-1 text-xs font-semibold text-ink-soft">Status: Resolved</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Brand intro */}
-      <section className="border-b border-ink/10 bg-paper">
-        <div className="container-page grid grid-cols-1 gap-10 py-16 lg:grid-cols-[1fr_1.4fr] lg:py-20">
-          <div>
-            <p className="eyebrow">Our Story</p>
-            <h2 className="section-heading mt-3">
-              Rooted in craft, built for daily life
-            </h2>
-          </div>
-          <div className="space-y-4 text-base leading-relaxed text-ink/80">
-            <p>
-              Dillon Kennels began on the workshop floors of Lagos, where the
-              rhythm of hand looms and the sharp smell of indigo dye have
-              shaped fashion for generations. We started the label with a
-              simple frustration: the clothing that carried our textile
-              heritage — aso-oke weaves, adire resist-dyeing, batik, Ankara
-              wax prints — rarely showed up in wardrobes built for the
-              everyday. It was reserved for weddings, for owambe, for
-              once-a-year occasions. We wanted to change that. Every piece in
-              our collection starts with a material or technique rooted in
-              West African craft, then gets reworked through a contemporary
-              tailoring lens so it fits naturally into a Tuesday commute, a
-              weekend market run, or a Friday dinner out.
-            </p>
-            <p>
-              We work directly with small ateliers and individual artisans
-              across Lagos and the wider South-West, from the narrow-strip
-              weavers of Iseyin to the raffia weavers who hand-construct our
-              bags. That relationship means slower production runs, genuine
-              price transparency, and pieces that carry real variation from
-              one to the next — because they were made by hands, not
-              machines alone. Every product on this site, from our tailored
-              blazers to our woven belts, is built to be worn hard and worn
-              often, backed by fabric choices and construction details we're
-              proud to stand behind. This is fashion that respects where it
-              came from and where you're actually going to wear it.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured products */}
-      <section className="container-page py-16 lg:py-20">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="eyebrow">The Edit</p>
-            <h2 className="section-heading mt-3">Featured Pieces</h2>
-          </div>
-          <Link href="/shop" className="btn-ghost hidden sm:inline-flex">
-            View Full Shop →
-          </Link>
-        </div>
-
-        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
-          {featured.map((product) => (
-            <ProductCard key={product.id} product={product} />
+      {/* Capability strip — equal-width blocks */}
+      <section className="border-b-2 border-ink bg-optic">
+        <div className="container-page grid grid-cols-2 divide-x-2 divide-ink sm:grid-cols-4">
+          {CAPABILITIES.map((cap) => (
+            <div key={cap} className="px-4 py-5 text-center">
+              <p className="font-display text-xs font-extrabold uppercase tracking-wide text-ink sm:text-sm">
+                {cap}
+              </p>
+            </div>
           ))}
         </div>
+      </section>
 
-        <div className="mt-10 flex justify-center sm:hidden">
-          <Link href="/shop" className="btn-secondary w-full">
-            View Full Shop
-          </Link>
+      {/* Categories — plain equal cards, no bento, no sidebar */}
+      <section className="py-16 lg:py-20">
+        <div className="container-page">
+          <p className="eyebrow">What We Fix</p>
+          <h2 className="section-heading mt-3">Service Categories</h2>
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            {categories.map((category, i) => (
+              <Link
+                key={category}
+                href={`/shop?category=${encodeURIComponent(category)}`}
+                className="group flex flex-col items-center gap-3 border-2 border-ink bg-white p-5 text-center transition-colors hover:bg-optic"
+              >
+                <span className="flex h-10 w-10 items-center justify-center border-2 border-ink font-display text-xs font-extrabold text-ink">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p className="font-display text-sm font-bold uppercase text-ink">{category}</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Promo strip */}
-      <section className="bg-rust text-cream">
-        <div className="container-page grid grid-cols-1 gap-8 py-14 text-center sm:grid-cols-3 sm:text-left">
-          <div>
-            <p className="font-display text-xl">Handwoven Materials</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Aso-oke, adire, batik, and raffia sourced directly from
-              artisans.
-            </p>
+      {/* Featured services */}
+      {featured.length > 0 && (
+        <section className="border-y-2 border-ink bg-white py-16 lg:py-20">
+          <div className="container-page">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="eyebrow">Most Booked</p>
+                <h2 className="section-heading mt-3">Popular Services</h2>
+              </div>
+              <Link href="/shop" className="btn-ghost hidden sm:inline-flex">
+                View All →
+              </Link>
+            </div>
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {featured.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
           </div>
-          <div>
-            <p className="font-display text-xl">Lagos Delivery</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Free delivery within Lagos on orders over ₦75,000.
-            </p>
+        </section>
+      )}
+
+      {/* Process — zig-zag alternating steps */}
+      <section className="py-16 lg:py-20">
+        <div className="container-page">
+          <p className="eyebrow">How It Works</p>
+          <h2 className="section-heading mt-3">From Booking to Resolved</h2>
+          <div className="mt-12 space-y-6">
+            {PROCESS.map((item, i) => (
+              <div
+                key={item.step}
+                className={`flex items-center gap-6 border-2 border-ink bg-white p-6 sm:gap-10 ${
+                  i % 2 === 1 ? "sm:flex-row-reverse sm:text-right" : ""
+                }`}
+              >
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center border-2 border-ink bg-optic font-display text-lg font-extrabold text-ink">
+                  {item.step}
+                </span>
+                <div>
+                  <h3 className="font-display text-lg font-extrabold uppercase text-ink">{item.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-ink-soft">{item.body}</p>
+                </div>
+              </div>
+            ))}
           </div>
-          <div>
-            <p className="font-display text-xl">Made to Last</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Constructed for daily wear, not just special occasions.
-            </p>
-          </div>
+        </div>
+      </section>
+
+      {/* CTA — inverted colors from hero */}
+      <section className="border-y-2 border-ink bg-optic py-14 text-center lg:py-20">
+        <div className="container-page">
+          <h2 className="font-display text-2xl font-extrabold uppercase text-ink sm:text-3xl">
+            Ready to book a fix?
+          </h2>
+          <p className="mx-auto mt-3 max-w-md text-sm font-semibold text-ink/70">
+            Pay with Mastercard or Visa and we get to work within one business day.
+          </p>
+          <Link href="/shop" className="btn-secondary mt-8 inline-flex bg-ink text-optic hover:bg-white hover:text-ink">
+            Browse Services
+          </Link>
         </div>
       </section>
     </div>

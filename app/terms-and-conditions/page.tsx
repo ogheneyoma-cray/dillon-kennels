@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Dillon Kennels",
-  description: "The terms and conditions governing use of the Dillon Kennels website and orders.",
+  title: `Terms & Conditions | ${site.name}`,
+  description: "The terms and conditions governing use of the Site Optex website and service bookings.",
 };
 
 export default function TermsPage() {
@@ -10,83 +11,83 @@ export default function TermsPage() {
     <div className="container-page py-10 lg:py-16">
       <p className="eyebrow">Legal</p>
       <h1 className="section-heading mt-3">Terms & Conditions</h1>
-      <p className="mt-2 text-sm text-ink/50">Last updated: July 2026</p>
+      <p className="mt-2 text-sm text-ink-soft">Last updated: September 2026</p>
 
-      <div className="mt-10 max-w-3xl space-y-8 text-ink/80">
+      <div className="mt-10 max-w-3xl space-y-8 text-ink-soft">
         <section>
-          <h2 className="font-display text-xl text-ink">1. Acceptance of Terms</h2>
+          <h2 className="font-display text-xl font-extrabold uppercase text-ink">1. Acceptance of Terms</h2>
           <p className="mt-3 leading-relaxed">
-            By accessing or using the Dillon Kennels website, you agree to be
-            bound by these Terms & Conditions. If you do not agree with any
-            part of these terms, please do not use our site or place an
-            order with us.
+            By using the Site Optex website you agree to these Terms &
+            Conditions. If you do not agree, please do not use our site or
+            book a service with us.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">2. Products & Pricing</h2>
+          <h2 className="font-display text-xl font-extrabold uppercase text-ink">2. Services & Pricing</h2>
           <p className="mt-3 leading-relaxed">
-            All prices are listed in Nigerian Naira (₦) and are also
-            displayed in US Dollars ($) for reference using a fixed
-            conversion rate, which may differ slightly from real-time
-            exchange rates. We reserve the right to update pricing at any
-            time without prior notice, though changes will never affect
-            orders already confirmed. Because many pieces are handcrafted,
-            slight variation in color, print placement, or texture between
-            the product photo and the item received is expected and is not
-            considered a defect.
+            Prices are listed in US Dollars ($) and also shown in Nigerian
+            Naira (₦) using a fixed conversion rate, which may differ
+            slightly from real-time rates. We may update pricing at any
+            time, though this never affects bookings already confirmed.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">3. Orders & Payment</h2>
+          <h2 className="font-display text-xl font-extrabold uppercase text-ink">3. Bookings & Payment</h2>
           <p className="mt-3 leading-relaxed">
-            By placing an order, you confirm that the payment and delivery
-            information you provide is accurate and that you are authorized
-            to use the payment method submitted. We reserve the right to
-            refuse or cancel any order at our discretion, including in cases
-            of suspected fraud or unavailable stock, in which case a full
-            refund will be issued.
+            By booking a service you confirm the payment information
+            provided is accurate and that you are authorized to use it. We
+            accept Mastercard and Visa only. We may refuse or cancel a
+            booking at our discretion, including suspected fraud, in which
+            case a full refund is issued.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">4. Intellectual Property</h2>
+          <h2 className="font-display text-xl font-extrabold uppercase text-ink">4. Client Responsibilities</h2>
           <p className="mt-3 leading-relaxed">
-            All content on this site, including product photography, text,
-            logos, and design, is the property of Dillon Kennels and may not
-            be reproduced, distributed, or used commercially without our
-            prior written consent.
+            You are responsible for granting appropriate access for us to
+            complete a booked service. Site Optex is not liable for
+            pre-existing issues discovered outside the scope of the service
+            booked.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">5. Limitation of Liability</h2>
+          <h2 className="font-display text-xl font-extrabold uppercase text-ink">5. Intellectual Property</h2>
           <p className="mt-3 leading-relaxed">
-            Dillon Kennels is not liable for any indirect, incidental, or
-            consequential damages arising from the use of our website or
-            products, including delivery delays caused by third-party
-            logistics providers beyond our reasonable control.
+            All content on this site, including text, logos and design, is
+            the property of Site Optex and may not be reproduced or used
+            commercially without our written consent.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">6. Governing Law</h2>
+          <h2 className="font-display text-xl font-extrabold uppercase text-ink">6. Limitation of Liability</h2>
           <p className="mt-3 leading-relaxed">
-            These Terms & Conditions are governed by the laws of the Federal
-            Republic of Nigeria. Any disputes arising from these terms will
-            be subject to the exclusive jurisdiction of the courts of Lagos
-            State.
+            Site Optex is not liable for indirect, incidental or
+            consequential damages arising from use of our website or
+            services, including delays caused by third parties beyond our
+            control.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl text-ink">7. Changes to These Terms</h2>
+          <h2 className="font-display text-xl font-extrabold uppercase text-ink">7. Governing Law</h2>
           <p className="mt-3 leading-relaxed">
-            We may update these Terms & Conditions from time to time. Changes
-            will be posted on this page with an updated revision date.
-            Continued use of the site after changes are posted constitutes
-            acceptance of the revised terms.
+            These Terms are governed by the laws of the Federal Republic of
+            Nigeria, subject to the exclusive jurisdiction of the courts of
+            Lagos State.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-display text-xl font-extrabold uppercase text-ink">8. Changes to These Terms</h2>
+          <p className="mt-3 leading-relaxed">
+            We may update these Terms from time to time. Continued use of
+            the site after changes are posted means you accept the revised
+            terms.
           </p>
         </section>
       </div>

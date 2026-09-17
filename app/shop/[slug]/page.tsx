@@ -6,6 +6,8 @@ import { getProductBySlug, products } from "@/data/products";
 import ProductDetailActions from "@/components/ProductDetailActions";
 import ProductPrice from "@/components/ProductPrice";
 import ProductCard from "@/components/ProductCard";
+import StarRating from "@/components/StarRating";
+import { site } from "@/lib/site";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
@@ -18,10 +20,10 @@ export function generateMetadata({
 }): Metadata {
   const product = getProductBySlug(params.slug);
   if (!product) {
-    return { title: "Product Not Found | Dillon Kennels" };
+    return { title: `Service Not Found | ${site.name}` };
   }
   return {
-    title: `${product.name} | Dillon Kennels`,
+    title: `${product.name} | ${site.name}`,
     description: product.description.slice(0, 155),
   };
 }
@@ -42,20 +44,20 @@ export default function ProductPage({
 
   return (
     <div className="container-page py-10 lg:py-16">
-      <nav className="mb-8 text-xs uppercase tracking-wider text-ink/50">
-        <Link href="/" className="hover:text-rust">
+      <nav className="mb-8 text-xs font-bold uppercase tracking-wider text-ink-soft">
+        <Link href="/" className="hover:text-ink">
           Home
         </Link>
         <span className="mx-2">/</span>
-        <Link href="/shop" className="hover:text-rust">
-          Shop
+        <Link href="/shop" className="hover:text-ink">
+          Services
         </Link>
         <span className="mx-2">/</span>
-        <span className="text-ink/80">{product.name}</span>
+        <span className="text-ink">{product.name}</span>
       </nav>
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="relative aspect-[4/5] overflow-hidden bg-sand">
+        <div className="relative aspect-[16/11] overflow-hidden border-2 border-ink bg-optic-pale">
           <Image
             src={product.image}
             alt={product.name}
@@ -68,27 +70,30 @@ export default function ProductPage({
 
         <div>
           <p className="eyebrow">{product.category}</p>
-          <h1 className="mt-3 font-display text-3xl leading-tight text-ink sm:text-4xl">
+          <h1 className="mt-3 font-display text-3xl font-extrabold uppercase leading-tight text-ink sm:text-4xl">
             {product.name}
           </h1>
-          <ProductPrice
-            priceUsd={product.price}
-            className="mt-3 block text-xl font-semibold text-rust"
-          />
+          <div className="mt-3 flex items-center gap-3">
+            <StarRating rating={product.rating} />
+            <ProductPrice
+              priceUsd={product.price}
+              className="font-display text-xl font-extrabold text-ink"
+            />
+          </div>
 
-          <p className="mt-6 text-base leading-relaxed text-ink/80">
+          <p className="mt-6 text-base leading-relaxed text-ink-soft">
             {product.description}
           </p>
 
-          <div className="mt-8 border-t border-ink/10 pt-8">
+          <div className="mt-8 border-t-2 border-ink pt-8">
             <ProductDetailActions product={product} />
           </div>
 
-          <dl className="mt-8 space-y-2 border-t border-ink/10 pt-6 text-sm text-ink/70">
+          <dl className="mt-8 space-y-2 border-t-2 border-ink pt-6 text-sm text-ink-soft">
             <div className="flex justify-between">
               <dt>Availability</dt>
-              <dd className={product.inStock ? "text-olive" : "text-rust"}>
-                {product.inStock ? "In Stock" : "Sold Out"}
+              <dd className="font-bold text-ink">
+                {product.inStock ? "Available to Book" : "Fully Booked"}
               </dd>
             </div>
             <div className="flex justify-between">
@@ -97,16 +102,16 @@ export default function ProductPage({
             </div>
             <div className="flex justify-between">
               <dt>Delivery</dt>
-              <dd>3–7 business days across Nigeria</dd>
+              <dd>Scheduled within 1-2 business days</dd>
             </div>
           </dl>
         </div>
       </div>
 
       {related.length > 0 && (
-        <section className="mt-20 border-t border-ink/10 pt-14">
-          <h2 className="section-heading">You May Also Like</h2>
-          <div className="mt-8 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
+        <section className="mt-20 border-t-2 border-ink pt-14">
+          <h2 className="section-heading">Related Services</h2>
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}
