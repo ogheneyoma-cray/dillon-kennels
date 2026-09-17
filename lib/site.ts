@@ -2,7 +2,7 @@ export const site = {
   name: "Evintat",
   legalName: "Evintat",
   wordmark: "Evintat",
-  tagline: "Womenswear, edited",
+  tagline: "Womenswear",
   description:
     "Evintat is an online destination for women's clothing and fashion pieces — dresses, tops, bottoms, outerwear and accessories, priced fairly in USD or NGN.",
   email: "support@evintat.com",

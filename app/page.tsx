@@ -48,27 +48,27 @@ export default function HomePage() {
       <section className="mt-16 py-8 lg:mt-20">
         <div className="container-page">
           <p className="eyebrow">Shop by Category</p>
-          <div className="mt-6 flex gap-4 overflow-x-auto pb-2">
-            {categories.map((category, i) => (
-              <Link
-                key={category}
-                href={`/shop?category=${encodeURIComponent(category)}`}
-                className="group relative block h-40 w-32 shrink-0 overflow-hidden rounded-sm sm:h-48 sm:w-36"
-              >
-                <Image
-                  src={products.filter((p) => p.category === category)[0]?.image ?? products[i].image}
-                  alt={category}
-                  fill
-                  sizes="150px"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-aubergine-dark/25 transition-colors group-hover:bg-aubergine-dark/40" />
-                <p className="absolute bottom-3 left-0 right-0 text-center font-display text-base italic text-oat">
-                  {category}
-                </p>
-              </Link>
-            ))}
-          </div>
+        </div>
+        <div className="mt-6 grid grid-cols-2 sm:grid-cols-5">
+          {categories.map((category, i) => (
+            <Link
+              key={category}
+              href={`/shop?category=${encodeURIComponent(category)}`}
+              className="group relative block h-56 w-full overflow-hidden sm:h-72"
+            >
+              <Image
+                src={products.filter((p) => p.category === category)[0]?.image ?? products[i].image}
+                alt={category}
+                fill
+                sizes="(min-width: 640px) 20vw, 50vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-aubergine-dark/25 transition-colors group-hover:bg-aubergine-dark/40" />
+              <p className="absolute bottom-4 left-0 right-0 text-center font-display text-lg italic text-oat">
+                {category}
+              </p>
+            </Link>
+          ))}
         </div>
       </section>
 
