@@ -1,150 +1,126 @@
-import Image from "next/image";
 import Link from "next/link";
-import { getFeaturedProducts } from "@/data/products";
+import { categories, getFeaturedProducts, products } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import { site } from "@/lib/site";
+
+const REASONS = [
+  { title: "Built to Last", body: "Every item is chosen for durability, not just looks." },
+  { title: "Fair Pricing", body: "Nothing on the shelf is priced above $40." },
+  { title: "USD & NGN", body: "Switch currencies anytime with the toggle above." },
+];
 
 export default function HomePage() {
   const featured = getFeaturedProducts();
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-ink/10">
-        <div className="container-page grid grid-cols-1 items-center gap-10 py-14 lg:grid-cols-2 lg:py-24">
-          <div className="order-2 lg:order-1">
-            <h1 className="font-display text-4xl leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
-              Dillon Kennels
+      {/* Hero — plain text headline left, index-card spec sheet right (no imagery) */}
+      <section className="border-b border-line py-16 lg:py-24">
+        <div className="container-page grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <p className="eyebrow">{site.tagline}</p>
+            <h1 className="mt-5 max-w-lg font-display text-4xl font-bold leading-[1.05] text-ink sm:text-5xl">
+              Everything your home actually needs
             </h1>
-            <p className="mt-5 max-w-md font-display text-xl italic text-ink/70 sm:text-2xl">
-              Heritage weaves, modern silhouettes, everyday wear.
-            </p>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-ink/70">
-              Clothing, footwear, and accessories designed in Lagos and
-              crafted with West African textile traditions at their core —
-              built to be worn on repeat, not just once.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/shop" className="btn-primary">
-                Shop Now
-              </Link>
-              <Link href="/contact" className="btn-ghost">
-                Get in Touch
-              </Link>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft">{site.description}</p>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <Link href="/shop" className="btn-primary">Shop the Catalog</Link>
+              <Link href="/contact" className="btn-secondary">Contact Us</Link>
             </div>
           </div>
-          <div className="order-1 grid grid-cols-2 gap-4 lg:order-2">
-            <div className="relative aspect-[3/4] translate-y-6 overflow-hidden bg-sand">
-              <Image
-                src="/products/hero-menswear.jpg"
-                alt="Model wearing a Dillon Kennels heritage wrap shirt"
-                fill
-                priority
-                sizes="(min-width: 1024px) 25vw, 45vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="relative aspect-[3/4] overflow-hidden bg-sand">
-              <Image
-                src="/products/hero-womenswear.jpg"
-                alt="Model wearing Dillon Kennels footwear and accessories"
-                fill
-                priority
-                sizes="(min-width: 1024px) 25vw, 45vw"
-                className="object-cover"
-              />
-            </div>
+
+          <div className="rounded-lg border border-line bg-white p-6 shadow-tile sm:p-8">
+            <p className="font-display text-xs font-bold uppercase tracking-widest2 text-ink-soft">Catalog Index</p>
+            <ul className="mt-4 divide-y divide-line">
+              {categories.map((category, i) => {
+                const count = products.filter((p) => p.category === category).length;
+                return (
+                  <li key={category}>
+                    <Link
+                      href={`/shop?category=${encodeURIComponent(category)}`}
+                      className="flex items-center justify-between py-3 text-sm font-semibold text-ink transition-colors hover:text-clay-dark"
+                    >
+                      <span className="flex items-center gap-3">
+                        <span className="text-ink-soft">{String(i + 1).padStart(2, "0")}</span>
+                        {category}
+                      </span>
+                      <span className="text-xs font-normal text-ink-soft">{count} items →</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* Brand intro */}
-      <section className="border-b border-ink/10 bg-paper">
-        <div className="container-page grid grid-cols-1 gap-10 py-16 lg:grid-cols-[1fr_1.4fr] lg:py-20">
-          <div>
-            <p className="eyebrow">Our Story</p>
-            <h2 className="section-heading mt-3">
-              Rooted in craft, built for daily life
-            </h2>
+      {/* Featured — swing-tag product grid */}
+      {featured.length > 0 && (
+        <section className="py-16 lg:py-20">
+          <div className="container-page">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="eyebrow">Bestsellers</p>
+                <h2 className="section-heading mt-3">Popular This Month</h2>
+              </div>
+              <Link href="/shop" className="btn-ghost hidden sm:inline-flex">View Full Catalog →</Link>
+            </div>
+            <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+              {featured.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
           </div>
-          <div className="space-y-4 text-base leading-relaxed text-ink/80">
-            <p>
-              Dillon Kennels began on the workshop floors of Lagos, where the
-              rhythm of hand looms and the sharp smell of indigo dye have
-              shaped fashion for generations. We started the label with a
-              simple frustration: the clothing that carried our textile
-              heritage — aso-oke weaves, adire resist-dyeing, batik, Ankara
-              wax prints — rarely showed up in wardrobes built for the
-              everyday. It was reserved for weddings, for owambe, for
-              once-a-year occasions. We wanted to change that. Every piece in
-              our collection starts with a material or technique rooted in
-              West African craft, then gets reworked through a contemporary
-              tailoring lens so it fits naturally into a Tuesday commute, a
-              weekend market run, or a Friday dinner out.
-            </p>
-            <p>
-              We work directly with small ateliers and individual artisans
-              across Lagos and the wider South-West, from the narrow-strip
-              weavers of Iseyin to the raffia weavers who hand-construct our
-              bags. That relationship means slower production runs, genuine
-              price transparency, and pieces that carry real variation from
-              one to the next — because they were made by hands, not
-              machines alone. Every product on this site, from our tailored
-              blazers to our woven belts, is built to be worn hard and worn
-              often, backed by fabric choices and construction details we're
-              proud to stand behind. This is fashion that respects where it
-              came from and where you're actually going to wear it.
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Featured products */}
-      <section className="container-page py-16 lg:py-20">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="eyebrow">The Edit</p>
-            <h2 className="section-heading mt-3">Featured Pieces</h2>
-          </div>
-          <Link href="/shop" className="btn-ghost hidden sm:inline-flex">
-            View Full Shop →
-          </Link>
-        </div>
-
-        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-3">
-          {featured.map((product) => (
-            <ProductCard key={product.id} product={product} />
+      {/* Reasons — plain numbered row list, no icons/cards */}
+      <section className="border-y border-line bg-white py-14 lg:py-16">
+        <div className="container-page divide-y divide-line sm:grid sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
+          {REASONS.map((reason, i) => (
+            <div key={reason.title} className="flex gap-4 py-6 sm:px-8 sm:py-0 first:pl-0">
+              <span className="font-display text-2xl font-bold text-clay">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <p className="font-display text-sm font-bold text-ink">{reason.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-ink-soft">{reason.body}</p>
+              </div>
+            </div>
           ))}
         </div>
+      </section>
 
-        <div className="mt-10 flex justify-center sm:hidden">
-          <Link href="/shop" className="btn-secondary w-full">
-            View Full Shop
-          </Link>
+      {/* All categories — full shelf listing */}
+      <section className="py-16 lg:py-20">
+        <div className="container-page">
+          <p className="eyebrow">Full Catalog</p>
+          <h2 className="section-heading mt-3">Shop by Department</h2>
+          <div className="mt-8 divide-y divide-line rounded-lg border border-line bg-white">
+            {categories.map((category, i) => {
+              const count = products.filter((p) => p.category === category).length;
+              return (
+                <Link
+                  key={category}
+                  href={`/shop?category=${encodeURIComponent(category)}`}
+                  className="group flex items-center justify-between px-6 py-5 transition-colors hover:bg-clay-pale/40"
+                >
+                  <span className="flex items-center gap-5">
+                    <span className="font-display text-xl font-bold text-line group-hover:text-clay">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-display text-lg font-bold text-ink">{category}</span>
+                  </span>
+                  <span className="text-sm font-semibold text-ink-soft">{count} items</span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* Promo strip */}
-      <section className="bg-rust text-cream">
-        <div className="container-page grid grid-cols-1 gap-8 py-14 text-center sm:grid-cols-3 sm:text-left">
-          <div>
-            <p className="font-display text-xl">Handwoven Materials</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Aso-oke, adire, batik, and raffia sourced directly from
-              artisans.
-            </p>
-          </div>
-          <div>
-            <p className="font-display text-xl">Lagos Delivery</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Free delivery within Lagos on orders over ₦75,000.
-            </p>
-          </div>
-          <div>
-            <p className="font-display text-xl">Made to Last</p>
-            <p className="mt-2 text-sm text-cream/85">
-              Constructed for daily wear, not just special occasions.
-            </p>
-          </div>
+      {/* CTA */}
+      <section className="border-t border-line bg-ink py-14 text-center lg:py-20">
+        <div className="container-page">
+          <h2 className="font-display text-2xl font-bold text-linen sm:text-3xl">Ready to restock your home?</h2>
+          <p className="mx-auto mt-3 max-w-md text-sm text-linen/60">Pay securely with Mastercard or Visa — priced in USD or NGN.</p>
+          <Link href="/shop" className="btn-primary mt-8 inline-flex bg-clay hover:bg-clay-dark">Browse the Catalog</Link>
         </div>
       </section>
     </div>

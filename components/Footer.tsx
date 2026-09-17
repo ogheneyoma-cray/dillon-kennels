@@ -1,110 +1,71 @@
 import Link from "next/link";
+import Logo from "@/components/Logo";
+import { site } from "@/lib/site";
 
-const SHOP_LINKS = [
-  { href: "/shop", label: "All Products" },
+const LINKS = [
+  { href: "/shop", label: "Shop" },
+  { href: "/contact", label: "Contact" },
   { href: "/cart", label: "Cart" },
   { href: "/checkout", label: "Checkout" },
-];
-
-const HELP_LINKS = [
-  { href: "/contact", label: "Contact Us" },
-  { href: "/shipping-policy", label: "Shipping Policy" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms-and-conditions", label: "Terms & Conditions" },
+  { href: "/shipping-policy", label: "Delivery Policy" },
   { href: "/refunds-policy", label: "Refunds Policy" },
 ];
 
-const LEGAL_LINKS = [
-  { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/terms-and-conditions", label: "Terms & Conditions" },
-];
+function VisaMark() {
+  return (
+    <span className="flex h-8 w-12 items-center justify-center rounded-md bg-white text-[11px] font-black italic tracking-tight text-[#1A1F71]">
+      VISA
+    </span>
+  );
+}
+
+function MastercardMark() {
+  return (
+    <span className="flex h-8 w-12 items-center justify-center rounded-md bg-white" aria-label="Mastercard">
+      <svg width="26" height="16" viewBox="0 0 26 16" aria-hidden="true">
+        <circle cx="9" cy="8" r="8" fill="#EB001B" />
+        <circle cx="17" cy="8" r="8" fill="#F79E1B" />
+        <path d="M13 2.2a8 8 0 0 1 0 11.6 8 8 0 0 1 0-11.6Z" fill="#FF5F00" />
+      </svg>
+    </span>
+  );
+}
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-ink/10 bg-ink text-cream">
-      <div className="container-page grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-line bg-ink text-linen">
+      {/* Footer rendered as a two-column spec sheet: brand block + numbered link index */}
+      <div className="container-page grid grid-cols-1 gap-10 py-14 md:grid-cols-[1.2fr_1fr]">
         <div>
-          <p className="font-display text-2xl">Dillon Kennels</p>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-cream/70">
-            Fashion rooted in West African heritage, tailored for everyday
-            life. Handcrafted clothing, footwear, and accessories out of
-            Lagos, Nigeria.
-          </p>
+          <Logo tone="white" />
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-linen/55">{site.description}</p>
+          <div className="mt-6 flex items-center gap-3">
+            <MastercardMark />
+            <VisaMark />
+          </div>
         </div>
-
-        <div>
-          <p className="eyebrow text-clay">Shop</p>
-          <ul className="mt-4 space-y-2">
-            {SHOP_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm text-cream/80 transition-colors hover:text-cream"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <p className="eyebrow text-clay">Help</p>
-          <ul className="mt-4 space-y-2">
-            {HELP_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm text-cream/80 transition-colors hover:text-cream"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <p className="eyebrow mt-6 text-clay">Legal</p>
-          <ul className="mt-4 space-y-2">
-            {LEGAL_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm text-cream/80 transition-colors hover:text-cream"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <p className="eyebrow text-clay">Get in Touch</p>
-          <address className="mt-4 space-y-2 text-sm not-italic text-cream/80">
-            <p>
-              8 Olotu House, Opposite Baale House, Abule Tirninmiljeun Odeda,
-              Ajeromi-Ifelodun, Lagos State
-            </p>
-            <p>
-              <a
-                href="mailto:supportteam@dillonkennels.com"
-                className="hover:text-cream"
-              >
-                supportteam@dillonkennels.com
-              </a>
-            </p>
-            <p>
-              <a href="tel:+2349023326345" className="hover:text-cream">
-                +234 902 332 6345
-              </a>
-            </p>
-          </address>
+        <div className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-2">
+          {LINKS.map((link, i) => (
+            <Link key={link.href} href={link.href} className="flex items-baseline gap-2 text-sm text-linen/70 transition-colors hover:text-clay">
+              <span className="text-[10px] text-linen/40">{String(i + 1).padStart(2, "0")}</span>
+              {link.label}
+            </Link>
+          ))}
         </div>
       </div>
 
-      <div className="border-t border-cream/10 py-6">
-        <p className="container-page text-center text-xs text-cream/50">
-          © {year} Dillon Kennels. All rights reserved.
-        </p>
+      <div className="border-t border-linen/10">
+        <div className="container-page flex flex-col items-center gap-3 py-6 text-xs text-linen/40 sm:flex-row sm:justify-between">
+          <p>&copy; {year} {site.legalName}. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+            <a href={`mailto:${site.email}`} className="hover:text-linen">{site.email}</a>
+            <a href={`tel:${site.phoneHref}`} className="hover:text-linen">{site.phone}</a>
+          </div>
+        </div>
       </div>
     </footer>
   );

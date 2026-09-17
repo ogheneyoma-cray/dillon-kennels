@@ -6,50 +6,54 @@ import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { formatMoney } from "@/lib/currency";
+import StarRating from "@/components/StarRating";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();
   const { currency } = useCurrency();
 
   return (
-    <div className="group relative flex flex-col">
-      <Link
-        href={`/shop/${product.slug}`}
-        className="relative block aspect-[4/5] overflow-hidden bg-sand"
-      >
+    <div className="group flex flex-col overflow-hidden rounded-lg border border-line bg-white transition-shadow hover:shadow-lift">
+      <Link href={`/shop/${product.slug}`} className="relative block aspect-[4/3] w-full overflow-hidden bg-clay-pale">
         <Image
           src={product.image}
           alt={product.name}
           fill
-          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
         />
-        {!product.inStock && (
-          <span className="absolute left-3 top-3 bg-ink px-3 py-1 text-[10px] font-semibold uppercase tracking-widest2 text-cream">
-            Sold Out
+      </Link>
+
+      {/* swing-tag price label overlapping the image/body seam */}
+      <div className="relative px-4">
+        <div className="absolute -top-4 right-4 flex h-8 items-center gap-1 rounded-sm bg-ink px-3 shadow-tile">
+          <span className="h-1.5 w-1.5 rounded-full bg-linen/70" />
+          <span className="font-display text-xs font-bold text-linen">{formatMoney(product.price, currency)}</span>
+        </div>
+      </div>
+
+      <div className="flex flex-1 flex-col p-4 pt-3">
+        {product.popular && (
+          <span className="mb-1.5 inline-block w-fit rounded-sm bg-clay-pale px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-clay-dark">
+            Bestseller
           </span>
         )}
-        <span className="absolute right-3 top-3 border border-ink/20 bg-cream/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink/70">
-          {product.category}
-        </span>
-      </Link>
-      <div className="mt-4 flex flex-1 flex-col">
         <Link href={`/shop/${product.slug}`}>
-          <h3 className="font-display text-lg leading-snug text-ink transition-colors group-hover:text-rust">
+          <h3 className="font-display text-sm font-bold leading-snug text-ink transition-colors group-hover:text-clay-dark">
             {product.name}
           </h3>
         </Link>
-        <p className="mt-1 text-sm font-semibold text-ink/70">
-          {formatMoney(product.price, currency)}
-        </p>
-        <button
-          type="button"
-          onClick={() => addToCart(product, 1)}
-          disabled={!product.inStock}
-          className="btn-secondary mt-4 w-full disabled:cursor-not-allowed disabled:opacity-40"
-        >
-          {product.inStock ? "Add to Cart" : "Unavailable"}
-        </button>
+        <p className="mt-1 text-[11px] uppercase tracking-wider text-ink-soft">{product.category}</p>
+        <div className="mt-3 flex items-center justify-between">
+          <StarRating rating={product.rating} />
+          <button
+            type="button"
+            onClick={() => addToCart(product, 1)}
+            className="inline-flex min-h-[36px] items-center justify-center rounded-md bg-ink px-4 font-display text-xs font-bold text-linen transition-colors hover:bg-clay-dark"
+          >
+            Add
+          </button>
+        </div>
       </div>
     </div>
   );
