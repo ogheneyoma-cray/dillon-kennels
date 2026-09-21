@@ -2,59 +2,59 @@ import type { Metadata } from "next";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `Shipping Policy | ${site.name}`,
-  description: "Shipping timelines, costs, and coverage for Feteframe orders.",
+  title: `Delivery Policy | ${site.name}`,
+  description: "Scheduling timelines and service delivery coverage for Spruce Savers bookings.",
 };
 
 export default function ShippingPolicyPage() {
   return (
     <div className="container-page py-10 lg:py-16">
-      <p className="eyebrow">Legal</p>
-      <h1 className="section-heading mt-3">Shipping Policy</h1>
+      <span className="tag-pill">Legal</span>
+      <h1 className="section-heading mt-3">Delivery Policy</h1>
       <p className="mt-2 text-sm text-ink-soft">Last updated: September 2026</p>
 
       <div className="mt-10 max-w-3xl space-y-8 text-ink-soft">
         <section>
-          <h2 className="font-display text-xl font-bold text-ink">Order Processing</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Booking Processing</h2>
           <p className="mt-3 leading-relaxed">
-            Every order placed with Feteframe is processed from our Port Harcourt warehouse. Orders are
-            processed Monday through Saturday, excluding public holidays. Please allow 1-2 business days for
-            order processing before your item ships, and you'll receive an email confirmation once dispatched.
+            Every booking placed with Spruce Savers is reviewed and assigned to a technician. Bookings are
+            processed Monday through Saturday, excluding public holidays. Please allow 1-2 business days for a
+            technician to be assigned, and you'll receive an email confirmation once your appointment is set.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-bold text-ink">Delivery Areas & Timelines</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Service Areas & Timelines</h2>
           <p className="mt-3 leading-relaxed">
-            We currently deliver across Nigeria only. Orders within Rivers State typically arrive within 1-3
-            business days after dispatch. Orders to other states are delivered via our logistics partners and
-            typically arrive within 3-7 business days, depending on distance and local road conditions.
+            We currently deliver in-person and remote IT services across Nigeria. On-site visits typically take
+            place within 1-3 business days of booking. Remote sessions can usually be scheduled within 24 hours,
+            depending on technician availability.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-bold text-ink">Shipping Costs</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Service Fees</h2>
           <p className="mt-3 leading-relaxed">
-            Shipping costs are calculated at checkout based on your delivery address and the size of your
-            order. Orders within Rivers State totalling over ₦75,000 qualify for free standard delivery.
+            Service fees are calculated at checkout based on the service selected and your location. Bookings
+            totalling over ₦75,000 qualify for a complimentary follow-up check within 30 days.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-bold text-ink">Tracking Your Order</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Tracking Your Booking</h2>
           <p className="mt-3 leading-relaxed">
-            Once your order ships, you'll receive tracking information by email to the address provided at
-            checkout. If you haven't received tracking within 3 business days, contact us at {site.email} or{" "}
-            {site.phone}.
+            Once your booking is confirmed, you'll receive appointment details by email to the address provided
+            at checkout. If you haven't received confirmation within 2 business days, contact us at{" "}
+            {site.email} or {site.phone}.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-bold text-ink">Failed & Delayed Deliveries</h2>
+          <h2 className="font-display text-xl font-bold text-ink">Missed & Rescheduled Appointments</h2>
           <p className="mt-3 leading-relaxed">
-            If a delivery attempt fails because no one is available to receive the package, our logistics
-            partner will attempt redelivery or arrange a nearby collection point. Feteframe is not responsible
-            for delays caused by incomplete or inaccurate delivery addresses.
+            If a technician cannot reach you at the scheduled time, we will attempt to reschedule the
+            appointment. Spruce Savers is not responsible for delays caused by incomplete or inaccurate contact
+            details.
           </p>
         </section>
       </div>

@@ -3,10 +3,8 @@ import Logo from "@/components/Logo";
 import { site } from "@/lib/site";
 
 const LINKS = [
-  { href: "/shop", label: "Shop" },
+  { href: "/shop", label: "Services" },
   { href: "/contact", label: "Contact" },
-  { href: "/cart", label: "Cart" },
-  { href: "/checkout", label: "Checkout" },
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
   { href: "/shipping-policy", label: "Delivery Policy" },
@@ -37,34 +35,34 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-line bg-ink text-linen">
-      {/* Footer rendered as a two-column spec sheet: brand block + numbered link index */}
-      <div className="container-page grid grid-cols-1 gap-10 py-14 md:grid-cols-[1.2fr_1fr]">
-        <div>
-          <Logo tone="white" />
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-linen/55">{site.description}</p>
-          <div className="mt-6 flex items-center gap-3">
-            <MastercardMark />
-            <VisaMark />
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-2">
-          {LINKS.map((link, i) => (
-            <Link key={link.href} href={link.href} className="flex items-baseline gap-2 text-sm text-linen/70 transition-colors hover:text-clay">
-              <span className="text-[10px] text-linen/40">{String(i + 1).padStart(2, "0")}</span>
+    <footer className="bg-ink text-white">
+      {/* Footer rendered as a single centered column — distinct from a two-column spec sheet */}
+      <div className="container-page flex flex-col items-center gap-6 py-16 text-center">
+        <Logo tone="white" />
+        <p className="max-w-md text-sm leading-relaxed text-white/55">{site.description}</p>
+
+        <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/70">
+          {LINKS.map((link) => (
+            <Link key={link.href} href={link.href} className="transition-colors hover:text-amber">
               {link.label}
             </Link>
           ))}
+        </nav>
+
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-white/60">
+          <a href={`mailto:${site.email}`} className="hover:text-white">{site.email}</a>
+          <a href={`tel:${site.phoneHref}`} className="hover:text-white">{site.phone}</a>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <MastercardMark />
+          <VisaMark />
         </div>
       </div>
 
-      <div className="border-t border-linen/10">
-        <div className="container-page flex flex-col items-center gap-3 py-6 text-xs text-linen/40 sm:flex-row sm:justify-between">
+      <div className="border-t border-white/10">
+        <div className="container-page flex justify-center py-6 text-xs text-white/40">
           <p>&copy; {year} {site.legalName}. All rights reserved.</p>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
-            <a href={`mailto:${site.email}`} className="hover:text-linen">{site.email}</a>
-            <a href={`tel:${site.phoneHref}`} className="hover:text-linen">{site.phone}</a>
-          </div>
         </div>
       </div>
     </footer>

@@ -13,33 +13,33 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div className="container-page flex flex-col items-center justify-center py-24 text-center">
-        <p className="eyebrow">Your Cart</p>
+        <span className="tag-pill">Your Cart</span>
         <h1 className="section-heading mt-3">It&apos;s looking empty in here</h1>
         <p className="mt-4 max-w-sm text-ink-soft">
-          You haven&apos;t added anything to your cart yet. Explore the catalog and find something you need.
+          You haven&apos;t booked anything yet. Explore our services and find what your setup needs.
         </p>
-        <Link href="/shop" className="btn-primary mt-8">Shop Now</Link>
+        <Link href="/shop" className="btn-primary mt-8">Browse Services</Link>
       </div>
     );
   }
 
   return (
     <div className="container-page py-10 lg:py-16">
-      <p className="eyebrow">Your Cart</p>
-      <h1 className="section-heading mt-3">Shopping Cart</h1>
+      <span className="tag-pill">Your Cart</span>
+      <h1 className="section-heading mt-3">Booking Cart</h1>
 
       <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_360px]">
-        <ul className="divide-y divide-line rounded-lg border border-line bg-white">
+        <ul className="space-y-4">
           {items.map((item) => (
-            <li key={item.id} className="flex gap-4 p-6 sm:gap-6">
-              <Link href={`/shop/${item.slug}`} className="relative h-24 w-28 shrink-0 overflow-hidden rounded-md bg-clay-pale sm:h-28 sm:w-32">
+            <li key={item.id} className="panel-tile flex gap-4 p-6 sm:gap-6">
+              <Link href={`/shop/${item.slug}`} className="relative h-24 w-28 shrink-0 overflow-hidden rounded-xl bg-volt-pale sm:h-28 sm:w-32">
                 <Image src={item.image} alt={item.name} fill sizes="130px" className="object-cover" />
               </Link>
 
               <div className="flex flex-1 flex-col justify-between">
                 <div className="flex justify-between gap-3">
                   <div>
-                    <Link href={`/shop/${item.slug}`} className="font-display text-base font-bold leading-snug text-ink hover:text-clay-dark sm:text-lg">
+                    <Link href={`/shop/${item.slug}`} className="font-display text-base font-bold leading-snug text-ink hover:text-volt-dark sm:text-lg">
                       {item.name}
                     </Link>
                     <p className="mt-1 text-sm text-ink-soft">{formatMoney(item.price, currency)} each</p>
@@ -48,27 +48,27 @@ export default function CartPage() {
                 </div>
 
                 <div className="mt-4 flex items-center justify-between">
-                  <div className="flex items-center rounded-md border border-line">
-                    <button type="button" onClick={() => updateQuantity(item.id, item.quantity - 1)} aria-label={`Decrease quantity of ${item.name}`} className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-clay-pale">−</button>
+                  <div className="flex items-center rounded-full border border-line">
+                    <button type="button" onClick={() => updateQuantity(item.id, item.quantity - 1)} aria-label={`Decrease quantity of ${item.name}`} className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-volt-pale">−</button>
                     <span className="flex h-10 w-10 items-center justify-center border-x border-line text-sm font-bold">{item.quantity}</span>
-                    <button type="button" onClick={() => updateQuantity(item.id, item.quantity + 1)} aria-label={`Increase quantity of ${item.name}`} className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-clay-pale">+</button>
+                    <button type="button" onClick={() => updateQuantity(item.id, item.quantity + 1)} aria-label={`Increase quantity of ${item.name}`} className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-volt-pale">+</button>
                   </div>
-                  <button type="button" onClick={() => removeFromCart(item.id)} className="min-h-[44px] px-2 text-sm font-semibold text-ink-soft underline underline-offset-4 hover:text-clay-dark">Remove</button>
+                  <button type="button" onClick={() => removeFromCart(item.id)} className="min-h-[44px] px-2 text-sm font-semibold text-ink-soft underline underline-offset-4 hover:text-volt-dark">Remove</button>
                 </div>
               </div>
             </li>
           ))}
         </ul>
 
-        <aside className="h-fit rounded-lg border border-line bg-white p-6 shadow-tile">
+        <aside className="panel-tile h-fit p-6">
           <h2 className="font-display text-xl font-bold text-ink">Order Summary</h2>
           <div className="mt-5 space-y-3 text-sm">
             <div className="flex justify-between text-ink-soft"><span>Subtotal</span><span>{formatMoney(cartTotal, currency)}</span></div>
-            <div className="flex justify-between text-ink-soft"><span>Shipping</span><span>Calculated at checkout</span></div>
+            <div className="flex justify-between text-ink-soft"><span>Fees</span><span>Calculated at checkout</span></div>
           </div>
           <div className="mt-5 flex justify-between border-t border-line pt-5 font-display text-lg font-bold text-ink"><span>Total</span><span>{formatMoney(cartTotal, currency)}</span></div>
           <Link href="/checkout" className="btn-primary mt-6 w-full">Proceed to Checkout</Link>
-          <Link href="/shop" className="btn-ghost mt-3 w-full">Continue Shopping</Link>
+          <Link href="/shop" className="btn-ghost mt-3 w-full">Continue Browsing</Link>
         </aside>
       </div>
     </div>

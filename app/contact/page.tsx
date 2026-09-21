@@ -4,23 +4,23 @@ import { addressLines, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Contact Us | ${site.name}`,
-  description: "Get in touch with the Feteframe team — email, phone, address and business hours.",
+  description: "Get in touch with the Spruce Savers team — email, phone, address and business hours.",
 };
 
 export default function ContactPage() {
   return (
     <div className="container-page py-10 lg:py-16">
-      <p className="eyebrow">Get in Touch</p>
+      <span className="tag-pill">Get in Touch</span>
       <h1 className="section-heading mt-3">Contact Us</h1>
       <p className="mt-4 max-w-xl text-ink-soft">
-        Have a question about an order or a product? Send us a message or reach out directly using the details below.
+        Have a question about a booking or a service? Send us a message or reach out directly using the details below.
       </p>
 
-      <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_1fr]">
+      <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[1.2fr_1fr]">
         <ContactForm />
 
-        <aside className="space-y-6">
-          <div className="rounded-lg border border-line bg-white p-6 shadow-tile">
+        <aside className="space-y-4">
+          <div className="panel-tile p-6">
             <h2 className="font-display text-xl font-bold text-ink">Store Details</h2>
             <dl className="mt-5 space-y-4 text-sm text-ink-soft">
               <div>
@@ -34,19 +34,19 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Email</dt>
                 <dd className="mt-1">
-                  <a href={`mailto:${site.email}`} className="hover:text-clay-dark">{site.email}</a>
+                  <a href={`mailto:${site.email}`} className="hover:text-volt-dark">{site.email}</a>
                 </dd>
               </div>
               <div>
                 <dt className="font-semibold text-ink">Phone</dt>
                 <dd className="mt-1">
-                  <a href={`tel:${site.phoneHref}`} className="hover:text-clay-dark">{site.phone}</a>
+                  <a href={`tel:${site.phoneHref}`} className="hover:text-volt-dark">{site.phone}</a>
                 </dd>
               </div>
             </dl>
           </div>
 
-          <div className="rounded-lg border border-line bg-white p-6 shadow-tile">
+          <div className="panel-tile p-6">
             <h2 className="font-display text-xl font-bold text-ink">Business Hours</h2>
             <dl className="mt-5 space-y-2 text-sm text-ink-soft">
               <div className="flex justify-between"><dt>Monday – Friday</dt><dd>9:00 AM – 6:00 PM</dd></div>

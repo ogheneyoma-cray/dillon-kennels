@@ -9,7 +9,7 @@ import { formatMoney } from "@/lib/currency";
 
 function generateOrderNumber(): string {
   const random = Math.floor(100000 + Math.random() * 900000);
-  return `FF-${random}`;
+  return `SS-${random}`;
 }
 
 export default function CheckoutPage() {
@@ -23,7 +23,7 @@ export default function CheckoutPage() {
     setSubmitting(true);
     const orderNumber = generateOrderNumber();
     window.sessionStorage.setItem(
-      "feteframe-last-order",
+      "sprucesavers-last-order",
       JSON.stringify({
         orderNumber,
         total: formatMoney(cartTotal, currency),
@@ -37,22 +37,22 @@ export default function CheckoutPage() {
   if (items.length === 0) {
     return (
       <div className="container-page flex flex-col items-center justify-center py-24 text-center">
-        <p className="eyebrow">Checkout</p>
+        <span className="tag-pill">Checkout</span>
         <h1 className="section-heading mt-3">Your cart is empty</h1>
-        <p className="mt-4 max-w-sm text-ink-soft">Add something to your cart before heading to checkout.</p>
-        <Link href="/shop" className="btn-primary mt-8">Shop Now</Link>
+        <p className="mt-4 max-w-sm text-ink-soft">Add a service to your cart before heading to checkout.</p>
+        <Link href="/shop" className="btn-primary mt-8">Browse Services</Link>
       </div>
     );
   }
 
   return (
     <div className="container-page py-10 lg:py-16">
-      <p className="eyebrow">Checkout</p>
-      <h1 className="section-heading mt-3">Complete Your Order</h1>
+      <span className="tag-pill">Checkout</span>
+      <h1 className="section-heading mt-3">Complete Your Booking</h1>
 
       <form onSubmit={handleSubmit} className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_380px]">
         <div className="space-y-8">
-          <fieldset className="rounded-lg border border-line bg-white p-6 shadow-tile">
+          <fieldset className="panel-tile p-6">
             <legend className="font-display text-xl font-bold text-ink">Contact & Delivery</legend>
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
@@ -64,7 +64,7 @@ export default function CheckoutPage() {
                 <input id="email" name="email" type="email" required autoComplete="email" className="input-field" placeholder="john@example.com" />
               </div>
               <div className="sm:col-span-2">
-                <label htmlFor="address" className="label-text">Delivery Address</label>
+                <label htmlFor="address" className="label-text">Service Address</label>
                 <input id="address" name="address" type="text" required autoComplete="street-address" className="input-field" placeholder="Street address, city, state" />
               </div>
               <div>
@@ -74,7 +74,7 @@ export default function CheckoutPage() {
             </div>
           </fieldset>
 
-          <fieldset className="rounded-lg border border-line bg-white p-6 shadow-tile">
+          <fieldset className="panel-tile p-6">
             <div className="flex items-center justify-between gap-4">
               <legend className="font-display text-xl font-bold text-ink">Payment Details</legend>
               <div className="flex items-center gap-2">
@@ -112,7 +112,7 @@ export default function CheckoutPage() {
           </fieldset>
         </div>
 
-        <aside className="h-fit rounded-lg border border-line bg-white p-6 shadow-tile">
+        <aside className="panel-tile h-fit p-6">
           <h2 className="font-display text-xl font-bold text-ink">Order Summary</h2>
           <ul className="mt-5 space-y-3 border-b border-line pb-5">
             {items.map((item) => (

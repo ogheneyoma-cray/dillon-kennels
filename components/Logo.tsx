@@ -5,19 +5,17 @@ export default function Logo({
   className?: string;
   tone?: "ink" | "white";
 }) {
-  const wordColor = tone === "white" ? "text-linen" : "text-ink";
-  const boxBg = tone === "white" ? "#F6F1E7" : "#23303A";
-  const boxFg = tone === "white" ? "#23303A" : "#F6F1E7";
+  const wordColor = tone === "white" ? "text-white" : "text-ink";
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" className="shrink-0">
-        <rect width="32" height="32" rx="6" fill={boxBg} />
-        <path d="M8 20V13l8-4 8 4v7" stroke={boxFg} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <rect x="12" y="17" width="8" height="6" rx="1" fill="#C97B4A" />
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true" className="shrink-0">
+        <rect width="34" height="34" rx="10" fill="#12181F" />
+        <path d="M10 22c0-3.5 3-4.5 7-4.5s7-1 7-4.5" stroke="#2F6FED" strokeWidth="2.4" strokeLinecap="round" />
+        <path d="M24 12c0 3.5-3 4.5-7 4.5s-7 1-7 4.5" stroke="#F2A93B" strokeWidth="2.4" strokeLinecap="round" />
       </svg>
       <span className={`font-display text-xl font-bold leading-none tracking-tight ${wordColor}`}>
-        Feteframe
+        Spruce Savers
       </span>
     </span>
   );
