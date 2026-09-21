@@ -13,7 +13,7 @@ const LINKS = [
 
 function VisaMark() {
   return (
-    <span className="flex h-8 w-12 items-center justify-center rounded-md bg-white text-[11px] font-black italic tracking-tight text-[#1A1F71]">
+    <span className="flex h-8 w-12 items-center justify-center border border-line bg-white text-[11px] font-black italic tracking-tight text-[#1A1F71]">
       VISA
     </span>
   );
@@ -21,7 +21,7 @@ function VisaMark() {
 
 function MastercardMark() {
   return (
-    <span className="flex h-8 w-12 items-center justify-center rounded-md bg-white" aria-label="Mastercard">
+    <span className="flex h-8 w-12 items-center justify-center border border-line bg-white" aria-label="Mastercard">
       <svg width="26" height="16" viewBox="0 0 26 16" aria-hidden="true">
         <circle cx="9" cy="8" r="8" fill="#EB001B" />
         <circle cx="17" cy="8" r="8" fill="#F79E1B" />
@@ -35,33 +35,34 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-ink text-white">
-      {/* Footer rendered as a single centered column — distinct from a two-column spec sheet */}
-      <div className="container-page flex flex-col items-center gap-6 py-16 text-center">
-        <Logo tone="white" />
-        <p className="max-w-md text-sm leading-relaxed text-white/55">{site.description}</p>
+    <footer className="border-t border-line bg-stone">
+      {/* Footer rendered as a left-aligned three-part row, not a centered stack */}
+      <div className="container-page grid grid-cols-1 gap-10 py-14 md:grid-cols-[1fr_auto_auto] md:items-start">
+        <div>
+          <Logo />
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-soft">{site.description}</p>
+          <div className="mt-6 flex items-center gap-3">
+            <MastercardMark />
+            <VisaMark />
+          </div>
+        </div>
 
-        <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/70">
+        <nav className="flex flex-col gap-2 text-sm text-ink-soft md:pl-10">
           {LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className="transition-colors hover:text-amber">
+            <Link key={link.href} href={link.href} className="transition-colors hover:text-signal">
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-white/60">
-          <a href={`mailto:${site.email}`} className="hover:text-white">{site.email}</a>
-          <a href={`tel:${site.phoneHref}`} className="hover:text-white">{site.phone}</a>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <MastercardMark />
-          <VisaMark />
+        <div className="flex flex-col gap-2 text-sm text-ink-soft md:pl-10">
+          <a href={`mailto:${site.email}`} className="hover:text-signal">{site.email}</a>
+          <a href={`tel:${site.phoneHref}`} className="hover:text-signal">{site.phone}</a>
         </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="container-page flex justify-center py-6 text-xs text-white/40">
+      <div className="border-t border-line">
+        <div className="container-page py-5 text-xs text-ink-soft">
           <p>&copy; {year} {site.legalName}. All rights reserved.</p>
         </div>
       </div>

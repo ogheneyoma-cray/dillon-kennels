@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-porcelain text-ink font-body;
+    @apply bg-paper text-ink font-body;
   }
 
   h1,
@@ -19,7 +19,7 @@
   }
 
   ::selection {
-    background-color: #2f6fed;
+    background-color: #d6402a;
     color: #ffffff;
   }
 }
@@ -29,24 +29,24 @@
     @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-12;
   }
 
-  .tag-pill {
-    @apply inline-flex items-center gap-2 rounded-full bg-volt-pale px-3 py-1 font-display text-xs font-bold uppercase tracking-wide text-volt-dark;
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-signal;
   }
 
   .btn-primary {
-    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full bg-ink px-7 py-3 font-display text-sm font-bold text-white transition-all duration-200 hover:bg-volt hover:shadow-lift;
+    @apply inline-flex min-h-[46px] items-center justify-center gap-2 bg-ink px-7 py-3 font-display text-lg italic text-paper transition-colors duration-200 hover:bg-signal;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full border-2 border-ink px-7 py-3 font-display text-sm font-bold text-ink transition-colors duration-200 hover:border-volt hover:text-volt-dark;
+    @apply inline-flex min-h-[46px] items-center justify-center gap-2 border border-ink px-7 py-3 font-display text-lg italic text-ink transition-colors duration-200 hover:border-signal hover:text-signal;
   }
 
   .btn-ghost {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 font-display text-sm font-bold text-volt-dark underline decoration-volt decoration-2 underline-offset-4 transition-colors hover:text-ink;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 px-4 py-2 font-display text-base italic text-signal underline decoration-1 underline-offset-4 transition-colors hover:text-ink;
   }
 
   .input-field {
-    @apply w-full min-h-[46px] rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-ink-soft/50 focus:border-volt focus:outline-none focus:ring-2 focus:ring-volt/20;
+    @apply w-full min-h-[46px] border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-ink-soft/50 focus:border-signal focus:outline-none focus:ring-2 focus:ring-signal/15;
   }
 
   .label-text {
@@ -54,10 +54,10 @@
   }
 
   .section-heading {
-    @apply font-display text-3xl font-bold leading-tight text-ink sm:text-4xl;
+    @apply font-display text-3xl leading-tight text-ink sm:text-4xl;
   }
 
   .panel-tile {
-    @apply rounded-xl2 border border-line bg-white shadow-tile;
+    @apply border border-line bg-white shadow-tile;
   }
 }

@@ -24,24 +24,24 @@ export default function ProductDetailActions({ product }: { product: Product }) 
     <div>
       <div className="flex items-center gap-4">
         <span className="label-text mb-0">Quantity</span>
-        <div className="flex items-center rounded-full border border-line">
+        <div className="flex items-center border border-ink">
           <button
             type="button"
             onClick={decrease}
             aria-label="Decrease quantity"
-            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-volt-pale disabled:opacity-30"
+            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-stone disabled:opacity-30"
             disabled={quantity <= 1}
           >
             −
           </button>
-          <span className="flex h-11 w-12 items-center justify-center border-x border-line text-sm font-semibold">
+          <span className="flex h-11 w-12 items-center justify-center border-x border-ink text-sm font-semibold">
             {quantity}
           </span>
           <button
             type="button"
             onClick={increase}
             aria-label="Increase quantity"
-            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-volt-pale"
+            className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-stone"
           >
             +
           </button>

@@ -37,7 +37,7 @@ export default function CheckoutPage() {
   if (items.length === 0) {
     return (
       <div className="container-page flex flex-col items-center justify-center py-24 text-center">
-        <span className="tag-pill">Checkout</span>
+        <span className="eyebrow">Checkout</span>
         <h1 className="section-heading mt-3">Your cart is empty</h1>
         <p className="mt-4 max-w-sm text-ink-soft">Add a service to your cart before heading to checkout.</p>
         <Link href="/shop" className="btn-primary mt-8">Browse Services</Link>
@@ -47,7 +47,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="container-page py-10 lg:py-16">
-      <span className="tag-pill">Checkout</span>
+      <span className="eyebrow">Checkout</span>
       <h1 className="section-heading mt-3">Complete Your Booking</h1>
 
       <form onSubmit={handleSubmit} className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_380px]">

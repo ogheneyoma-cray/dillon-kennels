@@ -13,7 +13,7 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div className="container-page flex flex-col items-center justify-center py-24 text-center">
-        <span className="tag-pill">Your Cart</span>
+        <span className="eyebrow">Your Cart</span>
         <h1 className="section-heading mt-3">It&apos;s looking empty in here</h1>
         <p className="mt-4 max-w-sm text-ink-soft">
           You haven&apos;t booked anything yet. Explore our services and find what your setup needs.
@@ -25,21 +25,21 @@ export default function CartPage() {
 
   return (
     <div className="container-page py-10 lg:py-16">
-      <span className="tag-pill">Your Cart</span>
+      <span className="eyebrow">Your Cart</span>
       <h1 className="section-heading mt-3">Booking Cart</h1>
 
       <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_360px]">
         <ul className="space-y-4">
           {items.map((item) => (
             <li key={item.id} className="panel-tile flex gap-4 p-6 sm:gap-6">
-              <Link href={`/shop/${item.slug}`} className="relative h-24 w-28 shrink-0 overflow-hidden rounded-xl bg-volt-pale sm:h-28 sm:w-32">
+              <Link href={`/shop/${item.slug}`} className="relative h-24 w-28 shrink-0 overflow-hidden bg-signal-pale sm:h-28 sm:w-32">
                 <Image src={item.image} alt={item.name} fill sizes="130px" className="object-cover" />
               </Link>
 
               <div className="flex flex-1 flex-col justify-between">
                 <div className="flex justify-between gap-3">
                   <div>
-                    <Link href={`/shop/${item.slug}`} className="font-display text-base font-bold leading-snug text-ink hover:text-volt-dark sm:text-lg">
+                    <Link href={`/shop/${item.slug}`} className="font-display text-base font-bold leading-snug text-ink hover:text-signal sm:text-lg">
                       {item.name}
                     </Link>
                     <p className="mt-1 text-sm text-ink-soft">{formatMoney(item.price, currency)} each</p>
@@ -48,12 +48,12 @@ export default function CartPage() {
                 </div>
 
                 <div className="mt-4 flex items-center justify-between">
-                  <div className="flex items-center rounded-full border border-line">
-                    <button type="button" onClick={() => updateQuantity(item.id, item.quantity - 1)} aria-label={`Decrease quantity of ${item.name}`} className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-volt-pale">−</button>
+                  <div className="flex items-center border border-line">
+                    <button type="button" onClick={() => updateQuantity(item.id, item.quantity - 1)} aria-label={`Decrease quantity of ${item.name}`} className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-signal-pale">−</button>
                     <span className="flex h-10 w-10 items-center justify-center border-x border-line text-sm font-bold">{item.quantity}</span>
-                    <button type="button" onClick={() => updateQuantity(item.id, item.quantity + 1)} aria-label={`Increase quantity of ${item.name}`} className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-volt-pale">+</button>
+                    <button type="button" onClick={() => updateQuantity(item.id, item.quantity + 1)} aria-label={`Increase quantity of ${item.name}`} className="flex h-10 w-10 items-center justify-center text-ink transition-colors hover:bg-signal-pale">+</button>
                   </div>
-                  <button type="button" onClick={() => removeFromCart(item.id)} className="min-h-[44px] px-2 text-sm font-semibold text-ink-soft underline underline-offset-4 hover:text-volt-dark">Remove</button>
+                  <button type="button" onClick={() => removeFromCart(item.id)} className="min-h-[44px] px-2 text-sm font-semibold text-ink-soft underline underline-offset-4 hover:text-signal">Remove</button>
                 </div>
               </div>
             </li>

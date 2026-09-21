@@ -35,24 +35,24 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   return (
     <div className="container-page py-10 lg:py-16">
       <nav className="mb-8 text-xs font-semibold uppercase tracking-wider text-ink-soft">
-        <Link href="/" className="hover:text-volt-dark">Home</Link>
+        <Link href="/" className="hover:text-signal">Home</Link>
         <span className="mx-2">/</span>
-        <Link href="/shop" className="hover:text-volt-dark">Services</Link>
+        <Link href="/shop" className="hover:text-signal">Services</Link>
         <span className="mx-2">/</span>
         <span className="text-ink">{product.name}</span>
       </nav>
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-xl2 bg-volt-pale">
+        <div className="relative aspect-[4/3] overflow-hidden bg-signal-pale">
           <Image src={product.image} alt={product.name} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
         </div>
 
         <div>
-          <span className="tag-pill">{product.category}</span>
+          <span className="eyebrow">{product.category}</span>
           <h1 className="mt-3 font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">{product.name}</h1>
           <div className="mt-3 flex items-center gap-3">
             <StarRating rating={product.rating} />
-            <ProductPrice priceUsd={product.price} className="font-display text-xl font-bold text-volt-dark" />
+            <ProductPrice priceUsd={product.price} className="font-display text-xl font-bold text-signal" />
           </div>
 
           <p className="mt-6 text-base leading-relaxed text-ink-soft">{product.description}</p>
@@ -64,7 +64,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <dl className="mt-8 space-y-2 border-t border-line pt-6 text-sm text-ink-soft">
             <div className="flex justify-between">
               <dt>Availability</dt>
-              <dd className={product.inStock ? "font-semibold text-volt-dark" : "font-semibold text-amber"}>
+              <dd className={product.inStock ? "font-semibold text-signal" : "font-semibold text-signal"}>
                 {product.inStock ? "Available" : "Fully Booked"}
               </dd>
             </div>

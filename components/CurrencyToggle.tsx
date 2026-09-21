@@ -7,15 +7,15 @@ export default function CurrencyToggle({ className = "" }: { className?: string 
 
   return (
     <div
-      className={`inline-flex items-center rounded-full border border-line bg-white p-1 text-xs font-bold ${className}`}
+      className={`inline-flex items-center border border-ink text-xs font-bold uppercase tracking-wide ${className}`}
       role="group"
       aria-label="Select currency"
     >
       <button
         type="button"
         onClick={() => setCurrency("USD")}
-        className={`min-h-[32px] rounded-full px-3 transition-colors ${
-          currency === "USD" ? "bg-volt text-white" : "bg-transparent text-ink-soft hover:text-ink"
+        className={`min-h-[34px] px-3 transition-colors ${
+          currency === "USD" ? "bg-ink text-paper" : "bg-transparent text-ink-soft hover:text-ink"
         }`}
         aria-pressed={currency === "USD"}
       >
@@ -24,8 +24,8 @@ export default function CurrencyToggle({ className = "" }: { className?: string 
       <button
         type="button"
         onClick={() => setCurrency("NGN")}
-        className={`min-h-[32px] rounded-full px-3 transition-colors ${
-          currency === "NGN" ? "bg-volt text-white" : "bg-transparent text-ink-soft hover:text-ink"
+        className={`min-h-[34px] border-l border-ink px-3 transition-colors ${
+          currency === "NGN" ? "bg-ink text-paper" : "bg-transparent text-ink-soft hover:text-ink"
         }`}
         aria-pressed={currency === "NGN"}
       >

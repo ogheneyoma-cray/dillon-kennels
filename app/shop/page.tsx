@@ -28,15 +28,15 @@ export default function ShopPage({
 
   return (
     <div className="container-page py-10 lg:py-14">
-      <span className="tag-pill">Catalog</span>
-      <h1 className="section-heading mt-3">{activeCategory ?? "All Services"}</h1>
+      <p className="eyebrow">Catalog</p>
+      <h1 className="section-heading mt-3 italic">{activeCategory ?? "All Services"}</h1>
 
-      {/* Filters rendered as a horizontal pill row — not a sidebar list */}
-      <nav className="mt-6 flex flex-wrap gap-2">
+      {/* Filters rendered as an underlined tab row — not pills, not a sidebar */}
+      <nav className="mt-8 flex flex-wrap gap-x-7 gap-y-2 border-b border-line pb-0 text-sm font-semibold uppercase tracking-wide">
         <a
           href="/shop"
-          className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
-            !activeCategory ? "border-ink bg-ink text-white" : "border-line bg-white text-ink-soft hover:text-ink"
+          className={`border-b-2 pb-3 transition-colors ${
+            !activeCategory ? "border-signal text-ink" : "border-transparent text-ink-soft hover:text-ink"
           }`}
         >
           All ({products.length})
@@ -47,8 +47,8 @@ export default function ShopPage({
             <a
               key={category}
               href={`/shop?category=${encodeURIComponent(category)}`}
-              className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
-                activeCategory === category ? "border-ink bg-ink text-white" : "border-line bg-white text-ink-soft hover:text-ink"
+              className={`border-b-2 pb-3 transition-colors ${
+                activeCategory === category ? "border-signal text-ink" : "border-transparent text-ink-soft hover:text-ink"
               }`}
             >
               {category} ({count})

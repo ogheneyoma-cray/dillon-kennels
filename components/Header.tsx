@@ -19,22 +19,22 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 bg-porcelain/90 backdrop-blur">
-      <div className="container-page flex h-20 items-center justify-between gap-6">
+    <header className="border-b border-line bg-paper">
+      <div className="container-page flex h-[84px] items-center justify-between gap-6">
         <Link href="/" onClick={() => setMenuOpen(false)}>
           <Logo />
         </Link>
 
-        {/* Nav rendered as a floating pill capsule, centered — not a spec-sheet list */}
-        <nav className="hidden items-center gap-1 rounded-full border border-line bg-white p-1 shadow-tile md:flex">
+        {/* Nav rendered as plain inline text links, no pill/capsule wrapper */}
+        <nav className="hidden items-center gap-10 md:flex">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-full px-5 py-2 font-display text-sm font-bold transition-colors ${
-                  active ? "bg-ink text-white" : "text-ink-soft hover:text-ink"
+                className={`border-b-2 pb-0.5 text-sm font-semibold uppercase tracking-wide transition-colors ${
+                  active ? "border-signal text-ink" : "border-transparent text-ink-soft hover:border-line hover:text-ink"
                 }`}
               >
                 {link.label}
@@ -43,27 +43,19 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <CurrencyToggle className="hidden sm:inline-flex" />
           <Link
             href="/cart"
             aria-label="View cart"
-            className="relative flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-line bg-white"
+            className="relative flex min-h-[40px] items-center gap-2 border border-ink px-3 text-xs font-bold uppercase tracking-wide text-ink transition-colors hover:border-signal hover:text-signal"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="text-ink">
-              <path d="M4 6h2l1.6 10.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L20.5 9H7" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="10" cy="21" r="1.3" fill="currentColor" stroke="none" />
-              <circle cx="17" cy="21" r="1.3" fill="currentColor" stroke="none" />
-            </svg>
-            {cartCount > 0 && (
-              <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-volt font-display text-[10px] font-bold text-white">
-                {cartCount > 9 ? "9+" : cartCount}
-              </span>
-            )}
+            Cart
+            {cartCount > 0 && <span>({cartCount > 9 ? "9+" : cartCount})</span>}
           </Link>
           <button
             type="button"
-            className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-line bg-white md:hidden"
+            className="flex min-h-[40px] min-w-[40px] items-center justify-center border border-ink md:hidden"
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
@@ -78,14 +70,14 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-line bg-white md:hidden">
+        <nav className="border-t border-line bg-paper md:hidden">
           <div className="container-page flex flex-col py-2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="flex min-h-[48px] items-center font-display text-sm font-bold text-ink"
+                className="flex min-h-[48px] items-center text-sm font-semibold uppercase tracking-wide text-ink"
               >
                 {link.label}
               </Link>

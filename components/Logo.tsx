@@ -5,16 +5,16 @@ export default function Logo({
   className?: string;
   tone?: "ink" | "white";
 }) {
-  const wordColor = tone === "white" ? "text-white" : "text-ink";
+  const wordColor = tone === "white" ? "text-paper" : "text-ink";
+  const strokeColor = tone === "white" ? "#FBF8F4" : "#201C1A";
 
   return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true" className="shrink-0">
-        <rect width="34" height="34" rx="10" fill="#12181F" />
-        <path d="M10 22c0-3.5 3-4.5 7-4.5s7-1 7-4.5" stroke="#2F6FED" strokeWidth="2.4" strokeLinecap="round" />
-        <path d="M24 12c0 3.5-3 4.5-7 4.5s-7 1-7 4.5" stroke="#F2A93B" strokeWidth="2.4" strokeLinecap="round" />
+    <span className={`inline-flex items-center gap-3 ${className}`}>
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true" className="shrink-0">
+        <circle cx="15" cy="15" r="14" stroke={strokeColor} strokeWidth="1.4" />
+        <path d="M15 6v18M6 15h18" stroke="#D6402A" strokeWidth="1.6" strokeLinecap="round" />
       </svg>
-      <span className={`font-display text-xl font-bold leading-none tracking-tight ${wordColor}`}>
+      <span className={`font-display text-2xl italic leading-none tracking-tight ${wordColor}`}>
         Spruce Savers
       </span>
     </span>

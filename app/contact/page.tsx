@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="container-page py-10 lg:py-16">
-      <span className="tag-pill">Get in Touch</span>
+      <span className="eyebrow">Get in Touch</span>
       <h1 className="section-heading mt-3">Contact Us</h1>
       <p className="mt-4 max-w-xl text-ink-soft">
         Have a question about a booking or a service? Send us a message or reach out directly using the details below.
@@ -34,13 +34,13 @@ export default function ContactPage() {
               <div>
                 <dt className="font-semibold text-ink">Email</dt>
                 <dd className="mt-1">
-                  <a href={`mailto:${site.email}`} className="hover:text-volt-dark">{site.email}</a>
+                  <a href={`mailto:${site.email}`} className="hover:text-signal">{site.email}</a>
                 </dd>
               </div>
               <div>
                 <dt className="font-semibold text-ink">Phone</dt>
                 <dd className="mt-1">
-                  <a href={`tel:${site.phoneHref}`} className="hover:text-volt-dark">{site.phone}</a>
+                  <a href={`tel:${site.phoneHref}`} className="hover:text-signal">{site.phone}</a>
                 </dd>
               </div>
             </dl>
