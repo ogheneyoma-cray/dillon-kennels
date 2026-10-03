@@ -83,6 +83,47 @@ export async function markInitFailed(reference: string, note: string) {
   await s`UPDATE orders SET status = 'failed', status_note = ${note.slice(0, 500)}, updated_at = now() WHERE reference = ${reference}`;
 }
 
+export type OrderRow = {
+  reference: string;
+  status: OrderStatus;
+  amount: string;
+  currency: string;
+  payment_method: string;
+  customer_name: string;
+  customer_email: string;
+  items: NewOrder["items"];
+  cray_status: string | null;
+  payment_channel: string | null;
+  status_note: string | null;
+  check_count: number;
+  paid_at: Date | null;
+  created_at: Date;
+};
+
+/** Newest orders first, optionally filtered by status and a name/email/reference search. For the admin page. */
+export async function listOrders({ status, q, limit = 200 }: { status?: OrderStatus; q?: string; limit?: number }) {
+  const s = await sql();
+  const like = q ? `%${q.replace(/[\\%_]/g, (c) => `\\${c}`)}%` : null;
+  return s<OrderRow[]>`
+    SELECT reference, status, amount, currency, payment_method, customer_name, customer_email, items,
+           cray_status, payment_channel, status_note, check_count, paid_at, created_at
+    FROM orders
+    WHERE (${status ?? null}::text IS NULL OR status = ${status ?? null})
+      AND (${like}::text IS NULL OR customer_email ILIKE ${like} OR customer_name ILIKE ${like} OR reference ILIKE ${like})
+    ORDER BY created_at DESC
+    LIMIT ${limit}`;
+}
+
+/** Order counts and paid revenue per currency, for the admin summary. */
+export async function orderSummary() {
+  const s = await sql();
+  const counts = await s<{ status: OrderStatus; count: number }[]>`
+    SELECT status, count(*)::int AS count FROM orders GROUP BY status`;
+  const revenue = await s<{ currency: string; total: string }[]>`
+    SELECT currency, sum(amount)::text AS total FROM orders WHERE status = 'paid' GROUP BY currency`;
+  return { counts, revenue };
+}
+
 function mapCrayStatus(raw: string): "paid" | "pending" | "failed" {
   const s = raw.toLowerCase();
   if (/^(success|successful|completed|paid|approved)/.test(s)) return "paid";
