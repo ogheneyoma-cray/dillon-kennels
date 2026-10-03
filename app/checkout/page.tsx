@@ -2,36 +2,51 @@
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { formatMoney } from "@/lib/currency";
+import { initializeCheckout } from "@/lib/payments";
 
-function generateOrderNumber(): string {
-  const random = Math.floor(100000 + Math.random() * 900000);
-  return `WBR-${random}`;
-}
+type PaymentMethod = "card" | "bank";
+
+const paymentOptions: { value: PaymentMethod; label: string; hint: string }[] = [
+  { value: "card", label: "Debit / Credit Card", hint: "Visa, Mastercard and Verve." },
+  { value: "bank", label: "Bank Transfer", hint: "Transfer to a one-time account. Confirmation can take a few minutes." },
+];
 
 export default function CheckoutPage() {
-  const { items, cartTotal, clearCart } = useCart();
+  const { items, cartTotal } = useCart();
   const { currency } = useCurrency();
-  const router = useRouter();
+  const [payment, setPayment] = useState<PaymentMethod>("card");
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = new FormData(event.currentTarget);
     setSubmitting(true);
-    const orderNumber = generateOrderNumber();
-    window.sessionStorage.setItem(
-      "webreid-last-order",
-      JSON.stringify({
-        orderNumber,
-        total: formatMoney(cartTotal, currency),
-        itemCount: items.reduce((sum, item) => sum + item.quantity, 0),
-      })
-    );
-    clearCart();
-    router.push(`/order-confirmation?order=${orderNumber}`);
+    setError(null);
+    try {
+      const result = await initializeCheckout({
+        customer: {
+          fullName: String(form.get("fullName") ?? ""),
+          email: String(form.get("email") ?? ""),
+        },
+        items: items.map((item) => ({ productId: item.id, quantity: item.quantity })),
+        currency,
+        payment,
+      });
+      if (!result.ok) {
+        setError(result.error);
+        setSubmitting(false);
+        return;
+      }
+      // The cart is cleared on the callback page once payment is confirmed.
+      window.location.assign(result.link);
+    } catch {
+      setError("Something went wrong. Please check your connection and try again.");
+      setSubmitting(false);
+    }
   };
 
   if (items.length === 0) {
@@ -100,75 +115,38 @@ export default function CheckoutPage() {
 
           <fieldset>
             <legend className="font-display text-xl text-ink">
-              Payment Details
+              Payment Method
             </legend>
             <p className="mt-2 text-xs text-ink-soft">
-              Demo checkout — card details are not transmitted or stored.
+              You&apos;ll complete payment on our secure payment partner&apos;s
+              page. Card details never touch our servers.
             </p>
-            <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <div className="sm:col-span-2">
-                <label htmlFor="cardName" className="label-text">
-                  Name on Card
+            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {paymentOptions.map((option) => (
+                <label
+                  key={option.value}
+                  className={`flex cursor-pointer flex-col rounded-2xl border p-5 transition-colors ${
+                    payment === option.value
+                      ? "border-magenta bg-magenta-pale"
+                      : "border-line bg-paper hover:border-magenta-light"
+                  }`}
+                >
+                  <span className="flex items-center gap-3">
+                    <input
+                      type="radio"
+                      name="payment"
+                      value={option.value}
+                      checked={payment === option.value}
+                      onChange={() => setPayment(option.value)}
+                      className="accent-magenta"
+                    />
+                    <span className="font-medium text-ink">{option.label}</span>
+                  </span>
+                  <span className="mt-2 pl-7 text-xs text-ink-soft">
+                    {option.hint}
+                  </span>
                 </label>
-                <input
-                  id="cardName"
-                  name="cardName"
-                  type="text"
-                  required
-                  autoComplete="cc-name"
-                  className="input-field"
-                  placeholder="Adaeze Okonkwo"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="cardNumber" className="label-text">
-                  Card Number
-                </label>
-                <input
-                  id="cardNumber"
-                  name="cardNumber"
-                  type="text"
-                  inputMode="numeric"
-                  required
-                  autoComplete="cc-number"
-                  pattern="[0-9\s]{13,19}"
-                  maxLength={19}
-                  className="input-field"
-                  placeholder="1234 5678 9012 3456"
-                />
-              </div>
-              <div>
-                <label htmlFor="expiry" className="label-text">
-                  Expiry Date
-                </label>
-                <input
-                  id="expiry"
-                  name="expiry"
-                  type="text"
-                  required
-                  autoComplete="cc-exp"
-                  placeholder="MM/YY"
-                  pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
-                  className="input-field"
-                />
-              </div>
-              <div>
-                <label htmlFor="cvv" className="label-text">
-                  CVV
-                </label>
-                <input
-                  id="cvv"
-                  name="cvv"
-                  type="text"
-                  inputMode="numeric"
-                  required
-                  autoComplete="cc-csc"
-                  maxLength={4}
-                  pattern="[0-9]{3,4}"
-                  className="input-field"
-                  placeholder="123"
-                />
-              </div>
+              ))}
             </div>
           </fieldset>
         </div>
@@ -196,8 +174,13 @@ export default function CheckoutPage() {
             disabled={submitting}
             className="btn-primary mt-6 w-full disabled:opacity-60"
           >
-            {submitting ? "Placing Order…" : "Place Order"}
+            {submitting ? "Redirecting to Payment…" : "Proceed to Payment"}
           </button>
+          {error && (
+            <p role="alert" className="mt-4 text-sm text-magenta">
+              {error}
+            </p>
+          )}
         </aside>
       </form>
     </div>

@@ -9,7 +9,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { Product } from "@/data/products";
+import { Product, products } from "@/data/products";
 
 export interface CartItem {
   id: number;
@@ -43,7 +43,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw) as CartItem[];
-        setItems(parsed);
+        // Re-price from the catalogue: the server charges current prices, so a stale stored price must not show.
+        setItems(
+          parsed.flatMap((item) => {
+            const product = products.find((p) => p.id === item.id);
+            return product ? [{ ...item, name: product.name, slug: product.slug, price: product.price, image: product.image }] : [];
+          })
+        );
       }
     } catch {
       // ignore corrupted storage
